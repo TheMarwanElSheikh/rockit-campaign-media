@@ -1,0 +1,231 @@
+{
+ "issue_no": "001",
+ "date_iso": "2026-11-16",
+ "date_long": "16 November 2026",
+ "subject": "Suez is back. December rates to Egypt aren't falling. | The Rockit Manifest 001",
+ "preheader": "Spot indices soften while December FAKs and peak surcharges to the Med rise. What that means for cargo you book this week.",
+ "lead": {
+  "eyebrow": "The lead",
+  "headline": "The Suez return is real. Cheaper December freight to Egypt isn't.",
+  "paras": [
+   "Two things happened this week, and they pull in opposite directions. First, the carriers are coming back. On 8 November Evergreen's 16,556 TEU <b>EVER EON</b> transited the canal northbound, the line's first transit in nearly three years. The Suez Canal Authority lists CMA CGM, Maersk, MSC, Hapag-Lloyd, COSCO and Evergreen among the lines that have brought Asia–Europe services back. According to SCA chairman Admiral Ossama Rabiee, as reported in the press, October was the canal's busiest month since the Red Sea crisis began: 1,490 transits and US$724m in revenue.",
+   "Second, getting a box from Asia to the Med is about to cost more, not less. Spot indices are drifting lower. Drewry's World Container Index fell 2% to $4,305 per 40ft on 12 November, and Shanghai–Genoa held at $4,168. But the carriers have filed higher numbers. CMA CGM applies a peak season surcharge of $1,600 per 40ft from Asia to the Med and North Africa from 25 November. MSC's Far East to East Med FAK rises by $800 to $6,500 per 40ft from 1 December. Drewry itself now expects Asia–Europe/Med rates to rise slightly in the coming weeks."
+  ],
+  "so_what": [
+   "<b>Importers in Egypt:</b> cargo you need on the water in December should be booked before 25 November. Waiting for Suez savings to show up in your rate is the expensive option this month.",
+   "<b>Exporters and manufacturers:</b> more mainline Asia–Med services are calling Sokhna and Damietta again on Suez routings, so there are more direct Asia options on the Red Sea side. Ask us which rotations suit your lane.",
+   "<b>Agents:</b> watch December validity. MSC's December FAK applies until 14 December at the latest, so a rate quoted today may not survive to the sailing."
+  ],
+  "source": "Suez Canal Authority, 8 Nov 2026",
+  "url": "https://www.suezcanal.gov.eg/English/MediaCenter/News/Pages/Sca_8-11-2026.aspx"
+ },
+ "numbers": {
+  "eyebrow": "The numbers",
+  "headline": "This week on one page",
+  "rows": [
+   {
+    "label": "Drewry WCI composite",
+    "value": "$4,305",
+    "change": "−2%",
+    "note": "per 40ft · 12 Nov",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   {
+    "label": "Shanghai → Genoa (Drewry WCI)",
+    "value": "$4,168",
+    "change": "stable",
+    "note": "per 40ft · 12 Nov",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   {
+    "label": "Far East → Med spot (Xeneta)",
+    "value": "$4,666",
+    "change": "−0.9%",
+    "note": "per FEU · 13 Nov · +40.2% since 28 Feb",
+    "url": "https://www.xeneta.com/news/xeneta-weekly-ocean-container-shipping-market-update-13.11.26"
+   },
+   {
+    "label": "Asia → Med (Freightos FBX13)",
+    "value": "$4,300",
+    "change": "−1%",
+    "note": "per FEU · 10 Nov update · +88% y/y",
+    "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/"
+   },
+   {
+    "label": "MSC FAK Far East → East Med, from 1 Dec",
+    "value": "$6,500",
+    "change": "+$800",
+    "note": "per 40ft · published tariff, not spot",
+    "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+   },
+   {
+    "label": "CMA CGM PSS Asia → Med & N. Africa, from 25 Nov",
+    "value": "$1,600",
+    "change": "new",
+    "note": "per 40ft · $800 per 20ft",
+    "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/"
+   },
+   {
+    "label": "Air: China → N. Europe (Freightos Air Index)",
+    "value": "+11%",
+    "change": "w/w",
+    "note": "10 Nov update",
+    "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/"
+   },
+   {
+    "label": "CBE overnight deposit rate",
+    "value": "20.0%",
+    "change": "+100bp",
+    "note": "decided 29 Oct · next MPC 17 Dec",
+    "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/"
+   },
+   {
+    "label": "Egypt urban inflation, October",
+    "value": "12.7%",
+    "change": "from 13.9%",
+    "note": "CAPMAS · third monthly slowdown",
+    "url": "https://enterpriseam.com/egypt/2026/11/10/egypts-urban-inflation-slowed-to-12-7-in-october-despite-non-food-momentum/"
+   }
+  ],
+  "footnote": "Spot indices are market averages, not quotations. FAK and surcharge figures are carriers' published tariffs, base port to base port; contract and NAC rates differ. Colour key: red means more expensive for the cargo owner, green means cheaper."
+ },
+ "sections": [
+  {
+   "eyebrow": "Egypt desk",
+   "headline": "What changed on our side of the canal",
+   "items": [
+    {
+     "title": "Asia–Med services re-route through Sokhna and Damietta",
+     "body": "The Premier Alliance's MD1 Asia–Med service has moved back to the Suez routing. Its revised rotation calls at Sokhna on the way in and at Damietta in both directions, starting with Yang Ming's 11,714 TEU YM Trust from Ningbo on 13 November. The round voyage now takes 84 days with 12 ships, against 16 ships on the Cape routing. For Egyptian importers this means more direct Asia calls on the Red Sea side.",
+     "source": "The Loadstar",
+     "url": "https://theloadstar.com/major-liners-set-to-resume-all-asia-europe-services-through-suez/"
+    },
+    {
+     "title": "Money is dearer; prices are rising more slowly",
+     "body": "The Central Bank of Egypt raised rates by 100 basis points on 29 October, its first hike since March 2024. The overnight deposit rate is now 20.0% and the lending rate 21.0%. That raises the cost of financing inventory and trade credit. Urban inflation eased to 12.7% in October, its lowest since January. The MPC meets again on 17 December, and the IMF's Extended Fund Facility for Egypt expires on 15 December, with its final review under way. Importers holding stock should build the higher carrying cost into Q1 landed-cost estimates now.",
+     "source": "EnterpriseAM, 1 and 10 Nov 2026",
+     "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/"
+    },
+    {
+     "title": "Clear before the delivery order. Use it.",
+     "body": "Minister of Finance Decree 262/2026 amended the customs executive regulations: a customs declaration can now be lodged and processed before the delivery order is issued, provided the D/O is presented before final release. The exception is a \"To Order\" bill of lading, which still needs the D/O when the declaration is opened. On a tight free-time window, filing early can decide whether you clear inside free time or pay demurrage. Send us documents with the pre-alert, not on arrival.",
+     "source": "EY Tax News (10 Jun 2026); Al Tamimi & Co. (6 Jul 2026)",
+     "url": "https://taxnews.ey.com/news/2026-1247-egypt-amends-customs-regulations-to-streamline-documentation-and-clearance-procedures"
+    }
+   ]
+  },
+  {
+   "eyebrow": "World desk",
+   "headline": "Beyond Egypt: three things worth your attention",
+   "items": [
+    {
+     "title": "US port fees on Chinese ships: paused again, until 9 January",
+     "body": "USTR has formally extended its suspension of the Section 301 port fees on Chinese-built and Chinese-operated vessels. The suspension now runs to 11:59 p.m. US Eastern time on 9 January 2027, so the fees could come back from 10 January unless Washington acts again. The fee falls on ship operators, not on cargo directly, so for now carriers calling the US with these ships have nothing to pass on. The decision has only been postponed.",
+     "source": "gCaptain, 10 Nov 2026 (Federal Register notice)",
+     "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/"
+    },
+    {
+     "title": "Air freight is in full peak season",
+     "body": "The global Baltic Air Freight Index rose 5.3% in the four weeks to 2 November and stands 22.8% above last year, above the highest points of the previous two peak seasons. Freightos reports China–North Europe air prices up another 11% in its 10 November update. If you have urgent spares or perishables moving before year-end, confirm space now rather than in December.",
+     "source": "TAC Index; Freightos",
+     "url": "https://www.tacindex.com/air-freight-rates-costs-latest-november-2026"
+    },
+    {
+     "title": "Suez is open again. Hormuz is not.",
+     "body": "In its 12 November commentary, Drewry counted 53 vessels through the Suez Canal in the previous week, against a single vessel through the Strait of Hormuz. For cargo to and from the Gulf, routing and transit times are still unusual. Confirm the routing before you commit a delivery date to your customer.",
+     "source": "Drewry, 12 Nov 2026",
+     "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+    }
+   ]
+  }
+ ],
+ "actions": {
+  "headline": "Five minutes, this week",
+  "shippers": [
+   "Book December ocean cargo from Asia before CMA CGM's 25 November PSS and the 1 December FAK increases.",
+   "Send commercial documents with the pre-alert, so the declaration can be lodged before the delivery order is issued.",
+   "Re-run Q1 landed-cost estimates with the higher financing cost that followed the CBE's 29 October hike.",
+   "Move year-end air shipments now: peak-season rates are still climbing."
+  ],
+  "agents": [
+   "Quote Asia–Egypt December rates with explicit validity: MSC's December FAK applies until 14 December at the latest.",
+   "Before loading Egypt-bound cargo, check that the ACID is on the invoice and B/L, and that the Egyptian importer's tax number is on both. No ACID, no release.",
+   "Confirm that your exporter is a verified CargoX company, and file 48 hours before shipment at the latest.",
+   "Send us your December Egypt pipeline, and we will quote against confirmed sailings."
+  ]
+ },
+ "dates": {
+  "headline": "The next eight weeks",
+  "rows": [
+   {
+    "date": "20 Nov",
+    "event": "ILWU Local 26 strike deadline, Los Angeles / Long Beach",
+    "note": "Extended to allow more negotiation; a risk for US West Coast cargo",
+    "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/"
+   },
+   {
+    "date": "25 Nov",
+    "event": "CMA CGM PSS starts, Asia → Med & North Africa",
+    "note": "$800 / 20ft, $1,600 / 40ft",
+    "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/"
+   },
+   {
+    "date": "1 Dec",
+    "event": "MSC December FAK, Far East → Med & Black Sea",
+    "note": "East Med: $6,500 / 40ft, valid until 14 Dec at the latest",
+    "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+   },
+   {
+    "date": "15 Dec",
+    "event": "IMF Extended Fund Facility for Egypt expires",
+    "note": "Final review targeted before then",
+    "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/"
+   },
+   {
+    "date": "17 Dec",
+    "event": "Central Bank of Egypt MPC meeting",
+    "note": "Next interest-rate decision"
+   },
+   {
+    "date": "9 Jan",
+    "event": "US Section 301 port-fee suspension ends",
+    "note": "Fees could resume 10 January 2027 unless extended",
+    "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/"
+   }
+  ]
+ },
+ "explainer": {
+  "title": "ACID in 90 seconds",
+  "body": "Every sea shipment into Egypt needs an ACID number from Nafeza before it ships, and since 1 January 2026 so does air cargo. The foreign exporter files the documents through a verified CargoX account; the importer cannot do it for them. The ACID then has to appear on the invoice, the packing list and the bill of lading (for air, in the OCI field of the e-AWB). Missing or mismatched ACIDs are among the most avoidable reasons cargo gets held. Our guide covers each step.",
+  "cta": "Read the ACID guide",
+  "url": "https://www.rockit-transport.com/post/acid-number-egypt-guide"
+ },
+ "excuse": {
+  "phrase": "Rates are coming down because of Suez.",
+  "pos": "noun phrase, seasonal",
+  "definition": "Heard every November. Translation: the index went down and the invoice went up. Spot averages can fall while FAKs and peak surcharges rise, and your cargo pays the filed number. We quote the number you will actually be invoiced."
+ },
+ "cta": {
+  "headline": "Moving cargo through Egypt in December?",
+  "body": "Send us the lane, the commodity and the cargo-ready date. You get a straight answer with the surcharges already in it, from our teams in Cairo, Alexandria, Sokhna and Damietta.",
+  "button": "Request a quote",
+  "url": "mailto:inquiry@rockit.com.eg?subject=Quote%20request%20%E2%80%94%20Rockit%20Manifest%20001"
+ },
+ "disclaimer": "The Rockit Manifest is published every Monday by Rockit Transport Services &amp; Logistics (RTSL), Egypt. Figures come from the named public sources on the dates shown and may change. They are not a quotation or an offer. Regulatory notes are a summary, not legal advice: confirm specifics with your customs broker or with us.",
+ "cover": {
+  "eyebrow": "Issue 001 · This week",
+  "headline": "Suez is back. December rates to Egypt aren't falling.",
+  "bullets": [
+   "WCI −2%. MSC East Med FAK +$800",
+   "CMA CGM PSS from 25 Nov",
+   "Air freight in full peak",
+   "CBE +100bp: price the carry"
+  ]
+ },
+ "social": {
+  "linkedin": "Suez is back. Cheaper December freight to Egypt isn't.\n\nThis week's Rockit Manifest, in five lines:\n\n→ Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years. The SCA lists six major lines back on Asia–Europe services.\n→ Spot is softening: the Drewry WCI is down 2% to $4,305/40ft and Shanghai–Genoa is stable at $4,168.\n→ But filed rates are going up. CMA CGM adds a PSS of $1,600/40ft to the Med from 25 Nov, and MSC's East Med FAK rises $800 to $6,500/40ft from 1 Dec.\n→ MD1 is back on Suez with calls at Sokhna and Damietta.\n→ The CBE raised rates 100bp (deposit rate 20.0%), so carrying stock costs more in Q1.\n\nOur read: book December cargo before 25 November, and send documents with the pre-alert so the customs declaration can be lodged before the delivery order (Decree 262/2026).\n\nThe full issue, with every figure linked to its source, is on our website.\n\n#Logistics #FreightForwarding #Egypt #SuezCanal #ShippingNews #SupplyChain",
+  "facebook": "The Rockit Manifest | Issue 001\n\nSuez is back, but December freight to Egypt isn't getting cheaper.\n\n✓ Evergreen returned to the Suez Canal on 8 Nov\n✓ Spot indices are down 2% (Drewry WCI, $4,305/40ft)\n✓ Filed rates to the Med are up: CMA CGM PSS of $1,600/40ft from 25 Nov, MSC East Med FAK of $6,500/40ft from 1 Dec\n✓ The CBE raised rates 100bp\n\nWhat to do this week: book December cargo before 25 November.\n\nThe full issue, with sources, is on our website.",
+  "instagram": "The Rockit Manifest · Issue 001\n\nSuez is back. December rates to Egypt aren't falling.\n\n• Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years\n• Drewry WCI −2% to $4,305/40ft\n• CMA CGM PSS of $1,600/40ft to the Med from 25 Nov\n• MSC East Med FAK +$800 to $6,500/40ft from 1 Dec\n• CBE +100bp, deposit rate 20.0%\n\nOur read: book December cargo before 25 November.\n\nThe full issue, with every source, is on our website (link in bio): rockit-transport.com\n\nMeans what it says.\n\n#RockitManifest #FreightForwarding #Logistics #Egypt #SuezCanal #Shipping #SupplyChain #Cairo #Alexandria",
+  "gmb": "The Rockit Manifest, Issue 001: Suez is back, but December freight to Egypt isn't getting cheaper. Spot is down 2% (Drewry WCI), while filed surcharges to the Med rise from 25 November. Book December cargo early. The full weekly market brief is on our website."
+ }
+}

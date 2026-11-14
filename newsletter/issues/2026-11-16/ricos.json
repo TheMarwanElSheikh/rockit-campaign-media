@@ -1,0 +1,1974 @@
+{
+ "nodes": [
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Issue 001 · 16 November 2026 · ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "What moved. What it means. What to do.",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Suez return is real. Cheaper December freight to Egypt isn't.",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Two things happened this week, and they pull in opposite directions. First, the carriers are coming back. On 8 November Evergreen's 16,556 TEU EVER EON transited the canal northbound, the line's first transit in nearly three years. The Suez Canal Authority lists CMA CGM, Maersk, MSC, Hapag-Lloyd, COSCO and Evergreen among the lines that have brought Asia–Europe services back. According to SCA chairman Admiral Ossama Rabiee, as reported in the press, October was the canal's busiest month since the Red Sea crisis began: 1,490 transits and US$724m in revenue.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Second, getting a box from Asia to the Med is about to cost more, not less. Spot indices are drifting lower. Drewry's World Container Index fell 2% to $4,305 per 40ft on 12 November, and Shanghai–Genoa held at $4,168. But the carriers have filed higher numbers. CMA CGM applies a peak season surcharge of $1,600 per 40ft from Asia to the Med and North Africa from 25 November. MSC's Far East to East Med FAK rises by $800 to $6,500 per 40ft from 1 December. Drewry itself now expects Asia–Europe/Med rates to rise slightly in the coming weeks.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Suez Canal Authority, 8 Nov 2026",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.suezcanal.gov.eg/English/MediaCenter/News/Pages/Sca_8-11-2026.aspx",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "So what, for you",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "BULLETED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Importers in Egypt: cargo you need on the water in December should be booked before 25 November. Waiting for Suez savings to show up in your rate is the expensive option this month.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Exporters and manufacturers: more mainline Asia–Med services are calling Sokhna and Damietta again on Suez routings, so there are more direct Asia options on the Red Sea side. Ask us which rotations suit your lane.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Agents: watch December validity. MSC's December FAK applies until 14 December at the latest, so a rate quoted today may not survive to the sailing.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    }
+   ],
+   "bulletedListData": {
+    "indentation": 0
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "This week on one page",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "BULLETED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Drewry WCI composite: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$4,305 (−2%) — per 40ft · 12 Nov ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Shanghai → Genoa (Drewry WCI): ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$4,168 (stable) — per 40ft · 12 Nov ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Far East → Med spot (Xeneta): ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$4,666 (−0.9%) — per FEU · 13 Nov · +40.2% since 28 Feb ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.xeneta.com/news/xeneta-weekly-ocean-container-shipping-market-update-13.11.26",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Asia → Med (Freightos FBX13): ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$4,300 (−1%) — per FEU · 10 Nov update · +88% y/y ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "MSC FAK Far East → East Med, from 1 Dec: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$6,500 (+$800) — per 40ft · published tariff, not spot ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "CMA CGM PSS Asia → Med & N. Africa, from 25 Nov: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "$1,600 (new) — per 40ft · $800 per 20ft ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Air: China → N. Europe (Freightos Air Index): ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "+11% (w/w) — 10 Nov update ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "CBE overnight deposit rate: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "20.0% (+100bp) — decided 29 Oct · next MPC 17 Dec ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Egypt urban inflation, October: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "12.7% (from 13.9%) — CAPMAS · third monthly slowdown ",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "source",
+          "decorations": [
+           {
+            "type": "ITALIC",
+            "italicData": true
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://enterpriseam.com/egypt/2026/11/10/egypts-urban-inflation-slowed-to-12-7-in-october-despite-non-food-momentum/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    }
+   ],
+   "bulletedListData": {
+    "indentation": 0
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Spot indices are market averages, not quotations. FAK and surcharge figures are carriers' published tariffs, base port to base port; contract and NAC rates differ. Colour key: red means more expensive for the cargo owner, green means cheaper.",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "What changed on our side of the canal",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Asia–Med services re-route through Sokhna and Damietta",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Premier Alliance's MD1 Asia–Med service has moved back to the Suez routing. Its revised rotation calls at Sokhna on the way in and at Damietta in both directions, starting with Yang Ming's 11,714 TEU YM Trust from Ningbo on 13 November. The round voyage now takes 84 days with 12 ships, against 16 ships on the Cape routing. For Egyptian importers this means more direct Asia calls on the Red Sea side.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Loadstar",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://theloadstar.com/major-liners-set-to-resume-all-asia-europe-services-through-suez/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Money is dearer; prices are rising more slowly",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Central Bank of Egypt raised rates by 100 basis points on 29 October, its first hike since March 2024. The overnight deposit rate is now 20.0% and the lending rate 21.0%. That raises the cost of financing inventory and trade credit. Urban inflation eased to 12.7% in October, its lowest since January. The MPC meets again on 17 December, and the IMF's Extended Fund Facility for Egypt expires on 15 December, with its final review under way. Importers holding stock should build the higher carrying cost into Q1 landed-cost estimates now.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "EnterpriseAM, 1 and 10 Nov 2026",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Clear before the delivery order. Use it.",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Minister of Finance Decree 262/2026 amended the customs executive regulations: a customs declaration can now be lodged and processed before the delivery order is issued, provided the D/O is presented before final release. The exception is a \"To Order\" bill of lading, which still needs the D/O when the declaration is opened. On a tight free-time window, filing early can decide whether you clear inside free time or pay demurrage. Send us documents with the pre-alert, not on arrival.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "EY Tax News (10 Jun 2026); Al Tamimi & Co. (6 Jul 2026)",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://taxnews.ey.com/news/2026-1247-egypt-amends-customs-regulations-to-streamline-documentation-and-clearance-procedures",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Beyond Egypt: three things worth your attention",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "US port fees on Chinese ships: paused again, until 9 January",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "USTR has formally extended its suspension of the Section 301 port fees on Chinese-built and Chinese-operated vessels. The suspension now runs to 11:59 p.m. US Eastern time on 9 January 2027, so the fees could come back from 10 January unless Washington acts again. The fee falls on ship operators, not on cargo directly, so for now carriers calling the US with these ships have nothing to pass on. The decision has only been postponed.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "gCaptain, 10 Nov 2026 (Federal Register notice)",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Air freight is in full peak season",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The global Baltic Air Freight Index rose 5.3% in the four weeks to 2 November and stands 22.8% above last year, above the highest points of the previous two peak seasons. Freightos reports China–North Europe air prices up another 11% in its 10 November update. If you have urgent spares or perishables moving before year-end, confirm space now rather than in December.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "TAC Index; Freightos",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.tacindex.com/air-freight-rates-costs-latest-november-2026",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Suez is open again. Hormuz is not.",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "In its 12 November commentary, Drewry counted 53 vessels through the Suez Canal in the previous week, against a single vessel through the Strait of Hormuz. For cargo to and from the Gulf, routing and transit times are still unusual. Confirm the routing before you commit a delivery date to your customer.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Source: ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Drewry, 12 Nov 2026",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Five minutes, this week",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Exporters, importers & manufacturers",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "ORDERED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Book December ocean cargo from Asia before CMA CGM's 25 November PSS and the 1 December FAK increases.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Send commercial documents with the pre-alert, so the declaration can be lodged before the delivery order is issued.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Re-run Q1 landed-cost estimates with the higher financing cost that followed the CBE's 29 October hike.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Move year-end air shipments now: peak-season rates are still climbing.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    }
+   ],
+   "orderedListData": {
+    "indentation": 0
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Forwarding partners & agents",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "ORDERED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Quote Asia–Egypt December rates with explicit validity: MSC's December FAK applies until 14 December at the latest.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Before loading Egypt-bound cargo, check that the ACID is on the invoice and B/L, and that the Egyptian importer's tax number is on both. No ACID, no release.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Confirm that your exporter is a verified CargoX company, and file 48 hours before shipment at the latest.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Send us your December Egypt pipeline, and we will quote against confirmed sailings.",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    }
+   ],
+   "orderedListData": {
+    "indentation": 0
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The next eight weeks",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "BULLETED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "20 Nov: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "ILWU Local 26 strike deadline, Los Angeles / Long Beach",
+          "decorations": [
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — Extended to allow more negotiation; a risk for US West Coast cargo",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "25 Nov: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "CMA CGM PSS starts, Asia → Med & North Africa",
+          "decorations": [
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — $800 / 20ft, $1,600 / 40ft",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "1 Dec: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "MSC December FAK, Far East → Med & Black Sea",
+          "decorations": [
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — East Med: $6,500 / 40ft, valid until 14 Dec at the latest",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "15 Dec: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "IMF Extended Fund Facility for Egypt expires",
+          "decorations": [
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — Final review targeted before then",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "17 Dec: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Central Bank of Egypt MPC meeting",
+          "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — Next interest-rate decision",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "9 Jan: ",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "US Section 301 port-fee suspension ends",
+          "decorations": [
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/",
+              "target": "BLANK",
+              "rel": {
+               "noreferrer": true
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " — Fees could resume 10 January 2027 unless extended",
+          "decorations": []
+         }
+        }
+       ],
+       "paragraphData": {}
+      }
+     ]
+    }
+   ],
+   "bulletedListData": {
+    "indentation": 0
+   }
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Rockit explains: ACID in 90 seconds",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Every sea shipment into Egypt needs an ACID number from Nafeza before it ships, and since 1 January 2026 so does air cargo. The foreign exporter files the documents through a verified CargoX account; the importer cannot do it for them. The ACID then has to appear on the invoice, the packing list and the bill of lading (for air, in the OCI field of the e-AWB). Missing or mismatched ACIDs are among the most avoidable reasons cargo gets held. Our guide covers each step. ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Read the ACID guide",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/post/acid-number-egypt-guide",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Lost in Forwarding: excuse of the week",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "“Rates are coming down because of Suez.” ",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "(noun phrase, seasonal) ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Heard every November. Translation: the index went down and the invoice went up. Spot averages can fall while FAKs and peak surcharges rise, and your cargo pays the filed number. We quote the number you will actually be invoiced.",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Moving cargo through Egypt in December?",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 3
+   }
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Send us the lane, the commodity and the cargo-ready date. You get a straight answer with the surcharges already in it, from our teams in Cairo, Alexandria, Sokhna and Damietta. ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Request a quote",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "mailto:inquiry@rockit.com.eg?subject=Quote%20request%20%E2%80%94%20Rockit%20Manifest%20001",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Rockit Manifest is published every Monday by Rockit Transport Services & Logistics (RTSL), Egypt. Figures come from the named public sources on the dates shown and may change. They are not a quotation or an offer. Regulatory notes are a summary, not legal advice: confirm specifics with your customs broker or with us.",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {}
+  }
+ ]
+}
