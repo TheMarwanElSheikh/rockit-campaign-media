@@ -1,0 +1,70 @@
+{
+ "issue": "001",
+ "publish_at": "2026-11-16T10:00:00[Africa/Cairo]",
+ "wix_site_id": "0e184a47-8d16-405a-9018-42d1181fadd1",
+ "steps": [
+  {
+   "n": 1,
+   "channel": "website",
+   "action": "POST https://www.wixapis.com/blog/v3/draft-posts/{id}/publish",
+   "draft_post_id": "3384f8cb-69e9-464b-a8f4-e93e80692716",
+   "expect_url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates",
+   "verify": "GET https://www.wixapis.com/blog/v3/posts/{id} returns firstPublishedDate"
+  },
+  {
+   "n": 2,
+   "channel": "linkedin",
+   "connector": "linkedin_organic",
+   "account": "18956661",
+   "action": "create_image_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@788e4e18d1f97dcf37d4cb3068eb6549573825d5/newsletter/issues/2026-11-16/cover_4x5.jpg",
+    "commentary": "Suez is back. Cheaper December freight to Egypt isn't.\n\nThis week's Rockit Manifest, in five lines:\n\n→ Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years. The SCA lists six major lines back on Asia–Europe services.\n→ Spot is softening: the Drewry WCI is down 2% to $4,305/40ft and Shanghai–Genoa is stable at $4,168.\n→ But filed rates are going up. CMA CGM adds a PSS of $1,600/40ft to the Med from 25 Nov, and MSC's East Med FAK rises $800 to $6,500/40ft from 1 Dec.\n→ MD1 is back on Suez with calls at Sokhna and Damietta.\n→ The CBE raised rates 100bp (deposit rate 20.0%), so carrying stock costs more in Q1.\n\nOur read: book December cargo before 25 November, and send documents with the pre-alert so the customs declaration can be lodged before the delivery order (Decree 262/2026).\n\nThe full issue, with every figure linked to its source:\nhttps://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates\n\n#Logistics #FreightForwarding #Egypt #SuezCanal #ShippingNews #SupplyChain"
+   }
+  },
+  {
+   "n": 3,
+   "channel": "facebook",
+   "connector": "facebook_organic",
+   "account": "102089469414840",
+   "action": "create_photo_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@788e4e18d1f97dcf37d4cb3068eb6549573825d5/newsletter/issues/2026-11-16/cover_4x5.jpg",
+    "caption": "The Rockit Manifest | Issue 001\n\nSuez is back, but December freight to Egypt isn't getting cheaper.\n\n✓ Evergreen returned to the Suez Canal on 8 Nov\n✓ Spot indices are down 2% (Drewry WCI, $4,305/40ft)\n✓ Filed rates to the Med are up: CMA CGM PSS of $1,600/40ft from 25 Nov, MSC East Med FAK of $6,500/40ft from 1 Dec\n✓ The CBE raised rates 100bp\n\nWhat to do this week: book December cargo before 25 November.\n\nThe full issue, with sources:\nhttps://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+   }
+  },
+  {
+   "n": 4,
+   "channel": "instagram",
+   "connector": "instagram",
+   "account": "17841456872839570",
+   "action": "create_image_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@788e4e18d1f97dcf37d4cb3068eb6549573825d5/newsletter/issues/2026-11-16/cover_4x5.jpg",
+    "caption": "The Rockit Manifest · Issue 001\n\nSuez is back. December rates to Egypt aren't falling.\n\n• Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years\n• Drewry WCI −2% to $4,305/40ft\n• CMA CGM PSS of $1,600/40ft to the Med from 25 Nov\n• MSC East Med FAK +$800 to $6,500/40ft from 1 Dec\n• CBE +100bp, deposit rate 20.0%\n\nOur read: book December cargo before 25 November.\n\nThe full issue, with every source, is on our website (link in bio): rockit-transport.com\n\nMeans what it says.\n\n#RockitManifest #FreightForwarding #Logistics #Egypt #SuezCanal #Shipping #SupplyChain #Cairo #Alexandria"
+   }
+  },
+  {
+   "n": 5,
+   "channel": "google_business",
+   "connector": "google_my_business",
+   "account": "locations/16077331135089168616",
+   "action": "create_local_post",
+   "params": {
+    "summary": "The Rockit Manifest, Issue 001: Suez is back, but December freight to Egypt isn't getting cheaper. Spot is down 2% (Drewry WCI), while filed surcharges to the Med rise from 25 November. Book December cargo early. The full weekly market brief is on our website.",
+    "photo_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@788e4e18d1f97dcf37d4cb3068eb6549573825d5/newsletter/issues/2026-11-16/cover_4x3.jpg",
+    "cta_type": "LEARN_MORE",
+    "cta_url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+   }
+  }
+ ],
+ "email": {
+  "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54",
+  "status": "DRAFT — not sent (user choice: send manually)"
+ },
+ "rules": [
+  "Run steps in order; step 1 must succeed before 2-5 (they link to the blog post).",
+  "A 4xx on any step: do not retry with altered content; report it.",
+  "Do not send the email campaign."
+ ]
+}
