@@ -2,7 +2,7 @@
 
 > **Brand rules are permanent. Read `brand/BRAND.md` first.**
 > - Gold is ALWAYS the metallic gradient from the logo, never a flat yellow.
-> - Only the ORIGINAL Rockit logo (`brand/rockit-logo.png`), unaltered, never inverted or recoloured. It sits on a light panel at the email header and footer, on every slide footer and on every cover.
+> - Only the LATEST official Rockit mark (`brand/rockit_mark_gold_1024_transparent.png`), unaltered and never inverted or recoloured. Check `origin/main` for a newer logo first. The mark sits on a light panel at the email header and footer, on every slide footer and on every cover.
 > - The builder enforces both. Do not override them.
 
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
@@ -100,7 +100,7 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 - Every number links to its source.
 
 **Charts:**
-- Palette checked with the dataviz validator: the spot series is blue (`#3f6db3` on light, `#5c84c6` on dark). The filed/Rockit series is the logo-gold gradient (centred on `#b8912e` on light and `#ab8528` on dark).
+- Palette checked with the dataviz validator: the spot series is blue (`#3f6db3` on light, `#5c84c6` on dark). The filed/Rockit series is the logo-gold gradient (centred on `#c08f2f` on light and `#b17f25` on dark).
 - Direct labels on every bar, and honest zero baselines.
 - Light 600px PNGs rendered at 2×.
 
