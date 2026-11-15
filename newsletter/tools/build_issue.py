@@ -11,8 +11,8 @@ Writes into the issue folder:
   social.json      per-channel post copy
 
 Chart palette, checked with the dataviz validator (all six checks pass):
-  light surface #faf7ef: spot #3f6db3, filed = logo-gold gradient centred on #c08f2f
-  dark surface  #16243f: spot #5c84c6, filed = logo-gold gradient centred on #b17f25
+  light surface #faf7ef: spot #3f6db3, filed = logo-SVG gold gradient centred on #C09934
+  dark surface  #16243f: spot #5c84c6, filed = logo-SVG gold gradient centred on #B18B2D
 Every mark is also labelled directly, so colour never carries meaning alone.
 """
 import html
@@ -23,27 +23,28 @@ from pathlib import Path
 
 NAVY, MID, CREAM, PAPER, INK, RULE, MUTED = "#16243f", "#080f1f", "#f1eedb", "#faf7ef", "#1b2333", "#e6dcc4", "#5d6577"
 # ---- Rockit gold: ALWAYS the metallic gradient sampled from the official logo (brand/rockit_mark_gold_1024_transparent.png). Never a flat yellow.
-GOLD_STOPS = [("#a47420", 0), ("#c08f2f", 20), ("#e1b348", 40), ("#f6d77a", 52), ("#d7a73e", 70), ("#b17f25", 100)]
+# Exact stops from the owner's logo SVG (brand/rockit-logo.svg, linearGradient "gold-swoosh").
+GOLD_STOPS = [("#A88329", 0), ("#B18B2D", 8), ("#C09934", 17), ("#CFAC49", 25), ("#DEC163", 33), ("#EDD77E", 42), ("#F7E590", 50), ("#ECD57B", 58), ("#DEC161", 67), ("#D0AD48", 75), ("#C29B36", 83), ("#B28C2D", 92), ("#A88228", 100)]
 GOLD_GRAD = "linear-gradient(135deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
 GOLD_GRAD_H = "linear-gradient(90deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
 GOLD_GRAD_V = "linear-gradient(180deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
-GOLD = "#e1b348"       # solid logo gold: ONLY as the fallback for text on navy where an email client cannot paint gradient text (7.9:1)
-GOLD_INK = "#8a6514"   # deepened logo gold: ONLY as the fallback for small text on cream (5.0:1)
-GOLD_MID = "#c08f2f"   # background-color fallback under every CSS gradient
+GOLD = "#DEC163"       # logo gold stop: ONLY as the fallback for text on navy where an email client cannot paint gradient text (8.8:1)
+GOLD_INK = "#8a6514"   # logo's darkest gold (#A88329) deepened: ONLY as the fallback for small text on cream (5.0:1; #A88329 itself is 3.3:1)
+GOLD_MID = "#C09934"   # background-color fallback under every CSS gradient
 GT = f"background:{GOLD_GRAD};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"  # gradient text (rendered images only)
 GRULE = f"border-image:{GOLD_GRAD_H} 1;"
-GOLD_GRAD_ON_LIGHT = "linear-gradient(135deg,#a47420 0%,#c08f2f 45%,#b17f25 100%)"  # logo stops minus the pale highlight, for text on cream
+GOLD_GRAD_ON_LIGHT = "linear-gradient(135deg,#A88329 0%,#C09934 45%,#A88228 100%)"  # logo stops minus the pale highlight, for text on cream
 GT_LIGHT = f"background:{GOLD_GRAD_ON_LIGHT};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"
 LOGO_NAVY = "#0b1f56"
-def lockup_img(h, sub_css=None):
-    """The official Rockit lockup exactly as supplied (it already carries the name). Nothing typeset beside it."""
-    return f'<img src="logo.png" style="height:{h}px;display:block" alt="Rock it Transport Services">'
-# LOGO RULE (permanent): only the ORIGINAL logo (logo.png), never recoloured/inverted. On dark designs it sits on a light (paper) panel.
+def lockup_img(h, dark=True):
+    """The owner's logo, exactly as supplied: logo_dark.png = brand/rockit-logo-dark-bg.svg (for navy), logo.png = brand/rockit-logo.svg (for light)."""
+    return f'<img src="{"logo_dark.png" if dark else "logo.png"}" style="height:{h}px;display:block" alt="Rock it Transport Services">'
+# LOGO RULE (permanent): ONLY the owner's files. Light surfaces: rockit-logo. Dark surfaces: the owner's rockit-logo-dark-bg. Never self-made versions.
 def svg_gold(gid="gold", stops=None, x2="1", y2="1"):
     st = stops or GOLD_STOPS
     return f'<linearGradient id="{gid}" x1="0" y1="0" x2="{x2}" y2="{y2}">' + "".join(f'<stop offset="{o}%" stop-color="{c}"/>' for c, o in st) + "</linearGradient>"
-BAR_LIGHT = [("#a47420", 0), ("#c08f2f", 45), ("#e1b348", 100)]           # validated: mid #c08f2f vs #3f6db3 on #faf7ef, all checks pass
-BAR_DARK = [("#a47420", 0), ("#b17f25", 40), ("#e1b348", 80), ("#f6d77a", 100)]  # validated: mid #b17f25 vs #5c84c6 on #16243f, all checks pass
+BAR_LIGHT = [("#A88329", 0), ("#C09934", 45), ("#DEC163", 100)]           # validated: mid #C09934 vs #3f6db3 on #faf7ef, all checks pass
+BAR_DARK = [("#A88329", 0), ("#B18B2D", 40), ("#DEC163", 80), ("#F7E590", 100)]  # validated: mid #B18B2D vs #5c84c6 on #16243f, all checks pass
 LIGHT = {"bg": PAPER, "ink": INK, "muted": MUTED, "rule": RULE, "spot": "#3f6db3", "filed": "url(#goldbar)", "filed_css": "linear-gradient(90deg,#a47420,#c08f2f 45%,#e1b348)", "bar": BAR_LIGHT, "accent": GOLD_INK, "accent_css": "color:" + GOLD_INK}
 DARK = {"bg": NAVY, "ink": CREAM, "muted": "#a9b1c2", "rule": "#2c3b5c", "spot": "#5c84c6", "filed": "url(#goldbar)", "filed_css": GOLD_GRAD_H, "bar": BAR_DARK, "accent": GOLD, "accent_css": GT}
 SERIF = "'Cormorant Garamond', Georgia, 'Times New Roman', serif"
@@ -211,9 +212,9 @@ def light_visual(inner, width=600):
 
 # ------------------------------------------------------------------ slides (Instagram carousel, 1080x1350, dark)
 def slide(c, n, total, inner, footer=True):
-    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:140px;background:{PAPER};border-top:3px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-            + lockup_img(88, GT_LIGHT) +
-            f'<div style="font-family:{MONO};font-size:20px;font-weight:600;letter-spacing:4px;{GT_LIGHT}">{n:02d} / {total:02d}</div></div>') if footer else ""
+    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:150px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+            + lockup_img(104) +
+            f'<div style="font-family:{MONO};font-size:20px;font-weight:600;letter-spacing:4px;{GT}">{n:02d} / {total:02d}</div></div>') if footer else ""
     top = (f'<div style="position:absolute;left:80px;right:80px;top:56px;display:flex;justify-content:space-between;border-bottom:2px solid;{GRULE}padding-bottom:16px;'
            f'font-family:{MONO};font-size:17px;letter-spacing:4px;color:#b9b3a0"><span>THE ROCKIT MANIFEST</span><span>VOYAGE {e(c["issue_no"])}</span></div>')
     return page(1080, 1350, f'{top}<div style="position:absolute;left:80px;right:80px;top:150px">{inner}</div>{foot}',
@@ -254,8 +255,8 @@ def cover_4x3(c):
              f'<div style="font-family:{SERIF};font-weight:600;font-size:76px;line-height:1.02;color:{CREAM};margin-top:14px">{e(C["headline"])}</div>'
              + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:30px;color:{CREAM};margin-top:12px"><span style="{GT};font-style:normal;margin-right:14px">✓</span>{e(b)}</div>' for b in C["bullets"])
              + f'</div><div style="position:absolute;right:70px;top:150px">{stamp(c, 230)}</div>'
-             f'<div style="position:absolute;left:0;right:0;bottom:0;height:120px;background:{PAPER};border-top:3px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-             + lockup_img(80, GT_LIGHT) + f'<div style="font-family:{SERIF};font-style:italic;font-weight:600;font-size:32px;{GT_LIGHT}">Means what it says.</div></div>')
+             f'<div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+             + lockup_img(94) + f'<div style="font-family:{SERIF};font-style:italic;font-size:32px;{GT}">Means what it says.</div></div>')
     return page(1200, 900, inner, f"radial-gradient(120% 90% at 20% 10%,#1b2b4b 0%,{NAVY} 45%,#101b33 100%)", "body{position:relative}")
 
 
@@ -291,7 +292,7 @@ def rule():
 
 def email_html(c, IMG):
     R = []
-    R.append(f'<tr><td style="background:{PAPER};padding:26px 36px 22px 36px;"><img src="{IMG}logo.png" width="240" alt="Rock it Transport Services" style="display:block;width:240px;height:auto;border:0;"></td></tr>'
+    R.append(f'<tr><td style="background:{NAVY};padding:28px 36px 24px 36px;"><img src="{IMG}logo_dark.png" width="250" alt="Rock it Transport Services" style="display:block;width:250px;height:auto;border:0;"></td></tr>'
              f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
     R.append(f'<tr><td style="background:{MID};padding:10px 36px;font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;text-transform:uppercase;">'
              f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;">Voyage {e(c["issue_no"])} · {e(c["read_time"])} read</td>'
@@ -370,10 +371,10 @@ def email_html(c, IMG):
                  f'<a href="{e(S["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{CREAM};background:{NAVY};padding:13px 20px;text-decoration:none;">{e(S["cta"])} ▸</a>'
                  f'<div style="font-family:{MONO};font-size:11px;letter-spacing:2px;color:{GOLD_INK};margin-top:18px;">— THE ROCKIT DESK · CAIRO · ALEXANDRIA · SOKHNA · DAMIETTA</div>'))
     R.append(f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
-    R.append(row(f'<img src="{IMG}logo.png" width="210" alt="Rock it Transport Services" style="display:block;width:210px;height:auto;border:0;">'
-                 f'<div style="font-family:{SERIF};font-size:18px;font-style:italic;font-weight:600;color:{GOLD_INK};margin:14px 0;">Means what it says.</div>'
-                 f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:{INK};"><a href="https://www.rockit-transport.com" style="color:{INK};">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>', bg=PAPER, pad="28px 36px 26px 36px"))
-    R.append(row(f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#8f97a8;">{c["disclaimer"]}</div>', bg=MID, pad="20px 36px 24px 36px"))
+    R.append(row(f'<img src="{IMG}logo_dark.png" width="220" alt="Rock it Transport Services" style="display:block;width:220px;height:auto;border:0;">'
+                 f'<div style="font-family:{SERIF};font-size:18px;font-style:italic;color:{GOLD};margin:16px 0 12px 0;">Means what it says.</div>'
+                 f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:#9aa3b5;"><a href="https://www.rockit-transport.com" style="color:#9aa3b5;">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>'
+                 f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#6f7889;margin-top:14px;">{c["disclaimer"]}</div>', bg=MID, pad="30px 36px 32px 36px"))
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title>{e(c["subject"])}</title>{FONTS}
 <style>@media (max-width:620px){{.wrap{{width:100%!important}} td{{padding-left:18px!important;padding-right:18px!important}}}}</style></head>
 <body style="margin:0;padding:0;background:#e9e4d6;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{e(c["preheader"])}</div>
@@ -477,20 +478,17 @@ def main():
     vis.mkdir(exist_ok=True)
     import shutil
     brand = Path(__file__).resolve().parents[2] / "brand"
-    # OFFICIAL LOGO (owner, 15 Nov 2026): the full "Rock it / Transport Services" lockup supplied by the owner.
-    # Files: brand/rockit_logo_lockup_transparent.png (preferred), brand/rockit_logo_lockup_white.png,
-    #        brand/rockit_logo_lockup_dark.png (owner's own dark-background version). Used as supplied; only the transparent margin is trimmed.
-    # If the lockup files are not in brand/ yet, the build stops instead of substituting another logo.
+    # OFFICIAL LOGO (owner, 15 Nov 2026), used exactly as supplied:
+    #   brand/rockit-logo.svg / .pdf               -> light surfaces   (PNG raster: brand/rockit-logo.png)
+    #   brand/rockit-logo-dark-bg.svg / -on-navy.pdf -> dark surfaces  (PNG raster: brand/rockit-logo-dark-bg.png)
+    # Only the transparent margin is trimmed. If a file is missing the build stops: never substitute another logo.
     from PIL import Image
-    src = brand / "rockit_logo_lockup_transparent.png"
-    if not src.exists():
-        alt = brand / "rockit_logo_lockup_white.png"
-        if not alt.exists():
-            raise SystemExit("STOP: official logo lockup missing in brand/ (rockit_logo_lockup_transparent.png or rockit_logo_lockup_white.png). Do not substitute another logo.")
-        src = alt
-    logo = Image.open(src).convert("RGBA")
-    bbox = logo.getbbox() if logo.getpixel((0, 0))[3] == 0 else None
-    (logo.crop(bbox) if bbox else logo).save(vis / "logo.png")
+    for src_name, out_name in (("rockit-logo.png", "logo.png"), ("rockit-logo-dark-bg.png", "logo_dark.png")):
+        src = brand / src_name
+        if not src.exists():
+            raise SystemExit(f"STOP: owner logo file brand/{src_name} is missing. Do not substitute another logo; ask the owner.")
+        im = Image.open(src).convert("RGBA")
+        im.crop(im.getbbox()).save(vis / out_name)
     files = {
         "chart_gap.html": light_visual(gap_chart(LIGHT, 540)),
         "chart_rebate.html": light_visual(rebate_chart(LIGHT, 540)),

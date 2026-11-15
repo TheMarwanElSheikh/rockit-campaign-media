@@ -1,8 +1,8 @@
 # The Rockit Manifest: weekly runbook
 
 > **Brand rules are permanent. Read `brand/BRAND.md` first.**
-> - Gold is ALWAYS the metallic gradient from the logo, never a flat yellow.
-> - Logo: ONLY the owner-supplied "Rock it / Transport Services" lockup (`brand/rockit_logo_lockup_*.png`), as supplied, on light panels. If it is missing, the build stops: ask the owner and never substitute another logo.
+> - Gold is ALWAYS the metallic gradient defined in `brand/rockit-logo.svg`, never a flat yellow.
+> - Logo: ONLY the owner's files, as supplied. Use `brand/rockit-logo` on light surfaces and the owner's `brand/rockit-logo-dark-bg` on navy. Gold comes from the logo SVG's own gradient. If the files are missing, the build stops: ask the owner, never substitute.
 > - The builder enforces both. Do not override them.
 
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
@@ -100,7 +100,7 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 - Every number links to its source.
 
 **Charts:**
-- Palette checked with the dataviz validator: the spot series is blue (`#3f6db3` on light, `#5c84c6` on dark). The filed/Rockit series is the logo-gold gradient (centred on `#c08f2f` on light and `#b17f25` on dark).
+- Palette checked with the dataviz validator: the spot series is blue (`#3f6db3` on light, `#5c84c6` on dark). The filed/Rockit series is the logo-gold gradient (centred on `#C09934` on light and `#B18B2D` on dark).
 - Direct labels on every bar, and honest zero baselines.
 - Light 600px PNGs rendered at 2×.
 

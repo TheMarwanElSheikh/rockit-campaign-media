@@ -2,73 +2,66 @@
 
 These are standing instructions from the brand owner. Any person or agent producing Rockit material (newsletter, social, web, decks, documents) follows them without being asked again.
 
-## 1. Gold is always the logo's metallic gradient
+## 1. Gold is always the logo's own metallic gradient
 
-**Never use a flat yellow or flat gold as the brand gold.** The old `#d5ae69` is retired.
+**Never use a flat yellow or flat gold as the brand gold.** The gradient comes directly from the owner's logo file: `brand/rockit-logo.svg`, `linearGradient id="gold-swoosh"`. The globe uses the same colours.
 
-The gradient was sampled from the golden-yellow globe of the latest official artwork (`brand/rockit_mark_gold_1024_transparent.png`, the same globe as the lockup). Re-sample it from `rockit_logo_lockup_transparent.png` once that file is in `brand/`, and update this table if it differs:
-
-| Stop | Colour | Role |
-|---|---|---|
-| 0% | `#a47420` | deep shadow |
-| 20% | `#c08f2f` | body |
-| 40% | `#e1b348` | light body |
-| 52% | `#f6d77a` | highlight |
-| 70% | `#d7a73e` | return |
-| 100% | `#b17f25` | edge shadow |
+| Offset | Colour |
+|---|---|
+| 0% | `#A88329` |
+| 8% | `#B18B2D` |
+| 17% | `#C09934` |
+| 25% | `#CFAC49` |
+| 33% | `#DEC163` |
+| 42% | `#EDD77E` |
+| 50% | `#F7E590` (highlight) |
+| 58% | `#ECD57B` |
+| 67% | `#DEC161` |
+| 75% | `#D0AD48` |
+| 83% | `#C29B36` |
+| 92% | `#B28C2D` |
+| 100% | `#A88228` |
 
 The gradient in CSS:
 
 ```css
---rockit-gold: linear-gradient(135deg, #a47420 0%, #c08f2f 20%, #e1b348 40%, #f6d77a 52%, #d7a73e 70%, #b17f25 100%);
+--rockit-gold: linear-gradient(135deg, #A88329 0%, #B18B2D 8%, #C09934 17%, #CFAC49 25%, #DEC163 33%, #EDD77E 42%, #F7E590 50%, #ECD57B 58%, #DEC161 67%, #D0AD48 75%, #C29B36 83%, #B28C2D 92%, #A88228 100%);
 ```
 
 **Where the gradient applies.** Use it for:
-- rules
-- buttons
+- rules, buttons and step discs
 - chart bars that mean "filed / Rockit"
-- stamps, icons, dots and step discs
-- route highlights
-- display text in any rendered image (slides, covers, mastheads), drawn as gradient text with `background-clip:text`
-- SVG `linearGradient`
+- the stamp and route highlights
+- display text in any rendered image, as gradient text
 
-**Where a solid fallback is allowed.** A solid is allowed only where the medium cannot draw a gradient. That means small text inside email HTML, because Gmail and Outlook do not support gradient text. Use these solids, both taken from the logo:
-- `#e1b348` for text on navy (contrast 7.9:1)
-- `#8a6514` for text on cream (contrast 5.0:1)
+**Where a solid fallback is allowed.** A solid is allowed only where a medium cannot draw a gradient, such as small text in email HTML:
+- `#DEC163` for text on navy (a logo stop; contrast 8.8:1)
+- `#8a6514` for text on cream (the logo's darkest gold `#A88329`, deepened, because `#A88329` itself is only 3.3:1 on cream)
 
-Every CSS gradient also sets a `background-color` fallback of `#c08f2f`.
+Every CSS gradient also sets a `background-color` fallback of `#C09934`.
 
-**Charts.** Bars are filled with the gradient: `#a47420 → #c08f2f → #e1b348` on light surfaces, and `#a47420 → #b17f25 → #e1b348 → #f6d77a` on navy. Both pass the dataviz palette validator against the spot-series blue (`#3f6db3` light, `#5c84c6` dark).
+**Charts.** Bars are filled with the gradient: `#A88329 → #C09934 → #DEC163` on light surfaces, and `#A88329 → #B18B2D → #DEC163 → #F7E590` on navy. Both pass the dataviz validator against the spot-series blue.
 
-## 2. Logo: ONLY the owner-supplied "Rock it / Transport Services" lockup, as supplied
+## 2. Logo: ONLY the owner's files, used exactly as supplied
 
-The owner supplied the official logo on 15 Nov 2026, in five versions:
-- the lockup on a transparent background, at two sizes
-- the lockup on a white background, at two sizes
-- a version for dark backgrounds, with "Transport Services" in white
-
-The lockup is: a navy "R" with the gold gradient globe, "ock it" in navy, the gold swoosh and arrow, and "Transport Services" underneath.
-
-**Files** (store them in `brand/` exactly as supplied, unedited):
+The owner supplied the official logo on 15 Nov 2026: "Rock it / Transport Services", with a navy R, the gold gradient globe and swoosh, and navy lettering.
 
 | File | Use |
 |---|---|
-| `rockit_logo_lockup_transparent.png` | Default. On light surfaces (paper `#faf7ef` or white). |
-| `rockit_logo_lockup_white.png` | Where a white-ground file is needed (documents, printing, platforms that reject transparency). |
-| `rockit_logo_lockup_dark.png` | The owner's own version for dark backgrounds ("Transport Services" in white). |
+| `rockit-logo.svg` (master), `rockit-logo.pdf` | **Light surfaces.** Paper, white or cream. |
+| `rockit-logo-dark-bg.svg` (master), `rockit-logo-dark-bg-on-navy.pdf` | **Dark surfaces.** The owner's own dark version: fine light outline on the R and "ock it", white "Transport Services". It goes directly on navy or midnight. |
+| `rockit-logo.png`, `rockit-logo-dark-bg.png` | 2550×1132 transparent PNGs, straight rasterisations of the SVG masters (no edits), for email and social platforms that cannot take SVG. |
 
 **Rules:**
-- Use these files and nothing else. Never redraw, re-letter, recolour, invert, tint, stretch, crop into, rotate, add effects, or set type next to the lockup as a substitute. It already carries the name. Trimming transparent margin is the only allowed processing.
-- Never create your own dark or reversed version. Use the owner's `rockit_logo_lockup_dark.png`, or place the transparent lockup on a light panel.
+- Use these files and nothing else. Never redraw, re-letter, recolour, invert, tint, stretch, crop into or rotate them, add effects, or set a typeset wordmark in their place.
+- Never make your own dark or reversed version. The owner's dark-background file exists for that.
+- Light background → `rockit-logo`. Dark background → `rockit-logo-dark-bg`. No light "panels" are needed.
 - **Retired, never to be used as the logo:**
   - the older lockup with "Freight & Logistics Solutions" (`RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`)
   - the standalone R mark (`rockit_mark_gold_1024_*.png`; favicon and app-icon use only)
-  - any self-made inverted or reversed file
-- **If the lockup files are missing from `brand/`, stop and ask the owner.** Never substitute another logo. The newsletter builder enforces this.
-- **Newsletter placement:**
-  - a light band at the top of the email
-  - a light panel in the email footer
-  - a light footer bar on every social slide and cover
+  - any self-made inverted or recoloured file
+- If the owner's files are missing, stop and ask. Never substitute another logo. The newsletter builder enforces this.
+- **Newsletter placement:** the dark-background logo in the navy email header, in the midnight email footer, and on the footer bar of every slide and cover.
 
 ## 3. Other tokens
 

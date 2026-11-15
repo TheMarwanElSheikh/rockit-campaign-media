@@ -30,4 +30,4 @@ cd tools && node render_covers.js ../issues/<date>           # cover_4x5.jpg, co
 
 ## Brand
 
-See `../brand/BRAND.md` (permanent). Gold is always the logo's metallic gradient (`#a47420 → #c08f2f → #e1b348 → #f6d77a → #d7a73e → #b17f25`), never flat yellow. The official logo goes on every asset. Navy `#16243f`, midnight `#080f1f`, cream `#f1eedb`.
+See `../brand/BRAND.md` (permanent). Gold is always the gradient defined in `brand/rockit-logo.svg` (`#A88329 → #F7E590 → #A88228`, 13 stops), never flat yellow. The official logo goes on every asset. Navy `#16243f`, midnight `#080f1f`, cream `#f1eedb`.
