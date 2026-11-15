@@ -1,0 +1,309 @@
+{
+ "issue_no": "001",
+ "date_iso": "2026-11-16",
+ "date_long": "16 November 2026",
+ "etd": "Mon 16 Nov 2026 · 10:00 CAI",
+ "read_time": "4 min",
+ "subject": "Suez is back. Your December rate isn't. | The Rockit Manifest 001",
+ "preheader": "Plus: Cairo now pays up to half your export freight to new markets. A 4-minute read, every number sourced.",
+ "blog_url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates",
+ "opening": "Every Monday, one page. What moved in freight, what it means for cargo that touches Egypt, and what to do before Friday. No forecasts dressed up as facts: every number links to the page we read it on.",
+ "tldr": [
+  {
+   "tag": "Import",
+   "text": "Book December Asia cargo before 25 November. Spot rates are soft. The filed December tariff isn't."
+  },
+  {
+   "tag": "Export",
+   "text": "From November shipments, the state pays up to 50% of sea and land freight to Africa, Latin America, Southeast Asia, Australia and Russia."
+  },
+  {
+   "tag": "Agents",
+   "text": "Suez routings are back through Sokhna and Damietta. Quote December with a hard validity date: MSC's FAK ends 14 December at the latest."
+  }
+ ],
+ "lead": {
+  "kicker": "Line 01 · The straight answer",
+  "headline": "Suez is back. Your December rate isn't going down.",
+  "paras": [
+   "<b>The ships are returning.</b> On 8 November Evergreen's EVER EON transited the canal northbound, the line's first transit in nearly three years. The Suez Canal Authority now lists CMA CGM, Maersk, MSC, Hapag-Lloyd, COSCO and Evergreen back on Asia–Europe services.",
+   "<b>The prices aren't following.</b> Spot is drifting: Drewry's Shanghai–Genoa held at $4,168 per 40ft on 12 November. But MSC's Far East to East Med FAK goes to $6,500 from 1 December, and CMA CGM adds a $1,600 peak surcharge to the Med from 25 November. Drewry itself expects Asia–Europe/Med rates to rise slightly in the coming weeks.",
+   "The index is what the market averaged last week. The tariff is what your box is billed. This month they point in opposite directions."
+  ],
+  "chart": "gap",
+  "chart_alt": "Bar chart. Spot rates Asia to the Mediterranean: Drewry Shanghai–Genoa $4,168, Freightos FBX13 $4,300, Xeneta Far East–Med $4,666. Filed tariff: MSC Far East to East Med FAK from 1 December $6,500, which is $1,834 above the highest spot reading.",
+  "sources": [
+   {
+    "name": "Suez Canal Authority, 8 Nov",
+    "url": "https://www.suezcanal.gov.eg/English/MediaCenter/News/Pages/Sca_8-11-2026.aspx"
+   },
+   {
+    "name": "Drewry WCI, 12 Nov",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   {
+    "name": "MSC via Container News, 12 Nov",
+    "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+   },
+   {
+    "name": "CMA CGM via Container News, 11 Nov",
+    "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/"
+   }
+  ]
+ },
+ "feature": {
+  "kicker": "Line 02 · For exporters",
+  "headline": "Half the freight. Paid by Cairo.",
+  "paras": [
+   "Egypt's revamped export rebate programme, approved by the Cabinet on 5 November, raises support by an average of 35% on shipments made from the start of November. Free-zone exporters are excluded. This time freight gets its own line.",
+   "The catch: files must now be complete before they are accepted. The ministries briefed exporters on 15 November, and we'll bring you the practical rules next Monday. Until then, send us your target lanes and we'll line up the shipping documents your file will need."
+  ],
+  "chart": "rebate",
+  "chart_alt": "Bar chart of state freight support under Egypt's export rebate programme from November 2026: 50% of sea and land freight to Africa, Latin America, Australia, Southeast Asia and Russia; 50% of air freight to the UK and 25% of air freight to Europe, both for agricultural exports; 25% of domestic transport; 25% of cargo insurance; 25% of express-vessel invoices.",
+  "sources": [
+   {
+    "name": "EnterpriseAM, 8 Nov (Cabinet statement)",
+    "url": "https://enterpriseam.com/egypt/2026/11/08/the-government-is-raising-export-rebates-by-an-average-of-35-and-picking-up-as-much-as-half-the-freight-bill-to-new-markets/"
+   },
+   {
+    "name": "EnterpriseAM, 15 Nov",
+    "url": "https://enterpriseam.com/egypt/am-edition/"
+   }
+  ]
+ },
+ "numbers": {
+  "kicker": "Line 03 · By the numbers",
+  "tiles": [
+   {
+    "value": "$4,305",
+    "label": "Drewry WCI composite, per 40ft",
+    "delta": "−2% w/w",
+    "dir": "down",
+    "url": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"
+   },
+   {
+    "value": "$6,500",
+    "label": "MSC FAK Far East → East Med, from 1 Dec",
+    "delta": "+$800",
+    "dir": "up",
+    "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+   },
+   {
+    "value": "+11%",
+    "label": "Air, China → N. Europe, Freightos",
+    "delta": "w/w, 10 Nov",
+    "dir": "up",
+    "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/"
+   },
+   {
+    "value": "53.50",
+    "label": "EGP per USD, CBE sell",
+    "delta": "record 56.35 in Oct",
+    "dir": "flat",
+    "url": "https://enterpriseam.com/egypt/am-edition/"
+   },
+   {
+    "value": "20.0%",
+    "label": "CBE overnight deposit rate",
+    "delta": "+100bp, 29 Oct",
+    "dir": "up",
+    "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/"
+   },
+   {
+    "value": "12.7%",
+    "label": "Egypt urban inflation, October",
+    "delta": "from 13.9%",
+    "dir": "down",
+    "url": "https://enterpriseam.com/egypt/2026/11/10/egypts-urban-inflation-slowed-to-12-7-in-october-despite-non-food-momentum/"
+   }
+  ],
+  "footnote": "Spot indices are market averages, not quotations. FAK is a carrier's published base tariff, port to port. Arrows show direction only; your contract rate may differ."
+ },
+ "egypt": {
+  "kicker": "Line 04 · Egypt desk",
+  "items": [
+   {
+    "title": "MD1 is back on Suez",
+    "body": "The Premier Alliance's MD1 has returned to the Suez routing. It calls Sokhna on the way in and Damietta in both directions, starting with YM Trust from Ningbo on 13 November. The round voyage takes 84 days with 12 ships, against 16 on the Cape.",
+    "visual": "route",
+    "alt": "Route diagram of the MD1 service: Ningbo, Shanghai, Shekou, Singapore, Sokhna, Suez Canal, Damietta, Ambarli, Izmit, Mersin, Damietta, Suez Canal, Singapore, Kaohsiung, back to Ningbo. Egyptian ports highlighted.",
+    "source": "The Loadstar",
+    "url": "https://theloadstar.com/major-liners-set-to-resume-all-asia-europe-services-through-suez/"
+   },
+   {
+    "title": "The pound, off its low",
+    "body": "The CBE's dollar sell rate stands at 53.50, against a record 56.35 in October. EnterpriseAM credits the 29 October rate hike with drawing foreign buyers back into local debt. The deposit rate is 20.0%, urban inflation eased to 12.7%, and the next rate decision is on 17 December.",
+    "source": "EnterpriseAM, 8 and 15 Nov",
+    "url": "https://enterpriseam.com/egypt/2026/11/08/the-government-is-raising-export-rebates-by-an-average-of-35-and-picking-up-as-much-as-half-the-freight-bill-to-new-markets/"
+   },
+   {
+    "title": "Signed in Cairo, valid in Brussels",
+    "body": "Egypt is the first country outside Europe whose e-signature framework is technically aligned with the EU's. The European Commission plans to add Egypt to its trusted lists, so EU states can validate Egyptian e-signatures and seals, and Egypt will validate European ones. The EU accounts for 24.6% of Egypt's trade. Paperless trade documents just got a step closer.",
+    "source": "EnterpriseAM, 15 Nov (EU and ITIDA statements)",
+    "url": "https://enterpriseam.com/egypt/am-edition/"
+   },
+   {
+    "title": "Clear before the delivery order",
+    "body": "Under Decree 262/2026, a customs declaration can be opened before the D/O is issued, provided the D/O arrives before final release. \"To Order\" bills of lading are the exception. Send us documents with the pre-alert, not on arrival.",
+    "source": "EY Tax News; Al Tamimi & Co.",
+    "url": "https://taxnews.ey.com/news/2026-1247-egypt-amends-customs-regulations-to-streamline-documentation-and-clearance-procedures"
+   }
+  ]
+ },
+ "world": {
+  "kicker": "Line 05 · World desk",
+  "items": [
+   {
+    "title": "US port fees on Chinese ships: paused to 9 January",
+    "body": "USTR extended the Section 301 suspension to 11:59 p.m. ET on 9 January 2027. The fee falls on ship operators, so for now there is nothing to pass on to cargo.",
+    "source": "gCaptain, 10 Nov",
+    "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/"
+   },
+   {
+    "title": "Air freight: full peak",
+    "body": "The Baltic Air Freight Index rose 5.3% in the four weeks to 2 November and stands 22.8% above last year. Urgent year-end air? Confirm space this week.",
+    "source": "TAC Index, 5 Nov",
+    "url": "https://www.tacindex.com/air-freight-rates-costs-latest-november-2026"
+   },
+   {
+    "title": "Suez is open. Hormuz is not.",
+    "body": "Drewry counted 53 Suez transits in the previous week against a single one through Hormuz. On 14 November Iranian state media reported a tanker hit a mine there, which Reuters could not immediately verify. For Gulf cargo, confirm routing before you promise a date.",
+    "source": "Drewry, 12 Nov; Reuters via gCaptain, 14 Nov",
+    "url": "https://gcaptain.com/oil-tanker-on-fire-after-hitting-mine-in-hormuz/"
+   }
+  ]
+ },
+ "moves": {
+  "kicker": "Line 06 · Your move",
+  "tracks": [
+   {
+    "tag": "If you import",
+    "items": [
+     "Book December Asia cargo before 25 Nov.",
+     "Send documents with the pre-alert, so clearance starts before the D/O."
+    ]
+   },
+   {
+    "tag": "If you export",
+    "items": [
+     "Check your markets against the new 50% freight lanes.",
+     "Build complete rebate files from day one: incomplete ones are now refused."
+    ]
+   },
+   {
+    "tag": "If you forward",
+    "items": [
+     "Quote December with hard validity: 14 Dec.",
+     "No ACID, no release: check it on the invoice and B/L before loading."
+    ]
+   }
+  ]
+ },
+ "dates": {
+  "kicker": "On the calendar",
+  "rows": [
+   {
+    "date": "16–17 Nov",
+    "event": "WEF Country Strategy Meeting on Egypt, New Capital",
+    "url": "https://enterpriseam.com/egypt/am-edition/"
+   },
+   {
+    "date": "20 Nov",
+    "event": "ILWU Local 26 deadline, LA / Long Beach",
+    "url": "https://www.freightos.com/freight-resources/la-lb-strike-deadline-extended-dem-win-increasing-trade-uncertainty-november-10-2026-update/"
+   },
+   {
+    "date": "25 Nov",
+    "event": "CMA CGM PSS to the Med: $1,600 / 40ft",
+    "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/"
+   },
+   {
+    "date": "1 Dec",
+    "event": "MSC December FAK: $6,500 / 40ft East Med",
+    "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+   },
+   {
+    "date": "15 Dec",
+    "event": "IMF programme deadline",
+    "url": "https://enterpriseam.com/egypt/am-edition/"
+   },
+   {
+    "date": "17 Dec",
+    "event": "CBE rate decision",
+    "url": "https://enterpriseam.com/egypt/2026/11/01/cbe-hikes-for-the-first-time-since-march-2024-raising-rates-100-bps-and-moving-its-inflation-target-to-4q-2027/"
+   },
+   {
+    "date": "31 Dec",
+    "event": "Export rebate phase one ends",
+    "url": "https://enterpriseam.com/egypt/2026/11/08/the-government-is-raising-export-rebates-by-an-average-of-35-and-picking-up-as-much-as-half-the-freight-bill-to-new-markets/"
+   },
+   {
+    "date": "9 Jan",
+    "event": "US port-fee pause ends",
+    "url": "https://gcaptain.com/u-s-formalizes-two-month-extension-of-china-ship-port-fee-suspension/"
+   }
+  ]
+ },
+ "explainer": {
+  "kicker": "Rockit explains",
+  "title": "ACID, in four moves",
+  "steps": [
+   {
+    "n": "1",
+    "who": "Exporter",
+    "text": "Verifies the company on CargoX. Once."
+   },
+   {
+    "n": "2",
+    "who": "Importer",
+    "text": "Requests the ACID on Nafeza with the shipment data, at least 48 hours before the cargo ships. A 19‑digit number comes back."
+   },
+   {
+    "n": "3",
+    "who": "Exporter",
+    "text": "Files the shipping documents through CargoX. The importer can't do this for them."
+   },
+   {
+    "n": "4",
+    "who": "Everyone",
+    "text": "The ACID goes on the invoice, packing list and B/L (for air, the e‑AWB's OCI field)."
+   }
+  ],
+  "note": "Since 1 January 2026, air cargo needs an ACID too.",
+  "cta": "Read the full ACID guide",
+  "url": "https://www.rockit-transport.com/post/acid-number-egypt-guide",
+  "visual_alt": "Four-step diagram: 1, the exporter verifies on CargoX once; 2, the importer requests the 19-digit ACID on Nafeza with shipment data at least 48 hours before shipment; 3, the exporter files documents through CargoX; 4, the ACID appears on the invoice, packing list and bill of lading."
+ },
+ "thesaurus": {
+  "kicker": "Lost in Forwarding · The Thesaurus of Excuses",
+  "word": "Suez savings",
+  "phon": "\\ˈsü-ez ˈsā-viŋz\\",
+  "pos": "noun, seasonal",
+  "def": "A discount widely discussed in November and rarely invoiced in December.",
+  "usage": "“Rates are coming down because of Suez.”",
+  "synonyms": "none",
+  "see": "PSS · FAK · “valid until further notice”"
+ },
+ "signoff": {
+  "line": "That's the manifest. Everything on it, we checked. Anything not on it, ask us.",
+  "cta": "Send us a lane",
+  "url": "mailto:inquiry@rockit.com.eg?subject=Lane%20enquiry%20%E2%80%94%20Rockit%20Manifest%20001"
+ },
+ "disclaimer": "The Rockit Manifest is published every Monday by Rockit Transport Services &amp; Logistics (RTSL), Egypt. Figures come from the named public sources on the dates shown and may change. They are not a quotation or offer. Regulatory notes are summaries, not legal advice.",
+ "cover": {
+  "headline": "Suez is back. Your December rate isn't.",
+  "bullets": [
+   "Spot −2%. The filed December tariff: +$800",
+   "Cairo pays up to 50% of export freight",
+   "Sokhna & Damietta back on Asia–Med",
+   "The pound, off its low"
+  ]
+ },
+ "social": {
+  "linkedin": "Suez is back. Your December rate isn't.\n\nThe Rockit Manifest, Voyage 001. Four lines, four minutes:\n\n01 / The ships are returning. Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years.\n\n02 / The prices aren't following. Drewry's Shanghai–Genoa spot held at $4,168/40ft, while MSC's East Med FAK goes to $6,500 from 1 Dec and CMA CGM adds a $1,600 PSS from 25 Nov.\n\n03 / Exporters: from November shipments, the state pays up to 50% of sea and land freight to Africa, Latin America, Southeast Asia, Australia and Russia (Cabinet, 5 Nov).\n\n04 / The pound is off its low: CBE sell 53.50 against a record 56.35 in October.\n\nOur straight answer: book December Asia cargo before 25 November.\n\nEvery number in the issue links to where we read it:\nBLOG_URL\n\n#RockitManifest #FreightForwarding #Egypt #SuezCanal #Exports #SupplyChain",
+  "facebook": "The Rockit Manifest · Voyage 001\n\nSuez is back. Your December rate isn't.\n\n✓ Evergreen returned to Suez on 8 Nov\n✓ Spot is soft (Drewry, −2%), but the filed December tariff to the East Med is +$800\n✓ Exporters: the state now pays up to 50% of freight to new markets\n✓ The pound is off its low: 53.50 vs 56.35\n\nOur straight answer: book December cargo before 25 November.\n\nThe full issue, every figure sourced:\nBLOG_URL",
+  "instagram": "The Rockit Manifest · Voyage 001\nSwipe for the four-minute version →\n\n1 · Suez is back. Your December rate isn't.\n2 · The gap: spot vs the filed tariff\n3 · Half the freight, paid by Cairo\n4 · Sokhna & Damietta, back on Asia–Med\n5 · From the Thesaurus of Excuses: “Suez savings”\n\nEvery number is sourced. The full issue is on rockit-transport.com (link in bio).\n\nMeans what it says.\n\n#RockitManifest #FreightForwarding #Logistics #Egypt #SuezCanal #Exports #Cairo #Alexandria #Shipping",
+  "gmb": "The Rockit Manifest, Voyage 001: Suez is back, but December freight to Egypt isn't getting cheaper, and exporters can now claim up to 50% of freight to new markets. Four minutes, every number sourced."
+ },
+ "img_base": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/"
+}

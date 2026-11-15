@@ -1,0 +1,76 @@
+{
+ "issue": "001",
+ "revision": 2,
+ "publish_at": "2026-11-16T10:00:00[Africa/Cairo]",
+ "wix_site_id": "0e184a47-8d16-405a-9018-42d1181fadd1",
+ "steps": [
+  {
+   "n": 1,
+   "channel": "website",
+   "action": "VERIFY: Wix publishes it natively at 2026-11-16T08:00:00Z (10:00 Cairo). GET https://www.wixapis.com/blog/v3/posts/{id} must return firstPublishedDate. Only if it is still not live, POST https://www.wixapis.com/blog/v3/draft-posts/{id}/publish.",
+   "draft_post_id": "3384f8cb-69e9-464b-a8f4-e93e80692716",
+   "expect_url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+  },
+  {
+   "n": 2,
+   "channel": "linkedin",
+   "connector": "linkedin_organic",
+   "account": "18956661",
+   "action": "create_image_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_1.jpg",
+    "commentary": "Suez is back. Your December rate isn't.\n\nThe Rockit Manifest, Voyage 001. Four lines, four minutes:\n\n01 / The ships are returning. Evergreen's EVER EON transited Suez on 8 Nov, its first in nearly three years.\n\n02 / The prices aren't following. Drewry's Shanghai–Genoa spot held at $4,168/40ft, while MSC's East Med FAK goes to $6,500 from 1 Dec and CMA CGM adds a $1,600 PSS from 25 Nov.\n\n03 / Exporters: from November shipments, the state pays up to 50% of sea and land freight to Africa, Latin America, Southeast Asia, Australia and Russia (Cabinet, 5 Nov).\n\n04 / The pound is off its low: CBE sell 53.50 against a record 56.35 in October.\n\nOur straight answer: book December Asia cargo before 25 November.\n\nEvery number in the issue links to where we read it:\nhttps://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates\n\n#RockitManifest #FreightForwarding #Egypt #SuezCanal #Exports #SupplyChain"
+   }
+  },
+  {
+   "n": 3,
+   "channel": "facebook",
+   "connector": "facebook_organic",
+   "account": "102089469414840",
+   "action": "create_photo_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_1.jpg",
+    "caption": "The Rockit Manifest · Voyage 001\n\nSuez is back. Your December rate isn't.\n\n✓ Evergreen returned to Suez on 8 Nov\n✓ Spot is soft (Drewry, −2%), but the filed December tariff to the East Med is +$800\n✓ Exporters: the state now pays up to 50% of freight to new markets\n✓ The pound is off its low: 53.50 vs 56.35\n\nOur straight answer: book December cargo before 25 November.\n\nThe full issue, every figure sourced:\nhttps://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+   }
+  },
+  {
+   "n": 4,
+   "channel": "instagram",
+   "connector": "instagram",
+   "account": "17841456872839570",
+   "action": "create_carousel_post",
+   "params": {
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_1.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_2.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_3.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_4.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/slide_5.jpg"
+    ],
+    "caption": "The Rockit Manifest · Voyage 001\nSwipe for the four-minute version →\n\n1 · Suez is back. Your December rate isn't.\n2 · The gap: spot vs the filed tariff\n3 · Half the freight, paid by Cairo\n4 · Sokhna & Damietta, back on Asia–Med\n5 · From the Thesaurus of Excuses: “Suez savings”\n\nEvery number is sourced. The full issue is on rockit-transport.com (link in bio).\n\nMeans what it says.\n\n#RockitManifest #FreightForwarding #Logistics #Egypt #SuezCanal #Exports #Cairo #Alexandria #Shipping"
+   }
+  },
+  {
+   "n": 5,
+   "channel": "google_business",
+   "connector": "google_my_business",
+   "account": "locations/16077331135089168616",
+   "action": "create_local_post",
+   "params": {
+    "summary": "The Rockit Manifest, Voyage 001: Suez is back, but December freight to Egypt isn't getting cheaper, and exporters can now claim up to 50% of freight to new markets. Four minutes, every number sourced.",
+    "photo_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@ea8c15d12c1bccb04b6086811f62f8d4d4048db9/newsletter/issues/2026-11-16/visuals/cover_4x3.jpg",
+    "cta_type": "LEARN_MORE",
+    "cta_url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+   }
+  }
+ ],
+ "email": {
+  "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54",
+  "status": "DRAFT — not sent (user choice: send manually)"
+ },
+ "rules": [
+  "Run steps in order; step 1 must succeed before 2-5 (they link to the blog post).",
+  "A 4xx on any step: do not retry with altered content; report it.",
+  "Do not send the email campaign."
+ ]
+}
