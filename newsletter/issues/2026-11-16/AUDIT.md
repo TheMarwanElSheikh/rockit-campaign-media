@@ -43,3 +43,36 @@ Nothing in the issue rests on a single unconfirmed search snippet.
 - maersk.com (times out on automated requests).
 - english.ahram.org.eg and egypttoday.com (403 for automated requests).
 - taxnews.ey.com, tamimi.com, foodafrica-expo.com, mykn.kuehne-nagel.com and imo.org (not on the allowlist).
+
+---
+
+## Revision 2: 15 Nov 2026 (upgraded design and content, sources refreshed)
+
+### New claims, verified on pages read this morning
+
+| # | Claim | Source read | Status |
+|---|---|---|---|
+| 16 | Export rebate programme approved by Cabinet 5 Nov; support +35% on average from November shipments; free zones excluded; state covers 50% of sea and land freight to Africa, Latin America, Australia, SE Asia and Russia; 25% of air freight to Europe and 50% to the UK (agricultural); 25% of domestic transport, of cargo insurance and of express-vessel invoices; complete files required; phase 1 runs to end-2026, phase 2 from July 2027. | enterpriseam.com, 8 Nov 2026 (cites the Cabinet statement) | T |
+| 17 | Ministries brief exporters on the programme on 15 Nov, 4pm, New Capital. | enterpriseam.com AM edition, 15 Nov 2026 | T |
+| 18 | USD (CBE) buy 53.37 / sell 53.50. | enterpriseam.com AM edition, 15 Nov 2026, markets box | T |
+| 19 | Record EGP 56.35/USD in October; the CBE hike drew foreign buyers back to local debt. | enterpriseam.com, 8 Nov 2026 | T |
+| 20 | Egypt is the first country outside Europe with an e-signature framework technically aligned with the EU's; the EC plans to add Egypt to its trusted lists; ITIDA reciprocates; the EU is 24.6% of Egypt's trade. | enterpriseam.com AM edition, 15 Nov 2026 (EU and ITIDA statements) | T |
+| 21 | IMF final review moved to virtual talks; 15 Dec deadline. | enterpriseam.com AM edition, 15 Nov 2026 | T |
+| 22 | WEF Country Strategy Meeting on Egypt, New Capital, 16–17 Nov. | enterpriseam.com AM edition, 15 Nov 2026 | T |
+| 23 | On 14 Nov Iranian state media reported an oil tanker hit a mine in the eastern Strait of Hormuz; Reuters could not immediately verify it. Printed with that attribution. | gcaptain.com (Reuters), 14 Nov 2026 | T |
+| 24 | ACID steps: verified CargoX company (rule 17); importer requests the ACID with data at least 48 h before shipment (rule 6); 19-digit number (rule 8); exporter files via CargoX, importer may not (rule 18); ACID on invoice, packing list and B/L, and in the OCI segment for air (rules 13–14); air ACI since 1 Jan 2026 (rule 2). | `egypt-nafeza-acid` skill | S |
+
+### Derived figures (arithmetic on verified inputs)
+
+- **"+$1,834 above the highest spot reading":** $6,500 (MSC FAK) − $4,666 (Xeneta, the highest of the three spot reads).
+- **"WCI −2%; filed December tariff +$800":** the Drewry WCI change and the MSC FAK change.
+
+### Wording corrected in this revision
+
+- **ACID timing.** The 48-hour rule applies to the cargo data and the ACID request (rule 6). It is not stated as a deadline for the exporter's CargoX filing, so the step text was corrected to say that.
+
+### Charts
+
+- **Palette.** Validated with the dataviz `validate_palette.js`; all checks pass. Light surface `#3f6db3` / `#b07f2c`; dark surface `#5c84c6` / `#b98a35`.
+- **Labels.** Every bar is directly labelled.
+- **Scales.** The rebate chart's scale runs from 0 to 100%.
