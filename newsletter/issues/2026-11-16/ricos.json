@@ -250,7 +250,7 @@
       "id": "@chart_gap"
      },
      "width": 1200,
-     "height": 782
+     "height": 792
     },
     "altText": "Bar chart. Spot rates Asia to the Mediterranean: Drewry Shanghai–Genoa $4,168, Freightos FBX13 $4,300, Xeneta Far East–Med $4,666. Filed tariff: MSC Far East to East Med FAK from 1 December $6,500, which is $1,834 above the highest spot reading."
    }
@@ -458,7 +458,7 @@
       "id": "@chart_rebate"
      },
      "width": 1200,
-     "height": 972
+     "height": 982
     },
     "altText": "Bar chart of state freight support under Egypt's export rebate programme from November 2026: 50% of sea and land freight to Africa, Latin America, Australia, Southeast Asia and Russia; 50% of air freight to the UK and 25% of air freight to Europe, both for agricultural exports; 25% of domestic transport; 25% of cargo insurance; 25% of express-vessel invoices."
    }
@@ -1005,7 +1005,7 @@
       "id": "@route_md1"
      },
      "width": 1200,
-     "height": 880
+     "height": 890
     },
     "altText": "Route diagram of the MD1 service: Ningbo, Shanghai, Shekou, Singapore, Sokhna, Suez Canal, Damietta, Ambarli, Izmit, Mersin, Damietta, Suez Canal, Singapore, Kaohsiung, back to Ningbo. Egyptian ports highlighted."
    }
