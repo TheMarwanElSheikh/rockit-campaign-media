@@ -27,6 +27,7 @@ const path = require('path');
     console.log('rendered', path.basename(out));
   };
   for (const n of ['chart_gap', 'chart_rebate', 'route_md1']) await shot(path.join(vis, n + '.html'), path.join(vis, n + '.png'), { w: 600, dsf: 2 });
+  await shot(path.join(vis, 'masthead.html'), path.join(vis, 'masthead.png'), { w: 528, dsf: 2 });
   await shot(path.join(vis, 'acid_steps.html'), path.join(vis, 'acid_steps.png'), { w: 528, dsf: 2 });
   await shot(path.join(vis, 'stamp.html'), path.join(vis, 'stamp.png'), { w: 150, h: 150, dsf: 2, transparent: true });
   await shot(path.join(vis, 'cover_4x3.html'), path.join(vis, 'cover_4x3.jpg'), { w: 1200, h: 900 });

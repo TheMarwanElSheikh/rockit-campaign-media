@@ -11,8 +11,8 @@ Writes into the issue folder:
   social.json      per-channel post copy
 
 Chart palette, checked with the dataviz validator (all six checks pass):
-  light surface #faf7ef: spot #3f6db3, filed #b07f2c
-  dark surface  #16243f: spot #5c84c6, filed #b98a35
+  light surface #faf7ef: spot #3f6db3, filed = logo-gold gradient centred on #b8912e
+  dark surface  #16243f: spot #5c84c6, filed = logo-gold gradient centred on #ab8528
 Every mark is also labelled directly, so colour never carries meaning alone.
 """
 import html
@@ -21,10 +21,24 @@ import re
 import sys
 from pathlib import Path
 
-NAVY, MID, GOLD, CREAM, PAPER, INK, RULE, MUTED = "#16243f", "#080f1f", "#d5ae69", "#f1eedb", "#faf7ef", "#1b2333", "#e6dcc4", "#5d6577"
-GOLD_INK = "#9a6d22"          # gold dark enough for text on paper (contrast ≥ 4.5:1)
-LIGHT = {"bg": PAPER, "ink": INK, "muted": MUTED, "rule": RULE, "spot": "#3f6db3", "filed": "#b07f2c", "accent": GOLD_INK}
-DARK = {"bg": NAVY, "ink": CREAM, "muted": "#a9b1c2", "rule": "#2c3b5c", "spot": "#5c84c6", "filed": "#b98a35", "accent": GOLD}
+NAVY, MID, CREAM, PAPER, INK, RULE, MUTED = "#16243f", "#080f1f", "#f1eedb", "#faf7ef", "#1b2333", "#e6dcc4", "#5d6577"
+# ---- Rockit gold: ALWAYS the metallic gradient sampled from the official logo (brand/rockit-logo.png). Never a flat yellow.
+GOLD_STOPS = [("#966f1b", 0), ("#b8912e", 20), ("#d7b754", 40), ("#f7e58e", 52), ("#d2b04b", 70), ("#ab8528", 100)]
+GOLD_GRAD = "linear-gradient(135deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
+GOLD_GRAD_H = "linear-gradient(90deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
+GOLD_GRAD_V = "linear-gradient(180deg," + ",".join(f"{c} {o}%" for c, o in GOLD_STOPS) + ")"
+GOLD = "#d7b754"       # solid logo gold: ONLY as the fallback for text on navy where an email client cannot paint gradient text (7.9:1)
+GOLD_INK = "#8a6514"   # deepened logo gold: ONLY as the fallback for small text on cream (5.0:1)
+GOLD_MID = "#b8912e"   # background-color fallback under every CSS gradient
+GT = f"background:{GOLD_GRAD};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"  # gradient text (rendered images only)
+GRULE = f"border-image:{GOLD_GRAD_H} 1;"
+def svg_gold(gid="gold", stops=None, x2="1", y2="1"):
+    st = stops or GOLD_STOPS
+    return f'<linearGradient id="{gid}" x1="0" y1="0" x2="{x2}" y2="{y2}">' + "".join(f'<stop offset="{o}%" stop-color="{c}"/>' for c, o in st) + "</linearGradient>"
+BAR_LIGHT = [("#966f1b", 0), ("#b8912e", 45), ("#d7b754", 100)]           # validated: mid #b8912e vs #3f6db3 on #faf7ef, all checks pass
+BAR_DARK = [("#966f1b", 0), ("#ab8528", 40), ("#d7b754", 80), ("#f7e58e", 100)]  # validated: mid #ab8528 vs #5c84c6 on #16243f, all checks pass
+LIGHT = {"bg": PAPER, "ink": INK, "muted": MUTED, "rule": RULE, "spot": "#3f6db3", "filed": "url(#goldbar)", "filed_css": "linear-gradient(90deg,#966f1b,#b8912e 45%,#d7b754)", "bar": BAR_LIGHT, "accent": GOLD_INK, "accent_css": "color:" + GOLD_INK}
+DARK = {"bg": NAVY, "ink": CREAM, "muted": "#a9b1c2", "rule": "#2c3b5c", "spot": "#5c84c6", "filed": "url(#goldbar)", "filed_css": GOLD_GRAD_H, "bar": BAR_DARK, "accent": GOLD, "accent_css": GT}
 SERIF = "'Cormorant Garamond', Georgia, 'Times New Roman', serif"
 SANS = "Inter, 'Helvetica Neue', Arial, sans-serif"
 MONO = "'IBM Plex Mono', 'Courier New', Courier, monospace"
@@ -68,9 +82,10 @@ def bar_chart(rows, t, width, title, subtitle, legend, unit_max, fmt, note=None,
     svg_h = y
     if annot:
         out.append(annot(plot_w, row_h, label_h, bar_h, s))
-    svg = f'<svg width="{width}" height="{svg_h}" viewBox="0 0 {width} {svg_h}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">{"".join(out)}</svg>'
-    leg = "".join(f'<span style="display:inline-flex;align-items:center;margin-right:{18*s}px"><i style="display:inline-block;width:{12*s}px;height:{12*s}px;border-radius:{2*s}px;background:{t[k]};margin-right:{7*s}px"></i>{e(n)}</span>' for k, n in legend)
-    return (f'<div style="font-family:{MONO};font-size:{11*s}px;letter-spacing:{2*s}px;text-transform:uppercase;color:{t["accent"]};margin-bottom:{6*s}px">{e(subtitle)}</div>'
+    defs = f'<defs>{svg_gold("goldbar", t["bar"], "1", "0")}</defs>'
+    svg = f'<svg width="{width}" height="{svg_h}" viewBox="0 0 {width} {svg_h}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">{defs}{"".join(out)}</svg>'
+    leg = "".join(f'<span style="display:inline-flex;align-items:center;margin-right:{18*s}px"><i style="display:inline-block;width:{12*s}px;height:{12*s}px;border-radius:{2*s}px;background:{t.get(k + "_css", t[k])};margin-right:{7*s}px"></i>{e(n)}</span>' for k, n in legend)
+    return (f'<div style="font-family:{MONO};font-size:{11*s}px;letter-spacing:{2*s}px;text-transform:uppercase;{t["accent_css"]};margin-bottom:{6*s}px;display:inline-block">{e(subtitle)}</div>'
             f'<div style="font-family:{SERIF};font-weight:600;font-size:{26*s}px;line-height:1.1;color:{t["ink"]};margin-bottom:{12*s}px">{e(title)}</div>'
             f'<div style="font-size:{12*s}px;color:{t["muted"]};margin-bottom:{18*s}px">{leg}</div>{svg}'
             + (f'<div style="font-size:{11*s}px;color:{t["muted"]};margin-top:{14*s}px;line-height:1.5">{note}</div>' if note else ""))
@@ -147,10 +162,10 @@ def route_map(t, width, scale=1.0):
     g.append(f'<text x="{x1 - 4*s}" y="{y1 - 34*s}" text-anchor="end" font-family="IBM Plex Mono" font-size="{10*s}" letter-spacing="{1.5*s}" fill="{t["muted"]}">OUTBOUND ▸</text>')
     g.append(f'<text x="{x0 + 4*s}" y="{y2 + 46*s}" font-family="IBM Plex Mono" font-size="{10*s}" letter-spacing="{1.5*s}" fill="{t["muted"]}">◂ RETURN</text>')
     H = 250 * s
-    svg = f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">{"".join(g)}</svg>'
+    svg = f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible"><defs>{svg_gold("goldbar")}</defs>{"".join(g)}</svg>'
     chip = lambda big, small: (f'<div style="flex:1"><div style="font-family:{SERIF};font-weight:700;font-size:{28*s}px;color:{t["ink"]};line-height:1">{big}</div>'
                                f'<div style="font-family:{MONO};font-size:{10*s}px;letter-spacing:{1.5*s}px;text-transform:uppercase;color:{t["muted"]};margin-top:{4*s}px">{small}</div></div>')
-    return (f'<div style="font-family:{MONO};font-size:{11*s}px;letter-spacing:{2*s}px;text-transform:uppercase;color:{t["accent"]};margin-bottom:{6*s}px">Premier Alliance · MD1 · via Suez</div>'
+    return (f'<div style="font-family:{MONO};font-size:{11*s}px;letter-spacing:{2*s}px;text-transform:uppercase;{t["accent_css"]};margin-bottom:{6*s}px;display:inline-block">Premier Alliance · MD1 · via Suez</div>'
             f'<div style="font-family:{SERIF};font-weight:600;font-size:{26*s}px;color:{t["ink"]};margin-bottom:{8*s}px">Sokhna & Damietta, back on the Asia–Med map</div>'
             f'{svg}<div style="display:flex;gap:{16*s}px;margin-top:{4*s}px">{chip("84", "days, round voyage")}{chip("12", "ships · 16 on the Cape")}{chip("13 Nov", "first sailing, Ningbo")}</div>'
             f'<div style="font-size:{11*s}px;color:{t["muted"]};margin-top:{12*s}px">Gold = Egyptian calls. Schematic, not to scale. Source: The Loadstar.</div>')
@@ -163,9 +178,9 @@ def acid_steps(c, t, width, scale=1.0):
     col_w = width / n
     cells = []
     for i, st in enumerate(X["steps"]):
-        line = (f'<div style="position:absolute;top:{19*s}px;left:{col_w/2 + 22*s}px;width:{col_w - 44*s}px;height:{2*s}px;background:{t["filed"]}"></div>' if i < n - 1 else "")
+        line = (f'<div style="position:absolute;top:{19*s}px;left:{col_w/2 + 22*s}px;width:{col_w - 44*s}px;height:{2*s}px;background:{GOLD_GRAD_H}"></div>' if i < n - 1 else "")
         cells.append(f'<div style="position:relative;width:{col_w}px;padding:0 {10*s}px;text-align:center">{line}'
-                     f'<div style="margin:0 auto;width:{40*s}px;height:{40*s}px;border-radius:50%;border:{2*s}px solid {t["filed"]};color:{t["accent"]};font-family:{SERIF};font-weight:700;font-size:{22*s}px;line-height:{36*s}px">{st["n"]}</div>'
+                     f'<div style="margin:0 auto;width:{40*s}px;height:{40*s}px;border-radius:50%;background:{GOLD_GRAD};color:{MID};font-family:{SERIF};font-weight:700;font-size:{22*s}px;line-height:{40*s}px">{st["n"]}</div>'
                      f'<div style="font-family:{MONO};font-size:{10*s}px;letter-spacing:{1.5*s}px;text-transform:uppercase;color:{t["accent"]};margin:{12*s}px 0 {6*s}px">{e(st["who"])}</div>'
                      f'<div style="font-size:{13*s}px;line-height:1.45;color:{t["ink"]}">{e(st["text"])}</div></div>')
     return f'<div style="display:flex;width:{width}px">{"".join(cells)}</div>'
@@ -175,12 +190,12 @@ def stamp(c, size=150):
     r = size / 2
     txt = f"VERIFIED · {c['_source_count']} SOURCES · MEANS WHAT IT SAYS · "
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 {size} {size}" xmlns="http://www.w3.org/2000/svg">'
-            f'<defs><path id="c" d="M{r},{r} m-{r-16},0 a{r-16},{r-16} 0 1,1 {2*(r-16)},0 a{r-16},{r-16} 0 1,1 -{2*(r-16)},0"/></defs>'
-            f'<g transform="rotate(-12 {r} {r})" fill="none" stroke="{GOLD}" opacity="0.95">'
+            f'<defs>{svg_gold("sg")}<path id="c" d="M{r},{r} m-{r-16},0 a{r-16},{r-16} 0 1,1 {2*(r-16)},0 a{r-16},{r-16} 0 1,1 -{2*(r-16)},0"/></defs>'
+            f'<g transform="rotate(-12 {r} {r})" fill="none" stroke="url(#sg)">'
             f'<circle cx="{r}" cy="{r}" r="{r-3}" stroke-width="2.5"/><circle cx="{r}" cy="{r}" r="{r-28}" stroke-width="1.2"/>'
-            f'<text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1.6" fill="{GOLD}" stroke="none"><textPath href="#c">{e(txt)}</textPath></text>'
-            f'<text x="{r}" y="{r-4}" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="30" fill="{GOLD}" stroke="none">R</text>'
-            f'<text x="{r}" y="{r+16}" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="2" fill="{GOLD}" stroke="none">VOY {e(c["issue_no"])}</text></g></svg>')
+            f'<text font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1.6" fill="url(#sg)" stroke="none"><textPath href="#c">{e(txt)}</textPath></text>'
+            f'<text x="{r}" y="{r-4}" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="30" fill="url(#sg)" stroke="none">R</text>'
+            f'<text x="{r}" y="{r+16}" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="2" fill="url(#sg)" stroke="none">VOY {e(c["issue_no"])}</text></g></svg>')
 
 
 def light_visual(inner, width=600):
@@ -189,10 +204,10 @@ def light_visual(inner, width=600):
 
 # ------------------------------------------------------------------ slides (Instagram carousel, 1080x1350, dark)
 def slide(c, n, total, inner, footer=True):
-    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:120px;background:{MID};border-top:1.5px solid #8b7a5e;display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-            f'<div style="font-family:{SERIF};font-size:42px;letter-spacing:10px;color:{CREAM}">ROCKIT</div>'
-            f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;color:{GOLD}">{n:02d} / {total:02d}</div></div>') if footer else ""
-    top = (f'<div style="position:absolute;left:80px;right:80px;top:56px;display:flex;justify-content:space-between;border-bottom:1.5px solid #8b7a5e;padding-bottom:16px;'
+    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+            f'<img src="logo_rev.png" style="height:84px;display:block" alt="Rockit Transport Services">'
+            f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;{GT}">{n:02d} / {total:02d}</div></div>') if footer else ""
+    top = (f'<div style="position:absolute;left:80px;right:80px;top:56px;display:flex;justify-content:space-between;border-bottom:2px solid;{GRULE}padding-bottom:16px;'
            f'font-family:{MONO};font-size:17px;letter-spacing:4px;color:#b9b3a0"><span>THE ROCKIT MANIFEST</span><span>VOYAGE {e(c["issue_no"])}</span></div>')
     return page(1080, 1350, f'{top}<div style="position:absolute;left:80px;right:80px;top:150px">{inner}</div>{foot}',
                 f"radial-gradient(120% 90% at 20% 10%,#1b2b4b 0%,{NAVY} 45%,#101b33 100%)", "body{position:relative}")
@@ -203,37 +218,37 @@ def slides(c):
     total = 5
     s1 = slide(c, 1, total,
                f'<div style="font-family:{SERIF};font-weight:600;font-size:104px;line-height:.95;color:{CREAM}">The Rockit<br>Manifest</div>'
-               f'<div style="font-family:{SERIF};font-style:italic;font-size:36px;color:{GOLD};margin-top:18px">What moved. What it means. What to do.</div>'
-               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:5px;color:{GOLD};margin-top:70px">THIS WEEK · {e(c["read_time"]).upper()} READ</div>'
+               f'<div style="font-family:{SERIF};font-style:italic;font-size:36px;{GT};margin-top:18px">What moved. What it means. What to do.</div>'
+               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:5px;{GT};margin-top:70px">THIS WEEK · {e(c["read_time"]).upper()} READ</div>'
                f'<div style="font-family:{SERIF};font-weight:600;font-size:64px;line-height:1.05;color:{CREAM};margin-top:14px">{e(C["headline"])}</div>'
-               + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:36px;color:{CREAM};margin-top:16px"><span style="color:{GOLD};font-style:normal;margin-right:18px">✓</span>{e(b)}</div>' for b in C["bullets"])
+               + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:36px;color:{CREAM};margin-top:16px"><span style="{GT};font-style:normal;margin-right:18px">✓</span>{e(b)}</div>' for b in C["bullets"])
                + f'<div style="position:absolute;right:-10px;top:-40px">{stamp(c, 210)}</div>')
     big = lambda txt: f'<div style="font-family:{SERIF};font-weight:600;font-size:72px;line-height:1.02;color:{CREAM};margin:10px 0 56px">{txt}</div>'
-    s2 = slide(c, 2, total, big("The index fell 2%.<br><span style='color:" + GOLD + "'>The December tariff rose $800.</span>") + gap_chart(DARK, 900, 1.85))
-    s3 = slide(c, 3, total, big("From November shipments,<br><span style='color:" + GOLD + "'>the state pays up to half.</span>") + rebate_chart(DARK, 900, 1.5))
-    s4 = slide(c, 4, total, big("Two Egyptian calls.<br><span style='color:" + GOLD + "'>One canal. 84 days.</span>") + route_map(DARK, 880, 1.8))
+    s2 = slide(c, 2, total, big("The index fell 2%.<br><span style='" + GT + "'>The December tariff rose $800.</span>") + gap_chart(DARK, 900, 1.85))
+    s3 = slide(c, 3, total, big("From November shipments,<br><span style='" + GT + "'>the state pays up to half.</span>") + rebate_chart(DARK, 900, 1.5))
+    s4 = slide(c, 4, total, big("Two Egyptian calls.<br><span style='" + GT + "'>One canal. 84 days.</span>") + route_map(DARK, 880, 1.8))
     T = c["thesaurus"]
     s5 = slide(c, 5, total,
-               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:5px;color:{GOLD}">LOST IN FORWARDING · THE THESAURUS OF EXCUSES</div>'
+               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:5px;{GT}">LOST IN FORWARDING · THE THESAURUS OF EXCUSES</div>'
                f'<div style="font-family:{SERIF};font-weight:600;font-size:118px;color:{CREAM};margin-top:60px;line-height:1">{e(T["word"])}</div>'
-               f'<div style="font-family:{SERIF};font-style:italic;font-size:38px;color:#b9b3a0;margin-top:14px">{e(T["phon"])} &nbsp;<span style="color:{GOLD}">{e(T["pos"])}</span></div>'
+               f'<div style="font-family:{SERIF};font-style:italic;font-size:38px;color:#b9b3a0;margin-top:14px">{e(T["phon"])} &nbsp;<span style="{GT}">{e(T["pos"])}</span></div>'
                f'<div style="font-family:{SERIF};font-style:italic;font-size:50px;line-height:1.25;color:{CREAM};margin-top:56px">1. {e(T["def"])}</div>'
-               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;color:{GOLD};margin-top:60px">USAGE</div><div style="font-family:{SERIF};font-style:italic;font-size:40px;color:{CREAM};margin-top:8px">{e(T["usage"])}</div>'
-               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;color:{GOLD};margin-top:44px">SYNONYMS (VERIFIED)</div><div style="font-family:{SERIF};font-style:italic;font-size:40px;color:{CREAM};margin-top:8px">{e(T["synonyms"])}.</div>'
-               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;color:{GOLD};margin-top:44px">SEE ALSO</div><div style="font-family:{SERIF};font-style:italic;font-size:36px;color:{CREAM};margin-top:8px">{e(T["see"])}</div>'
-               f'<div style="font-family:{SERIF};font-style:italic;font-size:34px;color:{GOLD};margin-top:60px">Rockit. Means what it says.</div>')
+               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;{GT};margin-top:60px">USAGE</div><div style="font-family:{SERIF};font-style:italic;font-size:40px;color:{CREAM};margin-top:8px">{e(T["usage"])}</div>'
+               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;{GT};margin-top:44px">SYNONYMS (VERIFIED)</div><div style="font-family:{SERIF};font-style:italic;font-size:40px;color:{CREAM};margin-top:8px">{e(T["synonyms"])}.</div>'
+               f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;{GT};margin-top:44px">SEE ALSO</div><div style="font-family:{SERIF};font-style:italic;font-size:36px;color:{CREAM};margin-top:8px">{e(T["see"])}</div>'
+               f'<div style="font-family:{SERIF};font-style:italic;font-size:34px;{GT};margin-top:60px">Rockit. Means what it says.</div>')
     return {"slide_1.html": s1, "slide_2.html": s2, "slide_3.html": s3, "slide_4.html": s4, "slide_5.html": s5}
 
 
 def cover_4x3(c):
     C = c["cover"]
-    inner = (f'<div style="position:absolute;left:80px;right:80px;top:50px;display:flex;justify-content:space-between;border-bottom:1.5px solid #8b7a5e;padding-bottom:14px;font-family:{MONO};font-size:15px;letter-spacing:4px;color:#b9b3a0"><span>THE ROCKIT MANIFEST · VOYAGE {e(c["issue_no"])}</span><span>{e(c["date_long"]).upper()}</span></div>'
-             f'<div style="position:absolute;left:80px;top:130px;width:760px"><div style="font-family:{MONO};font-size:16px;letter-spacing:5px;color:{GOLD}">THE STRAIGHT ANSWER</div>'
+    inner = (f'<div style="position:absolute;left:80px;right:80px;top:50px;display:flex;justify-content:space-between;border-bottom:2px solid;{GRULE}padding-bottom:14px;font-family:{MONO};font-size:15px;letter-spacing:4px;color:#b9b3a0"><span>THE ROCKIT MANIFEST · VOYAGE {e(c["issue_no"])}</span><span>{e(c["date_long"]).upper()}</span></div>'
+             f'<div style="position:absolute;left:80px;top:130px;width:760px"><div style="font-family:{MONO};font-size:16px;letter-spacing:5px;{GT}">THE STRAIGHT ANSWER</div>'
              f'<div style="font-family:{SERIF};font-weight:600;font-size:76px;line-height:1.02;color:{CREAM};margin-top:14px">{e(C["headline"])}</div>'
-             + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:30px;color:{CREAM};margin-top:12px"><span style="color:{GOLD};font-style:normal;margin-right:14px">✓</span>{e(b)}</div>' for b in C["bullets"])
+             + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:30px;color:{CREAM};margin-top:12px"><span style="{GT};font-style:normal;margin-right:14px">✓</span>{e(b)}</div>' for b in C["bullets"])
              + f'</div><div style="position:absolute;right:70px;top:150px">{stamp(c, 230)}</div>'
-             f'<div style="position:absolute;left:0;right:0;bottom:0;height:110px;background:{MID};border-top:1.5px solid #8b7a5e;display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-             f'<div style="font-family:{SERIF};font-size:42px;letter-spacing:10px;color:{CREAM}">ROCKIT</div><div style="font-family:{SERIF};font-style:italic;font-size:30px;color:{GOLD}">Means what it says.</div></div>')
+             f'<div style="position:absolute;left:0;right:0;bottom:0;height:110px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+             f'<img src="logo_rev.png" style="height:80px;display:block" alt="Rockit Transport Services"><div style="font-family:{SERIF};font-style:italic;font-size:30px;{GT}">Means what it says.</div></div>')
     return page(1200, 900, inner, f"radial-gradient(120% 90% at 20% 10%,#1b2b4b 0%,{NAVY} 45%,#101b33 100%)", "body{position:relative}")
 
 
@@ -277,8 +292,9 @@ def email_html(c, IMG):
     cells = "".join(f'<tr><td style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;padding:5px 12px 5px 0;white-space:nowrap;vertical-align:top;">{k}</td>'
                     f'<td style="font-family:{MONO};font-size:12px;color:{CREAM};padding:5px 0;border-bottom:1px dashed #33456b;">{e(v)}</td></tr>' for k, v in fields)
     R.append(f'''<tr><td style="background:{NAVY};padding:30px 36px 30px 36px;">
-<div style="font-family:{SERIF};font-size:50px;line-height:.95;color:{CREAM};font-weight:600;">The Rockit Manifest</div>
-<div style="font-family:{SERIF};font-size:19px;font-style:italic;color:{GOLD};margin:10px 0 22px 0;">What moved. What it means. What to do.</div>
+<img src="{IMG}logo_rev.png" width="210" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:210px;height:auto;border:0;margin:0 0 20px 0;">
+<div style="height:2px;line-height:2px;font-size:2px;background:{GOLD_MID};background-image:{GOLD_GRAD_H};margin:0 0 22px 0;">&nbsp;</div>
+<img src="{IMG}masthead.png" width="528" alt="The Rockit Manifest. What moved. What it means. What to do." style="display:block;width:100%;max-width:528px;height:auto;border:0;margin:0 0 20px 0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
 <td valign="top"><table role="presentation" cellpadding="0" cellspacing="0" width="100%">{cells}</table></td>
 <td valign="middle" align="right" width="150" style="padding-left:12px;"><img src="{IMG}stamp.png" width="130" alt="Verified stamp: {c["_source_count"]} sources checked. Means what it says." style="display:block;width:130px;height:auto;border:0;"></td>
@@ -287,7 +303,7 @@ def email_html(c, IMG):
                  f'<div style="font-family:{MONO};font-size:11px;letter-spacing:2px;color:{GOLD_INK};margin-top:10px;">THE ROCKIT DESK, CAIRO</div>', pad="30px 36px 6px 36px"))
     tl = "".join(f'<tr><td valign="top" style="padding:9px 14px 9px 0;width:70px;"><span style="display:inline-block;font-family:{MONO};font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:{CREAM};background:{NAVY};padding:4px 7px;">{e(x["tag"])}</span></td>'
                  f'<td style="font-family:{SANS};font-size:15px;line-height:1.5;color:{INK};padding:9px 0;border-bottom:1px solid {RULE};">{e(x["text"])}</td></tr>' for x in c["tldr"])
-    R.append(row(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3ecd9;border-left:3px solid {GOLD};"><tr><td style="padding:18px 20px;">'
+    R.append(row(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3ecd9;"><tr><td width="4" style="width:4px;background:{GOLD_MID};background-image:{GOLD_GRAD_V};font-size:0;">&nbsp;</td><td style="padding:18px 20px;">'
                  + kicker("The 60-second manifest") + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{tl}</table></td></tr></table>', pad="22px 36px 30px 36px"))
     L = c["lead"]
     R.append(row(kicker(L["kicker"]) + h2(L["headline"], size=34) + "".join(p(x) for x in L["paras"]) + img(IMG + "chart_gap.png", L["chart_alt"]) + srcs(L["sources"])))
@@ -326,12 +342,12 @@ def email_html(c, IMG):
     R.append(row(kicker(M["kicker"]) + h2("Before Friday", size=28) + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{tr}</table>'))
     D = c["dates"]
     dr = "".join(f'<tr><td valign="top" style="padding:7px 12px 7px 0;white-space:nowrap;font-family:{MONO};font-size:12px;color:{GOLD_INK};font-weight:600;width:84px;">{e(d["date"])}</td>'
-                 f'<td valign="top" style="padding:7px 10px 7px 0;width:14px;"><div style="width:9px;height:9px;border-radius:9px;background:{GOLD};margin-top:4px;"></div></td>'
+                 f'<td valign="top" style="padding:7px 10px 7px 0;width:14px;"><div style="width:9px;height:9px;border-radius:9px;background:{GOLD_MID};background-image:{GOLD_GRAD};margin-top:4px;"></div></td>'
                  f'<td style="padding:7px 0;font-family:{SANS};font-size:14px;color:{INK};border-bottom:1px dotted {RULE};"><a href="{e(d["url"])}" style="color:{INK};text-decoration:none;">{e(d["event"])}</a></td></tr>' for d in D["rows"])
     R.append(row(kicker(D["kicker"]) + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{dr}</table>', bg="#f3ecd9"))
     X = c["explainer"]
     R.append(row(kicker(X["kicker"], GOLD) + h2(X["title"], CREAM, 30) + f'<img src="{IMG}acid_steps.png" width="528" alt="{e(X["visual_alt"])}" style="display:block;width:100%;max-width:528px;height:auto;border:0;margin:6px 0 14px 0;background:{PAPER};">'
-                 + p(e(X["note"]), "#d9d4c3", 14) + f'<a href="{e(X["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{MID};background:{GOLD};padding:12px 18px;text-decoration:none;">{e(X["cta"])} ▸</a>', bg=NAVY))
+                 + p(e(X["note"]), "#d9d4c3", 14) + f'<a href="{e(X["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{MID};background-color:{GOLD};background-image:{GOLD_GRAD};padding:12px 18px;text-decoration:none;">{e(X["cta"])} ▸</a>', bg=NAVY))
     T = c["thesaurus"]
     R.append(row(f'<div style="font-family:{MONO};font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#b9b3a0;margin-bottom:14px;">{e(T["kicker"])}</div>'
                  f'<div style="font-family:{SERIF};font-size:44px;font-weight:600;color:{CREAM};line-height:1;">{e(T["word"])}</div>'
@@ -345,8 +361,8 @@ def email_html(c, IMG):
     R.append(row(f'<div style="font-family:{SERIF};font-size:26px;line-height:1.3;color:{INK};font-weight:600;margin-bottom:16px;">{e(S["line"])}</div>'
                  f'<a href="{e(S["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{CREAM};background:{NAVY};padding:13px 20px;text-decoration:none;">{e(S["cta"])} ▸</a>'
                  f'<div style="font-family:{MONO};font-size:11px;letter-spacing:2px;color:{GOLD_INK};margin-top:18px;">— THE ROCKIT DESK · CAIRO · ALEXANDRIA · SOKHNA · DAMIETTA</div>'))
-    R.append(row(f'<div style="font-family:{SERIF};font-size:24px;letter-spacing:8px;color:{CREAM};">ROCKIT</div>'
-                 f'<div style="font-family:{SANS};font-size:9px;letter-spacing:3px;color:{GOLD};text-transform:uppercase;margin-top:2px;">Transport Services &amp; Logistics</div>'
+    R.append(row(f'<div style="height:2px;line-height:2px;font-size:2px;background:{GOLD_MID};background-image:{GOLD_GRAD_H};margin:0 0 24px 0;">&nbsp;</div>'
+                 f'<img src="{IMG}logo_rev.png" width="190" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:190px;height:auto;border:0;">'
                  f'<div style="font-family:{SERIF};font-size:17px;font-style:italic;color:{GOLD};margin:14px 0;">Means what it says.</div>'
                  f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:#9aa3b5;"><a href="https://www.rockit-transport.com" style="color:#9aa3b5;">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>'
                  f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#6f7889;margin-top:14px;">{c["disclaimer"]}</div>', bg=MID, pad="28px 36px 34px 36px"))
@@ -451,12 +467,17 @@ def main():
     out = path.parent
     vis = out / "visuals"
     vis.mkdir(exist_ok=True)
+    import shutil
+    brand = Path(__file__).resolve().parents[2] / "brand"
+    shutil.copy(brand / "rockit-logo-reversed.png", vis / "logo_rev.png")
+    shutil.copy(brand / "rockit-logo.png", vis / "logo.png")
     files = {
         "chart_gap.html": light_visual(gap_chart(LIGHT, 540)),
         "chart_rebate.html": light_visual(rebate_chart(LIGHT, 540)),
         "route_md1.html": light_visual(route_map(LIGHT, 540)),
         "acid_steps.html": page(528, None, f'<div style="padding:22px 0 20px;width:528px">{acid_steps(c, LIGHT, 528)}</div>', PAPER),
         "stamp.html": page(150, 150, stamp(c, 150), "transparent"),
+        "masthead.html": page(528, None, f'<div style="padding:4px 0 6px;width:528px"><div style="font-family:{SERIF};font-size:54px;line-height:1;color:{CREAM};font-weight:600">The Rockit Manifest</div><div style="font-family:{SERIF};font-size:21px;font-style:italic;margin-top:10px;display:inline-block;{GT}">What moved. What it means. What to do.</div></div>', NAVY),
         "cover_4x3.html": cover_4x3(c),
     }
     files.update(slides(c))

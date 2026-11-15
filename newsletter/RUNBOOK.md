@@ -1,5 +1,10 @@
 # The Rockit Manifest: weekly runbook
 
+> **Brand rules are permanent. Read `brand/BRAND.md` first.**
+> - Gold is ALWAYS the metallic gradient from the logo, never a flat yellow.
+> - The official Rockit logo appears on the email header and footer, on every slide and on every cover.
+> - The builder enforces both. Do not override them.
+
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 
 ## IDs
@@ -95,7 +100,7 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 - Every number links to its source.
 
 **Charts:**
-- Palette checked with the dataviz validator: light surface `#3f6db3` / `#b07f2c`, dark surface `#5c84c6` / `#b98a35`.
+- Palette checked with the dataviz validator: the spot series is blue (`#3f6db3` on light, `#5c84c6` on dark). The filed/Rockit series is the logo-gold gradient (centred on `#b8912e` on light and `#ab8528` on dark).
 - Direct labels on every bar, and honest zero baselines.
 - Light 600px PNGs rendered at 2×.
 

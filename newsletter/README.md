@@ -30,4 +30,4 @@ cd tools && node render_covers.js ../issues/<date>           # cover_4x5.jpg, co
 
 ## Brand
 
-Navy `#16243f`, midnight `#080f1f`, gold `#d5ae69`, cream `#f1eedb`. Cormorant Garamond for display, Inter for text.
+See `../brand/BRAND.md` (permanent). Gold is always the logo's metallic gradient (`#966f1b → #b8912e → #d7b754 → #f7e58e → #d2b04b → #ab8528`), never flat yellow. The official logo goes on every asset. Navy `#16243f`, midnight `#080f1f`, cream `#f1eedb`.
