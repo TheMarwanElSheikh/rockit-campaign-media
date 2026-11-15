@@ -1,6 +1,6 @@
 # The Rockit Manifest
 
-The weekly market brief from Rockit Transport Services & Logistics (RTSL). It is published every Monday at 10:00 Cairo time on rockit-transport.com (blog), LinkedIn, Facebook, Instagram and Google Business Profile. An email version is staged as a Wix Email Marketing draft each week and sent manually.
+The weekly market brief from Rockit Transport Services & Logistics (RTSL). It is published every Monday at 10:00 Cairo time on rockit-transport.com (blog), LinkedIn, Facebook, Instagram and Google Business Profile. Every issue is filed in the blog category "The Rockit Manifest" (slug `newsletter`), so they all collect on one newsletter page: https://www.rockit-transport.com/insights/categories/newsletter. An email version is staged as a Wix Email Marketing draft each week and sent manually.
 
 ## Weekly flow
 

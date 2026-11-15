@@ -53,6 +53,7 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 7. **Stage on Wix** (nothing public yet):
    - Import the visuals (charts, route map, ACID-style explainer graphic, cover) via `POST /site-media/v1/files/import` from the jsDelivr commit URL, and swap the `@key` image ids in `ricos.json` for the returned media ids.
    - Create the blog draft (`POST /blog/v3/draft-posts`, `publish: false`, slug `rockit-manifest-<NNN>-<topic>`).
+   - File it under the newsletter category: `categoryIds: ["23f3ec1c-cf6b-4d10-ad83-869b0e20376c"]` ("The Rockit Manifest", slug `newsletter`). Every issue then appears on the newsletter page, https://www.rockit-transport.com/insights/categories/newsletter.
    - Schedule it natively: `PATCH /blog/v3/draft-posts/{id}` with `action: "UPDATE_SCHEDULE"` and `scheduledPublishDate` = Monday 08:00:00Z (10:00 Cairo, EET). Read it back and confirm `status: SCHEDULED`.
    - Create the HTML email campaign draft (`POST /email-marketing/v1/campaigns`). Never publish it.
 8. **Write `publish_plan.json`** with the exact Windsor params (same shape as Issue 001), commit and push.
