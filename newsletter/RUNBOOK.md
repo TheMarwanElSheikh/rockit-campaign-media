@@ -43,10 +43,9 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 5. **Build and render.**
    - Run `python3 tools/build_issue.py issues/<date>/content.json`.
    - Run `node tools/render_covers.js issues/<date>`.
-   - Look at both covers and the email preview.
-6. **Commit and push.** Note the commit SHA. The image URL is `https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@<sha>/newsletter/issues/<date>/cover_4x5.jpg` (and `cover_4x3.jpg`).
+   - Look at every chart, slide, cover and the email preview, and fix any label collisions before staging.
+6. **Commit and push.** Note the commit SHA. The image URL is `https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@<sha>/newsletter/issues/<date>/visuals/<file>`. Set `img_base` in content.json to that folder URL, then rebuild so email.html points at it.
 7. **Stage on Wix** (nothing public yet):
-   - Import `cover_4x3.jpg` (`POST /site-media/v1/files/import`).
    - Import the visuals (charts, route map, ACID-style explainer graphic, cover) via `POST /site-media/v1/files/import` from the jsDelivr commit URL, and swap the `@key` image ids in `ricos.json` for the returned media ids.
    - Create the blog draft (`POST /blog/v3/draft-posts`, `publish: false`, slug `rockit-manifest-<NNN>-<topic>`).
    - Schedule it natively: `PATCH /blog/v3/draft-posts/{id}` with `action: "UPDATE_SCHEDULE"` and `scheduledPublishDate` = Monday 08:00:00Z (10:00 Cairo, EET). Read it back and confirm `status: SCHEDULED`.
