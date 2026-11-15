@@ -40,16 +40,16 @@ Every CSS gradient also sets a `background-color` fallback of `#b8912e`.
 
 **Charts.** Bars are filled with the gradient: `#966f1b → #b8912e → #d7b754` on light surfaces, and `#966f1b → #ab8528 → #d7b754 → #f7e58e` on navy. Both pass the dataviz palette validator against the spot-series blue (`#3f6db3` light, `#5c84c6` dark).
 
-## 2. The Rockit logo appears on every branded asset
+## 2. Logo: ONLY the original Rockit logo, unaltered, on every branded asset
 
-- **`brand/rockit-logo.png`:** the official full-colour logo (navy and gold, transparent background). Use it on light backgrounds.
-- **`brand/rockit-logo-reversed.png`:** the same logo with the navy recoloured to cream `#f1eedb`, gold untouched. Use it on navy or midnight backgrounds.
-- **Source:** `RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`.
-- **Do not** redraw, re-letter, recolour the gold, stretch or crop the logo. Use a typeset "ROCKIT" wordmark only beside the real logo, never instead of it.
+- **Use `brand/rockit-logo.png` and nothing else.** It is the official full-colour logo: navy R, gold metallic globe and swoosh, transparent background. The source is `RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`.
+- **Never** invert, reverse, knock out, recolour or tint it. That includes making a "white" or "cream" version for dark backgrounds. The owner rejected a reversed version on 15 Nov 2026; it has been deleted and must not be recreated.
+- **Never** redraw, re-letter, stretch, crop, rotate or add effects. A typeset "ROCKIT" wordmark may sit next to the logo, never replace it.
+- **On a dark design (navy or midnight), place the original logo on a light panel**: paper `#faf7ef` or white, with clear space of at least the height of the "R" on every side. Typical placements are a light header or footer band, a light card, or a light slide footer bar. The logo itself is never changed to suit the background.
 - **Newsletter placement:**
-  - email header and footer
-  - every social slide footer
-  - covers, including the blog cover and the Google Business image
+  - a light band at the top of the email
+  - a light panel in the email footer
+  - a light footer bar on every social slide and cover, including the blog cover and the Google Business image
 
 ## 3. Other tokens
 

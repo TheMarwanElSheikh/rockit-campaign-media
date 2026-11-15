@@ -2,7 +2,7 @@
 
 > **Brand rules are permanent. Read `brand/BRAND.md` first.**
 > - Gold is ALWAYS the metallic gradient from the logo, never a flat yellow.
-> - The official Rockit logo appears on the email header and footer, on every slide and on every cover.
+> - Only the ORIGINAL Rockit logo (`brand/rockit-logo.png`), unaltered, never inverted or recoloured. It sits on a light panel at the email header and footer, on every slide footer and on every cover.
 > - The builder enforces both. Do not override them.
 
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).

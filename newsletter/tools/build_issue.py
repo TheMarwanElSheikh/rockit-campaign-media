@@ -32,6 +32,9 @@ GOLD_INK = "#8a6514"   # deepened logo gold: ONLY as the fallback for small text
 GOLD_MID = "#b8912e"   # background-color fallback under every CSS gradient
 GT = f"background:{GOLD_GRAD};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"  # gradient text (rendered images only)
 GRULE = f"border-image:{GOLD_GRAD_H} 1;"
+GOLD_GRAD_ON_LIGHT = "linear-gradient(135deg,#966f1b 0%,#b8912e 45%,#ab8528 100%)"  # logo stops minus the pale highlight, for text on cream
+GT_LIGHT = f"background:{GOLD_GRAD_ON_LIGHT};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"
+# LOGO RULE (permanent): only the ORIGINAL logo (logo.png), never recoloured/inverted. On dark designs it sits on a light (paper) panel.
 def svg_gold(gid="gold", stops=None, x2="1", y2="1"):
     st = stops or GOLD_STOPS
     return f'<linearGradient id="{gid}" x1="0" y1="0" x2="{x2}" y2="{y2}">' + "".join(f'<stop offset="{o}%" stop-color="{c}"/>' for c, o in st) + "</linearGradient>"
@@ -204,9 +207,9 @@ def light_visual(inner, width=600):
 
 # ------------------------------------------------------------------ slides (Instagram carousel, 1080x1350, dark)
 def slide(c, n, total, inner, footer=True):
-    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-            f'<img src="logo_rev.png" style="height:84px;display:block" alt="Rockit Transport Services">'
-            f'<div style="font-family:{MONO};font-size:18px;letter-spacing:4px;{GT}">{n:02d} / {total:02d}</div></div>') if footer else ""
+    foot = (f'<div style="position:absolute;left:0;right:0;bottom:0;height:140px;background:{PAPER};border-top:3px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+            f'<img src="logo.png" style="height:96px;display:block" alt="Rockit Transport Services">'
+            f'<div style="font-family:{MONO};font-size:20px;font-weight:600;letter-spacing:4px;{GT_LIGHT}">{n:02d} / {total:02d}</div></div>') if footer else ""
     top = (f'<div style="position:absolute;left:80px;right:80px;top:56px;display:flex;justify-content:space-between;border-bottom:2px solid;{GRULE}padding-bottom:16px;'
            f'font-family:{MONO};font-size:17px;letter-spacing:4px;color:#b9b3a0"><span>THE ROCKIT MANIFEST</span><span>VOYAGE {e(c["issue_no"])}</span></div>')
     return page(1080, 1350, f'{top}<div style="position:absolute;left:80px;right:80px;top:150px">{inner}</div>{foot}',
@@ -247,8 +250,8 @@ def cover_4x3(c):
              f'<div style="font-family:{SERIF};font-weight:600;font-size:76px;line-height:1.02;color:{CREAM};margin-top:14px">{e(C["headline"])}</div>'
              + "".join(f'<div style="font-family:{SERIF};font-style:italic;font-size:30px;color:{CREAM};margin-top:12px"><span style="{GT};font-style:normal;margin-right:14px">✓</span>{e(b)}</div>' for b in C["bullets"])
              + f'</div><div style="position:absolute;right:70px;top:150px">{stamp(c, 230)}</div>'
-             f'<div style="position:absolute;left:0;right:0;bottom:0;height:110px;background:{MID};border-top:2px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
-             f'<img src="logo_rev.png" style="height:80px;display:block" alt="Rockit Transport Services"><div style="font-family:{SERIF};font-style:italic;font-size:30px;{GT}">Means what it says.</div></div>')
+             f'<div style="position:absolute;left:0;right:0;bottom:0;height:120px;background:{PAPER};border-top:3px solid;{GRULE}display:flex;justify-content:space-between;align-items:center;padding:0 80px">'
+             f'<img src="logo.png" style="height:88px;display:block" alt="Rockit Transport Services"><div style="font-family:{SERIF};font-style:italic;font-weight:600;font-size:32px;{GT_LIGHT}">Means what it says.</div></div>')
     return page(1200, 900, inner, f"radial-gradient(120% 90% at 20% 10%,#1b2b4b 0%,{NAVY} 45%,#101b33 100%)", "body{position:relative}")
 
 
@@ -284,6 +287,8 @@ def rule():
 
 def email_html(c, IMG):
     R = []
+    R.append(f'<tr><td style="background:{PAPER};padding:26px 36px 22px 36px;"><img src="{IMG}logo.png" width="230" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:230px;height:auto;border:0;"></td></tr>'
+             f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
     R.append(f'<tr><td style="background:{MID};padding:10px 36px;font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;text-transform:uppercase;">'
              f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;">Voyage {e(c["issue_no"])} · {e(c["read_time"])} read</td>'
              f'<td align="right"><a href="{e(c["blog_url"])}" style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:{GOLD};text-decoration:none;">VIEW ON THE WEB ▸</a></td></tr></table></td></tr>')
@@ -292,7 +297,6 @@ def email_html(c, IMG):
     cells = "".join(f'<tr><td style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;padding:5px 12px 5px 0;white-space:nowrap;vertical-align:top;">{k}</td>'
                     f'<td style="font-family:{MONO};font-size:12px;color:{CREAM};padding:5px 0;border-bottom:1px dashed #33456b;">{e(v)}</td></tr>' for k, v in fields)
     R.append(f'''<tr><td style="background:{NAVY};padding:30px 36px 30px 36px;">
-<img src="{IMG}logo_rev.png" width="210" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:210px;height:auto;border:0;margin:0 0 20px 0;">
 <div style="height:2px;line-height:2px;font-size:2px;background:{GOLD_MID};background-image:{GOLD_GRAD_H};margin:0 0 22px 0;">&nbsp;</div>
 <img src="{IMG}masthead.png" width="528" alt="The Rockit Manifest. What moved. What it means. What to do." style="display:block;width:100%;max-width:528px;height:auto;border:0;margin:0 0 20px 0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
@@ -361,11 +365,11 @@ def email_html(c, IMG):
     R.append(row(f'<div style="font-family:{SERIF};font-size:26px;line-height:1.3;color:{INK};font-weight:600;margin-bottom:16px;">{e(S["line"])}</div>'
                  f'<a href="{e(S["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{CREAM};background:{NAVY};padding:13px 20px;text-decoration:none;">{e(S["cta"])} ▸</a>'
                  f'<div style="font-family:{MONO};font-size:11px;letter-spacing:2px;color:{GOLD_INK};margin-top:18px;">— THE ROCKIT DESK · CAIRO · ALEXANDRIA · SOKHNA · DAMIETTA</div>'))
-    R.append(row(f'<div style="height:2px;line-height:2px;font-size:2px;background:{GOLD_MID};background-image:{GOLD_GRAD_H};margin:0 0 24px 0;">&nbsp;</div>'
-                 f'<img src="{IMG}logo_rev.png" width="190" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:190px;height:auto;border:0;">'
-                 f'<div style="font-family:{SERIF};font-size:17px;font-style:italic;color:{GOLD};margin:14px 0;">Means what it says.</div>'
-                 f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:#9aa3b5;"><a href="https://www.rockit-transport.com" style="color:#9aa3b5;">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>'
-                 f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#6f7889;margin-top:14px;">{c["disclaimer"]}</div>', bg=MID, pad="28px 36px 34px 36px"))
+    R.append(f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
+    R.append(row(f'<img src="{IMG}logo.png" width="210" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:210px;height:auto;border:0;">'
+                 f'<div style="font-family:{SERIF};font-size:18px;font-style:italic;font-weight:600;color:{GOLD_INK};margin:14px 0;">Means what it says.</div>'
+                 f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:{INK};"><a href="https://www.rockit-transport.com" style="color:{INK};">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>', bg=PAPER, pad="28px 36px 26px 36px"))
+    R.append(row(f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#8f97a8;">{c["disclaimer"]}</div>', bg=MID, pad="20px 36px 24px 36px"))
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title>{e(c["subject"])}</title>{FONTS}
 <style>@media (max-width:620px){{.wrap{{width:100%!important}} td{{padding-left:18px!important;padding-right:18px!important}}}}</style></head>
 <body style="margin:0;padding:0;background:#e9e4d6;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{e(c["preheader"])}</div>
@@ -469,7 +473,6 @@ def main():
     vis.mkdir(exist_ok=True)
     import shutil
     brand = Path(__file__).resolve().parents[2] / "brand"
-    shutil.copy(brand / "rockit-logo-reversed.png", vis / "logo_rev.png")
     shutil.copy(brand / "rockit-logo.png", vis / "logo.png")
     files = {
         "chart_gap.html": light_visual(gap_chart(LIGHT, 540)),
