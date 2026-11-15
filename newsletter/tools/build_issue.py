@@ -45,7 +45,7 @@ def svg_gold(gid="gold", stops=None, x2="1", y2="1"):
     return f'<linearGradient id="{gid}" x1="0" y1="0" x2="{x2}" y2="{y2}">' + "".join(f'<stop offset="{o}%" stop-color="{c}"/>' for c, o in st) + "</linearGradient>"
 BAR_LIGHT = [("#A88329", 0), ("#C09934", 45), ("#DEC163", 100)]           # validated: mid #C09934 vs #3f6db3 on #faf7ef, all checks pass
 BAR_DARK = [("#A88329", 0), ("#B18B2D", 40), ("#DEC163", 80), ("#F7E590", 100)]  # validated: mid #B18B2D vs #5c84c6 on #16243f, all checks pass
-LIGHT = {"bg": PAPER, "ink": INK, "muted": MUTED, "rule": RULE, "spot": "#3f6db3", "filed": "url(#goldbar)", "filed_css": "linear-gradient(90deg,#a47420,#c08f2f 45%,#e1b348)", "bar": BAR_LIGHT, "accent": GOLD_INK, "accent_css": "color:" + GOLD_INK}
+LIGHT = {"bg": PAPER, "ink": INK, "muted": MUTED, "rule": RULE, "spot": "#3f6db3", "filed": "url(#goldbar)", "filed_css": "linear-gradient(90deg,#A88329,#C09934 45%,#DEC163)", "bar": BAR_LIGHT, "accent": GOLD_INK, "accent_css": "color:" + GOLD_INK}
 DARK = {"bg": NAVY, "ink": CREAM, "muted": "#a9b1c2", "rule": "#2c3b5c", "spot": "#5c84c6", "filed": "url(#goldbar)", "filed_css": GOLD_GRAD_H, "bar": BAR_DARK, "accent": GOLD, "accent_css": GT}
 SERIF = "'Cormorant Garamond', Georgia, 'Times New Roman', serif"
 SANS = "Inter, 'Helvetica Neue', Arial, sans-serif"
