@@ -1,0 +1,1237 @@
+{
+ "site": "0e184a47-8d16-405a-9018-42d1181fadd1",
+ "menuInsights": {
+  "en": "Insights",
+  "ar": "أدلة ومقالات",
+  "de": "Ratgeber",
+  "es": "Guías",
+  "fr": "Guides",
+  "it": "Guide"
+ },
+ "pages": [
+  {
+   "id": "c1dmp",
+   "path": "/",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar",
+     "seoTitle": "Rockit Transport Services & Logistics | وكيل شحن دولي في مصر",
+     "metaDescription": "وكيل شحن في القاهرة منذ 1992: شحن جوي وبحري وبري مع مخلّصين جمركيين مرخّصين تابعين لنا. روّاد شحن الملابس المعلّقة (GOH) والرورو في مصر.",
+     "socialTitle": "Rockit Transport Services & Logistics | وكيل شحن دولي في مصر",
+     "socialDescription": "وكيل شحن في القاهرة منذ 1992: شحن جوي وبحري وبري مع مخلّصين جمركيين مرخّصين تابعين لنا. روّاد شحن الملابس المعلّقة (GOH) والرورو في مصر.",
+     "lenTitle": 60,
+     "lenDesc": 136
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de",
+     "seoTitle": "Rockit Transport Services & Logistics | Spedition Ägypten",
+     "metaDescription": "Spedition in Kairo seit 1992: Luft-, See- und Landfracht mit eigenen lizenzierten Zollagenten. Pioniere für Hängeware (GOH) und RoRo in Ägypten.",
+     "socialTitle": "Rockit Transport Services & Logistics | Spedition Ägypten",
+     "socialDescription": "Spedition in Kairo seit 1992: Luft-, See- und Landfracht mit eigenen lizenzierten Zollagenten. Pioniere für Hängeware (GOH) und RoRo in Ägypten.",
+     "lenTitle": 57,
+     "lenDesc": 144
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es",
+     "seoTitle": "Rockit Transport Services & Logistics | Transitario en Egipto",
+     "metaDescription": "Transitario en El Cairo desde 1992: carga aérea, marítima y terrestre con agentes de aduanas propios. Pioneros en prendas colgadas (GOH) y RORO en Egipto.",
+     "socialTitle": "Rockit Transport Services & Logistics | Transitario en Egipto",
+     "socialDescription": "Transitario en El Cairo desde 1992: carga aérea, marítima y terrestre con agentes de aduanas propios. Pioneros en prendas colgadas (GOH) y RORO en Egipto.",
+     "lenTitle": 61,
+     "lenDesc": 154
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr",
+     "seoTitle": "Rockit Transport Services & Logistics | Transitaire en Égypte",
+     "metaDescription": "Transitaire au Caire depuis 1992 : fret aérien, maritime et routier, déclarants agréés maison. Pionniers du textile sur cintres (GOH) et du RORO en Égypte.",
+     "socialTitle": "Rockit Transport Services & Logistics | Transitaire en Égypte",
+     "socialDescription": "Transitaire au Caire depuis 1992 : fret aérien, maritime et routier, déclarants agréés maison. Pionniers du textile sur cintres (GOH) et du RORO en Égypte.",
+     "lenTitle": 61,
+     "lenDesc": 155
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it",
+     "seoTitle": "Rockit Transport Services & Logistics | Spedizioniere in Egitto",
+     "metaDescription": "Spedizioniere al Cairo dal 1992: trasporto aereo, marittimo e terrestre e doganalisti interni. Pionieri di capi appesi (GOH) e RORO in Egitto.",
+     "socialTitle": "Rockit Transport Services & Logistics | Spedizioniere in Egitto",
+     "socialDescription": "Spedizioniere al Cairo dal 1992: trasporto aereo, marittimo e terrestre e doganalisti interni. Pionieri di capi appesi (GOH) e RORO in Egitto.",
+     "lenTitle": 63,
+     "lenDesc": 142
+    }
+   }
+  },
+  {
+   "id": "d3w4l",
+   "path": "/about",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/about",
+     "seoTitle": "من نحن | Rockit Transport Services & Logistics",
+     "metaDescription": "ننقل شحنات مصر منذ 1992. وكيل شحن معتمد من IATA وعضو في FIATA وEIFFA وحاصلون على ISO 9001، ولنا مكاتب في أهم خمسة مراكز موانئ ومطارات في مصر.",
+     "socialTitle": "من نحن | Rockit Transport Services & Logistics",
+     "socialDescription": "ننقل شحنات مصر منذ 1992. وكيل شحن معتمد من IATA وعضو في FIATA وEIFFA وحاصلون على ISO 9001، ولنا مكاتب في أهم خمسة مراكز موانئ ومطارات في مصر.",
+     "lenTitle": 46,
+     "lenDesc": 141
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/about",
+     "seoTitle": "Über uns | Rockit Transport Services & Logistics",
+     "metaDescription": "Seit 1992 bewegen wir Ägyptens Fracht: IATA-Agent, FIATA- und EIFFA-Mitglied, ISO 9001, mit Büros an Ägyptens fünf wichtigsten Häfen und Flughäfen.",
+     "socialTitle": "Über uns | Rockit Transport Services & Logistics",
+     "socialDescription": "Seit 1992 bewegen wir Ägyptens Fracht: IATA-Agent, FIATA- und EIFFA-Mitglied, ISO 9001, mit Büros an Ägyptens fünf wichtigsten Häfen und Flughäfen.",
+     "lenTitle": 48,
+     "lenDesc": 147
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/about",
+     "seoTitle": "Sobre nosotros | Rockit Transport Services & Logistics",
+     "metaDescription": "Movemos la carga de Egipto desde 1992. Agente IATA, miembro de FIATA y EIFFA, ISO 9001, con oficinas en los cinco grandes puertos y aeropuertos del país.",
+     "socialTitle": "Sobre nosotros | Rockit Transport Services & Logistics",
+     "socialDescription": "Movemos la carga de Egipto desde 1992. Agente IATA, miembro de FIATA y EIFFA, ISO 9001, con oficinas en los cinco grandes puertos y aeropuertos del país.",
+     "lenTitle": 54,
+     "lenDesc": 153
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/about",
+     "seoTitle": "À propos | Rockit Transport Services & Logistics",
+     "metaDescription": "Nous transportons le fret égyptien depuis 1992. Agent IATA, membre FIATA et EIFFA, certifié ISO 9001, avec des bureaux sur les cinq grands hubs du pays.",
+     "socialTitle": "À propos | Rockit Transport Services & Logistics",
+     "socialDescription": "Nous transportons le fret égyptien depuis 1992. Agent IATA, membre FIATA et EIFFA, certifié ISO 9001, avec des bureaux sur les cinq grands hubs du pays.",
+     "lenTitle": 48,
+     "lenDesc": 152
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/about",
+     "seoTitle": "Chi siamo | Rockit Transport Services & Logistics",
+     "metaDescription": "Muoviamo merci in Egitto dal 1992. Agente IATA, membro FIATA ed EIFFA, certificato ISO 9001, con uffici nei cinque principali porti e aeroporti egiziani.",
+     "socialTitle": "Chi siamo | Rockit Transport Services & Logistics",
+     "socialDescription": "Muoviamo merci in Egitto dal 1992. Agente IATA, membro FIATA ed EIFFA, certificato ISO 9001, con uffici nei cinque principali porti e aeroporti egiziani.",
+     "lenTitle": 49,
+     "lenDesc": 153
+    }
+   }
+  },
+  {
+   "id": "agqrf",
+   "path": "/awards",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/awards",
+     "seoTitle": "الاعتمادات والجوائز | Rockit Transport Services & Logistics",
+     "metaDescription": "وكيل شحن معتمد من IATA، وعضو في FIATA وEIFFA، وحاصلون على شهادة ISO 9001، مع جوائز خدمة من British Airways وLufthansa وSwiss WorldCargo.",
+     "socialTitle": "الاعتمادات والجوائز | Rockit Transport Services & Logistics",
+     "socialDescription": "وكيل شحن معتمد من IATA، وعضو في FIATA وEIFFA، وحاصلون على شهادة ISO 9001، مع جوائز خدمة من British Airways وLufthansa وSwiss WorldCargo.",
+     "lenTitle": 59,
+     "lenDesc": 136
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/awards",
+     "seoTitle": "Zertifikate & Auszeichnungen | Rockit Transport Services & Logistics",
+     "metaDescription": "IATA-Frachtagent, Mitglied von FIATA und EIFFA, ISO-9001-zertifiziert und ausgezeichnet von British Airways, Lufthansa und Swiss WorldCargo.",
+     "socialTitle": "Zertifikate & Auszeichnungen | Rockit Transport Services & Logistics",
+     "socialDescription": "IATA-Frachtagent, Mitglied von FIATA und EIFFA, ISO-9001-zertifiziert und ausgezeichnet von British Airways, Lufthansa und Swiss WorldCargo.",
+     "lenTitle": 68,
+     "lenDesc": 140
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/awards",
+     "seoTitle": "Acreditaciones y premios | Rockit Transport Services & Logistics",
+     "metaDescription": "Agente de carga IATA, miembro de FIATA y EIFFA, certificación ISO 9001 y premios de servicio de British Airways, Lufthansa y Swiss WorldCargo.",
+     "socialTitle": "Acreditaciones y premios | Rockit Transport Services & Logistics",
+     "socialDescription": "Agente de carga IATA, miembro de FIATA y EIFFA, certificación ISO 9001 y premios de servicio de British Airways, Lufthansa y Swiss WorldCargo.",
+     "lenTitle": 64,
+     "lenDesc": 142
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/awards",
+     "seoTitle": "Accréditations et distinctions | Rockit Transport Services & Logistics",
+     "metaDescription": "Agent de fret IATA, membre de la FIATA et de l'EIFFA, certifié ISO 9001, récompensé par British Airways, Lufthansa et Swiss WorldCargo.",
+     "socialTitle": "Accréditations et distinctions | Rockit Transport Services & Logistics",
+     "socialDescription": "Agent de fret IATA, membre de la FIATA et de l'EIFFA, certifié ISO 9001, récompensé par British Airways, Lufthansa et Swiss WorldCargo.",
+     "lenTitle": 70,
+     "lenDesc": 135
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/awards",
+     "seoTitle": "Accreditamenti e premi | Rockit Transport Services & Logistics",
+     "metaDescription": "Agente cargo IATA, membro FIATA ed EIFFA, certificato ISO 9001, con premi di servizio da British Airways, Lufthansa e Swiss WorldCargo.",
+     "socialTitle": "Accreditamenti e premi | Rockit Transport Services & Logistics",
+     "socialDescription": "Agente cargo IATA, membro FIATA ed EIFFA, certificato ISO 9001, con premi di servizio da British Airways, Lufthansa e Swiss WorldCargo.",
+     "lenTitle": 62,
+     "lenDesc": 135
+    }
+   }
+  },
+  {
+   "id": "fjeib",
+   "path": "/offices",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/offices",
+     "seoTitle": "مكاتبنا في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "المقر الرئيسي في مصر الجديدة بالقاهرة، مع فرق عمل في الإسكندرية والعين السخنة وبورسعيد ودمياط. تمر جميع الاستفسارات عبر المقر الرئيسي: +20 2 2690 7601",
+     "socialTitle": "مكاتبنا في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "المقر الرئيسي في مصر الجديدة بالقاهرة، مع فرق عمل في الإسكندرية والعين السخنة وبورسعيد ودمياط. تمر جميع الاستفسارات عبر المقر الرئيسي: +20 2 2690 7601",
+     "lenTitle": 54,
+     "lenDesc": 150
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/offices",
+     "seoTitle": "Standorte in Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Zentrale in Heliopolis, Kairo, mit Teams in Alexandria, Ain Sokhna, Port Said und Damietta. Alle Anfragen laufen über die Zentrale: +20 2 2690 7601.",
+     "socialTitle": "Standorte in Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Zentrale in Heliopolis, Kairo, mit Teams in Alexandria, Ain Sokhna, Port Said und Damietta. Alle Anfragen laufen über die Zentrale: +20 2 2690 7601.",
+     "lenTitle": 60,
+     "lenDesc": 148
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/offices",
+     "seoTitle": "Oficinas en Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Sede en Heliópolis, El Cairo, con equipos en Alejandría, Ain Sokhna, Port Said y Damietta. Todas las consultas pasan por la sede: +20 2 2690 7601.",
+     "socialTitle": "Oficinas en Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Sede en Heliópolis, El Cairo, con equipos en Alejandría, Ain Sokhna, Port Said y Damietta. Todas las consultas pasan por la sede: +20 2 2690 7601.",
+     "lenTitle": 58,
+     "lenDesc": 146
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/offices",
+     "seoTitle": "Bureaux en Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Siège à Héliopolis, Le Caire, avec des équipes à Alexandrie, Ain Sokhna, Port-Saïd et Damiette. Toutes les demandes passent par le siège : +20 2 2690 7601.",
+     "socialTitle": "Bureaux en Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Siège à Héliopolis, Le Caire, avec des équipes à Alexandrie, Ain Sokhna, Port-Saïd et Damiette. Toutes les demandes passent par le siège : +20 2 2690 7601.",
+     "lenTitle": 57,
+     "lenDesc": 155
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/offices",
+     "seoTitle": "Uffici in Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Sede a Heliopolis, Il Cairo, con team ad Alessandria, Ain Sokhna, Port Said e Damietta. Ogni richiesta passa dalla sede centrale: +20 2 2690 7601.",
+     "socialTitle": "Uffici in Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Sede a Heliopolis, Il Cairo, con team ad Alessandria, Ain Sokhna, Port Said e Damietta. Ogni richiesta passa dalla sede centrale: +20 2 2690 7601.",
+     "lenTitle": 56,
+     "lenDesc": 146
+    }
+   }
+  },
+  {
+   "id": "dfif6",
+   "path": "/air-freight",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/air-freight",
+     "seoTitle": "الشحن الجوي في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "شحن جوي من مصر وإليها عبر وكيل معتمد من IATA: عقود مع شركات الطيران، ورحلات مستأجرة، واستلام من أي مكان، وتخليص الواردات بمطار القاهرة في نحو يومين.",
+     "socialTitle": "الشحن الجوي في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "شحن جوي من مصر وإليها عبر وكيل معتمد من IATA: عقود مع شركات الطيران، ورحلات مستأجرة، واستلام من أي مكان، وتخليص الواردات بمطار القاهرة في نحو يومين.",
+     "lenTitle": 58,
+     "lenDesc": 148
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/air-freight",
+     "seoTitle": "Luftfracht Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Luftfracht von und nach Ägypten vom IATA-Agenten: Airline-Verträge, Charter, landesweite Abholung, Importverzollung am Flughafen Kairo in ca. zwei Tagen.",
+     "socialTitle": "Luftfracht Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Luftfracht von und nach Ägypten vom IATA-Agenten: Airline-Verträge, Charter, landesweite Abholung, Importverzollung am Flughafen Kairo in ca. zwei Tagen.",
+     "lenTitle": 58,
+     "lenDesc": 153
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/air-freight",
+     "seoTitle": "Carga aérea Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Carga aérea desde y hacia Egipto con un agente IATA: contratos con aerolíneas, chárteres, recogida nacional y despacho en El Cairo en unos dos días.",
+     "socialTitle": "Carga aérea Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Carga aérea desde y hacia Egipto con un agente IATA: contratos con aerolíneas, chárteres, recogida nacional y despacho en El Cairo en unos dos días.",
+     "lenTitle": 58,
+     "lenDesc": 148
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/air-freight",
+     "seoTitle": "Fret aérien Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Fret aérien vers et depuis l'Égypte par un agent IATA : contrats aériens, affrètements, enlèvement national, dédouanement au Caire en deux jours environ.",
+     "socialTitle": "Fret aérien Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Fret aérien vers et depuis l'Égypte par un agent IATA : contrats aériens, affrètements, enlèvement national, dédouanement au Caire en deux jours environ.",
+     "lenTitle": 58,
+     "lenDesc": 153
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/air-freight",
+     "seoTitle": "Trasporto aereo Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Trasporto aereo da e per l'Egitto con un agente IATA: contratti aerei, charter, ritiro in tutto il Paese e sdoganamento al Cairo in circa due giorni.",
+     "socialTitle": "Trasporto aereo Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Trasporto aereo da e per l'Egitto con un agente IATA: contratti aerei, charter, ritiro in tutto il Paese e sdoganamento al Cairo in circa due giorni.",
+     "lenTitle": 62,
+     "lenDesc": 149
+    }
+   }
+  },
+  {
+   "id": "f0jl0",
+   "path": "/ocean-freight",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/ocean-freight",
+     "seoTitle": "الشحن البحري في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "شحن FCL وLCL والرورو عبر الإسكندرية ودمياط وبورسعيد والعين السخنة، بما فيها الملابس المعلّقة والحاويات المبرّدة، مع التخليص في الميناء بمخلّصينا.",
+     "socialTitle": "الشحن البحري في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "شحن FCL وLCL والرورو عبر الإسكندرية ودمياط وبورسعيد والعين السخنة، بما فيها الملابس المعلّقة والحاويات المبرّدة، مع التخليص في الميناء بمخلّصينا.",
+     "lenTitle": 59,
+     "lenDesc": 145
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/ocean-freight",
+     "seoTitle": "Seefracht Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "FCL, LCL und RoRo über Alexandria, Damietta, Port Said und Ain Sokhna, inklusive Hängeware und Kühlcontainer, im Hafen verzollt durch eigene Zollagenten.",
+     "socialTitle": "Seefracht Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "FCL, LCL und RoRo über Alexandria, Damietta, Port Said und Ain Sokhna, inklusive Hängeware und Kühlcontainer, im Hafen verzollt durch eigene Zollagenten.",
+     "lenTitle": 57,
+     "lenDesc": 153
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/ocean-freight",
+     "seoTitle": "Carga marítima Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "FCL, LCL y RORO por Alejandría, Damietta, Port Said y Ain Sokhna, con prendas colgadas y refrigerados, despachados en puerto por nuestros propios agentes.",
+     "socialTitle": "Carga marítima Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "FCL, LCL y RORO por Alejandría, Damietta, Port Said y Ain Sokhna, con prendas colgadas y refrigerados, despachados en puerto por nuestros propios agentes.",
+     "lenTitle": 61,
+     "lenDesc": 154
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/ocean-freight",
+     "seoTitle": "Fret maritime Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "FCL, LCL et RORO via Alexandrie, Damiette, Port-Saïd et Ain Sokhna, textile sur cintres et reefer compris, dédouanés au port par nos propres déclarants.",
+     "socialTitle": "Fret maritime Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "FCL, LCL et RORO via Alexandrie, Damiette, Port-Saïd et Ain Sokhna, textile sur cintres et reefer compris, dédouanés au port par nos propres déclarants.",
+     "lenTitle": 60,
+     "lenDesc": 152
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/ocean-freight",
+     "seoTitle": "Trasporto marittimo Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "FCL, LCL e RORO via Alessandria, Damietta, Port Said e Ain Sokhna, con capi appesi e reefer, sdoganati in porto dai nostri doganalisti.",
+     "socialTitle": "Trasporto marittimo Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "FCL, LCL e RORO via Alessandria, Damietta, Port Said e Ain Sokhna, con capi appesi e reefer, sdoganati in porto dai nostri doganalisti.",
+     "lenTitle": 66,
+     "lenDesc": 135
+    }
+   }
+  },
+  {
+   "id": "g9s2e",
+   "path": "/inland-freight",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/inland-freight",
+     "seoTitle": "النقل البري في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "شاحناتنا ومقطوراتنا الخاصة تنقل شحنات FCL وLCL من الإسكندرية ودمياط وبورسعيد والسخنة إلى أي عنوان في مصر، مع جهة اتصال واحدة.",
+     "socialTitle": "النقل البري في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "شاحناتنا ومقطوراتنا الخاصة تنقل شحنات FCL وLCL من الإسكندرية ودمياط وبورسعيد والسخنة إلى أي عنوان في مصر، مع جهة اتصال واحدة.",
+     "lenTitle": 58,
+     "lenDesc": 125
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/inland-freight",
+     "seoTitle": "Landtransport Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Eigene Lkw und Trailer bringen FCL- und LCL-Fracht von Alexandria, Damietta, Port Said und Sokhna an jede Adresse in Ägypten, mit einem Ansprechpartner.",
+     "socialTitle": "Landtransport Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Eigene Lkw und Trailer bringen FCL- und LCL-Fracht von Alexandria, Damietta, Port Said und Sokhna an jede Adresse in Ägypten, mit einem Ansprechpartner.",
+     "lenTitle": 61,
+     "lenDesc": 152
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/inland-freight",
+     "seoTitle": "Transporte terrestre Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Camiones y remolques propios llevan carga FCL y LCL desde Alejandría, Damietta, Port Said y Sokhna a cualquier punto de Egipto, con un solo contacto.",
+     "socialTitle": "Transporte terrestre Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Camiones y remolques propios llevan carga FCL y LCL desde Alejandría, Damietta, Port Said y Sokhna a cualquier punto de Egipto, con un solo contacto.",
+     "lenTitle": 67,
+     "lenDesc": 149
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/inland-freight",
+     "seoTitle": "Transport routier Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Nos camions et remorques acheminent le fret FCL et LCL d'Alexandrie, Damiette, Port-Saïd et Sokhna partout en Égypte, avec un interlocuteur unique.",
+     "socialTitle": "Transport routier Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Nos camions et remorques acheminent le fret FCL et LCL d'Alexandrie, Damiette, Port-Saïd et Sokhna partout en Égypte, avec un interlocuteur unique.",
+     "lenTitle": 64,
+     "lenDesc": 147
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/inland-freight",
+     "seoTitle": "Autotrasporto Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "I nostri camion e rimorchi portano merci FCL e LCL da Alessandria, Damietta, Port Said e Sokhna a qualsiasi indirizzo in Egitto, con un unico referente.",
+     "socialTitle": "Autotrasporto Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "I nostri camion e rimorchi portano merci FCL e LCL da Alessandria, Damietta, Port Said e Sokhna a qualsiasi indirizzo in Egitto, con un unico referente.",
+     "lenTitle": 60,
+     "lenDesc": 152
+    }
+   }
+  },
+  {
+   "id": "mjtrs",
+   "path": "/customs-clearance",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/customs-clearance",
+     "seoTitle": "التخليص الجمركي في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "مخلّصون جمركيون مرخّصون في موانئ مصر البحرية ومطار القاهرة: تسجيل ACID، والتقديم عبر منصة نافذة، والإفراج المسبق، وتخليص الشحن الجوي في نحو يومين.",
+     "socialTitle": "التخليص الجمركي في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "مخلّصون جمركيون مرخّصون في موانئ مصر البحرية ومطار القاهرة: تسجيل ACID، والتقديم عبر منصة نافذة، والإفراج المسبق، وتخليص الشحن الجوي في نحو يومين.",
+     "lenTitle": 62,
+     "lenDesc": 146
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/customs-clearance",
+     "seoTitle": "Zollabfertigung Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Lizenzierte Zollagenten in Ägyptens Seehäfen und am Flughafen Kairo: ACID-Registrierung, Nafeza, Vorabverzollung, Luftfracht in ca. zwei Tagen frei.",
+     "socialTitle": "Zollabfertigung Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Lizenzierte Zollagenten in Ägyptens Seehäfen und am Flughafen Kairo: ACID-Registrierung, Nafeza, Vorabverzollung, Luftfracht in ca. zwei Tagen frei.",
+     "lenTitle": 63,
+     "lenDesc": 148
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/customs-clearance",
+     "seoTitle": "Despacho de aduanas Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Agentes de aduanas autorizados en los puertos de Egipto y el aeropuerto de El Cairo: ACID, Nafeza y predespacho; carga aérea despachada en dos días.",
+     "socialTitle": "Despacho de aduanas Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Agentes de aduanas autorizados en los puertos de Egipto y el aeropuerto de El Cairo: ACID, Nafeza y predespacho; carga aérea despachada en dos días.",
+     "lenTitle": 66,
+     "lenDesc": 148
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/customs-clearance",
+     "seoTitle": "Dédouanement Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Déclarants agréés dans les ports égyptiens et à l'aéroport du Caire : ACID, déclaration Nafeza, pré-dédouanement, fret aérien libéré en deux jours environ.",
+     "socialTitle": "Dédouanement Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Déclarants agréés dans les ports égyptiens et à l'aéroport du Caire : ACID, déclaration Nafeza, pré-dédouanement, fret aérien libéré en deux jours environ.",
+     "lenTitle": 59,
+     "lenDesc": 155
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/customs-clearance",
+     "seoTitle": "Sdoganamento Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Doganalisti autorizzati nei porti egiziani e all'aeroporto del Cairo: ACID, pratiche Nafeza e pre-sdoganamento; merce aerea libera in due giorni.",
+     "socialTitle": "Sdoganamento Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Doganalisti autorizzati nei porti egiziani e all'aeroporto del Cairo: ACID, pratiche Nafeza e pre-sdoganamento; merce aerea libera in due giorni.",
+     "lenTitle": 59,
+     "lenDesc": 145
+    }
+   }
+  },
+  {
+   "id": "q5dsw",
+   "path": "/project-logistics",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/project-logistics",
+     "seoTitle": "شحنات المشروعات في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "تخطيط متكامل لشحنات المشروعات والشحنات خارج المقاس: مسح المسارات، وخطط التنفيذ، واستئجار السفن، والتوصيل متعدد الوسائط من موانئ مصر إلى موقعك.",
+     "socialTitle": "شحنات المشروعات في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "تخطيط متكامل لشحنات المشروعات والشحنات خارج المقاس: مسح المسارات، وخطط التنفيذ، واستئجار السفن، والتوصيل متعدد الوسائط من موانئ مصر إلى موقعك.",
+     "lenTitle": 62,
+     "lenDesc": 142
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/project-logistics",
+     "seoTitle": "Projektfracht Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Übermaß- und Projektfracht durchgängig geplant: Streckenprüfung, Method Statements, Charter und multimodale Zustellung ab Ägyptens Häfen bis zur Baustelle.",
+     "socialTitle": "Projektfracht Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Übermaß- und Projektfracht durchgängig geplant: Streckenprüfung, Method Statements, Charter und multimodale Zustellung ab Ägyptens Häfen bis zur Baustelle.",
+     "lenTitle": 61,
+     "lenDesc": 155
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/project-logistics",
+     "seoTitle": "Carga de proyectos Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Carga fuera de gálibo y de proyectos, de punta a punta: estudios de ruta, planes de método, fletamento y entrega multimodal desde Egipto hasta su obra.",
+     "socialTitle": "Carga de proyectos Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Carga fuera de gálibo y de proyectos, de punta a punta: estudios de ruta, planes de método, fletamento y entrega multimodal desde Egipto hasta su obra.",
+     "lenTitle": 65,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/project-logistics",
+     "seoTitle": "Fret de projets Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Colis hors gabarit et fret de projets de bout en bout : études d'itinéraire, modes opératoires, affrètement et livraison multimodale jusqu'à votre site.",
+     "socialTitle": "Fret de projets Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Colis hors gabarit et fret de projets de bout en bout : études d'itinéraire, modes opératoires, affrètement et livraison multimodale jusqu'à votre site.",
+     "lenTitle": 62,
+     "lenDesc": 152
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/project-logistics",
+     "seoTitle": "Carichi di progetto Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Carichi fuori sagoma e di progetto, end-to-end: rilievi di percorso, method statement, noleggio e consegna multimodale dai porti egiziani al cantiere.",
+     "socialTitle": "Carichi di progetto Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Carichi fuori sagoma e di progetto, end-to-end: rilievi di percorso, method statement, noleggio e consegna multimodale dai porti egiziani al cantiere.",
+     "lenTitle": 66,
+     "lenDesc": 150
+    }
+   }
+  },
+  {
+   "id": "vp246",
+   "path": "/supply-chain-warehousing",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/supply-chain-warehousing",
+     "seoTitle": "سلاسل الإمداد والتخزين | Rockit Transport Services & Logistics",
+     "metaDescription": "تخزين مرن في مصر مع خدمات التجميع وتغليف الصادرات والتوزيع، مرتبط بخدمات الشحن الجوي والبحري والبري لدينا. مجمّعو صادرات مرخّصون.",
+     "socialTitle": "سلاسل الإمداد والتخزين | Rockit Transport Services & Logistics",
+     "socialDescription": "تخزين مرن في مصر مع خدمات التجميع وتغليف الصادرات والتوزيع، مرتبط بخدمات الشحن الجوي والبحري والبري لدينا. مجمّعو صادرات مرخّصون.",
+     "lenTitle": 62,
+     "lenDesc": 129
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/supply-chain-warehousing",
+     "seoTitle": "Lieferkette & Lagerhaltung | Rockit Transport Services & Logistics",
+     "metaDescription": "Flexible Lagerung in Ägypten mit Konsolidierung, Exportverpackung und Distribution, plus Luft-, See- und Landfracht. Lizenzierte Exportkonsolidierer.",
+     "socialTitle": "Lieferkette & Lagerhaltung | Rockit Transport Services & Logistics",
+     "socialDescription": "Flexible Lagerung in Ägypten mit Konsolidierung, Exportverpackung und Distribution, plus Luft-, See- und Landfracht. Lizenzierte Exportkonsolidierer.",
+     "lenTitle": 66,
+     "lenDesc": 149
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/supply-chain-warehousing",
+     "seoTitle": "Cadena de suministro y almacén | Rockit Transport Services & Logistics",
+     "metaDescription": "Almacenaje flexible en Egipto: consolidación, embalaje para exportar y distribución, junto a carga aérea, marítima y terrestre. Consolidadores autorizados.",
+     "socialTitle": "Cadena de suministro y almacén | Rockit Transport Services & Logistics",
+     "socialDescription": "Almacenaje flexible en Egipto: consolidación, embalaje para exportar y distribución, junto a carga aérea, marítima y terrestre. Consolidadores autorizados.",
+     "lenTitle": 70,
+     "lenDesc": 155
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/supply-chain-warehousing",
+     "seoTitle": "Logistique et entreposage | Rockit Transport Services & Logistics",
+     "metaDescription": "Entreposage flexible en Égypte : groupage, emballage export et distribution, liés à notre fret aérien, maritime et routier. Groupeurs export agréés.",
+     "socialTitle": "Logistique et entreposage | Rockit Transport Services & Logistics",
+     "socialDescription": "Entreposage flexible en Égypte : groupage, emballage export et distribution, liés à notre fret aérien, maritime et routier. Groupeurs export agréés.",
+     "lenTitle": 65,
+     "lenDesc": 148
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/supply-chain-warehousing",
+     "seoTitle": "Supply chain e magazzinaggio | Rockit Transport Services & Logistics",
+     "metaDescription": "Magazzini flessibili in Egitto: consolidamento, imballaggio export e distribuzione, con trasporto aereo, marittimo e terrestre. Consolidatori autorizzati.",
+     "socialTitle": "Supply chain e magazzinaggio | Rockit Transport Services & Logistics",
+     "socialDescription": "Magazzini flessibili in Egitto: consolidamento, imballaggio export e distribuzione, con trasporto aereo, marittimo e terrestre. Consolidatori autorizzati.",
+     "lenTitle": 68,
+     "lenDesc": 154
+    }
+   }
+  },
+  {
+   "id": "k5xxz",
+   "path": "/industries",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/industries",
+     "seoTitle": "لوجستيات القطاعات في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "شحن لقطاعات الأزياء والسيارات والأدوية والكيماويات والسلع سريعة التلف والمعارض والطاقة من مصر وإليها. روّاد شحن الملابس المعلّقة.",
+     "socialTitle": "لوجستيات القطاعات في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "شحن لقطاعات الأزياء والسيارات والأدوية والكيماويات والسلع سريعة التلف والمعارض والطاقة من مصر وإليها. روّاد شحن الملابس المعلّقة.",
+     "lenTitle": 64,
+     "lenDesc": 129
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/industries",
+     "seoTitle": "Branchenlogistik Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Fracht für Mode, Automobil, Pharma, Chemie, verderbliche Waren, Messen und Energie, von und nach Ägypten. Pioniere im Versand von Hängeware.",
+     "socialTitle": "Branchenlogistik Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Fracht für Mode, Automobil, Pharma, Chemie, verderbliche Waren, Messen und Energie, von und nach Ägypten. Pioniere im Versand von Hängeware.",
+     "lenTitle": 64,
+     "lenDesc": 140
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/industries",
+     "seoTitle": "Logística sectorial Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Carga para moda, automoción, farmacia, química, perecederos, ferias y energía, desde y hacia Egipto. Pioneros en el envío de prendas colgadas.",
+     "socialTitle": "Logística sectorial Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Carga para moda, automoción, farmacia, química, perecederos, ferias y energía, desde y hacia Egipto. Pioneros en el envío de prendas colgadas.",
+     "lenTitle": 66,
+     "lenDesc": 142
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/industries",
+     "seoTitle": "Logistique sectorielle Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Fret pour la mode, l'automobile, la pharma, la chimie, le périssable, les salons et l'énergie, vers et depuis l'Égypte. Pionniers du textile sur cintres.",
+     "socialTitle": "Logistique sectorielle Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Fret pour la mode, l'automobile, la pharma, la chimie, le périssable, les salons et l'énergie, vers et depuis l'Égypte. Pionniers du textile sur cintres.",
+     "lenTitle": 69,
+     "lenDesc": 153
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/industries",
+     "seoTitle": "Logistica di settore Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Spedizioni per moda, automotive, farmaceutico, chimica, deperibili, fiere ed energia, da e per l'Egitto. Pionieri nel trasporto di capi appesi.",
+     "socialTitle": "Logistica di settore Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Spedizioni per moda, automotive, farmaceutico, chimica, deperibili, fiere ed energia, da e per l'Egitto. Pionieri nel trasporto di capi appesi.",
+     "lenTitle": 67,
+     "lenDesc": 143
+    }
+   }
+  },
+  {
+   "id": "yp9f9",
+   "path": "/projects",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/projects",
+     "seoTitle": "سجل مشروعاتنا | Rockit Transport Services & Logistics",
+     "metaDescription": "مختارات من الشحنات التي خطّطت لها Rockit ونفّذتها عبر الموانئ المصرية، من المعدات خارج المقاس والأطوال الكبيرة إلى عمليات النقل متعدد الوسائط المعقدة.",
+     "socialTitle": "سجل مشروعاتنا | Rockit Transport Services & Logistics",
+     "socialDescription": "مختارات من الشحنات التي خطّطت لها Rockit ونفّذتها عبر الموانئ المصرية، من المعدات خارج المقاس والأطوال الكبيرة إلى عمليات النقل متعدد الوسائط المعقدة.",
+     "lenTitle": 53,
+     "lenDesc": 150
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/projects",
+     "seoTitle": "Projektreferenzen | Rockit Transport Services & Logistics",
+     "metaDescription": "Ausgewählte Sendungen, die Rockit über ägyptische Häfen geplant und geliefert hat: von Übermaß und Langgut bis zu komplexen multimodalen Transporten.",
+     "socialTitle": "Projektreferenzen | Rockit Transport Services & Logistics",
+     "socialDescription": "Ausgewählte Sendungen, die Rockit über ägyptische Häfen geplant und geliefert hat: von Übermaß und Langgut bis zu komplexen multimodalen Transporten.",
+     "lenTitle": 57,
+     "lenDesc": 149
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/projects",
+     "seoTitle": "Portafolio de proyectos | Rockit Transport Services & Logistics",
+     "metaDescription": "Envíos seleccionados que Rockit ha planificado y entregado por puertos egipcios, de equipos fuera de gálibo y piezas largas a operaciones multimodales.",
+     "socialTitle": "Portafolio de proyectos | Rockit Transport Services & Logistics",
+     "socialDescription": "Envíos seleccionados que Rockit ha planificado y entregado por puertos egipcios, de equipos fuera de gálibo y piezas largas a operaciones multimodales.",
+     "lenTitle": 63,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/projects",
+     "seoTitle": "Nos réalisations | Rockit Transport Services & Logistics",
+     "metaDescription": "Expéditions planifiées et livrées par Rockit via les ports égyptiens : colis hors gabarit, pièces longues et opérations multimodales complexes.",
+     "socialTitle": "Nos réalisations | Rockit Transport Services & Logistics",
+     "socialDescription": "Expéditions planifiées et livrées par Rockit via les ports égyptiens : colis hors gabarit, pièces longues et opérations multimodales complexes.",
+     "lenTitle": 56,
+     "lenDesc": 143
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/projects",
+     "seoTitle": "Portfolio progetti | Rockit Transport Services & Logistics",
+     "metaDescription": "Spedizioni selezionate pianificate e consegnate da Rockit nei porti egiziani: carichi fuori sagoma, pezzi lunghi e complessi trasporti multimodali.",
+     "socialTitle": "Portfolio progetti | Rockit Transport Services & Logistics",
+     "socialDescription": "Spedizioni selezionate pianificate e consegnate da Rockit nei porti egiziani: carichi fuori sagoma, pezzi lunghi e complessi trasporti multimodali.",
+     "lenTitle": 58,
+     "lenDesc": 147
+    }
+   }
+  },
+  {
+   "id": "acvt4",
+   "path": "/insights",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/insights",
+     "seoTitle": "أدلة الجمارك والشحن | Rockit Transport Services & Logistics",
+     "metaDescription": "أدلة عملية من قسم الجمارك لدينا في القاهرة: نظام ACID ومنصة نافذة، وإجراءات الموانئ المصرية، وأزمنة العبور، والمستندات التي تُبقي شحناتك في حركة.",
+     "socialTitle": "أدلة الجمارك والشحن | Rockit Transport Services & Logistics",
+     "socialDescription": "أدلة عملية من قسم الجمارك لدينا في القاهرة: نظام ACID ومنصة نافذة، وإجراءات الموانئ المصرية، وأزمنة العبور، والمستندات التي تُبقي شحناتك في حركة.",
+     "lenTitle": 59,
+     "lenDesc": 145
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/insights",
+     "seoTitle": "Zoll- & Frachtratgeber | Rockit Transport Services & Logistics",
+     "metaDescription": "Praxiswissen unseres Zollteams in Kairo: ACID und Nafeza, Abläufe in Ägyptens Häfen, Transitzeiten und die Dokumente, die Fracht in Bewegung halten.",
+     "socialTitle": "Zoll- & Frachtratgeber | Rockit Transport Services & Logistics",
+     "socialDescription": "Praxiswissen unseres Zollteams in Kairo: ACID und Nafeza, Abläufe in Ägyptens Häfen, Transitzeiten und die Dokumente, die Fracht in Bewegung halten.",
+     "lenTitle": 62,
+     "lenDesc": 148
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/insights",
+     "seoTitle": "Guías de aduanas y fletes | Rockit Transport Services & Logistics",
+     "metaDescription": "Guías prácticas de nuestro equipo de aduanas en El Cairo: ACID y Nafeza, trámites en puertos egipcios, tiempos de tránsito y los documentos clave.",
+     "socialTitle": "Guías de aduanas y fletes | Rockit Transport Services & Logistics",
+     "socialDescription": "Guías prácticas de nuestro equipo de aduanas en El Cairo: ACID y Nafeza, trámites en puertos egipcios, tiempos de tránsito y los documentos clave.",
+     "lenTitle": 65,
+     "lenDesc": 146
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/insights",
+     "seoTitle": "Guides douane et fret | Rockit Transport Services & Logistics",
+     "metaDescription": "Guides pratiques de notre service douane au Caire : ACID et Nafeza, procédures portuaires égyptiennes, délais de transit et documents essentiels.",
+     "socialTitle": "Guides douane et fret | Rockit Transport Services & Logistics",
+     "socialDescription": "Guides pratiques de notre service douane au Caire : ACID et Nafeza, procédures portuaires égyptiennes, délais de transit et documents essentiels.",
+     "lenTitle": 61,
+     "lenDesc": 145
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/insights",
+     "seoTitle": "Guide doganali e trasporti | Rockit Transport Services & Logistics",
+     "metaDescription": "Guide pratiche del nostro ufficio doganale al Cairo: ACID e Nafeza, procedure nei porti egiziani, tempi di transito e documenti per spedire senza intoppi.",
+     "socialTitle": "Guide doganali e trasporti | Rockit Transport Services & Logistics",
+     "socialDescription": "Guide pratiche del nostro ufficio doganale al Cairo: ACID e Nafeza, procedure nei porti egiziani, tempi di transito e documenti per spedire senza intoppi.",
+     "lenTitle": 66,
+     "lenDesc": 154
+    }
+   }
+  },
+  {
+   "id": "x9u7i",
+   "path": "/e-services",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/e-services",
+     "seoTitle": "أدوات شحن مجانية | Rockit Transport Services & Logistics",
+     "metaDescription": "سبع أدوات شحن مجانية دون تسجيل دخول: تتبع الحاويات والسفن والرحلات، ومواعيد الإبحار، وخطط التحميل، والوزن المحتسب، والرسوم الجمركية المصرية.",
+     "socialTitle": "أدوات شحن مجانية | Rockit Transport Services & Logistics",
+     "socialDescription": "سبع أدوات شحن مجانية دون تسجيل دخول: تتبع الحاويات والسفن والرحلات، ومواعيد الإبحار، وخطط التحميل، والوزن المحتسب، والرسوم الجمركية المصرية.",
+     "lenTitle": 56,
+     "lenDesc": 140
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/e-services",
+     "seoTitle": "Kostenlose Frachttools | Rockit Transport Services & Logistics",
+     "metaDescription": "Sieben kostenlose Frachttools ohne Anmeldung: Container-, Schiffs- und Flugtracking, Fahrpläne, Ladepläne, Frachtgewicht und ägyptische Zölle.",
+     "socialTitle": "Kostenlose Frachttools | Rockit Transport Services & Logistics",
+     "socialDescription": "Sieben kostenlose Frachttools ohne Anmeldung: Container-, Schiffs- und Flugtracking, Fahrpläne, Ladepläne, Frachtgewicht und ägyptische Zölle.",
+     "lenTitle": 62,
+     "lenDesc": 142
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/e-services",
+     "seoTitle": "Herramientas de flete gratis | Rockit Transport Services & Logistics",
+     "metaDescription": "Siete herramientas gratuitas sin registro: rastreo de contenedores, buques y vuelos, itinerarios, planes de carga, peso tasable y aranceles egipcios.",
+     "socialTitle": "Herramientas de flete gratis | Rockit Transport Services & Logistics",
+     "socialDescription": "Siete herramientas gratuitas sin registro: rastreo de contenedores, buques y vuelos, itinerarios, planes de carga, peso tasable y aranceles egipcios.",
+     "lenTitle": 68,
+     "lenDesc": 149
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/e-services",
+     "seoTitle": "Outils fret gratuits | Rockit Transport Services & Logistics",
+     "metaDescription": "Sept outils fret gratuits sans inscription : suivi de conteneurs, navires et vols, horaires, plans de chargement, poids taxable et droits de douane.",
+     "socialTitle": "Outils fret gratuits | Rockit Transport Services & Logistics",
+     "socialDescription": "Sept outils fret gratuits sans inscription : suivi de conteneurs, navires et vols, horaires, plans de chargement, poids taxable et droits de douane.",
+     "lenTitle": 60,
+     "lenDesc": 148
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/e-services",
+     "seoTitle": "Strumenti cargo gratuiti | Rockit Transport Services & Logistics",
+     "metaDescription": "Sette strumenti gratuiti, senza login: tracking di container, navi e voli, orari di partenza, piani di carico, peso tassabile e dazi doganali egiziani.",
+     "socialTitle": "Strumenti cargo gratuiti | Rockit Transport Services & Logistics",
+     "socialDescription": "Sette strumenti gratuiti, senza login: tracking di container, navi e voli, orari di partenza, piani di carico, peso tassabile e dazi doganali egiziani.",
+     "lenTitle": 64,
+     "lenDesc": 151
+    }
+   }
+  },
+  {
+   "id": "fa5kh",
+   "path": "/container-tracking",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/container-tracking",
+     "seoTitle": "تتبع الحاويات | Rockit Transport Services & Logistics",
+     "metaDescription": "تحقّق من أي رقم حاوية وفق معيار ISO 6346، واعرف خط الملاحة المالك لها، وافتح صفحة التتبع لدى الناقل بنقرة واحدة. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "تتبع الحاويات | Rockit Transport Services & Logistics",
+     "socialDescription": "تحقّق من أي رقم حاوية وفق معيار ISO 6346، واعرف خط الملاحة المالك لها، وافتح صفحة التتبع لدى الناقل بنقرة واحدة. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 53,
+     "lenDesc": 136
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/container-tracking",
+     "seoTitle": "Container-Tracking | Rockit Transport Services & Logistics",
+     "metaDescription": "Containernummer nach ISO 6346 prüfen, die Reederei erkennen und deren eigenes Tracking mit einem Klick öffnen. Kostenlos, ohne Anmeldung.",
+     "socialTitle": "Container-Tracking | Rockit Transport Services & Logistics",
+     "socialDescription": "Containernummer nach ISO 6346 prüfen, die Reederei erkennen und deren eigenes Tracking mit einem Klick öffnen. Kostenlos, ohne Anmeldung.",
+     "lenTitle": 58,
+     "lenDesc": 137
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/container-tracking",
+     "seoTitle": "Rastreo de contenedores | Rockit Transport Services & Logistics",
+     "metaDescription": "Valide cualquier número de contenedor según ISO 6346, vea qué naviera lo posee y abra su seguimiento con un clic. Gratis y sin registro.",
+     "socialTitle": "Rastreo de contenedores | Rockit Transport Services & Logistics",
+     "socialDescription": "Valide cualquier número de contenedor según ISO 6346, vea qué naviera lo posee y abra su seguimiento con un clic. Gratis y sin registro.",
+     "lenTitle": 63,
+     "lenDesc": 136
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/container-tracking",
+     "seoTitle": "Suivi de conteneurs | Rockit Transport Services & Logistics",
+     "metaDescription": "Vérifiez un numéro de conteneur selon ISO 6346, identifiez la compagnie maritime et ouvrez son suivi en un clic. Gratuit, sans inscription.",
+     "socialTitle": "Suivi de conteneurs | Rockit Transport Services & Logistics",
+     "socialDescription": "Vérifiez un numéro de conteneur selon ISO 6346, identifiez la compagnie maritime et ouvrez son suivi en un clic. Gratuit, sans inscription.",
+     "lenTitle": 59,
+     "lenDesc": 139
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/container-tracking",
+     "seoTitle": "Tracking container | Rockit Transport Services & Logistics",
+     "metaDescription": "Verifica qualsiasi numero di container secondo ISO 6346, scopri la compagnia armatrice e apri il suo tracking con un clic. Gratis, senza login.",
+     "socialTitle": "Tracking container | Rockit Transport Services & Logistics",
+     "socialDescription": "Verifica qualsiasi numero di container secondo ISO 6346, scopri la compagnia armatrice e apri il suo tracking con un clic. Gratis, senza login.",
+     "lenTitle": 58,
+     "lenDesc": 143
+    }
+   }
+  },
+  {
+   "id": "t9gjx",
+   "path": "/vessel-tracking",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/vessel-tracking",
+     "seoTitle": "تتبع السفن مباشرةً | Rockit Transport Services & Logistics",
+     "metaDescription": "الموقع المباشر عبر AIS والمسار الأخير ووجهة أي سفينة برقم IMO أو MMSI، على خريطة تتمركز حول قناة السويس والبحر الأحمر. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "تتبع السفن مباشرةً | Rockit Transport Services & Logistics",
+     "socialDescription": "الموقع المباشر عبر AIS والمسار الأخير ووجهة أي سفينة برقم IMO أو MMSI، على خريطة تتمركز حول قناة السويس والبحر الأحمر. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 58,
+     "lenDesc": 142
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/vessel-tracking",
+     "seoTitle": "Live-Schiffsverfolgung | Rockit Transport Services & Logistics",
+     "metaDescription": "Live-AIS-Position, letzte Route und Ziel jedes Schiffs per IMO- oder MMSI-Nummer, auf einer Karte rund um Suezkanal und Rotes Meer. Kostenlos.",
+     "socialTitle": "Live-Schiffsverfolgung | Rockit Transport Services & Logistics",
+     "socialDescription": "Live-AIS-Position, letzte Route und Ziel jedes Schiffs per IMO- oder MMSI-Nummer, auf einer Karte rund um Suezkanal und Rotes Meer. Kostenlos.",
+     "lenTitle": 62,
+     "lenDesc": 142
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/vessel-tracking",
+     "seoTitle": "Seguimiento de buques en vivo | Rockit Transport Services & Logistics",
+     "metaDescription": "Posición AIS en vivo, ruta reciente y destino de cualquier buque por número IMO o MMSI, en un mapa centrado en el canal de Suez y el mar Rojo. Gratis.",
+     "socialTitle": "Seguimiento de buques en vivo | Rockit Transport Services & Logistics",
+     "socialDescription": "Posición AIS en vivo, ruta reciente y destino de cualquier buque por número IMO o MMSI, en un mapa centrado en el canal de Suez y el mar Rojo. Gratis.",
+     "lenTitle": 69,
+     "lenDesc": 150
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/vessel-tracking",
+     "seoTitle": "Suivi des navires en direct | Rockit Transport Services & Logistics",
+     "metaDescription": "Position AIS en direct, trajet récent et destination de tout navire par n° IMO ou MMSI, sur une carte centrée sur Suez et la mer Rouge. Gratuit.",
+     "socialTitle": "Suivi des navires en direct | Rockit Transport Services & Logistics",
+     "socialDescription": "Position AIS en direct, trajet récent et destination de tout navire par n° IMO ou MMSI, sur une carte centrée sur Suez et la mer Rouge. Gratuit.",
+     "lenTitle": 67,
+     "lenDesc": 144
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/vessel-tracking",
+     "seoTitle": "Tracking navi in tempo reale | Rockit Transport Services & Logistics",
+     "metaDescription": "Posizione AIS in tempo reale, rotta recente e destinazione di ogni nave per IMO o MMSI, su una mappa centrata su Canale di Suez e Mar Rosso. Gratis.",
+     "socialTitle": "Tracking navi in tempo reale | Rockit Transport Services & Logistics",
+     "socialDescription": "Posizione AIS in tempo reale, rotta recente e destinazione di ogni nave per IMO o MMSI, su una mappa centrata su Canale di Suez e Mar Rosso. Gratis.",
+     "lenTitle": 68,
+     "lenDesc": 148
+    }
+   }
+  },
+  {
+   "id": "lnvef",
+   "path": "/flight-tracking",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/flight-tracking",
+     "seoTitle": "تتبع الرحلات وبوالص الشحن | Rockit Transport Services & Logistics",
+     "metaDescription": "تحقّق من بوليصة الشحن الجوي ذات 11 رقمًا، وانتقل إلى تتبع الشحنات لدى شركة الطيران، وتابع الطائرة مباشرةً برقم الرحلة. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "تتبع الرحلات وبوالص الشحن | Rockit Transport Services & Logistics",
+     "socialDescription": "تحقّق من بوليصة الشحن الجوي ذات 11 رقمًا، وانتقل إلى تتبع الشحنات لدى شركة الطيران، وتابع الطائرة مباشرةً برقم الرحلة. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 65,
+     "lenDesc": 142
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/flight-tracking",
+     "seoTitle": "Flug- & AWB-Tracking | Rockit Transport Services & Logistics",
+     "metaDescription": "11-stellige Luftfrachtbriefnummer prüfen, direkt zum Cargo-Tracking der Airline springen und das Flugzeug live per Flugnummer verfolgen. Kostenlos.",
+     "socialTitle": "Flug- & AWB-Tracking | Rockit Transport Services & Logistics",
+     "socialDescription": "11-stellige Luftfrachtbriefnummer prüfen, direkt zum Cargo-Tracking der Airline springen und das Flugzeug live per Flugnummer verfolgen. Kostenlos.",
+     "lenTitle": 60,
+     "lenDesc": 147
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/flight-tracking",
+     "seoTitle": "Seguimiento de vuelos y AWB | Rockit Transport Services & Logistics",
+     "metaDescription": "Valide una guía aérea de 11 dígitos, acceda al rastreo de carga de la aerolínea y siga el avión en directo por número de vuelo. Gratis y sin registro.",
+     "socialTitle": "Seguimiento de vuelos y AWB | Rockit Transport Services & Logistics",
+     "socialDescription": "Valide una guía aérea de 11 dígitos, acceda al rastreo de carga de la aerolínea y siga el avión en directo por número de vuelo. Gratis y sin registro.",
+     "lenTitle": 67,
+     "lenDesc": 150
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/flight-tracking",
+     "seoTitle": "Suivi des vols et LTA | Rockit Transport Services & Logistics",
+     "metaDescription": "Vérifiez une LTA à 11 chiffres, accédez au suivi fret de la compagnie et suivez l'avion en direct par numéro de vol. Gratuit, sans inscription.",
+     "socialTitle": "Suivi des vols et LTA | Rockit Transport Services & Logistics",
+     "socialDescription": "Vérifiez une LTA à 11 chiffres, accédez au suivi fret de la compagnie et suivez l'avion en direct par numéro de vol. Gratuit, sans inscription.",
+     "lenTitle": 61,
+     "lenDesc": 143
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/flight-tracking",
+     "seoTitle": "Tracking voli e AWB | Rockit Transport Services & Logistics",
+     "metaDescription": "Verifica una lettera di vettura aerea di 11 cifre, apri il tracking cargo della compagnia e segui l'aereo in diretta col numero di volo. Gratis.",
+     "socialTitle": "Tracking voli e AWB | Rockit Transport Services & Logistics",
+     "socialDescription": "Verifica una lettera di vettura aerea di 11 cifre, apri il tracking cargo della compagnia e segui l'aereo in diretta col numero di volo. Gratis.",
+     "lenTitle": 59,
+     "lenDesc": 144
+    }
+   }
+  },
+  {
+   "id": "tquoj",
+   "path": "/vessel-schedules",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/vessel-schedules",
+     "seoTitle": "مواعيد الإبحار في مصر | Rockit Transport Services & Logistics",
+     "metaDescription": "رحلات الإبحار من وإلى الإسكندرية ودمياط وبورسعيد والعين السخنة لدى كبرى الخطوط الملاحية، مع رمز UN/LOCODE لكل ميناء. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "مواعيد الإبحار في مصر | Rockit Transport Services & Logistics",
+     "socialDescription": "رحلات الإبحار من وإلى الإسكندرية ودمياط وبورسعيد والعين السخنة لدى كبرى الخطوط الملاحية، مع رمز UN/LOCODE لكل ميناء. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 61,
+     "lenDesc": 140
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/vessel-schedules",
+     "seoTitle": "Schiffsfahrpläne Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Abfahrten von und nach Alexandria, Damietta, Port Said und Ain Sokhna bei den großen Reedereien, mit dem UN/LOCODE jedes Hafens. Kostenlos.",
+     "socialTitle": "Schiffsfahrpläne Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Abfahrten von und nach Alexandria, Damietta, Port Said und Ain Sokhna bei den großen Reedereien, mit dem UN/LOCODE jedes Hafens. Kostenlos.",
+     "lenTitle": 64,
+     "lenDesc": 139
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/vessel-schedules",
+     "seoTitle": "Itinerarios navieros Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Salidas desde y hacia Alejandría, Damietta, Port Said y Ain Sokhna de las principales navieras, con el UN/LOCODE de cada puerto. Gratis y sin registro.",
+     "socialTitle": "Itinerarios navieros Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Salidas desde y hacia Alejandría, Damietta, Port Said y Ain Sokhna de las principales navieras, con el UN/LOCODE de cada puerto. Gratis y sin registro.",
+     "lenTitle": 67,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/vessel-schedules",
+     "seoTitle": "Horaires maritimes Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Départs vers et depuis Alexandrie, Damiette, Port-Saïd et Ain Sokhna chez les grands armateurs, avec l'UN/LOCODE de chaque port. Gratuit, sans inscription.",
+     "socialTitle": "Horaires maritimes Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Départs vers et depuis Alexandrie, Damiette, Port-Saïd et Ain Sokhna chez les grands armateurs, avec l'UN/LOCODE de chaque port. Gratuit, sans inscription.",
+     "lenTitle": 65,
+     "lenDesc": 155
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/vessel-schedules",
+     "seoTitle": "Orari navi Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Partenze da e per Alessandria, Damietta, Port Said e Ain Sokhna dei principali vettori, con l'UN/LOCODE di ogni porto. Gratis, senza login.",
+     "socialTitle": "Orari navi Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Partenze da e per Alessandria, Damietta, Port Said e Ain Sokhna dei principali vettori, con l'UN/LOCODE di ogni porto. Gratis, senza login.",
+     "lenTitle": 57,
+     "lenDesc": 139
+    }
+   }
+  },
+  {
+   "id": "tmhs2",
+   "path": "/load-calculator",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/load-calculator",
+     "seoTitle": "حاسبة تحميل الحاويات | Rockit Transport Services & Logistics",
+     "metaDescription": "اعرف عدد المنصات أو الصناديق التي تتسع لها حاوية 20 أو 40 أو 45 قدمًا أو مقطورة 13.6 م، مع مراعاة حدود التستيف والوزن. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "حاسبة تحميل الحاويات | Rockit Transport Services & Logistics",
+     "socialDescription": "اعرف عدد المنصات أو الصناديق التي تتسع لها حاوية 20 أو 40 أو 45 قدمًا أو مقطورة 13.6 م، مع مراعاة حدود التستيف والوزن. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 60,
+     "lenDesc": 142
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/load-calculator",
+     "seoTitle": "Container-Ladeplaner | Rockit Transport Services & Logistics",
+     "metaDescription": "Wie viele Paletten oder Kartons passen in einen 20-, 40- oder 45-Fuß-Container oder einen 13,6-m-Trailer, mit Stapel- und Gewichtsgrenzen. Kostenlos.",
+     "socialTitle": "Container-Ladeplaner | Rockit Transport Services & Logistics",
+     "socialDescription": "Wie viele Paletten oder Kartons passen in einen 20-, 40- oder 45-Fuß-Container oder einen 13,6-m-Trailer, mit Stapel- und Gewichtsgrenzen. Kostenlos.",
+     "lenTitle": 60,
+     "lenDesc": 149
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/load-calculator",
+     "seoTitle": "Calculadora de carga | Rockit Transport Services & Logistics",
+     "metaDescription": "Calcule cuántos palés o cajas caben en un contenedor de 20, 40 o 45 pies o un remolque de 13,6 m, con límites de apilado y peso. Gratis y sin registro.",
+     "socialTitle": "Calculadora de carga | Rockit Transport Services & Logistics",
+     "socialDescription": "Calcule cuántos palés o cajas caben en un contenedor de 20, 40 o 45 pies o un remolque de 13,6 m, con límites de apilado y peso. Gratis y sin registro.",
+     "lenTitle": 60,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/load-calculator",
+     "seoTitle": "Calculateur de chargement | Rockit Transport Services & Logistics",
+     "metaDescription": "Combien de palettes ou de colis tiennent dans un conteneur 20, 40 ou 45 pieds ou une remorque de 13,6 m, gerbage et poids compris. Gratuit.",
+     "socialTitle": "Calculateur de chargement | Rockit Transport Services & Logistics",
+     "socialDescription": "Combien de palettes ou de colis tiennent dans un conteneur 20, 40 ou 45 pieds ou une remorque de 13,6 m, gerbage et poids compris. Gratuit.",
+     "lenTitle": 65,
+     "lenDesc": 139
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/load-calculator",
+     "seoTitle": "Calcolo carico container | Rockit Transport Services & Logistics",
+     "metaDescription": "Scopri quanti pallet o colli entrano in un container da 20, 40 o 45 piedi o in un rimorchio da 13,6 m, con limiti di impilaggio e peso. Gratis.",
+     "socialTitle": "Calcolo carico container | Rockit Transport Services & Logistics",
+     "socialDescription": "Scopri quanti pallet o colli entrano in un container da 20, 40 o 45 piedi o in un rimorchio da 13,6 m, con limiti di impilaggio e peso. Gratis.",
+     "lenTitle": 64,
+     "lenDesc": 143
+    }
+   }
+  },
+  {
+   "id": "vwpa2",
+   "path": "/chargeable-weight",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/chargeable-weight",
+     "seoTitle": "حاسبة الوزن المحتسب | Rockit Transport Services & Logistics",
+     "metaDescription": "الوزن الحجمي والوزن المحتسب للشحن الجوي (1:6000) والسريع (1:5000) والبري (1:3000) والبحري، مع شرح كل قاعدة خطوة بخطوة. مجانًا ودون تسجيل دخول.",
+     "socialTitle": "حاسبة الوزن المحتسب | Rockit Transport Services & Logistics",
+     "socialDescription": "الوزن الحجمي والوزن المحتسب للشحن الجوي (1:6000) والسريع (1:5000) والبري (1:3000) والبحري، مع شرح كل قاعدة خطوة بخطوة. مجانًا ودون تسجيل دخول.",
+     "lenTitle": 59,
+     "lenDesc": 142
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/chargeable-weight",
+     "seoTitle": "Frachtgewicht-Rechner | Rockit Transport Services & Logistics",
+     "metaDescription": "Volumen- und frachtpflichtiges Gewicht für Luft (1:6000), Kurier (1:5000), Straße (1:3000) und See, jede Regel Schritt für Schritt erklärt. Kostenlos.",
+     "socialTitle": "Frachtgewicht-Rechner | Rockit Transport Services & Logistics",
+     "socialDescription": "Volumen- und frachtpflichtiges Gewicht für Luft (1:6000), Kurier (1:5000), Straße (1:3000) und See, jede Regel Schritt für Schritt erklärt. Kostenlos.",
+     "lenTitle": 61,
+     "lenDesc": 150
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/chargeable-weight",
+     "seoTitle": "Calculadora de peso tasable | Rockit Transport Services & Logistics",
+     "metaDescription": "Peso volumétrico y tasable para aéreo (1:6000), courier (1:5000), carretera (1:3000) y marítimo, con cada regla explicada paso a paso. Gratis.",
+     "socialTitle": "Calculadora de peso tasable | Rockit Transport Services & Logistics",
+     "socialDescription": "Peso volumétrico y tasable para aéreo (1:6000), courier (1:5000), carretera (1:3000) y marítimo, con cada regla explicada paso a paso. Gratis.",
+     "lenTitle": 67,
+     "lenDesc": 142
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/chargeable-weight",
+     "seoTitle": "Calcul du poids taxable | Rockit Transport Services & Logistics",
+     "metaDescription": "Poids volumétrique et taxable pour l'aérien (1:6000), l'express (1:5000), la route (1:3000) et le maritime, chaque règle expliquée pas à pas. Gratuit.",
+     "socialTitle": "Calcul du poids taxable | Rockit Transport Services & Logistics",
+     "socialDescription": "Poids volumétrique et taxable pour l'aérien (1:6000), l'express (1:5000), la route (1:3000) et le maritime, chaque règle expliquée pas à pas. Gratuit.",
+     "lenTitle": 63,
+     "lenDesc": 150
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/chargeable-weight",
+     "seoTitle": "Calcolo peso tassabile | Rockit Transport Services & Logistics",
+     "metaDescription": "Peso volumetrico e tassabile per aereo (1:6000), corriere (1:5000), strada (1:3000) e mare, con ogni regola spiegata passo per passo. Gratis, senza login.",
+     "socialTitle": "Calcolo peso tassabile | Rockit Transport Services & Logistics",
+     "socialDescription": "Peso volumetrico e tassabile per aereo (1:6000), corriere (1:5000), strada (1:3000) e mare, con ogni regola spiegata passo per passo. Gratis, senza login.",
+     "lenTitle": 62,
+     "lenDesc": 154
+    }
+   }
+  },
+  {
+   "id": "ubn1p",
+   "path": "/duties-taxes-calculator",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/duties-taxes-calculator",
+     "seoTitle": "حاسبة الرسوم والضرائب الجمركية | Rockit Transport Services & Logistics",
+     "metaDescription": "اعثر على البند الجمركي لبضائعك في التعريفة المصرية، واحصل على الرسوم والضريبة والمصروفات وفق التعريفة الرسمية واتفاقيات التجارة، عبر بريدك الإلكتروني.",
+     "socialTitle": "حاسبة الرسوم والضرائب الجمركية | Rockit Transport Services & Logistics",
+     "socialDescription": "اعثر على البند الجمركي لبضائعك في التعريفة المصرية، واحصل على الرسوم والضريبة والمصروفات وفق التعريفة الرسمية واتفاقيات التجارة، عبر بريدك الإلكتروني.",
+     "lenTitle": 70,
+     "lenDesc": 150
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/duties-taxes-calculator",
+     "seoTitle": "Zollrechner Ägypten | Rockit Transport Services & Logistics",
+     "metaDescription": "Finden Sie die ägyptische Zolltarifnummer Ihrer Ware und erhalten Sie Zoll, MwSt. und Gebühren laut offiziellem Tarif inkl. Präferenzsätzen per E-Mail.",
+     "socialTitle": "Zollrechner Ägypten | Rockit Transport Services & Logistics",
+     "socialDescription": "Finden Sie die ägyptische Zolltarifnummer Ihrer Ware und erhalten Sie Zoll, MwSt. und Gebühren laut offiziellem Tarif inkl. Präferenzsätzen per E-Mail.",
+     "lenTitle": 59,
+     "lenDesc": 151
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/duties-taxes-calculator",
+     "seoTitle": "Aranceles e impuestos Egipto | Rockit Transport Services & Logistics",
+     "metaDescription": "Encuentre la partida arancelaria egipcia de su mercancía y reciba por correo aranceles, IVA y tasas según el arancel oficial, con tipos preferenciales.",
+     "socialTitle": "Aranceles e impuestos Egipto | Rockit Transport Services & Logistics",
+     "socialDescription": "Encuentre la partida arancelaria egipcia de su mercancía y reciba por correo aranceles, IVA y tasas según el arancel oficial, con tipos preferenciales.",
+     "lenTitle": 68,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/duties-taxes-calculator",
+     "seoTitle": "Droits et taxes Égypte | Rockit Transport Services & Logistics",
+     "metaDescription": "Trouvez la position tarifaire égyptienne de vos marchandises et recevez par e-mail droits, TVA et frais selon le tarif officiel, taux préférentiels inclus.",
+     "socialTitle": "Droits et taxes Égypte | Rockit Transport Services & Logistics",
+     "socialDescription": "Trouvez la position tarifaire égyptienne de vos marchandises et recevez par e-mail droits, TVA et frais selon le tarif officiel, taux préférentiels inclus.",
+     "lenTitle": 62,
+     "lenDesc": 155
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/duties-taxes-calculator",
+     "seoTitle": "Calcolo dazi e tasse Egitto | Rockit Transport Services & Logistics",
+     "metaDescription": "Trova la voce doganale egiziana della tua merce e ricevi via email dazi, IVA e diritti secondo la tariffa ufficiale, incluse le aliquote preferenziali.",
+     "socialTitle": "Calcolo dazi e tasse Egitto | Rockit Transport Services & Logistics",
+     "socialDescription": "Trova la voce doganale egiziana della tua merce e ricevi via email dazi, IVA e diritti secondo la tariffa ufficiale, incluse le aliquote preferenziali.",
+     "lenTitle": 67,
+     "lenDesc": 151
+    }
+   }
+  },
+  {
+   "id": "qsa0d",
+   "path": "/get-a-quote",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/get-a-quote",
+     "seoTitle": "اطلب عرض سعر للشحن | Rockit Transport Services & Logistics",
+     "metaDescription": "أرسل المنشأ والوجهة ونوع البضاعة والأبعاد، وسيرد عليك أحد المتخصصين بعرض سعر مخصّص للشحن الجوي أو البحري أو البري شاملًا التخليص الجمركي.",
+     "socialTitle": "اطلب عرض سعر للشحن | Rockit Transport Services & Logistics",
+     "socialDescription": "أرسل المنشأ والوجهة ونوع البضاعة والأبعاد، وسيرد عليك أحد المتخصصين بعرض سعر مخصّص للشحن الجوي أو البحري أو البري شاملًا التخليص الجمركي.",
+     "lenTitle": 58,
+     "lenDesc": 137
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/get-a-quote",
+     "seoTitle": "Frachtangebot anfordern | Rockit Transport Services & Logistics",
+     "metaDescription": "Senden Sie Abgangsort, Ziel, Ware und Maße. Ein Spezialist antwortet mit einem Angebot für Luft-, See- oder Landfracht, inklusive Verzollung.",
+     "socialTitle": "Frachtangebot anfordern | Rockit Transport Services & Logistics",
+     "socialDescription": "Senden Sie Abgangsort, Ziel, Ware und Maße. Ein Spezialist antwortet mit einem Angebot für Luft-, See- oder Landfracht, inklusive Verzollung.",
+     "lenTitle": 63,
+     "lenDesc": 141
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/get-a-quote",
+     "seoTitle": "Solicite una cotización | Rockit Transport Services & Logistics",
+     "metaDescription": "Envíe origen, destino, mercancía y medidas. Un especialista le responde con una cotización aérea, marítima o terrestre a medida, con despacho aduanero.",
+     "socialTitle": "Solicite una cotización | Rockit Transport Services & Logistics",
+     "socialDescription": "Envíe origen, destino, mercancía y medidas. Un especialista le responde con una cotización aérea, marítima o terrestre a medida, con despacho aduanero.",
+     "lenTitle": 63,
+     "lenDesc": 151
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/get-a-quote",
+     "seoTitle": "Demander un devis fret | Rockit Transport Services & Logistics",
+     "metaDescription": "Indiquez origine, destination, marchandise et dimensions. Un spécialiste vous envoie un devis aérien, maritime ou routier sur mesure, dédouanement inclus.",
+     "socialTitle": "Demander un devis fret | Rockit Transport Services & Logistics",
+     "socialDescription": "Indiquez origine, destination, marchandise et dimensions. Un spécialiste vous envoie un devis aérien, maritime ou routier sur mesure, dédouanement inclus.",
+     "lenTitle": 62,
+     "lenDesc": 154
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/get-a-quote",
+     "seoTitle": "Richiedi un preventivo | Rockit Transport Services & Logistics",
+     "metaDescription": "Indica origine, destinazione, merce e dimensioni. Uno specialista ti invia un preventivo aereo, marittimo o terrestre su misura, sdoganamento incluso.",
+     "socialTitle": "Richiedi un preventivo | Rockit Transport Services & Logistics",
+     "socialDescription": "Indica origine, destinazione, merce e dimensioni. Uno specialista ti invia un preventivo aereo, marittimo o terrestre su misura, sdoganamento incluso.",
+     "lenTitle": 62,
+     "lenDesc": 150
+    }
+   }
+  },
+  {
+   "id": "vhupk",
+   "path": "/contact",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/contact",
+     "seoTitle": "اتصل بنا | Rockit Transport Services & Logistics",
+     "metaDescription": "اتصل على +20 2 2690 7601 أو راسلنا على inquiry@rockit.com.eg من الأحد إلى الخميس، 08:30–16:30 بتوقيت القاهرة. المقر الرئيسي: مصر الجديدة، القاهرة.",
+     "socialTitle": "اتصل بنا | Rockit Transport Services & Logistics",
+     "socialDescription": "اتصل على +20 2 2690 7601 أو راسلنا على inquiry@rockit.com.eg من الأحد إلى الخميس، 08:30–16:30 بتوقيت القاهرة. المقر الرئيسي: مصر الجديدة، القاهرة.",
+     "lenTitle": 48,
+     "lenDesc": 146
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/contact",
+     "seoTitle": "Kontakt | Rockit Transport Services & Logistics",
+     "metaDescription": "Rufen Sie +20 2 2690 7601 an oder schreiben Sie an inquiry@rockit.com.eg, So–Do 08:30–16:30 Uhr Kairoer Zeit. Zentrale: Heliopolis, Kairo.",
+     "socialTitle": "Kontakt | Rockit Transport Services & Logistics",
+     "socialDescription": "Rufen Sie +20 2 2690 7601 an oder schreiben Sie an inquiry@rockit.com.eg, So–Do 08:30–16:30 Uhr Kairoer Zeit. Zentrale: Heliopolis, Kairo.",
+     "lenTitle": 47,
+     "lenDesc": 138
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/contact",
+     "seoTitle": "Contacto | Rockit Transport Services & Logistics",
+     "metaDescription": "Llame al +20 2 2690 7601 o escriba a inquiry@rockit.com.eg, de domingo a jueves, 08:30–16:30 hora de El Cairo. Sede: Heliópolis, El Cairo.",
+     "socialTitle": "Contacto | Rockit Transport Services & Logistics",
+     "socialDescription": "Llame al +20 2 2690 7601 o escriba a inquiry@rockit.com.eg, de domingo a jueves, 08:30–16:30 hora de El Cairo. Sede: Heliópolis, El Cairo.",
+     "lenTitle": 48,
+     "lenDesc": 138
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/contact",
+     "seoTitle": "Contactez-nous | Rockit Transport Services & Logistics",
+     "metaDescription": "Appelez le +20 2 2690 7601 ou écrivez à inquiry@rockit.com.eg, du dimanche au jeudi, 08h30–16h30 heure du Caire. Siège : Héliopolis, Le Caire.",
+     "socialTitle": "Contactez-nous | Rockit Transport Services & Logistics",
+     "socialDescription": "Appelez le +20 2 2690 7601 ou écrivez à inquiry@rockit.com.eg, du dimanche au jeudi, 08h30–16h30 heure du Caire. Siège : Héliopolis, Le Caire.",
+     "lenTitle": 54,
+     "lenDesc": 142
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/contact",
+     "seoTitle": "Contatti | Rockit Transport Services & Logistics",
+     "metaDescription": "Chiama il +20 2 2690 7601 o scrivi a inquiry@rockit.com.eg, da domenica a giovedì, 08:30–16:30 ora del Cairo. Sede: Heliopolis, Il Cairo.",
+     "socialTitle": "Contatti | Rockit Transport Services & Logistics",
+     "socialDescription": "Chiama il +20 2 2690 7601 o scrivi a inquiry@rockit.com.eg, da domenica a giovedì, 08:30–16:30 ora del Cairo. Sede: Heliopolis, Il Cairo.",
+     "lenTitle": 48,
+     "lenDesc": 137
+    }
+   }
+  },
+  {
+   "id": "wanv7",
+   "path": "/privacy-policy",
+   "langs": {
+    "ar": {
+     "url": "https://www.rockit-transport.com/ar/privacy-policy",
+     "seoTitle": "سياسة الخصوصية | Rockit Transport Services & Logistics",
+     "metaDescription": "كيف تجمع Rockit Transport Services & Logistics البيانات الشخصية من هذا الموقع والاستفسارات ونماذج التواصل وتستخدمها وتحميها، والخيارات المتاحة لك.",
+     "socialTitle": "سياسة الخصوصية | Rockit Transport Services & Logistics",
+     "socialDescription": "كيف تجمع Rockit Transport Services & Logistics البيانات الشخصية من هذا الموقع والاستفسارات ونماذج التواصل وتستخدمها وتحميها، والخيارات المتاحة لك.",
+     "lenTitle": 54,
+     "lenDesc": 146
+    },
+    "de": {
+     "url": "https://www.rockit-transport.com/de/privacy-policy",
+     "seoTitle": "Datenschutzerklärung | Rockit Transport Services & Logistics",
+     "metaDescription": "Wie Rockit Transport Services & Logistics personenbezogene Daten aus Website, Anfragen und Formularen erhebt, nutzt und schützt, und Ihre Rechte.",
+     "socialTitle": "Datenschutzerklärung | Rockit Transport Services & Logistics",
+     "socialDescription": "Wie Rockit Transport Services & Logistics personenbezogene Daten aus Website, Anfragen und Formularen erhebt, nutzt und schützt, und Ihre Rechte.",
+     "lenTitle": 60,
+     "lenDesc": 145
+    },
+    "es": {
+     "url": "https://www.rockit-transport.com/es/privacy-policy",
+     "seoTitle": "Política de privacidad | Rockit Transport Services & Logistics",
+     "metaDescription": "Cómo Rockit Transport Services & Logistics recoge, usa y protege los datos personales de este sitio, consultas y formularios, y qué opciones tiene usted.",
+     "socialTitle": "Política de privacidad | Rockit Transport Services & Logistics",
+     "socialDescription": "Cómo Rockit Transport Services & Logistics recoge, usa y protege los datos personales de este sitio, consultas y formularios, y qué opciones tiene usted.",
+     "lenTitle": 62,
+     "lenDesc": 153
+    },
+    "fr": {
+     "url": "https://www.rockit-transport.com/fr/privacy-policy",
+     "seoTitle": "Politique de confidentialité | Rockit Transport Services & Logistics",
+     "metaDescription": "Comment Rockit Transport Services & Logistics collecte, utilise et protège les données personnelles du site, des demandes et formulaires, et vos choix.",
+     "socialTitle": "Politique de confidentialité | Rockit Transport Services & Logistics",
+     "socialDescription": "Comment Rockit Transport Services & Logistics collecte, utilise et protège les données personnelles du site, des demandes et formulaires, et vos choix.",
+     "lenTitle": 68,
+     "lenDesc": 151
+    },
+    "it": {
+     "url": "https://www.rockit-transport.com/it/privacy-policy",
+     "seoTitle": "Informativa sulla privacy | Rockit Transport Services & Logistics",
+     "metaDescription": "Come Rockit Transport Services & Logistics raccoglie, usa e protegge i dati personali da sito, richieste e moduli, e quali scelte hai.",
+     "socialTitle": "Informativa sulla privacy | Rockit Transport Services & Logistics",
+     "socialDescription": "Come Rockit Transport Services & Logistics raccoglie, usa e protegge i dati personali da sito, richieste e moduli, e quali scelte hai.",
+     "lenTitle": 65,
+     "lenDesc": 134
+    }
+   }
+  }
+ ]
+}
