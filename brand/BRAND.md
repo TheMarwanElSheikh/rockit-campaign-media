@@ -6,7 +6,7 @@ These are standing instructions from the brand owner. Any person or agent produc
 
 **Never use a flat yellow or flat gold as the brand gold.** The old `#d5ae69` is retired.
 
-The gradient was sampled from the globe of `brand/rockit_mark_gold_1024_transparent.png`, the latest official mark:
+The gradient was sampled from the golden-yellow globe of the latest official artwork (`brand/rockit_mark_gold_1024_transparent.png`, the same globe as the lockup). Re-sample it from `rockit_logo_lockup_transparent.png` once that file is in `brand/`, and update this table if it differs:
 
 | Stop | Colour | Role |
 |---|---|---|
@@ -40,16 +40,31 @@ Every CSS gradient also sets a `background-color` fallback of `#c08f2f`.
 
 **Charts.** Bars are filled with the gradient: `#a47420 → #c08f2f → #e1b348` on light surfaces, and `#a47420 → #b17f25 → #e1b348 → #f6d77a` on navy. Both pass the dataviz palette validator against the spot-series blue (`#3f6db3` light, `#5c84c6` dark).
 
-## 2. Logo: ONLY the latest official Rockit mark, unaltered, on every branded asset
+## 2. Logo: ONLY the owner-supplied "Rock it / Transport Services" lockup, as supplied
 
-- **The logo is `brand/rockit_mark_gold_1024_transparent.png`**: the navy "R" with the golden-yellow gradient globe. It was added to `main` on 14 Nov 2026 in commit `aa70bb8`, "Logo globe: golden-yellow gradient". `brand/rockit_mark_gold_1024_white.png` is the same mark on a white ground.
-- **Before using any logo, check `main`** (`git fetch origin && git log origin/main -- brand/`) for a newer one. The latest file on `main` always wins.
-- **Retired, never to be used again:**
-  - the older "Rock it Transport Services" lockup with the flat globe (`RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`)
-  - any inverted, reversed or recoloured version (rejected 15 Nov 2026)
-- **Never** invert, reverse, recolour, tint, redraw, stretch, rotate or add effects. Trimming the transparent margin is the only allowed processing.
-- **On a navy or dark design, place the mark on a light panel**: paper `#faf7ef` or white. The mark itself never changes to suit the background.
-- **The typeset wordmark sits beside the mark, never instead of it.** "ROCKIT" is set in Cormorant Garamond in the logo navy `#0b1f56`. "TRANSPORT SERVICES & LOGISTICS" is set in Inter caps in gold.
+The owner supplied the official logo on 15 Nov 2026, in five versions:
+- the lockup on a transparent background, at two sizes
+- the lockup on a white background, at two sizes
+- a version for dark backgrounds, with "Transport Services" in white
+
+The lockup is: a navy "R" with the gold gradient globe, "ock it" in navy, the gold swoosh and arrow, and "Transport Services" underneath.
+
+**Files** (store them in `brand/` exactly as supplied, unedited):
+
+| File | Use |
+|---|---|
+| `rockit_logo_lockup_transparent.png` | Default. On light surfaces (paper `#faf7ef` or white). |
+| `rockit_logo_lockup_white.png` | Where a white-ground file is needed (documents, printing, platforms that reject transparency). |
+| `rockit_logo_lockup_dark.png` | The owner's own version for dark backgrounds ("Transport Services" in white). |
+
+**Rules:**
+- Use these files and nothing else. Never redraw, re-letter, recolour, invert, tint, stretch, crop into, rotate, add effects, or set type next to the lockup as a substitute. It already carries the name. Trimming transparent margin is the only allowed processing.
+- Never create your own dark or reversed version. Use the owner's `rockit_logo_lockup_dark.png`, or place the transparent lockup on a light panel.
+- **Retired, never to be used as the logo:**
+  - the older lockup with "Freight & Logistics Solutions" (`RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`)
+  - the standalone R mark (`rockit_mark_gold_1024_*.png`; favicon and app-icon use only)
+  - any self-made inverted or reversed file
+- **If the lockup files are missing from `brand/`, stop and ask the owner.** Never substitute another logo. The newsletter builder enforces this.
 - **Newsletter placement:**
   - a light band at the top of the email
   - a light panel in the email footer

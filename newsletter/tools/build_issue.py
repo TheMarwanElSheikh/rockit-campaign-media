@@ -35,11 +35,9 @@ GRULE = f"border-image:{GOLD_GRAD_H} 1;"
 GOLD_GRAD_ON_LIGHT = "linear-gradient(135deg,#a47420 0%,#c08f2f 45%,#b17f25 100%)"  # logo stops minus the pale highlight, for text on cream
 GT_LIGHT = f"background:{GOLD_GRAD_ON_LIGHT};-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;"
 LOGO_NAVY = "#0b1f56"
-def lockup_img(h, sub_css):
-    """Rendered-image lockup: the official mark + typeset wordmark beside it (never replacing it)."""
-    return (f'<div style="display:flex;align-items:center;gap:{int(h*0.28)}px"><img src="logo.png" style="height:{h}px;display:block" alt="Rockit">'
-            f'<div><div style="font-family:{SERIF};font-weight:600;font-size:{int(h*0.5)}px;letter-spacing:{int(h*0.12)}px;color:{LOGO_NAVY};line-height:1">ROCKIT</div>'
-            f'<div style="font-family:{SANS};font-weight:600;font-size:{max(10,int(h*0.15))}px;letter-spacing:{max(2,int(h*0.05))}px;margin-top:{int(h*0.08)}px;{sub_css}">TRANSPORT SERVICES &amp; LOGISTICS</div></div></div>')
+def lockup_img(h, sub_css=None):
+    """The official Rockit lockup exactly as supplied (it already carries the name). Nothing typeset beside it."""
+    return f'<img src="logo.png" style="height:{h}px;display:block" alt="Rock it Transport Services">'
 # LOGO RULE (permanent): only the ORIGINAL logo (logo.png), never recoloured/inverted. On dark designs it sits on a light (paper) panel.
 def svg_gold(gid="gold", stops=None, x2="1", y2="1"):
     st = stops or GOLD_STOPS
@@ -293,7 +291,7 @@ def rule():
 
 def email_html(c, IMG):
     R = []
-    R.append(f'<tr><td style="background:{PAPER};padding:26px 36px 22px 36px;"><table role="presentation" cellpadding="0" cellspacing="0"><tr><td valign="middle" style="padding:0 16px 0 0;"><img src="{IMG}logo.png" width="110" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:110px;height:auto;border:0;"></td><td valign="middle"><div style="font-family:{SERIF};font-size:36px;font-weight:600;letter-spacing:9px;color:{LOGO_NAVY};line-height:1;">ROCKIT</div><div style="font-family:{SANS};font-size:9px;font-weight:600;letter-spacing:2.5px;color:{GOLD_INK};margin-top:6px;">TRANSPORT SERVICES &amp; LOGISTICS</div></td></tr></table></td></tr>'
+    R.append(f'<tr><td style="background:{PAPER};padding:26px 36px 22px 36px;"><img src="{IMG}logo.png" width="240" alt="Rock it Transport Services" style="display:block;width:240px;height:auto;border:0;"></td></tr>'
              f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
     R.append(f'<tr><td style="background:{MID};padding:10px 36px;font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;text-transform:uppercase;">'
              f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="font-family:{MONO};font-size:10px;letter-spacing:2px;color:#8f97a8;">Voyage {e(c["issue_no"])} · {e(c["read_time"])} read</td>'
@@ -372,7 +370,7 @@ def email_html(c, IMG):
                  f'<a href="{e(S["url"])}" style="display:inline-block;font-family:{MONO};font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:{CREAM};background:{NAVY};padding:13px 20px;text-decoration:none;">{e(S["cta"])} ▸</a>'
                  f'<div style="font-family:{MONO};font-size:11px;letter-spacing:2px;color:{GOLD_INK};margin-top:18px;">— THE ROCKIT DESK · CAIRO · ALEXANDRIA · SOKHNA · DAMIETTA</div>'))
     R.append(f'<tr><td style="background:{GOLD_MID};background-image:{GOLD_GRAD_H};height:3px;line-height:3px;font-size:3px;">&nbsp;</td></tr>')
-    R.append(row(f'<table role="presentation" cellpadding="0" cellspacing="0"><tr><td valign="middle" style="padding:0 16px 0 0;"><img src="{IMG}logo.png" width="96" alt="Rockit Transport Services &amp; Logistics" style="display:block;width:96px;height:auto;border:0;"></td><td valign="middle"><div style="font-family:{SERIF};font-size:30px;font-weight:600;letter-spacing:8px;color:{LOGO_NAVY};line-height:1;">ROCKIT</div><div style="font-family:{SANS};font-size:9px;font-weight:600;letter-spacing:2.5px;color:{GOLD_INK};margin-top:6px;">TRANSPORT SERVICES &amp; LOGISTICS</div></td></tr></table>'
+    R.append(row(f'<img src="{IMG}logo.png" width="210" alt="Rock it Transport Services" style="display:block;width:210px;height:auto;border:0;">'
                  f'<div style="font-family:{SERIF};font-size:18px;font-style:italic;font-weight:600;color:{GOLD_INK};margin:14px 0;">Means what it says.</div>'
                  f'<div style="font-family:{SANS};font-size:12px;line-height:1.6;color:{INK};"><a href="https://www.rockit-transport.com" style="color:{INK};">rockit-transport.com</a> · +20 2 2690 7601 · inquiry@rockit.com.eg</div>', bg=PAPER, pad="28px 36px 26px 36px"))
     R.append(row(f'<div style="font-family:{SANS};font-size:11px;line-height:1.6;color:#8f97a8;">{c["disclaimer"]}</div>', bg=MID, pad="20px 36px 24px 36px"))
@@ -479,10 +477,20 @@ def main():
     vis.mkdir(exist_ok=True)
     import shutil
     brand = Path(__file__).resolve().parents[2] / "brand"
-    # Latest official mark (merged from main, 14 Nov 2026). Only the transparent margin is trimmed; the artwork is untouched.
+    # OFFICIAL LOGO (owner, 15 Nov 2026): the full "Rock it / Transport Services" lockup supplied by the owner.
+    # Files: brand/rockit_logo_lockup_transparent.png (preferred), brand/rockit_logo_lockup_white.png,
+    #        brand/rockit_logo_lockup_dark.png (owner's own dark-background version). Used as supplied; only the transparent margin is trimmed.
+    # If the lockup files are not in brand/ yet, the build stops instead of substituting another logo.
     from PIL import Image
-    mark = Image.open(brand / "rockit_mark_gold_1024_transparent.png").convert("RGBA")
-    mark.crop(mark.getbbox()).save(vis / "logo.png")
+    src = brand / "rockit_logo_lockup_transparent.png"
+    if not src.exists():
+        alt = brand / "rockit_logo_lockup_white.png"
+        if not alt.exists():
+            raise SystemExit("STOP: official logo lockup missing in brand/ (rockit_logo_lockup_transparent.png or rockit_logo_lockup_white.png). Do not substitute another logo.")
+        src = alt
+    logo = Image.open(src).convert("RGBA")
+    bbox = logo.getbbox() if logo.getpixel((0, 0))[3] == 0 else None
+    (logo.crop(bbox) if bbox else logo).save(vis / "logo.png")
     files = {
         "chart_gap.html": light_visual(gap_chart(LIGHT, 540)),
         "chart_rebate.html": light_visual(rebate_chart(LIGHT, 540)),

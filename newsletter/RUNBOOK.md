@@ -2,7 +2,7 @@
 
 > **Brand rules are permanent. Read `brand/BRAND.md` first.**
 > - Gold is ALWAYS the metallic gradient from the logo, never a flat yellow.
-> - Only the LATEST official Rockit mark (`brand/rockit_mark_gold_1024_transparent.png`), unaltered and never inverted or recoloured. Check `origin/main` for a newer logo first. The mark sits on a light panel at the email header and footer, on every slide footer and on every cover.
+> - Logo: ONLY the owner-supplied "Rock it / Transport Services" lockup (`brand/rockit_logo_lockup_*.png`), as supplied, on light panels. If it is missing, the build stops: ask the owner and never substitute another logo.
 > - The builder enforces both. Do not override them.
 
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
