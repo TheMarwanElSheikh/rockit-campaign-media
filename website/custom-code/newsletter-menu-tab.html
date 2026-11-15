@@ -1,0 +1,99 @@
+<script>
+(function () {
+  var HREF = "https://www.rockit-transport.com/insights/categories/newsletter";
+  var LABELS = { en: "Newsletter", ar: "النشرة", fr: "Newsletter", es: "Boletín", de: "Newsletter", it: "Newsletter" };
+  var lang = (document.documentElement.getAttribute("lang") || "en").slice(0, 2).toLowerCase();
+  var label = LABELS[lang] || "Newsletter";
+  var MARK = "data-rockit-newsletter";
+  function isContact(a) {
+    var h = a.getAttribute("href") || "";
+    return /\/contact\/?$/.test(h.split("?")[0].split("#")[0]);
+  }
+  function clean(node) {
+    [node].concat([].slice.call(node.querySelectorAll("*"))).forEach(function (el) {
+      el.removeAttribute("aria-current");
+      el.removeAttribute("data-selected");
+      el.removeAttribute("id");
+      if (el.hasAttribute("data-testid") && /comp-/.test(el.getAttribute("data-testid"))) el.removeAttribute("data-testid");
+    });
+  }
+  function addBefore(contactLink, liSelector, setLabel) {
+    var li = contactLink.closest(liSelector);
+    if (!li || !li.parentNode) return;
+    if (li.parentNode.querySelector("[" + MARK + "]")) return;
+    var here = location.pathname.replace(/\/$/, "");
+    var src = li, sibs = li.parentNode.children;
+    for (var s = 0; s < sibs.length; s++) {
+      var c = sibs[s], ca = c.querySelector("a[href]");
+      if (!ca || c.querySelector("ul") || c.hasAttribute(MARK)) continue;
+      var cp = ""; try { cp = new URL(ca.href, location.href).pathname.replace(/\/$/, ""); } catch (e) {}
+      if (cp && cp !== here) { src = c; break; }
+    }
+    var item = src.cloneNode(true);
+    clean(item);
+    item.setAttribute(MARK, "1");
+    var a = item.querySelector("a");
+    if (!a) return;
+    a.setAttribute("href", HREF);
+    a.setAttribute("target", "_self");
+    a.removeAttribute("aria-label");
+    setLabel(a);
+    li.parentNode.insertBefore(item, li);
+    return li.parentNode;
+  }
+  var lists = [];
+  function fit(ul) {
+    var nav = ul.closest("nav") || ul.parentNode;
+    if (!nav || !nav.clientWidth) return;
+    ul.style.removeProperty("column-gap");
+    var gap = parseFloat(getComputedStyle(ul).columnGap) || 0;
+    var over = function () { return nav.scrollWidth > nav.clientWidth + 1 || ul.scrollWidth > ul.clientWidth + 1; };
+    while (over() && gap > 4) { gap = Math.max(4, gap - 2); ul.style.setProperty("column-gap", gap + "px", "important"); }
+    var each = function (sel, prop, val) { var els = ul.querySelectorAll(sel); for (var q = 0; q < els.length; q++) { if (val === null) els[q].style.removeProperty(prop); else els[q].style.setProperty(prop, val, "important"); } };
+    each('[data-part="menu-item-content"]', "padding-left", null); each('[data-part="menu-item-content"]', "padding-right", null); each('[data-part="label"]', "letter-spacing", null);
+    if (over()) { each('[data-part="menu-item-content"]', "padding-left", "1px"); each('[data-part="menu-item-content"]', "padding-right", "1px"); }
+    if (over()) each('[data-part="label"]', "letter-spacing", "0.2px");
+    if (over()) each('[data-part="label"]', "letter-spacing", "0px");
+  }
+  var fitting = false;
+  function refit() { if (fitting) return; fitting = true; (window.requestAnimationFrame || setTimeout)(function () { try { fitAll(); } catch (e) {} fitting = false; }); }
+  function watch(ul) {
+    if (!window.ResizeObserver) return;
+    var ro = new ResizeObserver(refit);
+    var items = ul.querySelectorAll('[data-part="menu-item-content"], [data-part="label"]');
+    for (var r = 0; r < items.length; r++) ro.observe(items[r]);
+    ro.observe(ul);
+    var nav = ul.closest("nav"); if (nav) ro.observe(nav);
+  }
+  function fitAll() { for (var k = 0; k < lists.length; k++) if (lists[k].isConnected) fit(lists[k]); }
+  function native(sel) {
+    var ns = document.querySelectorAll(sel);
+    for (var n = 0; n < ns.length; n++) if (/\/categories\/newsletter\/?$/.test(ns[n].getAttribute("href") || "") && !ns[n].closest("[" + MARK + "]")) return true;
+    return false;
+  }
+  function run() {
+    if (native('a[data-part="menu-item-link"]') || native("a.wixui-vertical-menu__item-label")) return;
+    var links = document.querySelectorAll('a[data-part="menu-item-link"]');
+    for (var i = 0; i < links.length; i++) if (isContact(links[i])) {
+      var ul = addBefore(links[i], 'li[data-part="menu-item"]', function (a) {
+        var l = a.querySelector('[data-part="label"]'); if (l) l.textContent = label; else a.textContent = label;
+      });
+      if (ul) { lists.push(ul); fit(ul); watch(ul); }
+    }
+    var v = document.querySelectorAll("a.wixui-vertical-menu__item-label");
+    for (var j = 0; j < v.length; j++) if (isContact(v[j])) addBefore(v[j], "li", function (a) { a.textContent = label; });
+  }
+  var queued = false;
+  function schedule() {
+    if (queued) return; queued = true;
+    (window.requestAnimationFrame || setTimeout)(function () { queued = false; try { run(); } catch (e) {} });
+  }
+  function start() {
+    window.addEventListener("resize", function () { setTimeout(fitAll, 50); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+    schedule();
+    try { new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
+  if (document.readyState === "complete") start(); else window.addEventListener("load", start);
+})();
+</script>
