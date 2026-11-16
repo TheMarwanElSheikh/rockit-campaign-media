@@ -92,6 +92,27 @@
   "email": "draft header/footer white with rockit-logo.png, PDF button updated; still DRAFT / NOT_STARTED, not sent",
   "google_business": "localPosts/2535681562498628533 photo replaced with the light cover (PROCESSING)",
   "linkedin_facebook_instagram": "already-published posts keep the earlier dark cover image; the API cannot edit them",
-  "sunday_task": "trig_01J3AnzB93Zqn1a4zVBKQgB3 prompt updated with the light-surface logo rule"
+  "sunday_task": "trig_01J3AnzB93Zqn1a4zVBKQgB3 prompt updated with the light-surface logo rule",
+  "reposts": {
+   "linkedin": {
+    "post_urn": "urn:li:share:7528054528865345536",
+    "url": "https://www.linkedin.com/feed/update/urn:li:share:7528054528865345536/"
+   },
+   "facebook": {
+    "post_id": "102089469414840_1122981070658342",
+    "url": "https://www.facebook.com/102089469414840_1122981070658342"
+   },
+   "instagram": {
+    "media_id": "18067417499537770",
+    "slides": 8
+   },
+   "to_delete_by_hand": [
+    "linkedin urn:li:share:7528050977287970816 (dark cover)",
+    "facebook 102089469414840_1122969457326170 (dark cover)",
+    "instagram media 18134167411690928 (dark full-edition carousel)",
+    "instagram instagram.com/p/Dfy463EFIfD/ (morning short version)",
+    "morning short-version LinkedIn and Facebook posts, if wanted"
+   ]
+  }
  }
 }
