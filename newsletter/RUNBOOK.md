@@ -19,6 +19,37 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 | Google Business (Windsor `google_my_business`) | `locations/16077331135089168616` |
 | Repo / branch | `TheMarwanElSheikh/rockit-campaign-media` @ `claude/admiring-euler-5zszx7`, folder `newsletter/` |
 
+## The full edition (the standard from Voyage 001 onward)
+
+The owner's standard: a full, professional newsletter of **at least 4 pages**. The current format is 16 A4 pages, and it must cover:
+- current logistics-sector news;
+- freight and shipping news;
+- world politics as it affects freight and trade;
+- an Egypt desk;
+- practical material.
+
+Build it every week as follows.
+
+1. **Research, Sunday morning.** Run four research desks in parallel, using the briefs that produced `issues/2026-11-16/research/`:
+   - ocean and shipping;
+   - air cargo and the logistics business;
+   - geopolitics and trade policy;
+   - Egypt and the region.
+
+   Each item must be read on a fetched page and recorded with its URL, date, a quote and a status. Search snippets alone never count.
+2. **Write.** Copy `issues/<last>/edition_content.py` to `issues/<date>/` and rewrite every page with this week's verified items. Each source gets a short id in `SOURCES`, and every figure cites one.
+3. **Build:**
+   ```bash
+   python3 issues/<date>/edition_content.py
+   python3 tools/build_edition.py issues/<date>/edition.json
+   node tools/render_edition.js issues/<date>
+   ```
+   `render_edition.js` exits non-zero if any page's content overflows its frame. Fix the overflow by rebalancing pages; never let content clip.
+4. **Review.** Look at every `edition/page_NN.png` and fix any collisions, wraps or empty areas. Then write `AUDIT_EDITION.md`.
+5. **Publish.** The PDF (`edition/edition.pdf`) is the flagship. The website post, the email draft and the social posts carry the issue's headline items and link to it.
+
+Brand: the builder uses only the owner's logo files (`rockit-logo` on light pages, `rockit-logo-dark-bg` on navy) and the `gold-swoosh` gradient. Small text on cream uses #8a6514, small text on navy #DEC163.
+
 ## Sunday 14:00: research, write, audit, stage
 
 1. **Repo.** Pull the branch. Create `issues/<next Monday ISO date>/`. Issue number = previous + 1.
