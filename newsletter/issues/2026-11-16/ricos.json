@@ -7,7 +7,7 @@
      "type": "TEXT",
      "nodes": [],
      "textData": {
-      "text": "Voyage 001 · 16 November 2026 · 4 min read · 14 sources, each checked",
+      "text": "Voyage 001 · 16 November 2026 · 14 sources, each checked and linked",
       "decorations": [
        {
         "type": "ITALIC",
@@ -17,7 +17,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n001"
   },
   {
    "type": "PARAGRAPH",
@@ -36,7 +37,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n002"
   },
   {
    "type": "PARAGRAPH",
@@ -55,7 +57,382 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n003"
+  },
+  {
+   "type": "HEADING",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "In this issue",
+      "decorations": []
+     }
+    }
+   ],
+   "headingData": {
+    "level": 2
+   },
+   "id": "in-this-issue"
+  },
+  {
+   "type": "BULLETED_LIST",
+   "nodes": [
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "The 60-second manifest",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-60s"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n006"
+      }
+     ],
+     "id": "n005"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 01 · Suez is back. Your December rate isn't going down.",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-lead"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n008"
+      }
+     ],
+     "id": "n007"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 02 · Half the freight. Paid by Cairo.",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-feature"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n010"
+      }
+     ],
+     "id": "n009"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 03 · By the numbers",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-numbers"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n012"
+      }
+     ],
+     "id": "n011"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 04 · Egypt desk",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-egypt"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n014"
+      }
+     ],
+     "id": "n013"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 05 · World desk",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-world"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n016"
+      }
+     ],
+     "id": "n015"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Line 06 · Your move, before Friday",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-moves"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n018"
+      }
+     ],
+     "id": "n017"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "On the calendar",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-dates"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n020"
+      }
+     ],
+     "id": "n019"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Rockit explains: ACID, in four moves",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-explains"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n022"
+      }
+     ],
+     "id": "n021"
+    },
+    {
+     "type": "LIST_ITEM",
+     "nodes": [
+      {
+       "type": "PARAGRAPH",
+       "nodes": [
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "The Thesaurus of Excuses",
+          "decorations": [
+           {
+            "type": "ANCHOR",
+            "anchorData": {
+             "anchor": "sec-thesaurus"
+            }
+           }
+          ]
+         }
+        }
+       ],
+       "paragraphData": {},
+       "id": "n024"
+      }
+     ],
+     "id": "n023"
+    }
+   ],
+   "bulletedListData": {
+    "indentation": 0
+   },
+   "id": "n004"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Every issue: ",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "The Rockit Manifest archive",
+      "decorations": [
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/insights/categories/newsletter",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · Need a rate now? ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Get a freight quote",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/get-a-quote",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n025"
   },
   {
    "type": "HEADING",
@@ -71,7 +448,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-60s"
   },
   {
    "type": "BULLETED_LIST",
@@ -104,9 +482,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n028"
       }
-     ]
+     ],
+     "id": "n027"
     },
     {
      "type": "LIST_ITEM",
@@ -136,9 +516,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n030"
       }
-     ]
+     ],
+     "id": "n029"
     },
     {
      "type": "LIST_ITEM",
@@ -168,14 +550,43 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n032"
       }
-     ]
+     ],
+     "id": "n031"
     }
    ],
    "bulletedListData": {
     "indentation": 0
-   }
+   },
+   "id": "n026"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n033"
   },
   {
    "type": "HEADING",
@@ -191,7 +602,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-lead"
   },
   {
    "type": "PARAGRAPH",
@@ -205,7 +617,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n034"
   },
   {
    "type": "PARAGRAPH",
@@ -219,7 +632,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n035"
   },
   {
    "type": "PARAGRAPH",
@@ -233,7 +647,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n036"
   },
   {
    "type": "IMAGE",
@@ -253,7 +668,8 @@
      "height": 792
     },
     "altText": "Bar chart. Spot rates Asia to the Mediterranean: Drewry Shanghai–Genoa $4,168, Freightos FBX13 $4,300, Xeneta Far East–Med $4,666. Filed tariff: MSC Far East to East Med FAK from 1 December $6,500, which is $1,834 above the highest spot reading."
-   }
+   },
+   "id": "n037"
   },
   {
    "type": "PARAGRAPH",
@@ -411,7 +827,34 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n038"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n039"
   },
   {
    "type": "HEADING",
@@ -427,7 +870,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-feature"
   },
   {
    "type": "PARAGRAPH",
@@ -441,7 +885,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n040"
   },
   {
    "type": "IMAGE",
@@ -461,7 +906,8 @@
      "height": 982
     },
     "altText": "Bar chart of state freight support under Egypt's export rebate programme from November 2026: 50% of sea and land freight to Africa, Latin America, Australia, Southeast Asia and Russia; 50% of air freight to the UK and 25% of air freight to Europe, both for agricultural exports; 25% of domestic transport; 25% of cargo insurance; 25% of express-vessel invoices."
-   }
+   },
+   "id": "n041"
   },
   {
    "type": "PARAGRAPH",
@@ -475,7 +921,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n042"
   },
   {
    "type": "PARAGRAPH",
@@ -557,7 +1004,111 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n043"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Shipping to one of the new lanes? ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Ocean freight from Egypt",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/ocean-freight",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Air freight",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/air-freight",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n044"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n045"
   },
   {
    "type": "HEADING",
@@ -573,7 +1124,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-numbers"
   },
   {
    "type": "BULLETED_LIST",
@@ -588,32 +1140,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "$4,305 ",
+          "text": "$4,305",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "Drewry WCI composite, per 40ft (−2% w/w) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -629,11 +1160,21 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " Drewry WCI composite, per 40ft (−2% w/w)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n048"
       }
-     ]
+     ],
+     "id": "n047"
     },
     {
      "type": "LIST_ITEM",
@@ -645,32 +1186,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "$6,500 ",
+          "text": "$6,500",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "MSC FAK Far East → East Med, from 1 Dec (+$800) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -686,11 +1206,21 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " MSC FAK Far East → East Med, from 1 Dec (+$800)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n050"
       }
-     ]
+     ],
+     "id": "n049"
     },
     {
      "type": "LIST_ITEM",
@@ -702,32 +1232,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "+11% ",
+          "text": "+11%",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "Air, China → N. Europe, Freightos (w/w, 10 Nov) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -743,11 +1252,21 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " Air, China → N. Europe, Freightos (w/w, 10 Nov)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n052"
       }
-     ]
+     ],
+     "id": "n051"
     },
     {
      "type": "LIST_ITEM",
@@ -759,32 +1278,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "53.50 ",
+          "text": "53.50",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "EGP per USD, CBE sell (record 56.35 in Oct) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -800,11 +1298,21 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " EGP per USD, CBE sell (record 56.35 in Oct)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n054"
       }
-     ]
+     ],
+     "id": "n053"
     },
     {
      "type": "LIST_ITEM",
@@ -816,32 +1324,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "20.0% ",
+          "text": "20.0%",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "CBE overnight deposit rate (+100bp, 29 Oct) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -857,11 +1344,21 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " CBE overnight deposit rate (+100bp, 29 Oct)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n056"
       }
-     ]
+     ],
+     "id": "n055"
     },
     {
      "type": "LIST_ITEM",
@@ -873,32 +1370,11 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "12.7% ",
+          "text": "12.7%",
           "decorations": [
            {
             "type": "BOLD",
             "fontWeightValue": 700
-           }
-          ]
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "Egypt urban inflation, October (from 13.9%) ",
-          "decorations": []
-         }
-        },
-        {
-         "type": "TEXT",
-         "nodes": [],
-         "textData": {
-          "text": "source",
-          "decorations": [
-           {
-            "type": "ITALIC",
-            "italicData": true
            },
            {
             "type": "LINK",
@@ -914,16 +1390,27 @@
            }
           ]
          }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": " Egypt urban inflation, October (from 13.9%)",
+          "decorations": []
+         }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n058"
       }
-     ]
+     ],
+     "id": "n057"
     }
    ],
    "bulletedListData": {
     "indentation": 0
-   }
+   },
+   "id": "n046"
   },
   {
    "type": "PARAGRAPH",
@@ -942,7 +1429,54 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n059"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Tap a figure to open its source.",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n060"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n061"
   },
   {
    "type": "HEADING",
@@ -958,7 +1492,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-egypt"
   },
   {
    "type": "HEADING",
@@ -974,7 +1509,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n062"
   },
   {
    "type": "PARAGRAPH",
@@ -988,7 +1524,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n063"
   },
   {
    "type": "IMAGE",
@@ -1008,7 +1545,8 @@
      "height": 890
     },
     "altText": "Route diagram of the MD1 service: Ningbo, Shanghai, Shekou, Singapore, Sokhna, Suez Canal, Damietta, Ambarli, Izmit, Mersin, Damietta, Suez Canal, Singapore, Kaohsiung, back to Ningbo. Egyptian ports highlighted."
-   }
+   },
+   "id": "n064"
   },
   {
    "type": "PARAGRAPH",
@@ -1052,7 +1590,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n065"
   },
   {
    "type": "HEADING",
@@ -1068,7 +1607,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n066"
   },
   {
    "type": "PARAGRAPH",
@@ -1082,7 +1622,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n067"
   },
   {
    "type": "PARAGRAPH",
@@ -1126,7 +1667,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n068"
   },
   {
    "type": "HEADING",
@@ -1142,7 +1684,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n069"
   },
   {
    "type": "PARAGRAPH",
@@ -1156,7 +1699,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n070"
   },
   {
    "type": "PARAGRAPH",
@@ -1200,7 +1744,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n071"
   },
   {
    "type": "HEADING",
@@ -1216,7 +1761,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n072"
   },
   {
    "type": "PARAGRAPH",
@@ -1230,7 +1776,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n073"
   },
   {
    "type": "PARAGRAPH",
@@ -1274,7 +1821,111 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n074"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Clearing in Egypt? ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Our customs clearance desk",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/customs-clearance",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Duty & tax calculator",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/duties-taxes-calculator",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n075"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n076"
   },
   {
    "type": "HEADING",
@@ -1290,7 +1941,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-world"
   },
   {
    "type": "HEADING",
@@ -1306,7 +1958,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n077"
   },
   {
    "type": "PARAGRAPH",
@@ -1320,7 +1973,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n078"
   },
   {
    "type": "PARAGRAPH",
@@ -1364,7 +2018,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n079"
   },
   {
    "type": "HEADING",
@@ -1380,7 +2035,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n080"
   },
   {
    "type": "PARAGRAPH",
@@ -1394,7 +2050,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n081"
   },
   {
    "type": "PARAGRAPH",
@@ -1438,7 +2095,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n082"
   },
   {
    "type": "HEADING",
@@ -1454,7 +2112,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "n083"
   },
   {
    "type": "PARAGRAPH",
@@ -1468,7 +2127,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n084"
   },
   {
    "type": "PARAGRAPH",
@@ -1512,7 +2172,34 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n085"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n086"
   },
   {
    "type": "HEADING",
@@ -1528,7 +2215,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-moves"
   },
   {
    "type": "BULLETED_LIST",
@@ -1556,14 +2244,38 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "Book December Asia cargo before 25 Nov. Send documents with the pre-alert, so clearance starts before the D/O.",
+          "text": "Book December Asia cargo before 25 Nov. Send documents with the pre-alert, so clearance starts before the D/O. ",
           "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Quote a December booking →",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.rockit-transport.com/get-a-quote",
+              "target": "SELF"
+             }
+            }
+           }
+          ]
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n089"
       }
-     ]
+     ],
+     "id": "n088"
     },
     {
      "type": "LIST_ITEM",
@@ -1588,14 +2300,38 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "Check your markets against the new 50% freight lanes. Build complete rebate files from day one: incomplete ones are now refused.",
+          "text": "Check your markets against the new 50% freight lanes. Build complete rebate files from day one: incomplete ones are now refused. ",
           "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Ocean freight from Egypt →",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.rockit-transport.com/ocean-freight",
+              "target": "SELF"
+             }
+            }
+           }
+          ]
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n091"
       }
-     ]
+     ],
+     "id": "n090"
     },
     {
      "type": "LIST_ITEM",
@@ -1620,19 +2356,70 @@
          "type": "TEXT",
          "nodes": [],
          "textData": {
-          "text": "Quote December with hard validity: 14 Dec. No ACID, no release: check it on the invoice and B/L before loading.",
+          "text": "Quote December with hard validity: 14 Dec. No ACID, no release: check it on the invoice and B/L before loading. ",
           "decorations": []
+         }
+        },
+        {
+         "type": "TEXT",
+         "nodes": [],
+         "textData": {
+          "text": "Customs clearance in Egypt →",
+          "decorations": [
+           {
+            "type": "BOLD",
+            "fontWeightValue": 700
+           },
+           {
+            "type": "LINK",
+            "linkData": {
+             "link": {
+              "url": "https://www.rockit-transport.com/customs-clearance",
+              "target": "SELF"
+             }
+            }
+           }
+          ]
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n093"
       }
-     ]
+     ],
+     "id": "n092"
     }
    ],
    "bulletedListData": {
     "indentation": 0
-   }
+   },
+   "id": "n087"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n094"
   },
   {
    "type": "HEADING",
@@ -1648,7 +2435,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-dates"
   },
   {
    "type": "BULLETED_LIST",
@@ -1694,9 +2482,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n097"
       }
-     ]
+     ],
+     "id": "n096"
     },
     {
      "type": "LIST_ITEM",
@@ -1739,9 +2529,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n099"
       }
-     ]
+     ],
+     "id": "n098"
     },
     {
      "type": "LIST_ITEM",
@@ -1784,9 +2576,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n101"
       }
-     ]
+     ],
+     "id": "n100"
     },
     {
      "type": "LIST_ITEM",
@@ -1829,9 +2623,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n103"
       }
-     ]
+     ],
+     "id": "n102"
     },
     {
      "type": "LIST_ITEM",
@@ -1874,9 +2670,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n105"
       }
-     ]
+     ],
+     "id": "n104"
     },
     {
      "type": "LIST_ITEM",
@@ -1919,9 +2717,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n107"
       }
-     ]
+     ],
+     "id": "n106"
     },
     {
      "type": "LIST_ITEM",
@@ -1964,9 +2764,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n109"
       }
-     ]
+     ],
+     "id": "n108"
     },
     {
      "type": "LIST_ITEM",
@@ -2009,14 +2811,120 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n111"
       }
-     ]
+     ],
+     "id": "n110"
     }
    ],
    "bulletedListData": {
     "indentation": 0
-   }
+   },
+   "id": "n095"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Planning around these dates? ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Vessel schedules",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/vessel-schedules",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Container tracking",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       },
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.rockit-transport.com/container-tracking",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n112"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n113"
   },
   {
    "type": "HEADING",
@@ -2032,7 +2940,8 @@
    ],
    "headingData": {
     "level": 2
-   }
+   },
+   "id": "sec-explains"
   },
   {
    "type": "IMAGE",
@@ -2052,7 +2961,8 @@
      "height": 528
     },
     "altText": "Four-step diagram: 1, the exporter verifies on CargoX once; 2, the importer requests the 19-digit ACID on Nafeza with shipment data at least 48 hours before shipment; 3, the exporter files documents through CargoX; 4, the ACID appears on the invoice, packing list and bill of lading."
-   }
+   },
+   "id": "n114"
   },
   {
    "type": "ORDERED_LIST",
@@ -2085,9 +2995,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n117"
       }
-     ]
+     ],
+     "id": "n116"
     },
     {
      "type": "LIST_ITEM",
@@ -2117,9 +3029,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n119"
       }
-     ]
+     ],
+     "id": "n118"
     },
     {
      "type": "LIST_ITEM",
@@ -2149,9 +3063,11 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n121"
       }
-     ]
+     ],
+     "id": "n120"
     },
     {
      "type": "LIST_ITEM",
@@ -2181,14 +3097,17 @@
          }
         }
        ],
-       "paragraphData": {}
+       "paragraphData": {},
+       "id": "n123"
       }
-     ]
+     ],
+     "id": "n122"
     }
    ],
    "orderedListData": {
     "indentation": 0
-   }
+   },
+   "id": "n115"
   },
   {
    "type": "PARAGRAPH",
@@ -2216,10 +3135,7 @@
         "linkData": {
          "link": {
           "url": "https://www.rockit-transport.com/post/acid-number-egypt-guide",
-          "target": "BLANK",
-          "rel": {
-           "noreferrer": true
-          }
+          "target": "SELF"
          }
         }
        }
@@ -2227,7 +3143,34 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n124"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n125"
   },
   {
    "type": "HEADING",
@@ -2242,8 +3185,9 @@
     }
    ],
    "headingData": {
-    "level": 3
-   }
+    "level": 2
+   },
+   "id": "sec-thesaurus"
   },
   {
    "type": "PARAGRAPH",
@@ -2275,7 +3219,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n126"
   },
   {
    "type": "PARAGRAPH",
@@ -2294,7 +3239,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n127"
   },
   {
    "type": "PARAGRAPH",
@@ -2326,7 +3272,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n128"
   },
   {
    "type": "PARAGRAPH",
@@ -2353,7 +3300,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n129"
   },
   {
    "type": "PARAGRAPH",
@@ -2375,12 +3323,97 @@
      "type": "TEXT",
      "nodes": [],
      "textData": {
-      "text": "PSS · FAK · “valid until further notice”",
+      "text": "PSS",
+      "decorations": [
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "FAK",
+      "decorations": [
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "“valid until further notice”",
       "decorations": []
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n130"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "↑ Back to contents",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       },
+       {
+        "type": "ANCHOR",
+        "anchorData": {
+         "anchor": "in-this-issue"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n131"
   },
   {
    "type": "HEADING",
@@ -2396,7 +3429,8 @@
    ],
    "headingData": {
     "level": 3
-   }
+   },
+   "id": "sign-off"
   },
   {
    "type": "PARAGRAPH",
@@ -2405,17 +3439,216 @@
      "type": "TEXT",
      "nodes": [],
      "textData": {
-      "text": "Send us a lane",
+      "text": "Rockit. Means what it says.",
+      "decorations": [
+       {
+        "type": "ITALIC",
+        "italicData": true
+       }
+      ]
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n132"
+  },
+  {
+   "type": "BUTTON",
+   "nodes": [],
+   "buttonData": {
+    "containerData": {
+     "width": {
+      "size": "CONTENT"
+     },
+     "alignment": "CENTER",
+     "textWrap": true
+    },
+    "type": "LINK",
+    "text": "Get a freight quote",
+    "link": {
+     "url": "https://www.rockit-transport.com/get-a-quote",
+     "target": "SELF"
+    },
+    "styles": {
+     "borderRadius": 2,
+     "borderWidth": 2,
+     "borderColor": "#16243f",
+     "buttonSize": "MEDIUM",
+     "textColor": "#f1eedb",
+     "background": {
+      "type": "COLOR",
+      "color": "#16243f"
+     }
+    }
+   },
+   "id": "n133"
+  },
+  {
+   "type": "BUTTON",
+   "nodes": [],
+   "buttonData": {
+    "containerData": {
+     "width": {
+      "size": "CONTENT"
+     },
+     "alignment": "CENTER",
+     "textWrap": true
+    },
+    "type": "LINK",
+    "text": "Send us a lane",
+    "link": {
+     "url": "mailto:inquiry@rockit.com.eg?subject=Lane%20enquiry%20%E2%80%94%20Rockit%20Manifest%20001",
+     "target": "SELF"
+    },
+    "styles": {
+     "borderRadius": 2,
+     "borderWidth": 2,
+     "borderColor": "#16243f",
+     "buttonSize": "MEDIUM",
+     "textColor": "#16243f",
+     "background": {
+      "type": "COLOR",
+      "color": "#f1eedb"
+     }
+    }
+   },
+   "id": "n134"
+  },
+  {
+   "type": "BUTTON",
+   "nodes": [],
+   "buttonData": {
+    "containerData": {
+     "width": {
+      "size": "CONTENT"
+     },
+     "alignment": "CENTER",
+     "textWrap": true
+    },
+    "type": "LINK",
+    "text": "Read every Manifest issue",
+    "link": {
+     "url": "https://www.rockit-transport.com/insights/categories/newsletter",
+     "target": "SELF"
+    },
+    "styles": {
+     "borderRadius": 2,
+     "borderWidth": 2,
+     "borderColor": "#16243f",
+     "buttonSize": "MEDIUM",
+     "textColor": "#16243f",
+     "background": {
+      "type": "COLOR",
+      "color": "#f1eedb"
+     }
+    }
+   },
+   "id": "n135"
+  },
+  {
+   "type": "BUTTON",
+   "nodes": [],
+   "buttonData": {
+    "containerData": {
+     "width": {
+      "size": "CONTENT"
+     },
+     "alignment": "CENTER",
+     "textWrap": true
+    },
+    "type": "LINK",
+    "text": "Customs & freight guides",
+    "link": {
+     "url": "https://www.rockit-transport.com/insights",
+     "target": "SELF"
+    },
+    "styles": {
+     "borderRadius": 2,
+     "borderWidth": 2,
+     "borderColor": "#16243f",
+     "buttonSize": "MEDIUM",
+     "textColor": "#16243f",
+     "background": {
+      "type": "COLOR",
+      "color": "#f1eedb"
+     }
+    }
+   },
+   "id": "n136"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Get the Manifest by email: ",
       "decorations": [
        {
         "type": "BOLD",
         "fontWeightValue": 700
-       },
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "ask to be added",
+      "decorations": [
        {
         "type": "LINK",
         "linkData": {
          "link": {
-          "url": "mailto:inquiry@rockit.com.eg?subject=Lane%20enquiry%20%E2%80%94%20Rockit%20Manifest%20001",
+          "url": "mailto:inquiry@rockit.com.eg?subject=Subscribe%20me%20to%20The%20Rockit%20Manifest",
+          "target": "SELF"
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " (one email, every Monday).",
+      "decorations": []
+     }
+    }
+   ],
+   "paragraphData": {},
+   "id": "n137"
+  },
+  {
+   "type": "PARAGRAPH",
+   "nodes": [
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Follow Rockit: ",
+      "decorations": [
+       {
+        "type": "BOLD",
+        "fontWeightValue": 700
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "LinkedIn",
+      "decorations": [
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.linkedin.com/company/rockit-transport-services/",
           "target": "BLANK",
           "rel": {
            "noreferrer": true
@@ -2430,17 +3663,63 @@
      "type": "TEXT",
      "nodes": [],
      "textData": {
-      "text": " · Rockit. Means what it says.",
+      "text": " · ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Facebook",
       "decorations": [
        {
-        "type": "ITALIC",
-        "italicData": true
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.facebook.com/102089469414840",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": " · ",
+      "decorations": []
+     }
+    },
+    {
+     "type": "TEXT",
+     "nodes": [],
+     "textData": {
+      "text": "Instagram",
+      "decorations": [
+       {
+        "type": "LINK",
+        "linkData": {
+         "link": {
+          "url": "https://www.instagram.com/rockit_logistics/",
+          "target": "BLANK",
+          "rel": {
+           "noreferrer": true
+          }
+         }
+        }
        }
       ]
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n138"
   },
   {
    "type": "PARAGRAPH",
@@ -2459,7 +3738,8 @@
      }
     }
    ],
-   "paragraphData": {}
+   "paragraphData": {},
+   "id": "n139"
   }
  ]
 }

@@ -94,6 +94,14 @@ The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
 10. The Thesaurus of Excuses: a dictionary entry in the Lost in Forwarding voice.
 11. The sign-off: "That's the manifest. Everything on it, we checked. Anything not on it, ask us."
 
+**Website post (built by `ricos()` in the builder):** the post must be explorable, not a flat page.
+- An "In this issue" contents block near the top. Every section is one tap away by in-page anchor, and each section ends with "↑ Back to contents".
+- Every figure in "By the numbers" is itself the link to its source.
+- Each section links into the relevant rockit-transport.com page (quote, ocean, air, customs clearance, duty calculator, vessel schedules, container tracking).
+- The closing block has buttons (Get a freight quote, Send us a lane, Read every Manifest issue, Customs & freight guides), a "get it by email" mailto, and follow links (Facebook Page ID URL, never the share link).
+- No read time in the deck: Wix shows its own.
+- When re-staging, keep the node ids the builder assigns, because the anchors depend on them.
+
 **Voice:**
 - Short statement. A beat. The point.
 - No forecasts dressed up as facts.
