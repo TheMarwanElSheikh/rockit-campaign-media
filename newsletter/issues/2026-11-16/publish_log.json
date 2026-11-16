@@ -69,7 +69,9 @@
       },
       {
         "channel": "instagram",
-        "status": "UNCONFIRMED: create_carousel_post timed out after 60s; re-check scheduled 11:39 UTC, re-post only if absent"
+        "status": "published (8-slide carousel); the first call timed out but completed, and Windsor's duplicate guard confirmed it",
+        "media_id": "18134167411690928",
+        "note": "This morning's short-version carousel (media 18147443491598254, instagram.com/p/Dfy463EFIfD/) must be deleted by hand in the Instagram app; Windsor has no delete-post action."
       },
       {
         "channel": "google_business",
