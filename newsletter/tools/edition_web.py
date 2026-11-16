@@ -38,24 +38,26 @@ def rich(s):
     return out
 
 
+ED_DIR = None
+
+
 class Web:
     def __init__(self, ed, dims):
         self.ed, self.dims, self.nodes, self.chart_i = ed, dims, [], 0
         self.src = ed["sources"]
+        self.order = json.loads((Path(ED_DIR) / "edition" / "sources_order.json").read_text())
 
     def srcline(self, ids):
+        """Append [n, m] source markers (numbered as in the PDF) to the last paragraph written."""
         if not ids:
             return
-        out = [T_("Sources: ", italic=True)]
-        seen = []
-        for i in ids:
-            if i in seen:
-                continue
-            seen.append(i)
-            s = self.src[i]
-            out.append(T_(f'{s["name"]} ({s["date"]})', italic=True, link=s["url"]))
-            out.append(T_(" · ", italic=True))
-        self.nodes.append(P_(*out[:-1]))
+        nums = sorted({self.order.index(i) + 1 for i in ids})
+        ref = T_(" [" + ", ".join(str(x) for x in nums) + "]", italic=True)
+        last = self.nodes[-1] if self.nodes else None
+        if last and last["type"] == "PARAGRAPH":
+            last["nodes"].append(ref)
+        else:
+            self.nodes.append(P_(T_("Sources", italic=True), ref))
 
     def why(self, text, label="Why it matters"):
         self.nodes.append({"type": "BLOCKQUOTE", "nodes": [P_(T_(label + ": ", bold=True), *rich(text))], "blockquoteData": {"indentation": 1}})
@@ -151,6 +153,9 @@ class Web:
             elif "<table" in h:
                 rows = re.findall(r"<tr><td[^>]*><b>(.*?)</b></td><td[^>]*>(.*?)</td><td[^>]*>(.*?)</td></tr>", h, re.S)
                 self.nodes.append(UL([[T_(plain(a) + ": ", bold=True), T_(plain(c) + " "), T_("Ask: " + plain(d), italic=True)] for a, c, d in rows]))
+            elif 'class="why"' in h:
+                txt = plain(re.sub(r"<b>.*?</b>", "", h)).replace("(see page 11)", "(see Egypt & the region, below)")
+                self.why(txt)
             elif "<b" in h:
                 pairs = re.findall(r"<b[^>]*>(.*?)</b> · (.*?)</div>", h, re.S)
                 self.nodes.append(UL([[T_(plain(a) + ": ", bold=True), T_(plain(c))] for a, c in pairs]))
@@ -180,12 +185,17 @@ class Web:
         n.append(P_(T_("The 16-page PDF has every chart, the full calendar and glossary, and the numbered list of all sources. "),
                     T_("Download it here ▸", bold=True, link=pdf_url)))
         n.append(P_(T_("Send us a lane: ", bold=True), T_("inquiry@rockit.com.eg", link="mailto:inquiry@rockit.com.eg"), T_(" · +20 2 2690 7601 · Rockit. Means what it says.", italic=True)))
+        n.append(H_("Sources", 2))
+        n.append(P_(T_("Numbers in brackets point to this list, the same numbering as the PDF. We read every page between 9 and 16 November 2026.", italic=True)))
+        n.append({"type": "ORDERED_LIST", "nodes": [{"type": "LIST_ITEM", "nodes": [P_(T_(f'{self.src[i]["name"]}, ', bold=False), T_(self.src[i]["title"], link=self.src[i]["url"]), T_(f', {self.src[i]["date"]}'))]} for i in self.order], "orderedListData": {"indentation": 0}})
         n.append(P_(T_(plain(ed["disclaimer"]), italic=True)))
         return {"nodes": n}
 
 
 def main():
+    global ED_DIR
     ed_path = Path(sys.argv[1]).resolve()
+    ED_DIR = ed_path.parent
     pdf_url = sys.argv[2]
     ed = json.loads(ed_path.read_text())
     web = ed_path.parent / "edition" / "web"

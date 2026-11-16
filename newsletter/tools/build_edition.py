@@ -445,6 +445,7 @@ def build(ed_path):
     doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>{e(meta["title"])}</title>{FONTS}<style>{CSS}</style></head>'
            f'<body>{"".join(pages)}</body></html>')
     (out / "edition.html").write_text(doc)
+    (out / "sources_order.json").write_text(json.dumps(S.order))
     print(f"wrote {out/'edition.html'} · {len(pages)} pages · {len(S.order)} sources cited")
 
 
