@@ -41,5 +41,45 @@
       "status": "draft, not sent (owner sends manually)",
       "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54"
     }
-  ]
+  ],
+  "full_edition": {
+    "released": "2026-11-16 ~13:05 Cairo (option 1: replace web post + re-post)",
+    "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_1ab1578a371d4dd282e7d0c3c405595a.pdf",
+    "results": [
+      {
+        "channel": "website",
+        "status": "post content replaced with the full edition and republished (same URL)",
+        "title": "Suez reopens. Hormuz doesn't. | The Rockit Manifest 001 · Full edition",
+        "lastPublishedDate": "2026-11-16T11:05:20Z",
+        "nodes": 212,
+        "images": 9,
+        "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+      },
+      {
+        "channel": "linkedin",
+        "status": "published",
+        "post_urn": "urn:li:share:7528050977287970816",
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7528050977287970816/"
+      },
+      {
+        "channel": "facebook",
+        "status": "published",
+        "post_id": "102089469414840_1122969457326170",
+        "url": "https://www.facebook.com/102089469414840_1122969457326170"
+      },
+      {
+        "channel": "instagram",
+        "status": "UNCONFIRMED: create_carousel_post timed out after 60s; re-check scheduled 11:39 UTC, re-post only if absent"
+      },
+      {
+        "channel": "google_business",
+        "status": "submitted (PROCESSING)",
+        "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/2535681562498628533"
+      },
+      {
+        "channel": "email",
+        "status": "draft updated with PDF download block; not sent"
+      }
+    ]
+  }
 }
