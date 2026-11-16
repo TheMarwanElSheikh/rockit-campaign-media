@@ -2,7 +2,7 @@
 
 > **Brand rules are permanent. Read `brand/BRAND.md` first.**
 > - Gold is ALWAYS the metallic gradient defined in `brand/rockit-logo.svg`, never a flat yellow.
-> - Logo: ONLY the owner's files, as supplied. Use `brand/rockit-logo` on light surfaces and the owner's `brand/rockit-logo-dark-bg` on navy. Gold comes from the logo SVG's own gradient. If the files are missing, the build stops: ask the owner, never substitute.
+> - Logo: ONLY the owner's files, as supplied. Use `brand/rockit-logo` (vector SVG where possible) and always on a light surface: never a dark panel behind the logo (owner, 16 Nov 2026). Gold comes from the logo SVG's own gradient. If the files are missing, the build stops: ask the owner, never substitute.
 > - The builder enforces both. Do not override them.
 
 The scheduled tasks follow this file. Times are Cairo time (Africa/Cairo).
@@ -48,7 +48,7 @@ Build it every week as follows.
 4. **Review.** Look at every `edition/page_NN.png` and fix any collisions, wraps or empty areas. Then write `AUDIT_EDITION.md`.
 5. **Publish.** The PDF (`edition/edition.pdf`) is the flagship. The website post, the email draft and the social posts carry the issue's headline items and link to it.
 
-Brand: the builder uses only the owner's logo files (`rockit-logo` on light pages, `rockit-logo-dark-bg` on navy) and the `gold-swoosh` gradient. Small text on cream uses #8a6514, small text on navy #DEC163.
+Brand: the builder uses only the owner's logo files (`rockit-logo`, always on a white or paper surface; vector `logo.svg` in the PDF) and the `gold-swoosh` gradient. Small text on cream uses #8a6514, small text on navy #DEC163.
 
 ## Sunday 14:00: research, write, audit, stage
 

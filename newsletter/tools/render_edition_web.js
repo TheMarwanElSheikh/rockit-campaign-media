@@ -5,7 +5,7 @@
 //   timeline.png      the key-dates timeline (first inline SVG with the "tlg" gradient), 2x
 //   cover_full_4x3.jpg 1200x900 landscape cover (website cover, Google Business)
 //   slide_NN.jpg      1080x1350 (4:5) carousel slides, one per selected page (Instagram, LinkedIn, Facebook)
-// Brand: only the owner's logo files (logo_dark.png = brand/rockit-logo-dark-bg.png on navy) and the logo-SVG gold gradient.
+// Brand: only the owner's logo (logo.svg = brand/rockit-logo.svg, vector, on light surfaces) and the logo-SVG gold gradient.
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
@@ -45,24 +45,24 @@ const FONTS = '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Ga
 
   // 2) landscape cover 1200x900
   const c = ed.cover, m = ed.meta;
-  const logo = '../logo_dark.png';
+  const logo = '../logo.svg';   // owner's vector logo, full colour, on a light surface (owner's rule: no dark panel behind it)
   const coverHtml = `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>*{margin:0;padding:0;box-sizing:border-box}
-  body{width:1200px;height:900px;background:radial-gradient(120% 90% at 85% 0%,#203560 0%,#16243f 55%,#080f1f 100%);font-family:Inter,Arial,sans-serif;color:#f1eedb;position:relative;overflow:hidden}
-  .gt{background:${GOLD};-webkit-background-clip:text;background-clip:text;color:transparent}
-  .k{font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#DEC163}</style></head><body>
-  <div style="position:absolute;left:72px;right:72px;top:60px;display:flex;justify-content:space-between;align-items:flex-start">
-    <img src="${logo}" style="height:96px">
-    <div class="k" style="text-align:right;line-height:1.8;color:#a9b1c2">Voyage ${m.voyage}<br>${m.date_long}<br>${m.pages_label}</div></div>
-  <div style="position:absolute;left:72px;right:72px;top:236px">
-    <div style="height:2px;background:${GOLD_H};margin-bottom:22px"></div>
+  body{width:1200px;height:900px;background:#ffffff;font-family:Inter,Arial,sans-serif;color:#1b2333;position:relative;overflow:hidden}
+  .k{font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#8a6514}</style></head><body>
+  <div style="position:absolute;left:0;right:0;top:0;height:12px;background:${GOLD_H}"></div>
+  <div style="position:absolute;left:72px;right:72px;top:58px;display:flex;justify-content:space-between;align-items:center">
+    <img src="${logo}" style="height:150px">
+    <div class="k" style="text-align:right;line-height:1.8;color:#5d6577">Voyage ${m.voyage}<br>${m.date_long}<br>${m.pages_label}</div></div>
+  <div style="position:absolute;left:72px;right:72px;top:262px">
+    <div style="height:3px;background:${GOLD_H};margin-bottom:20px"></div>
     <div class="k">The weekly freight &amp; trade review from Cairo</div>
-    <div class="gt" style="font:600 104px/1 'Cormorant Garamond',serif;margin-top:12px;padding-bottom:8px">The Rockit Manifest</div>
-    <div style="height:2px;background:${GOLD_H};margin-top:18px"></div>
-    <div style="font:600 50px/1.08 'Cormorant Garamond',serif;margin-top:40px;max-width:1000px">${c.headline}</div>
-    <div style="font:italic 500 26px/1.35 'Cormorant Garamond',serif;color:#d6d2c2;margin-top:18px;max-width:980px">Full edition: ocean and air freight, the logistics business, world politics and the Egypt desk. Every figure sourced.</div>
+    <div style="font:600 96px/1 'Cormorant Garamond',serif;margin-top:10px;padding-bottom:6px;color:#16243f">The Rockit Manifest</div>
+    <div style="height:3px;background:${GOLD_H};margin-top:16px"></div>
+    <div style="font:600 48px/1.08 'Cormorant Garamond',serif;margin-top:36px;max-width:1000px;color:#1b2333">${c.headline}</div>
+    <div style="font:italic 500 25px/1.35 'Cormorant Garamond',serif;color:#3a4152;margin-top:16px;max-width:980px">Full edition: ocean and air freight, the logistics business, world politics and the Egypt desk. Every figure sourced.</div>
   </div>
-  <div class="k" style="position:absolute;left:72px;bottom:46px;color:#a9b1c2">rockit-transport.com</div>
-  <div style="position:absolute;right:72px;bottom:40px;font:italic 600 28px 'Cormorant Garamond',serif" class="gt">Means what it says.</div>
+  <div class="k" style="position:absolute;left:72px;bottom:44px;color:#5d6577">rockit-transport.com</div>
+  <div style="position:absolute;right:72px;bottom:38px;font:italic 600 28px 'Cormorant Garamond',serif;color:#8a6514">Means what it says.</div>
   </body></html>`;
   const cp = await browser.newPage({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 });
   const tmpCover = path.join(out, '_cover.html');
@@ -78,9 +78,9 @@ const FONTS = '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Ga
     const n = String(pages[i]).padStart(2, '0');
     const img = `../page_${n}.png`;
     const html = `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>*{margin:0;padding:0;box-sizing:border-box}
-    body{width:1080px;height:1350px;background:#16243f;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}</style></head><body>
-    <img src="${img}" style="height:1290px;box-shadow:0 10px 40px rgba(0,0,0,.45)">
-    <div style="position:absolute;right:26px;bottom:14px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#DEC163">${i + 1}/${pages.length}</div>
+    body{width:1080px;height:1350px;background:#efe9da;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}</style></head><body>
+    <img src="${img}" style="height:1290px;box-shadow:0 6px 28px rgba(22,36,63,.18)">
+    <div style="position:absolute;right:26px;bottom:14px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8a6514">${i + 1}/${pages.length}</div>
     </body></html>`;
     const tmp = path.join(out, '_slide.html');
     fs.writeFileSync(tmp, html);

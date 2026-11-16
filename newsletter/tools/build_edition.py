@@ -6,7 +6,8 @@
 Writes into <issue>/edition/:
   edition.html   print-ready A4 document (one .page per sheet), rendered to PDF by render_edition.js
   logo.png       the owner's light-surface logo (brand/rockit-logo.png), cropped to its bounds only
-  logo_dark.png  the owner's dark-surface logo (brand/rockit-logo-dark-bg.png), cropped to its bounds only
+  logo.svg       the owner's vector logo (brand/rockit-logo.svg), frame tightened to the artwork; used on every page
+  logo_dark.png  kept for reference only; the owner wants the logo on light backgrounds
 
 Brand rules (brand/BRAND.md, permanent):
   * gold is ALWAYS the logo's own gradient (brand/rockit-logo.svg, "gold-swoosh"), never a flat yellow;
@@ -72,7 +73,7 @@ body {{ font-family: Inter, 'Helvetica Neue', Arial, sans-serif; color:{INK}; -w
 .runhead .sec {{ color:{GOLD_TXT_CREAM}; font-weight:600; }}
 .foot {{ position:absolute; left:15mm; right:15mm; bottom:7mm; height:7mm; display:flex; align-items:center; justify-content:space-between;
          font:500 7pt 'IBM Plex Mono', monospace; letter-spacing:.12em; color:{MUTED}; text-transform:uppercase; border-top:.5pt solid {RULE}; padding-top:1.5mm; }}
-.foot img {{ height:6.2mm; display:block; }}
+.foot img {{ height:7.4mm; display:block; }}
 .foot .pn {{ font:600 9pt 'IBM Plex Mono', monospace; color:{INK}; letter-spacing:.05em; }}
 
 .kicker {{ font:600 7.6pt 'IBM Plex Mono', monospace; letter-spacing:.2em; text-transform:uppercase; color:{GOLD_TXT_CREAM}; margin-bottom:2.2mm; }}
@@ -303,63 +304,64 @@ def runhead(meta, section):
 
 
 def foot(n):
-    return f'<div class="foot"><img src="logo.png" alt="Rock it Transport Services"><span>rockit-transport.com · inquiry@rockit.com.eg · +20 2 2690 7601</span><span class="pn">{n:02d}</span></div>'
+    return (f'<div class="foot"><img src="logo.svg" alt="Rock it Transport Services">'
+            f'<span>rockit-transport.com · inquiry@rockit.com.eg · +20 2 2690 7601</span><span class="pn">{n:02d}</span></div>')
 
 
-STATE_COL = {"open": "#5fbf8a", "partial": "#e08a3c", "restricted": "#e0614f"}
+STATE_COL = {"open": "#2e6b4a", "partial": "#a5561b", "restricted": "#9a3b2e"}   # readable on paper (WCAG AA for 7pt bold caps)
 
 
 def status_board(c, S):
     if not c.get("status"):
         return ""
     rows = "".join(
-        f'<div style="display:grid;grid-template-columns:34mm 30mm 1fr;column-gap:4mm;align-items:baseline;padding:2.1mm 0;border-bottom:.5pt solid #2c3b5c">'
-        f'<span style="font:600 11pt Cormorant Garamond,serif;color:{CREAM}">{e(x["name"])}</span>'
+        f'<div style="display:grid;grid-template-columns:36mm 30mm 1fr;column-gap:4mm;align-items:baseline;padding:2mm 0;border-bottom:.5pt solid {RULE}">'
+        f'<span style="font:600 11pt Cormorant Garamond,serif;color:{INK}">{e(x["name"])}</span>'
         f'<span style="font:600 6.8pt IBM Plex Mono,monospace;letter-spacing:.12em;text-transform:uppercase;color:{STATE_COL[x["state"]]}">'
         f'<i style="display:inline-block;width:2.2mm;height:2.2mm;border-radius:50%;background:{STATE_COL[x["state"]]};margin-right:1.6mm;vertical-align:.1mm"></i>{e(x["label"])}</span>'
-        f'<span style="font-size:7.8pt;line-height:1.4;color:#c9cdd8">{md(x["note"])}{S.ref(x.get("src"))}</span></div>'
+        f'<span style="font-size:7.8pt;line-height:1.4;color:#3a4152">{md(x["note"])}{S.ref(x.get("src"))}</span></div>'
         for x in c["status"])
-    return (f'<div>'
-            f'<div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_NAVY};margin-bottom:1mm">'
+    return (f'<div><div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_CREAM};margin-bottom:1mm">'
             f'Chokepoint status · {e(c.get("status_asof", ""))}</div>{rows}</div>')
 
 
 def cover(c, meta, S):
-    contents = "".join(f'<div style="display:flex;gap:3mm;padding:1.25mm 0;border-bottom:.5pt solid #2c3b5c;align-items:baseline">'
-                       f'<span style="font:600 7.4pt IBM Plex Mono,monospace;color:{GOLD_TXT_NAVY};width:6mm">{e(x["p"])}</span>'
-                       f'<span style="font-size:7.9pt;color:{CREAM};flex:1;line-height:1.3"><b>{e(x["sec"])}</b><span style="color:#a9b1c2"> · {e(x["what"])}</span></span></div>' for x in c["contents"])
-    nums = "".join(f'<div style="padding:2.4mm 3mm 0 0;border-top:1pt solid #3a4a6e"><div class="gt" style="font:700 20pt/1 Cormorant Garamond,serif">{e(t["value"])}</div>'
-                   f'<div style="font-size:7pt;color:#c9cdd8;margin-top:1mm;line-height:1.3">{md(t["label"])}{S.ref(t.get("src"))}</div></div>' for t in c["numbers"])
-    kick = lambda t: f'<div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_NAVY};margin-bottom:2.5mm">{e(t)}</div>'
-    return f'''<section class="page" style="background:{NAVY}">
-  <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 85% 0%,#203560 0%,{NAVY} 55%,{MID} 100%)"></div>
-  <div style="position:absolute;left:15mm;right:15mm;top:12mm;bottom:9mm;display:flex;flex-direction:column">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <img src="logo_dark.png" style="height:16mm;display:block" alt="Rock it Transport Services">
-      <div style="text-align:right;font:500 7.4pt IBM Plex Mono,monospace;letter-spacing:.16em;text-transform:uppercase;color:#a9b1c2;line-height:1.7">
+    """Light cover: the owner's original logo on paper, full colour, vector."""
+    contents = "".join(f'<div style="display:flex;gap:3mm;padding:1.2mm 0;border-bottom:.5pt solid {RULE};align-items:baseline">'
+                       f'<span style="font:600 7.4pt IBM Plex Mono,monospace;color:{GOLD_TXT_CREAM};width:6mm">{e(x["p"])}</span>'
+                       f'<span style="font-size:7.9pt;color:{INK};flex:1;line-height:1.3"><b>{e(x["sec"])}</b><span style="color:{MUTED}"> · {e(x["what"])}</span></span></div>' for x in c["contents"])
+    nums = "".join(f'<div style="padding:2.4mm 3mm 0 0;border-top:1.4pt solid {INK}"><div style="font:700 20pt/1 Cormorant Garamond,serif;color:{NAVY}">{e(t["value"])}</div>'
+                   f'<div style="font-size:7pt;color:#3a4152;margin-top:1mm;line-height:1.3">{md(t["label"])}{S.ref(t.get("src"))}</div></div>' for t in c["numbers"])
+    kick = lambda t: f'<div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_CREAM};margin-bottom:2.5mm">{e(t)}</div>'
+    return f'''<section class="page" style="background:#ffffff">
+  <div style="position:absolute;left:0;right:0;top:0;height:3.2mm;background:{GOLD_GRAD_H}"></div>
+  <div style="position:absolute;left:15mm;right:15mm;top:13mm;bottom:9mm;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <img src="logo.svg" style="height:25mm;display:block" alt="Rock it Transport Services">
+      <div style="text-align:right;font:500 7.4pt IBM Plex Mono,monospace;letter-spacing:.16em;text-transform:uppercase;color:{MUTED};line-height:1.7">
         Voyage {e(meta["voyage"])}<br>{e(meta["date_long"])}<br>{e(meta["pages_label"])}</div>
     </div>
-    <div style="margin-top:9mm">
+    <div style="margin-top:8mm">
       <div style="height:1.4pt;background:{GOLD_GRAD_H};margin-bottom:4mm"></div>
-      <div style="font:600 8pt IBM Plex Mono,monospace;letter-spacing:.3em;text-transform:uppercase;color:{GOLD_TXT_NAVY}">The weekly freight &amp; trade review from Cairo</div>
-      <div class="gt" style="font:600 54pt/0.95 Cormorant Garamond,serif;letter-spacing:-.01em;margin-top:2.5mm;padding-bottom:2mm">The Rockit Manifest</div>
-      <div style="font:italic 500 12.5pt Cormorant Garamond,serif;color:#c9cdd8;margin-top:.5mm">What moved. What it means. What to do.</div>
+      <div style="font:600 8pt IBM Plex Mono,monospace;letter-spacing:.3em;text-transform:uppercase;color:{GOLD_TXT_CREAM}">The weekly freight &amp; trade review from Cairo</div>
+      <div style="font:600 54pt/0.95 Cormorant Garamond,serif;letter-spacing:-.01em;margin-top:2.5mm;padding-bottom:2mm;color:{NAVY}">The Rockit Manifest</div>
+      <div style="font:italic 500 12.5pt Cormorant Garamond,serif;color:#3a4152;margin-top:.5mm">What moved. What it means. What to do.</div>
       <div style="height:1.4pt;background:{GOLD_GRAD_H};margin-top:4mm"></div>
     </div>
-    <div style="margin-top:7mm;display:grid;grid-template-columns:1.3fr 1fr;column-gap:9mm">
+    <div style="margin-top:6mm;display:grid;grid-template-columns:1.3fr 1fr;column-gap:9mm">
       <div>
         {kick(c["kicker"])}
-        <div style="font:600 27pt/1.03 Cormorant Garamond,serif;color:{CREAM};margin-bottom:3.5mm">{md(c["headline"])}</div>
-        <div style="font:italic 500 11.6pt/1.4 Cormorant Garamond,serif;color:#d6d2c2;margin-bottom:3.5mm">{md(c["deck"])}</div>
-        <div style="font-size:8.3pt;line-height:1.55;color:#c9cdd8">{md(c["standfirst"])}{S.ref(c.get("src"))}</div>
+        <div style="font:600 27pt/1.03 Cormorant Garamond,serif;color:{INK};margin-bottom:3.5mm">{md(c["headline"])}</div>
+        <div style="font:italic 500 11.6pt/1.4 Cormorant Garamond,serif;color:#3a4152;margin-bottom:3.5mm">{md(c["deck"])}</div>
+        <div style="font-size:8.3pt;line-height:1.55;color:{INK}">{md(c["standfirst"])}{S.ref(c.get("src"))}</div>
       </div>
       <div>{kick("Inside this issue")}{contents}</div>
     </div>
-    <div style="margin-top:6mm">{status_board(c, S)}</div>
+    <div style="margin-top:5mm">{status_board(c, S)}</div>
     <div style="margin-top:auto">
       {kick("The week in numbers")}
       <div style="display:grid;grid-template-columns:repeat({len(c["numbers"])},1fr);column-gap:4mm">{nums}</div>
-      <div style="display:flex;justify-content:space-between;margin-top:6mm;font:500 6.8pt IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f88a0">
+      <div style="display:flex;justify-content:space-between;margin-top:5mm;padding-top:2mm;border-top:.5pt solid {RULE};font:500 6.8pt IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:{MUTED}">
         <span>Cairo · Alexandria · Sokhna · Port Said · Damietta</span><span>Every figure sourced</span></div>
     </div>
   </div>
@@ -376,29 +378,31 @@ def sources_items(S, data_sources):
 
 
 def back_cover(b, meta):
-    cols = "".join(f'<div><div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_NAVY};margin-bottom:2mm">{e(c["h"])}</div>'
-                   + "".join(f'<div style="font-size:8.6pt;line-height:1.5;color:#d6d2c2;padding:1.2mm 0;border-bottom:.5pt solid #2c3b5c">{md(x)}</div>' for x in c["items"]) + "</div>"
+    """Light back cover: the owner's original logo on paper, full colour, vector."""
+    cols = "".join(f'<div><div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_CREAM};margin-bottom:2mm">{e(c["h"])}</div>'
+                   + "".join(f'<div style="font-size:8.6pt;line-height:1.5;color:{INK};padding:1.2mm 0;border-bottom:.5pt solid {RULE}">{md(x)}</div>' for x in c["items"]) + "</div>"
                    for c in b["columns"])
-    return f'''<section class="page" style="background:{NAVY}">
-  <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 15% 100%,#203560 0%,{NAVY} 55%,{MID} 100%)"></div>
-  <div style="position:absolute;left:15mm;right:15mm;top:22mm">
-    <img src="logo_dark.png" style="height:24mm;display:block" alt="Rock it Transport Services">
+    nxt = "".join(f'<div style="font:500 12pt/1.35 Cormorant Garamond,serif;color:{INK};padding:1.3mm 0;border-bottom:.5pt solid {RULE}"><span style="color:{GOLD_TXT_CREAM};font:600 8pt IBM Plex Mono,monospace;margin-right:3mm">{i:02d}</span>{md(x)}</div>'
+                  for i, x in enumerate(b.get("next", []), 1))
+    return f'''<section class="page" style="background:#ffffff">
+  <div style="position:absolute;left:0;right:0;bottom:0;height:3.2mm;background:{GOLD_GRAD_H}"></div>
+  <div style="position:absolute;left:15mm;right:15mm;top:20mm">
+    <img src="logo.svg" style="height:34mm;display:block" alt="Rock it Transport Services">
     <div style="height:1.4pt;background:{GOLD_GRAD_H};margin:9mm 0 7mm"></div>
-    <div class="gt" style="font:600 34pt/1.05 Cormorant Garamond,serif;padding-bottom:1mm">{md(b["headline"])}</div>
-    <div style="font:italic 500 13pt/1.45 Cormorant Garamond,serif;color:#d6d2c2;margin-top:4mm;max-width:150mm">{md(b["deck"])}</div>
+    <div style="font:600 32pt/1.05 Cormorant Garamond,serif;color:{NAVY};padding-bottom:1mm">{md(b["headline"])}</div>
+    <div style="font:italic 500 13pt/1.45 Cormorant Garamond,serif;color:#3a4152;margin-top:4mm;max-width:150mm">{md(b["deck"])}</div>
   </div>
-  <div style="position:absolute;left:15mm;right:15mm;top:120mm;display:grid;grid-template-columns:repeat({len(b["columns"])},1fr);column-gap:8mm">{cols}</div>
-  <div style="position:absolute;left:15mm;right:15mm;top:172mm;border:1pt solid #3a4a6e;padding:5mm 6mm">
-    <div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_NAVY};margin-bottom:2.5mm">Next Monday in The Rockit Manifest</div>
-    {"".join(f'<div style="font:500 12pt/1.35 Cormorant Garamond,serif;color:{CREAM};padding:1.3mm 0;border-bottom:.5pt solid #2c3b5c"><span style="color:{GOLD_TXT_NAVY};font:600 8pt IBM Plex Mono,monospace;margin-right:3mm">{i:02d}</span>{md(x)}</div>' for i, x in enumerate(b.get("next", []), 1))}
+  <div style="position:absolute;left:15mm;right:15mm;top:122mm;display:grid;grid-template-columns:repeat({len(b["columns"])},1fr);column-gap:8mm">{cols}</div>
+  <div style="position:absolute;left:15mm;right:15mm;top:178mm;background:#f6f1e4;padding:5mm 6mm;border-left:2pt solid {GOLD_MID};border-image:{GOLD_GRAD_V} 1">
+    <div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_CREAM};margin-bottom:2.5mm">Next Monday in The Rockit Manifest</div>
+    {nxt}
   </div>
   <div style="position:absolute;left:15mm;right:15mm;bottom:30mm">
-    <div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_NAVY};margin-bottom:3mm">{e(b["cta_kicker"])}</div>
-    <div style="font:600 20pt/1.2 Cormorant Garamond,serif;color:{CREAM}">{md(b["cta"])}</div>
-    <div style="height:1.4pt;background:{GOLD_GRAD_H};margin-top:7mm"></div>
+    <div style="font:600 7.6pt IBM Plex Mono,monospace;letter-spacing:.2em;text-transform:uppercase;color:{GOLD_TXT_CREAM};margin-bottom:3mm">{e(b["cta_kicker"])}</div>
+    <div style="font:600 20pt/1.2 Cormorant Garamond,serif;color:{NAVY}">{md(b["cta"])}</div>
   </div>
-  <div style="position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;justify-content:space-between;font:500 7pt IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:#a9b1c2">
-    <span>rockit-transport.com · inquiry@rockit.com.eg · +20 2 2690 7601</span><span class="gt" style="font-style:italic;letter-spacing:.04em;text-transform:none;font:italic 600 12pt Cormorant Garamond,serif">Means what it says.</span></div>
+  <div style="position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;justify-content:space-between;align-items:baseline;padding-top:3mm;border-top:.5pt solid {RULE};font:500 7pt IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:{MUTED}">
+    <span>rockit-transport.com · inquiry@rockit.com.eg · +20 2 2690 7601</span><span class="gtl" style="font:italic 600 13pt Cormorant Garamond,serif;letter-spacing:.02em;text-transform:none">Means what it says.</span></div>
 </section>'''
 
 
@@ -414,6 +418,20 @@ def build(ed_path):
             raise SystemExit(f"STOP: owner logo file brand/{src_name} is missing. Do not substitute another logo; ask the owner.")
         im = Image.open(src).convert("RGBA")
         im.crop(im.getbbox()).save(out / out_name)
+    svg_src = brand / "rockit-logo.svg"
+    if not svg_src.exists():
+        raise SystemExit("STOP: owner logo file brand/rockit-logo.svg is missing. Do not substitute another logo; ask the owner.")
+    # Vector master for print. Only the viewBox (the frame) is tightened to the artwork's bounds, measured on the owner's
+    # own rasterisation; every path, gradient and colour stays exactly as supplied.
+    bbox = Image.open(brand / "rockit-logo.png").getbbox()          # (47, 40, 2502, 1090) on a 2550x1132 canvas
+    svg = svg_src.read_text()
+    vb = re.search(r'viewBox="([\d.\- ]+)"', svg).group(1).split()
+    x0, y0 = float(vb[0]) + bbox[0], float(vb[1]) + bbox[1]
+    w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    svg = svg.replace(f'viewBox="{" ".join(vb)}"', f'viewBox="{x0:g} {y0:g} {w} {h}"', 1)
+    svg = re.sub(r'(<svg[^>]*?)\swidth="[^"]*"', r"\1", svg, count=1)
+    svg = re.sub(r'(<svg[^>]*?)\sheight="[^"]*"', r"\1", svg, count=1)
+    (out / "logo.svg").write_text(svg)
     S = Sources(ed["sources"])
     meta = ed["meta"]
     pages = [cover(ed["cover"], meta, S)]

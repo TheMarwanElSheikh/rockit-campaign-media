@@ -55,13 +55,18 @@ The owner supplied the official logo on 15 Nov 2026: "Rock it / Transport Servic
 **Rules:**
 - Use these files and nothing else. Never redraw, re-letter, recolour, invert, tint, stretch, crop into or rotate them, add effects, or set a typeset wordmark in their place.
 - Never make your own dark or reversed version. The owner's dark-background file exists for that.
-- Light background → `rockit-logo`. Dark background → `rockit-logo-dark-bg`. No light "panels" are needed.
+- **Owner's decision, 16 Nov 2026: the logo always sits on a light surface (white, paper or cream), in full colour, with no dark background or dark panel behind it.** On dark designs it reads poorly, so layouts are built so that the logo's area is light. Use `rockit-logo` everywhere.
+- `rockit-logo-dark-bg` stays in `brand/` only for a third-party surface that is unavoidably dark and outside our control. Never design a dark logo area on purpose.
+- **Quality:** use the vector master (`rockit-logo.svg`) wherever the medium takes SVG (PDF, web pages). Use the 2550 px PNG only where SVG is impossible (email, social images), and never show it above its native size. Never use a small or recompressed copy.
 - **Retired, never to be used as the logo:**
   - the older lockup with "Freight & Logistics Solutions" (`RockitShip-v2/packages/docs-engine/assets/brand/rockit-transport-logo.png`)
   - the standalone R mark (`rockit_mark_gold_1024_*.png`; favicon and app-icon use only)
   - any self-made inverted or recoloured file
 - If the owner's files are missing, stop and ask. Never substitute another logo. The newsletter builder enforces this.
-- **Newsletter placement:** the dark-background logo in the navy email header, in the midnight email footer, and on the footer bar of every slide and cover.
+- **Newsletter placement:**
+  - PDF edition: vector `rockit-logo.svg` on white covers and in every page footer.
+  - Email: a white header and footer with `rockit-logo.png`.
+  - Social and web covers: white or paper backgrounds, or a white footer band for the logo.
 
 ## 3. Other tokens
 
