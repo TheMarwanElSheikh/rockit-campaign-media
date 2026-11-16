@@ -1,0 +1,16 @@
+{
+  "issue": "001",
+  "released": "2026-11-16 (Cairo)",
+  "checks": {
+    "logo_gate": "passed: visuals/logo_dark.png is pixel-identical to brand/rockit-logo-dark-bg.png (cropped)",
+    "hold": "none received"
+  },
+  "results": [
+    {"channel": "website", "status": "live (native Wix schedule)", "firstPublishedDate": "2026-11-16T08:00:07Z", "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates", "category": "The Rockit Manifest (https://www.rockit-transport.com/insights/categories/newsletter)"},
+    {"channel": "linkedin", "status": "published", "post_urn": "urn:li:share:7528005546432446464", "url": "https://www.linkedin.com/feed/update/urn:li:share:7528005546432446464/"},
+    {"channel": "facebook", "status": "published", "post_id": "102089469414840_1122843177338798", "url": "https://www.facebook.com/102089469414840_1122843177338798"},
+    {"channel": "instagram", "status": "published (5-image carousel)", "media_id": "18147443491598254"},
+    {"channel": "google_business", "status": "submitted (Google state: PROCESSING)", "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/3181975723643041638"},
+    {"channel": "email", "status": "draft, not sent (owner sends manually)", "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54"}
+  ]
+}
