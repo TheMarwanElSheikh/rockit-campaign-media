@@ -1,87 +1,97 @@
 {
-  "issue": "001",
-  "released": "2026-11-16 (Cairo)",
-  "checks": {
-    "logo_gate": "passed: visuals/logo_dark.png is pixel-identical to brand/rockit-logo-dark-bg.png (cropped)",
-    "hold": "none received"
+ "issue": "001",
+ "released": "2026-11-16 (Cairo)",
+ "checks": {
+  "logo_gate": "passed: visuals/logo_dark.png is pixel-identical to brand/rockit-logo-dark-bg.png (cropped)",
+  "hold": "none received"
+ },
+ "results": [
+  {
+   "channel": "website",
+   "status": "live (native Wix schedule)",
+   "firstPublishedDate": "2026-11-16T08:00:07Z",
+   "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates",
+   "category": "The Rockit Manifest (https://www.rockit-transport.com/insights/categories/newsletter)"
   },
-  "results": [
-    {
-      "channel": "website",
-      "status": "live (native Wix schedule)",
-      "firstPublishedDate": "2026-11-16T08:00:07Z",
-      "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates",
-      "category": "The Rockit Manifest (https://www.rockit-transport.com/insights/categories/newsletter)"
-    },
-    {
-      "channel": "linkedin",
-      "status": "published",
-      "post_urn": "urn:li:share:7528005546432446464",
-      "url": "https://www.linkedin.com/feed/update/urn:li:share:7528005546432446464/"
-    },
-    {
-      "channel": "facebook",
-      "status": "published",
-      "post_id": "102089469414840_1122843177338798",
-      "url": "https://www.facebook.com/102089469414840_1122843177338798"
-    },
-    {
-      "channel": "instagram",
-      "status": "published (5-image carousel)",
-      "media_id": "18147443491598254"
-    },
-    {
-      "channel": "google_business",
-      "status": "live (Google state LIVE, checked 2026-11-16T08:53Z)",
-      "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/3181975723643041638",
-      "url": "https://local.google.com/place?id=16153187012028540719&use=posts&lpsid=CAIQACoeChxtc3BfaDpTaW1ubXdGUDdpRURxenliaUxiZkR3"
-    },
-    {
-      "channel": "email",
-      "status": "draft, not sent (owner sends manually)",
-      "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54"
-    }
-  ],
-  "full_edition": {
-    "released": "2026-11-16 ~13:05 Cairo (option 1: replace web post + re-post)",
-    "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_1ab1578a371d4dd282e7d0c3c405595a.pdf",
-    "results": [
-      {
-        "channel": "website",
-        "status": "post content replaced with the full edition and republished (same URL)",
-        "title": "Suez reopens. Hormuz doesn't. | The Rockit Manifest 001 · Full edition",
-        "lastPublishedDate": "2026-11-16T11:05:20Z",
-        "nodes": 212,
-        "images": 9,
-        "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
-      },
-      {
-        "channel": "linkedin",
-        "status": "published",
-        "post_urn": "urn:li:share:7528050977287970816",
-        "url": "https://www.linkedin.com/feed/update/urn:li:share:7528050977287970816/"
-      },
-      {
-        "channel": "facebook",
-        "status": "published",
-        "post_id": "102089469414840_1122969457326170",
-        "url": "https://www.facebook.com/102089469414840_1122969457326170"
-      },
-      {
-        "channel": "instagram",
-        "status": "published (8-slide carousel); the first call timed out but completed, and Windsor's duplicate guard confirmed it",
-        "media_id": "18134167411690928",
-        "note": "This morning's short-version carousel (media 18147443491598254, instagram.com/p/Dfy463EFIfD/) must be deleted by hand in the Instagram app; Windsor has no delete-post action."
-      },
-      {
-        "channel": "google_business",
-        "status": "submitted (PROCESSING)",
-        "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/2535681562498628533"
-      },
-      {
-        "channel": "email",
-        "status": "draft updated with PDF download block; not sent"
-      }
-    ]
+  {
+   "channel": "linkedin",
+   "status": "published",
+   "post_urn": "urn:li:share:7528005546432446464",
+   "url": "https://www.linkedin.com/feed/update/urn:li:share:7528005546432446464/"
+  },
+  {
+   "channel": "facebook",
+   "status": "published",
+   "post_id": "102089469414840_1122843177338798",
+   "url": "https://www.facebook.com/102089469414840_1122843177338798"
+  },
+  {
+   "channel": "instagram",
+   "status": "published (5-image carousel)",
+   "media_id": "18147443491598254"
+  },
+  {
+   "channel": "google_business",
+   "status": "live (Google state LIVE, checked 2026-11-16T08:53Z)",
+   "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/3181975723643041638",
+   "url": "https://local.google.com/place?id=16153187012028540719&use=posts&lpsid=CAIQACoeChxtc3BfaDpTaW1ubXdGUDdpRURxenliaUxiZkR3"
+  },
+  {
+   "channel": "email",
+   "status": "draft, not sent (owner sends manually)",
+   "wix_campaign_id": "e3001efe-463e-4f32-a88a-04016eeabb54"
   }
+ ],
+ "full_edition": {
+  "released": "2026-11-16 ~13:05 Cairo (option 1: replace web post + re-post)",
+  "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_1ab1578a371d4dd282e7d0c3c405595a.pdf",
+  "results": [
+   {
+    "channel": "website",
+    "status": "post content replaced with the full edition and republished (same URL)",
+    "title": "Suez reopens. Hormuz doesn't. | The Rockit Manifest 001 · Full edition",
+    "lastPublishedDate": "2026-11-16T11:05:20Z",
+    "nodes": 212,
+    "images": 9,
+    "url": "https://www.rockit-transport.com/post/rockit-manifest-001-suez-december-rates"
+   },
+   {
+    "channel": "linkedin",
+    "status": "published",
+    "post_urn": "urn:li:share:7528050977287970816",
+    "url": "https://www.linkedin.com/feed/update/urn:li:share:7528050977287970816/"
+   },
+   {
+    "channel": "facebook",
+    "status": "published",
+    "post_id": "102089469414840_1122969457326170",
+    "url": "https://www.facebook.com/102089469414840_1122969457326170"
+   },
+   {
+    "channel": "instagram",
+    "status": "published (8-slide carousel); the first call timed out but completed, and Windsor's duplicate guard confirmed it",
+    "media_id": "18134167411690928",
+    "note": "This morning's short-version carousel (media 18147443491598254, instagram.com/p/Dfy463EFIfD/) must be deleted by hand in the Instagram app; Windsor has no delete-post action."
+   },
+   {
+    "channel": "google_business",
+    "status": "submitted (PROCESSING)",
+    "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/2535681562498628533"
+   },
+   {
+    "channel": "email",
+    "status": "draft updated with PDF download block; not sent"
+   }
+  ]
+ },
+ "logo_redesign": {
+  "when": "2026-11-16 ~13:20 Cairo",
+  "why": "owner: logo low quality, dark background unnecessary",
+  "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_e8be268dbb7e492a99adaf6f5a2b36e0.pdf",
+  "website": "post republished 2026-11-16T11:18:55Z: new light cover 949f2c_005dc1e891d042b8b413d92156ed0b86~mv2.jpg, both PDF links point to the new PDF",
+  "email": "draft header/footer white with rockit-logo.png, PDF button updated; still DRAFT / NOT_STARTED, not sent",
+  "google_business": "localPosts/2535681562498628533 photo replaced with the light cover (PROCESSING)",
+  "linkedin_facebook_instagram": "already-published posts keep the earlier dark cover image; the API cannot edit them",
+  "sunday_task": "trig_01J3AnzB93Zqn1a4zVBKQgB3 prompt updated with the light-surface logo rule"
+ }
 }
