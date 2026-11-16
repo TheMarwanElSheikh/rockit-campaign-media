@@ -282,7 +282,11 @@
   "def": "A discount widely discussed in November and rarely invoiced in December.",
   "usage": "“Rates are coming down because of Suez.”",
   "synonyms": "none",
-  "see": "PSS · FAK · “valid until further notice”"
+  "see": "PSS · FAK · “valid until further notice”",
+  "see_links": {
+   "PSS": "https://container-news.com/cma-cgm-announces-new-surcharges-for-mediterranean-and-mauritius-trades/",
+   "FAK": "https://container-news.com/msc-raises-december-fak-rates-to-mediterranean-and-black-sea/"
+  }
  },
  "signoff": {
   "line": "That's the manifest. Everything on it, we checked. Anything not on it, ask us.",

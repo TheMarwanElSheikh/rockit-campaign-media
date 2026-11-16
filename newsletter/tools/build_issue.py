@@ -20,6 +20,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 NAVY, MID, CREAM, PAPER, INK, RULE, MUTED = "#16243f", "#080f1f", "#f1eedb", "#faf7ef", "#1b2333", "#e6dcc4", "#5d6577"
 # ---- Rockit gold: ALWAYS the metallic gradient sampled from the official logo (brand/rockit_mark_gold_1024_transparent.png). Never a flat yellow.
@@ -383,14 +384,39 @@ def email_html(c, IMG):
 
 
 # ------------------------------------------------------------------ ricos (website)
-def T_(text, bold=False, italic=False, link=None):
+# The post is built to be explored, not just read: an "In this issue" contents block with
+# in-page anchor links, a "Back to contents" link after every section, every figure linked
+# to its source, links into the relevant rockit-transport.com service pages and tools, and a
+# closing block of buttons (quote, lane enquiry, every issue, guides, subscribe, follow).
+SITE = "https://www.rockit-transport.com"
+EXPLORE = {
+    "quote": SITE + "/get-a-quote",
+    "archive": SITE + "/insights/categories/newsletter",
+    "guides": SITE + "/insights",
+    "customs": SITE + "/customs-clearance",
+    "ocean": SITE + "/ocean-freight",
+    "air": SITE + "/air-freight",
+    "schedules": SITE + "/vessel-schedules",
+    "tracking": SITE + "/container-tracking",
+    "duties": SITE + "/duties-taxes-calculator",
+    "linkedin": "https://www.linkedin.com/company/rockit-transport-services/",
+    "facebook": "https://www.facebook.com/102089469414840",
+    "instagram": "https://www.instagram.com/rockit_logistics/",
+}
+
+
+def T_(text, bold=False, italic=False, link=None, anchor=None):
     d = []
     if bold:
         d.append({"type": "BOLD", "fontWeightValue": 700})
     if italic:
         d.append({"type": "ITALIC", "italicData": True})
-    if link:
-        d.append({"type": "LINK", "linkData": {"link": {"url": link, "target": "BLANK", "rel": {"noreferrer": True}}}})
+    if anchor:
+        d.append({"type": "ANCHOR", "anchorData": {"anchor": anchor}})
+    elif link:
+        internal = link.startswith(SITE) or link.startswith("mailto:")
+        d.append({"type": "LINK", "linkData": {"link": {"url": link, "target": "SELF" if internal else "BLANK",
+                                                        **({} if internal else {"rel": {"noreferrer": True}})}}})
     return {"type": "TEXT", "nodes": [], "textData": {"text": text, "decorations": d}}
 
 
@@ -398,8 +424,29 @@ def P_(*t):
     return {"type": "PARAGRAPH", "nodes": list(t), "paragraphData": {}}
 
 
-def H_(text, level=2):
-    return {"type": "HEADING", "nodes": [T_(text)], "headingData": {"level": level}}
+def H_(text, level=2, nid=None):
+    h = {"type": "HEADING", "nodes": [T_(text)], "headingData": {"level": level}}
+    if nid:
+        h["id"] = nid
+    return h
+
+
+def BACK_():
+    return P_(T_("↑ Back to contents", italic=True, anchor="in-this-issue"))
+
+
+def BTN_(text, url, primary=True):
+    internal = url.startswith(SITE) or url.startswith("mailto:")
+    return {"type": "BUTTON", "nodes": [], "buttonData": {
+        "containerData": {"width": {"size": "CONTENT"}, "alignment": "CENTER", "textWrap": True},
+        "type": "LINK", "text": text,
+        "link": {"url": url, "target": "SELF" if internal else "BLANK"},
+        "styles": {"borderRadius": 2, "borderWidth": 2, "borderColor": NAVY_HEX, "buttonSize": "MEDIUM",
+                   "textColor": CREAM_HEX if primary else NAVY_HEX,
+                   "background": {"type": "COLOR", "color": NAVY_HEX if primary else CREAM_HEX}}}}
+
+
+NAVY_HEX, CREAM_HEX = "#16243f", "#f1eedb"
 
 
 def UL(items):
@@ -421,34 +468,108 @@ def SRC_(items):
 
 
 def ricos(c, dims):
-    n = [P_(T_(f"Voyage {c['issue_no']} · {c['date_long']} · {c['read_time']} read · {c['_source_count']} sources, each checked", italic=True)),
-         P_(T_(c["opening"], italic=True)), P_(T_("— The Rockit desk, Cairo", italic=True)),
-         H_("The 60-second manifest"), UL([[T_(x["tag"] + ": ", bold=True), T_(x["text"])] for x in c["tldr"]])]
-    L = c["lead"]
-    n += [H_(L["headline"])] + [P_(T_(strip(x))) for x in L["paras"]] + [IMG_("chart_gap", *dims["chart_gap"], L["chart_alt"]), SRC_(L["sources"])]
-    F = c["feature"]
-    n += [H_(F["headline"]), P_(T_(F["paras"][0])), IMG_("chart_rebate", *dims["chart_rebate"], F["chart_alt"]), P_(T_(F["paras"][1])), SRC_(F["sources"])]
-    N = c["numbers"]
-    n += [H_("By the numbers"), UL([[T_(t["value"] + " ", bold=True), T_(f'{t["label"]} ({t["delta"]}) '), T_("source", italic=True, link=t["url"])] for t in N["tiles"]]), P_(T_(N["footnote"], italic=True))]
-    for key, title in (("egypt", "Egypt desk"), ("world", "World desk")):
-        n.append(H_(title))
+    L, F, N, X, TH, S = c["lead"], c["feature"], c["numbers"], c["explainer"], c["thesaurus"], c["signoff"]
+    E = {**EXPLORE, **c.get("explore", {})}
+    # Section map: (anchor id, label in the contents block, heading text). Ids are fixed so the
+    # anchor links keep working when the post is re-staged.
+    secs = [("sec-60s", "The 60-second manifest", "The 60-second manifest"),
+            ("sec-lead", "Line 01 · " + L["headline"], L["headline"]),
+            ("sec-feature", "Line 02 · " + F["headline"], F["headline"]),
+            ("sec-numbers", "Line 03 · By the numbers", "By the numbers"),
+            ("sec-egypt", "Line 04 · Egypt desk", "Egypt desk"),
+            ("sec-world", "Line 05 · World desk", "World desk"),
+            ("sec-moves", "Line 06 · Your move, before Friday", "Your move, before Friday"),
+            ("sec-dates", "On the calendar", "On the calendar"),
+            ("sec-explains", "Rockit explains: " + X["title"], "Rockit explains: " + X["title"]),
+            ("sec-thesaurus", "The Thesaurus of Excuses", "The Thesaurus of Excuses")]
+    H = {k: H_(h, 2, k) for k, _, h in secs}
+
+    # Masthead line. The read time is left to Wix's own counter so the two never disagree.
+    n = [P_(T_(f"Voyage {c['issue_no']} · {c['date_long']} · {c['_source_count']} sources, each checked and linked", italic=True)),
+         P_(T_(c["opening"], italic=True)), P_(T_("— The Rockit desk, Cairo", italic=True))]
+
+    # In this issue: every section one tap away, plus the desk sub-stories.
+    toc = []
+    for k, label, _ in secs:
+        item = [T_(label, anchor=k)]
+        toc.append(item)
+    n += [H_("In this issue", 2, "in-this-issue"), UL(toc),
+          P_(T_("Every issue: ", bold=True), T_("The Rockit Manifest archive", link=E["archive"]),
+             T_(" · Need a rate now? "), T_("Get a freight quote", bold=True, link=E["quote"]))]
+
+    n += [H["sec-60s"], UL([[T_(x["tag"] + ": ", bold=True), T_(x["text"])] for x in c["tldr"]]), BACK_()]
+
+    n += [H["sec-lead"]] + [P_(T_(strip(x))) for x in L["paras"]] + [IMG_("chart_gap", *dims["chart_gap"], L["chart_alt"]), SRC_(L["sources"]), BACK_()]
+    n += [H["sec-feature"], P_(T_(F["paras"][0])), IMG_("chart_rebate", *dims["chart_rebate"], F["chart_alt"]), P_(T_(F["paras"][1])), SRC_(F["sources"]),
+          P_(T_("Shipping to one of the new lanes? ", italic=True), T_("Ocean freight from Egypt", bold=True, link=E["ocean"]),
+             T_(" · ", italic=True), T_("Air freight", bold=True, link=E["air"])), BACK_()]
+
+    # Every figure is itself the link to the page it was read on.
+    n += [H["sec-numbers"], UL([[T_(t["value"], bold=True, link=t["url"]), T_(f' {t["label"]} ({t["delta"]})')] for t in N["tiles"]]),
+          P_(T_(N["footnote"], italic=True)), P_(T_("Tap a figure to open its source.", italic=True)), BACK_()]
+
+    for key, sid in (("egypt", "sec-egypt"), ("world", "sec-world")):
+        n.append(H[sid])
         for it in c[key]["items"]:
             n += [H_(it["title"], 3), P_(T_(it["body"]))]
             if it.get("visual") == "route":
                 n.append(IMG_("route_md1", *dims["route_md1"], it["alt"]))
             n.append(SRC_([{"name": it["source"], "url": it["url"]}]))
-    n += [H_("Your move, before Friday")] + [UL([[T_(t["tag"] + ": ", bold=True), T_(" ".join(t["items"]))] for t in c["moves"]["tracks"]])]
-    n += [H_("On the calendar"), UL([[T_(d["date"] + ": ", bold=True), T_(d["event"], link=d["url"])] for d in c["dates"]["rows"]])]
-    X = c["explainer"]
-    n += [H_("Rockit explains: " + X["title"]), IMG_("acid_steps", *dims["acid_steps"], X["visual_alt"]),
+        if key == "egypt":
+            n.append(P_(T_("Clearing in Egypt? ", italic=True), T_("Our customs clearance desk", bold=True, link=E["customs"]),
+                        T_(" · ", italic=True), T_("Duty & tax calculator", bold=True, link=E["duties"])))
+        n.append(BACK_())
+
+    track_link = {0: ("Quote a December booking", E["quote"]), 1: ("Ocean freight from Egypt", E["ocean"]), 2: ("Customs clearance in Egypt", E["customs"])}
+    moves = []
+    for i, t in enumerate(c["moves"]["tracks"]):
+        lab, url = track_link.get(i, ("Talk to us", S["url"]))
+        moves.append([T_(t["tag"] + ": ", bold=True), T_(" ".join(t["items"]) + " "), T_(lab + " →", bold=True, link=url)])
+    n += [H["sec-moves"], UL(moves), BACK_()]
+
+    n += [H["sec-dates"], UL([[T_(d["date"] + ": ", bold=True), T_(d["event"], link=d["url"])] for d in c["dates"]["rows"]]),
+          P_(T_("Planning around these dates? ", italic=True), T_("Vessel schedules", bold=True, link=E["schedules"]),
+             T_(" · ", italic=True), T_("Container tracking", bold=True, link=E["tracking"])), BACK_()]
+
+    n += [H["sec-explains"], IMG_("acid_steps", *dims["acid_steps"], X["visual_alt"]),
           {"type": "ORDERED_LIST", "nodes": [{"type": "LIST_ITEM", "nodes": [P_(T_(s["who"] + ": ", bold=True), T_(s["text"]))]} for s in X["steps"]], "orderedListData": {"indentation": 0}},
-          P_(T_(X["note"] + " "), T_(X["cta"], bold=True, link=X["url"]))]
-    TH = c["thesaurus"]
-    n += [H_("The Thesaurus of Excuses", 3), P_(T_(TH["word"] + " ", bold=True), T_(f'{TH["phon"]} {TH["pos"]}', italic=True)),
+          P_(T_(X["note"] + " "), T_(X["cta"], bold=True, link=X["url"])), BACK_()]
+
+    # "See also" terms link to where this issue sourced them, when content.json gives a link.
+    see_links = TH.get("see_links", {})
+    see = [T_("See also: ", bold=True)]
+    for i, term in enumerate([s.strip() for s in TH["see"].split("·")]):
+        if i:
+            see.append(T_(" · "))
+        see.append(T_(term, link=see_links.get(term)))
+    n += [H["sec-thesaurus"], P_(T_(TH["word"] + " ", bold=True), T_(f'{TH["phon"]} {TH["pos"]}', italic=True)),
           P_(T_("1. " + TH["def"], italic=True)), P_(T_("Usage: ", bold=True), T_(TH["usage"], italic=True)),
-          P_(T_("Synonyms (verified): ", bold=True), T_(TH["synonyms"] + ".")), P_(T_("See also: ", bold=True), T_(TH["see"]))]
-    S = c["signoff"]
-    n += [H_(S["line"], 3), P_(T_(S["cta"], bold=True, link=S["url"]), T_(" · Rockit. Means what it says.", italic=True)), P_(T_(strip(c["disclaimer"]), italic=True))]
+          P_(T_("Synonyms (verified): ", bold=True), T_(TH["synonyms"] + ".")), P_(*see), BACK_()]
+
+    # Sign-off and the explore block.
+    sub = f"mailto:inquiry@rockit.com.eg?subject={quote('Subscribe me to The Rockit Manifest')}"
+    n += [H_(S["line"], 3, "sign-off"), P_(T_("Rockit. Means what it says.", italic=True)),
+          BTN_("Get a freight quote", E["quote"]), BTN_(S["cta"], S["url"], primary=False),
+          BTN_("Read every Manifest issue", E["archive"], primary=False), BTN_("Customs & freight guides", E["guides"], primary=False),
+          P_(T_("Get the Manifest by email: ", bold=True), T_("ask to be added", link=sub), T_(" (one email, every Monday).")),
+          P_(T_("Follow Rockit: ", bold=True), T_("LinkedIn", link=E["linkedin"]), T_(" · "), T_("Facebook", link=E["facebook"]),
+             T_(" · "), T_("Instagram", link=E["instagram"])),
+          P_(T_(strip(c["disclaimer"]), italic=True))]
+
+    # Give every node an id: anchors need their targets to have one, and stable ids keep re-stages tidy.
+    seq = [0]
+
+    def ids(node):
+        if node.get("type") != "TEXT" and not node.get("id"):
+            seq[0] += 1
+            node["id"] = f"n{seq[0]:03d}"
+        for ch in node.get("nodes", []):
+            ids(ch)
+    for x in n:
+        ids(x)
+    targets = {x.get("id") for x in n}
+    for k, _, _ in secs + [("in-this-issue", "", "")]:
+        assert k in targets, f"anchor target {k} missing"
     return {"nodes": n}
 
 
