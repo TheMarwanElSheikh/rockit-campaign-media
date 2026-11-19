@@ -1,0 +1,390 @@
+<!-- Rockit container tracking: ISO 6346 validation + carrier identification + official tracking links -->
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"><style id="rm-type">@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:400;src:local('Times New Roman'),local('TimesNewRomanPSMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE1poGnedXvwj1AW3Fu0C8V-txK.woff2) format('woff2');unicode-range:U+0030-0039}@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:700;src:local('Times New Roman Bold'),local('TimesNewRomanPS-BoldMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE4poGnedXvwjX7fmRD8iI_.woff2) format('woff2');unicode-range:U+0030-0039}:root{--rm-serif:'Rockit Digits','Cormorant Garamond',Georgia,'Times New Roman',serif;--rm-sans:var(--rm-serif);--rm-mono:var(--rm-serif);--rm-display:var(--rm-serif)}html,body,input,select,textarea,button,.rm-shell{font-family:var(--rm-serif)!important}body{font-weight:500}b,strong{font-weight:700}.rm-copied{margin:10px 0 0;font-size:13px;line-height:1.5;opacity:.85}
+</style><style>
+  :root{--navy:#06103A;--gold:#D0AF50;--gold-grad:linear-gradient(135deg,#B38C2D 0%,#C7A340 14%,#DBBD5E 29%,#EBD379 43%,#EBD47A 57%,#DDC060 71%,#CAA642 86%,#B6902F 100%);--gold-grad-hi:linear-gradient(135deg,#C7A340 0%,#DBBD5E 14%,#EBD379 29%,#F3DC86 43%,#F4DE8A 57%,#EBD379 71%,#DBBD5E 86%,#CAA642 100%);--paper:#F6F6F3;--ink:#1B1F2A;--muted:#5B6172;--line:#D9D9D2;--ok:#1E6B3C;--warn:#A9291E}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--rm-serif);color:var(--ink);background:transparent}
+  h3{margin:0 0 12px;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;height:46px;border:1px solid var(--line);background:#fff;padding:0 12px;font-size:17.5px;color:var(--ink);border-radius:0;font-family:inherit}
+  input:focus,select:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  input#cn{font-variant-numeric:tabular-nums;letter-spacing:.06em;text-transform:uppercase}
+  input#cn::placeholder{text-transform:none;letter-spacing:normal;color:#8A8F9C}
+  button.b{height:46px;padding:0 22px;border:0;cursor:pointer;font-size:15.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-family:inherit}
+  .b.gold{background:var(--gold-grad);color:var(--navy)}
+  .b.gold:hover{filter:brightness(1.07);}
+  .b.ghost{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+  .b.ghost:hover{background:rgba(6,16,58,.06)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  @media (max-width:820px){.grid{grid-template-columns:1fr;gap:24px}}
+  .row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+  .row > div{flex:1 1 220px}
+  .msg{margin:14px 0 0;font-size:15.5px;line-height:1.5}
+  .msg.ok{color:var(--ok)} .msg.bad{color:var(--warn)}
+  .parts{display:grid;grid-template-columns:repeat(4,auto);gap:8px;margin:16px 0 0;justify-content:start}
+  .parts div{border:1px solid var(--line);background:#fff;padding:8px 12px;min-width:74px}
+  .parts b{display:block;font-size:18.5px;color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  .parts span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .carrier{border:1px solid var(--line);background:#fff;padding:16px 18px;margin-top:16px}
+  .carrier b{display:block;font-size:20px;color:var(--navy);margin-bottom:2px}
+  .carrier span{font-size:14.5px;color:var(--muted)}
+  .carrier a.go{display:inline-block;margin-top:12px;background:var(--navy);color:#fff;text-decoration:none;padding:11px 18px;font-size:14.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .carrier a.go:hover{background:#0B1A55}
+  .list{margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+  .list a{display:block;border:1px solid var(--line);background:#fff;padding:10px 12px;text-decoration:none;color:var(--navy);font-size:15.5px}
+  .list a:hover{border-color:var(--gold)}
+  .note{font-size:14px;color:var(--muted);margin-top:16px;line-height:1.6}
+  .note b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+  th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.mono{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+</style>
+<style id="rm-shell">
+  html,body{height:100%;}
+  body{margin:0;overflow:hidden;}
+  .rm-shell{display:flex;flex-direction:column;height:100%;min-height:0;font-family:var(--rm-serif);}
+  .rm-tabs{display:flex;gap:0;border-bottom:1px solid #D9D9D2;overflow-x:auto;scrollbar-width:none;flex:0 0 auto;}
+  .rm-tabs::-webkit-scrollbar{display:none}
+  .rm-tabs a{padding:0 16px 11px;font-size:14.5px;line-height:1;color:#5B6172;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
+  .rm-tabs a:first-child{padding-left:0}
+  .rm-tabs a:hover{color:#06103A}
+  .rm-tabs a.on{color:#06103A;font-weight:600;border-bottom-color:#D0AF50}
+  .rm-tabs a:focus-visible{outline:2px solid #D0AF50;outline-offset:2px}
+  .rm-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding-top:20px;}
+  .rm-body::-webkit-scrollbar{width:8px}
+  .rm-body::-webkit-scrollbar-thumb{background:#D9D9D2}
+  .rm-body::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:760px){.rm-tabs a{padding:0 12px 10px;font-size:13px}}
+h3,.tag{background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.cta a{background:var(--gold-grad)}.cta a:hover{background:var(--gold-grad-hi)}</style>
+<div class="rm-shell"><nav class="rm-tabs" aria-label="Tools"><a href="https://www.rockit-transport.com/container-tracking" target="_top" class="on" aria-current="page">Container tracking</a><a href="https://www.rockit-transport.com/vessel-schedules" target="_top">Vessel schedules</a><a href="https://www.rockit-transport.com/load-calculator" target="_top">Load calculator</a><a href="https://www.rockit-transport.com/vessel-tracking" target="_top">Vessel tracking</a><a href="https://www.rockit-transport.com/flight-tracking" target="_top">Flight tracking</a><a href="https://www.rockit-transport.com/chargeable-weight" target="_top">Chargeable weight</a><a href="https://www.rockit-transport.com/duties-taxes-calculator" target="_top">Duties &amp; taxes</a></nav><div class="rm-body"><div class="grid">
+  <div>
+    <h3>Container or bill of lading</h3>
+    <div class="row">
+      <div>
+        <label for="cn">Container number, B/L or booking number</label>
+        <input id="cn" placeholder="e.g. MSCU 397612 1" autocomplete="off" spellcheck="false">
+      </div>
+      <button class="b gold" type="button" onclick="check()">Check</button>
+    </div>
+    <p class="msg" id="msg"></p>
+    <div class="parts" id="parts" hidden></div>
+    <div id="carrier"></div>
+    <h3 style="margin-top:30px">How the check digit works</h3>
+    <table>
+      <tr><th>Step</th><th>What happens</th></tr>
+      <tr><td class="mono">1</td><td>Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.</td></tr>
+      <tr><td class="mono">2</td><td>Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).</td></tr>
+      <tr><td class="mono">3</td><td>The total is divided by 11; the remainder is the check digit (10 is written as 0).</td></tr>
+    </table>
+    <p class="note">This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call <b>+20 2 2690 7601</b> or email <b>support@rockit.com.eg</b>.</p>
+    <p class="note" id="hint">A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.</p>
+  </div>
+
+  <div>
+    <h3>Track with the carrier</h3>
+    <p class="note" style="margin-top:0">If you already know the line, open its tracking page directly. Paste the number there.</p>
+    <div class="list" id="carriers"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+ var CARRIERS = {
+  maersk:{name:'Maersk', url:'https://www.maersk.com/tracking/{n}', bl:true},
+  msc:{name:'MSC', url:'https://www.msc.com/en/track-a-shipment?trackingNumber={n}', bl:true},
+  cma:{name:'CMA CGM', url:'https://www.cma-cgm.com/ebusiness/tracking'},
+  hapag:{name:'Hapag-Lloyd', url:'https://www.hapag-lloyd.com/en/online-business/track/track-by-container-solution.html?container={n}', blurl:'https://www.hapag-lloyd.com/en/online-business/track/track-by-booking-solution.html'},
+  one:{name:'ONE', url:'https://ecomm.one-line.com/one-ecom/manage-shipment/cargo-tracking?trakNoParam={n}', bl:true},
+  evergreen:{name:'Evergreen', url:'https://ct.shipmentlink.com/servlet/TDB1_CargoTracking.do'},
+  cosco:{name:'COSCO', url:'https://elines.coscoshipping.com/ebusiness/cargoTracking?trackingType=CONTAINER&number={n}', blurl:'https://elines.coscoshipping.com/ebusiness/cargoTracking?trackingType=BILLOFLADING&number={n}'},
+  oocl:{name:'OOCL', url:'https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx?ctnr={n}', blurl:'https://www.oocl.com/eng/ourservices/eservices/cargotracking/Pages/cargotracking.aspx'},
+  hmm:{name:'HMM', url:'https://www.hmm21.com/e-service/general/trackNTrace/TrackNTrace.do?number={n}', bl:true},
+  yangming:{name:'Yang Ming', url:'https://www.yangming.com/e-service/track_trace/track_trace_cargo_tracking.aspx'},
+  zim:{name:'ZIM', url:'https://www.zim.com/tools/track-a-shipment?consnumber={n}', bl:true},
+  arkas:{name:'Arkas', url:'https://arkasline.com.tr/en/online-tracking/'},
+  pil:{name:'PIL', url:'https://www.pilship.com/digital-solutions/?tab=customer&id=track-trace'},
+  wanhai:{name:'Wan Hai', url:'https://www.wanhai.com/views/cargoTrack/CargoTrack.xhtml'}
+ };
+ var PREFIX = {"MNBU":"maersk","MRKU":"maersk","MAEU":"maersk","ACTU":"maersk","AJCU":"maersk","APMU":"maersk","BSLU":"maersk","CADU":"maersk","CMBU":"maersk","CSSU":"maersk","DNLU":"maersk","ENAU":"maersk","FAAU":"maersk","FRLU":"maersk","GBLU":"maersk","GBEU":"maersk","GRIU":"maersk","HASU":"maersk","HDLU":"maersk","KHJU":"maersk","KHLU":"maersk","KNLU":"maersk","LOTU":"maersk","MALU":"maersk","MCPU":"maersk","MCAU":"maersk","MCHU":"maersk","MCIU":"maersk","MCRU":"maersk","MGBU":"maersk","MHHU":"maersk","MIEU":"maersk","MMAU":"maersk","MPWU":"maersk","MRLU":"maersk","MRSU":"maersk","MSKU":"maersk","MSVU":"maersk","MSAU":"maersk","MSFU":"maersk","MSWU":"maersk","MVIU":"maersk","MWCU":"maersk","NDLU":"maersk","MWMU":"maersk","NZSU":"maersk","OCLU":"maersk","PERU":"maersk","PONU":"maersk","POCU":"maersk","RMLU":"maersk","SCMU":"maersk","SAMU":"maersk","SEAU":"maersk","SUDU":"maersk","TORU":"maersk","MSDU":"msc","MEDU":"msc","MSCU":"msc","INKU":"msc","MSNU":"msc","MSMU":"msc","ANNU":"cma","CMAU":"cma","AMCU":"cma","APHU":"cma","APIU":"cma","APLU":"cma","APRU":"cma","APZU":"cma","CGTU":"cma","CGMU":"cma","CGHU":"cma","CMNU":"cma","CMDU":"cma","DVRU":"cma","ECMU":"cma","EURU":"cma","MMCU":"cma","NEPU":"cma","NOLU":"cma","NOSU":"cma","OTAU":"cma","STMU":"cma","CNCU":"cma","CNHU":"cma","HLBU":"hapag","HLXU":"hapag","AZLU":"hapag","CASU":"hapag","CLGU":"hapag","CMUU":"hapag","CSQU":"hapag","CPSU":"hapag","DALU":"hapag","DAYU":"hapag","FANU":"hapag","FMGU":"hapag","HAMU":"hapag","HLCU":"hapag","ITAU":"hapag","IVLU":"hapag","LYTU":"hapag","LYKU":"hapag","NDSU":"hapag","NIDU":"hapag","PCRU":"hapag","PLVU":"hapag","PSBU":"hapag","QIBU":"hapag","QNNU":"hapag","SIUU":"hapag","TLEU":"hapag","UAEU":"hapag","UASU":"hapag","UACU":"hapag","USCU":"hapag","MOSU":"one","NYKU":"one","ONEU":"one","FDCU":"one","KKFU":"one","KKTU":"one","MOAU":"one","MOLU":"one","MORU":"one","MOFU":"one","MOGU":"one","MOTU":"one","MOEU":"one","NYNU":"one","KKLU":"one","EGHU":"evergreen","EGSU":"evergreen","EISU":"evergreen","EMCU":"evergreen","EITU":"evergreen","HMCU":"evergreen","IMTU":"evergreen","UGMU":"evergreen","CCLU":"cosco","CSLU":"cosco","CSNU":"cosco","CBHU":"cosco","COSU":"cosco","OOLU":"oocl","OOCU":"oocl","OERU":"oocl","HDMU":"hmm","HMMU":"hmm","KOCU":"hmm","YMLU":"yangming","YMMU":"yangming","OCGU":"yangming","ZIMU":"zim","JZPU":"zim","ZHLU":"zim","ZCLU":"zim","ZMOU":"zim","ZCSU":"zim","GSLU":"zim","ARKU":"arkas","TEXU":"arkas","PILU":"pil","PCIU":"pil","PIDU":"pil","WHLU":"wanhai","WHSU":"wanhai","HJLU":"wanhai","TPCU":"wanhai"};
+ var NAMED = {"MATU":"Matson","CXCU":"Matson","HRZU":"Matson","SITU":"SITC","KMTU":"KMTC","TSSU":"TS Lines","TRKU":"Turkon Line","CHSU":"Turkon Line","SKHU":"Sinokor","SKLU":"Sinokor","TKRU":"Sinokor","CMCU":"Crowley","FESU":"FESCO","FCCU":"FESCO","MFTU":"Marfret","MFRU":"Marfret","RCLU":"RCL","SMCU":"SM Line","CKLU":"CK Line","NSSU":"Namsung Shipping","NSRU":"Namsung Shipping","DJLU":"Dongjin Shipping","ESPU":"Emirates Shipping Line","ESDU":"Emirates Shipping Line","GOSU":"Gold Star Line","GMOU":"Gold Star Line","GSXU":"Gold Star Line","BORU":"Borchard Lines","MCLU":"Borchard Lines","TARU":"Tarros","UNFU":"Unifeeder","CULU":"CU Lines","SLSU":"Sea Lead Shipping","SLVU":"Sea Lead Shipping","IAAU":"Interasia Lines","SWLU":"Samskip","SWIU":"Samskip","BHCU":"Swire Shipping","GSIU":"Grimaldi","WWLU":"Wallenius Wilhelmsen","WLNU":"Wallenius Wilhelmsen","MKLU":"Medkon Lines","AKKU":"Akkon Lines","SDRU":"Sidra Line","ONLU":"Asyad Line"};
+ var LESSORS = {"TGHU":"Textainer","TEMU":"Textainer","TGBU":"Textainer","TCNU":"Triton","TCLU":"Triton","TCKU":"Triton","TLLU":"Triton","TRHU":"Triton","TTNU":"Triton","TRIU":"Triton","GESU":"Seaco","SEKU":"Seaco","CAIU":"CAI","CAXU":"CAI","BEAU":"CAI","BMOU":"CAI","FSCU":"Florens","FCIU":"Florens","FFAU":"Florens","DFSU":"Florens","CARU":"Caru Containers","BSIU":"Blue Sky Intermodal"};
+ var BL = {"MAEU":"maersk","MEDU":"msc","CMDU":"cma","HLCU":"hapag","ONEY":"one","COSU":"cosco","EGLV":"evergreen","ZIMU":"zim","OOLU":"oocl","HDMU":"hmm","YMLU":"yangming","YMJA":"yangming","PCIU":"pil","WHLC":"wanhai","SUDU":"maersk","APLU":"cma","ANNU":"cma"};
+ var LETTER = {A:10,B:12,C:13,D:14,E:15,F:16,G:17,H:18,I:19,J:20,K:21,L:23,M:24,N:25,O:26,P:27,Q:28,R:29,S:30,T:31,U:32,V:34,W:35,X:36,Y:37,Z:38};
+ function checkDigit(first10){ var sum=0; for(var i=0;i<10;i++){ var ch=first10[i]; var v=/[A-Z]/.test(ch)?LETTER[ch]:parseInt(ch,10); sum+=v*Math.pow(2,i); } var r=sum%11; return r===10?0:r; }
+ function esc(s){ return String(s).replace(/[<>&"]/g,function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]; }); }
+ function link(c,num,isBl){ var u=isBl?(c.blurl||(c.bl?c.url:null)):c.url; if(!u) u=c.url.replace(/[?&][^?&]*\{n\}.*$/,'').replace('/{n}','/'); return u.replace('{n}',encodeURIComponent(num||'')).replace(/[?&][a-zA-Z_]+=$/,''); }
+ window.check = function(){
+  var raw=(document.getElementById('cn').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+  var msg=document.getElementById('msg'), parts=document.getElementById('parts'), carrier=document.getElementById('carrier');
+  msg.className='msg'; msg.textContent=''; parts.hidden=true; parts.innerHTML=''; carrier.innerHTML='';
+  if(!raw){ msg.className='msg bad'; msg.textContent='Enter a container, bill of lading or booking number.'; renderCarriers(''); return; }
+  var m=/^([A-Z]{3})([UJZ])(\d{6})(\d)$/.exec(raw);
+  if(!m){
+   var bk=BL[raw.slice(0,4)];
+   if(bk&&raw.length>=8){ var c0=CARRIERS[bk]; msg.className='msg ok'; msg.textContent='This looks like a '+c0.name+' bill of lading or booking number.';
+    carrier.innerHTML='<div class="carrier"><b>'+esc(c0.name)+'</b><span>The first four letters are the line’s own code, so its tracking page holds the milestones.</span><br><a class="go" target="_blank" rel="noopener" data-copy="'+esc(raw)+'" href="'+esc(link(c0,raw,true))+'">Track '+esc(raw)+' with '+esc(c0.name)+'</a></div>';
+    renderCarriers(raw); return; }
+   msg.textContent='That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.';
+   renderCarriers(raw); return;
+  }
+  var owner=m[1]+m[2], serial=m[3], given=parseInt(m[4],10), want=checkDigit(raw.slice(0,10));
+  parts.hidden=false;
+  parts.innerHTML='<div><b>'+esc(m[1])+'</b><span>Owner</span></div><div><b>'+esc(m[2])+'</b><span>Category</span></div><div><b>'+esc(serial)+'</b><span>Serial</span></div><div><b>'+given+'</b><span>Check digit</span></div>';
+  if(given!==want){ msg.className='msg bad'; msg.textContent='The check digit does not match. For '+owner+' '+serial+' the correct check digit is '+want+', not '+given+'. Check the number and try again.'; renderCarriers(''); return; }
+  msg.className='msg ok'; msg.textContent='Valid container number. The check digit matches the ISO 6346 calculation.';
+  var key=PREFIX[owner];
+  if(key){ var c=CARRIERS[key];
+   carrier.innerHTML='<div class="carrier"><b>'+esc(c.name)+'</b><span>Owner prefix '+esc(owner)+' belongs to this line, so its tracking page holds the milestones.</span><br><a class="go" target="_blank" rel="noopener" data-copy="'+esc(raw)+'" href="'+esc(link(c,raw,false))+'">Track '+esc(raw)+' with '+esc(c.name)+'</a></div>';
+  } else if(NAMED[owner]){
+   carrier.innerHTML='<div class="carrier"><b>'+esc(NAMED[owner])+'</b><span>Owner prefix '+esc(owner)+' belongs to '+esc(NAMED[owner])+'. Open that line’s own tracking page and paste the number.</span></div>';
+  } else if(LESSORS[owner]){
+   carrier.innerHTML='<div class="carrier"><b>'+esc(LESSORS[owner])+' (leasing company)</b><span>This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.</span></div>';
+  } else {
+   carrier.innerHTML='<div class="carrier"><b>Owner prefix '+esc(owner)+'</b><span>Not one of the prefixes we hold. Pick the line you booked with and paste the number.</span></div>';
+  }
+  renderCarriers(raw);
+ };
+ function renderCarriers(num){
+  var box=document.getElementById('carriers');
+  box.innerHTML=Object.keys(CARRIERS).map(function(k){ var c=CARRIERS[k]; return '<a target="_blank" rel="noopener"'+(num?' data-copy="'+esc(num)+'"':'')+' href="'+esc(num?link(c,num,!/^[A-Z]{4}\d{7}$/.test(num)):link(c,'',false))+'">'+esc(c.name)+' &rarr;</a>'; }).join('');
+ }
+ renderCarriers('');
+
+ function rmCopy(t){ var ok=false; try{ var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none'; document.body.appendChild(ta); ta.select(); ok=document.execCommand('copy'); ta.remove(); }catch(e){} if(!ok&&navigator.clipboard&&navigator.clipboard.writeText){ try{ navigator.clipboard.writeText(t).then(function(){},function(){}); ok=true; }catch(e){} } return ok; }
+ document.addEventListener('click',function(e){ var a=e.target&&e.target.closest?e.target.closest('a[data-copy]'):null; if(!a) return; if(!rmCopy(a.getAttribute('data-copy'))) return; var t=document.getElementById('rmcopied'); if(!t){ t=document.createElement('p'); t.id='rmcopied'; t.className='rm-copied'; t.setAttribute('role','status'); } var host=a.closest('.carrier,.links,#carriers')||a.parentNode; host.insertAdjacentElement('afterend',t); t.textContent='Number copied. If the page opens without it, paste it into the search box.'; t.hidden=false; clearTimeout(window.__rmct); window.__rmct=setTimeout(function(){ t.hidden=true; },12000); });
+ document.getElementById('cn').addEventListener('keydown',function(e){ if(e.key==='Enter') window.check(); });
+ var qs=new URLSearchParams(location.search); if(qs.get('n')){ document.getElementById('cn').value=qs.get('n'); window.check(); }
+  window.addEventListener('message',function(e){ var d=e.data; if(!d||typeof d.rmQ!=='string'||window.__rmQ) return; window.__rmQ=1; var q=new URLSearchParams(d.rmQ); if(q.get('n')&&!document.getElementById('cn').value){ document.getElementById('cn').value=q.get('n'); window.check(); } });
+})();
+</script>
+<script id="rm-i18n">(function(){
+var D={"fr":{"Duties & taxes":"Droits et taxes","Container tracking":"Suivi de conteneur","Vessel schedules":"Horaires des navires","Load calculator":"Calculateur de chargement","Vessel tracking":"Suivi de navire","Flight tracking":"Suivi de vol","Chargeable weight":"Poids taxable","Tools":"Outils","Check":"Vérifier","To":"À","Container or bill of lading":"Conteneur ou connaissement","Container number, B/L or booking number":"Numéro de conteneur, B/L ou numéro de réservation","e.g. MSCU 397612 1":"ex. MSCU 397612 1","How the check digit works":"Comment fonctionne le chiffre de contrôle","Step":"Étape","What happens":"Ce qui se passe","Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.":"Chaque lettre devient un nombre : A=10, B=12, C=13 … en sautant chaque multiple de 11.","Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).":"Chacun des dix premiers caractères est multiplié par 2 élevé à la puissance de sa position (1, 2, 4, 8 …).","The total is divided by 11; the remainder is the check digit (10 is written as 0).":"Le total est divisé par 11 ; le reste est le chiffre de contrôle (10 s’écrit 0).","This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call":"C’est la norme ISO 6346 utilisée sur tous les conteneurs maritimes du monde. L’équipe Rockit peut retracer une expédition pour vous à tout moment : appelez le","or email":"ou écrivez à","A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.":"Un numéro de conteneur se compose de quatre lettres et de sept chiffres. Le dernier chiffre est un chiffre de contrôle calculé à partir des dix autres caractères : une faute de frappe est donc détectée ici avant que vous ne partiez à sa recherche. Les étapes du transport sont détenues par la compagnie maritime ; une fois le numéro validé, nous vous envoyons directement vers la page de suivi de cette ligne.","Track with the carrier":"Suivre auprès de la compagnie","If you already know the line, open its tracking page directly. Paste the number there.":"Si vous connaissez déjà la ligne, ouvrez directement sa page de suivi et collez-y le numéro.","Enter a container, bill of lading or booking number.":"Saisissez un numéro de conteneur, de connaissement ou de réservation.","That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.":"Ce n’est pas un numéro de conteneur ISO 6346 ; il s’agit très probablement d’un connaissement ou d’une référence de réservation. Ceux-ci sont émis par la compagnie : ouvrez la ligne auprès de laquelle vous avez réservé et collez-y le numéro.","Owner":"Propriétaire","Category":"Catégorie","Serial":"Série","Check digit":"Chiffre de contrôle","The check digit does not match. For {owner} {serial} the correct check digit is {want}, not {given}. Check the number and try again.":"Le chiffre de contrôle ne correspond pas. Pour {owner} {serial}, le chiffre de contrôle correct est {want}, et non {given}. Vérifiez le numéro et réessayez.","Valid container number. The check digit matches the ISO 6346 calculation.":"Numéro de conteneur valide. Le chiffre de contrôle correspond au calcul ISO 6346.","Owner prefix {owner} belongs to this line, so its tracking page holds the milestones.":"Le préfixe propriétaire {owner} appartient à cette ligne ; sa page de suivi contient donc les étapes du transport.","Track {number} with {carrier}":"Suivre {number} chez {carrier}","{carrier} (leasing company)":"{carrier} (société de location)","This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.":"Ce conteneur est loué et n’appartient pas à une ligne ; le préfixe ne nous dit donc pas qui le transporte. Choisissez la ligne auprès de laquelle vous avez réservé.","Owner prefix {owner}":"Préfixe propriétaire {owner}","Not one of the prefixes we hold. Pick the line you booked with and paste the number.":"Ce préfixe ne figure pas dans notre liste. Choisissez la ligne auprès de laquelle vous avez réservé et collez-y le numéro.","Vessel schedule":"Horaire des navires","Cargo":"Cargaison","Prefix {prefix} belongs to":"Le préfixe {prefix} appartient à","weight":"poids","This looks like a {carrier} bill of lading or booking number.":"Cela ressemble à un numéro de connaissement ou de réservation {carrier}.","The first four letters are the line’s own code, so its tracking page holds the milestones.":"Les quatre premières lettres sont le code propre de la compagnie : sa page de suivi détient donc les étapes du transport.","Owner prefix {owner} belongs to {carrier}. Open that line’s own tracking page and paste the number.":"Le préfixe propriétaire {owner} appartient à {carrier}. Ouvrez la page de suivi de cette compagnie et collez-y le numéro.","Track {awb} now":"Suivre {awb} maintenant","Number copied. If the page opens without it, paste it into the search box.":"Numéro copié. Si la page s’ouvre sans lui, collez-le dans le champ de recherche."},"es":{"Duties & taxes":"Aranceles e impuestos","Container tracking":"Seguimiento de contenedores","Vessel schedules":"Itinerarios de buques","Load calculator":"Calculadora de carga","Vessel tracking":"Seguimiento de buques","Flight tracking":"Seguimiento de vuelos","Chargeable weight":"Peso facturable","Tools":"Herramientas","Check":"Verificar","To":"Destino","Container or bill of lading":"Contenedor o conocimiento de embarque","Container number, B/L or booking number":"Número de contenedor, B/L o número de reserva","e.g. MSCU 397612 1":"p. ej. MSCU 397612 1","How the check digit works":"Cómo funciona el dígito de control","Step":"Paso","What happens":"Qué ocurre","Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.":"Cada letra se convierte en un número: A=10, B=12, C=13 … omitiendo todos los múltiplos de 11.","Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).":"Cada uno de los diez primeros caracteres se multiplica por 2 elevado a su posición (1, 2, 4, 8 …).","The total is divided by 11; the remainder is the check digit (10 is written as 0).":"El total se divide entre 11; el resto es el dígito de control (el 10 se escribe como 0).","This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call":"Es la norma ISO 6346 que se usa en todos los contenedores marítimos del mundo. El equipo de Rockit puede rastrear su envío en cualquier momento: llame al","or email":"o escriba a","A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.":"Un número de contenedor consta de cuatro letras y siete dígitos. El último es un dígito de control calculado a partir de los otros diez caracteres, de modo que un número mal escrito se detecta aquí antes de que salga a buscarlo. Los hitos del envío los guarda la naviera, así que, una vez verificado el número, le enviamos directamente a la página de seguimiento de esa naviera.","Track with the carrier":"Rastrear con la naviera","If you already know the line, open its tracking page directly. Paste the number there.":"Si ya conoce la naviera, abra directamente su página de seguimiento y pegue allí el número.","Enter a container, bill of lading or booking number.":"Introduzca un número de contenedor, de conocimiento de embarque o de reserva.","That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.":"No es un número de contenedor ISO 6346, por lo que probablemente se trate de un conocimiento de embarque o una referencia de reserva. Estos los emite la naviera, así que abra la naviera con la que reservó y pegue allí el número.","Owner":"Propietario","Category":"Categoría","Serial":"Serie","Check digit":"Dígito de control","The check digit does not match. For {owner} {serial} the correct check digit is {want}, not {given}. Check the number and try again.":"El dígito de control no coincide. Para {owner} {serial} el dígito de control correcto es {want}, no {given}. Revise el número e inténtelo de nuevo.","Valid container number. The check digit matches the ISO 6346 calculation.":"Número de contenedor válido. El dígito de control coincide con el cálculo ISO 6346.","Owner prefix {owner} belongs to this line, so its tracking page holds the milestones.":"El prefijo de propietario {owner} pertenece a esta naviera, así que su página de seguimiento contiene los hitos del envío.","Track {number} with {carrier}":"Rastrear {number} con {carrier}","{carrier} (leasing company)":"{carrier} (empresa de arrendamiento)","This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.":"Este contenedor es arrendado y no propiedad de una naviera, por lo que el prefijo no indica quién lo transporta. Elija la naviera con la que reservó.","Owner prefix {owner}":"Prefijo de propietario {owner}","Not one of the prefixes we hold. Pick the line you booked with and paste the number.":"No es uno de los prefijos que tenemos registrados. Elija la naviera con la que reservó y pegue el número.","Vessel schedule":"Itinerario de buques","Cargo":"Carga","Prefix {prefix} belongs to":"El prefijo {prefix} pertenece a","weight":"peso","This looks like a {carrier} bill of lading or booking number.":"Parece un número de conocimiento de embarque o de reserva de {carrier}.","The first four letters are the line’s own code, so its tracking page holds the milestones.":"Las cuatro primeras letras son el código propio de la naviera, así que su página de seguimiento tiene los hitos.","Owner prefix {owner} belongs to {carrier}. Open that line’s own tracking page and paste the number.":"El prefijo de propietario {owner} pertenece a {carrier}. Abra la página de seguimiento de esa naviera y pegue allí el número.","Track {awb} now":"Rastrear {awb} ahora","Number copied. If the page opens without it, paste it into the search box.":"Número copiado. Si la página se abre sin él, péguelo en el campo de búsqueda."},"de":{"Duties & taxes":"Zölle & Steuern","Container tracking":"Containerverfolgung","Vessel schedules":"Schiffsfahrpläne","Load calculator":"Laderaumrechner","Vessel tracking":"Schiffsverfolgung","Flight tracking":"Flugverfolgung","Chargeable weight":"Frachtpflichtiges Gewicht","Tools":"Tools","Check":"Prüfen","To":"Nach","Container or bill of lading":"Container oder Konnossement","Container number, B/L or booking number":"Containernummer, B/L oder Buchungsnummer","e.g. MSCU 397612 1":"z. B. MSCU 397612 1","How the check digit works":"So funktioniert die Prüfziffer","Step":"Schritt","What happens":"Was passiert","Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.":"Jeder Buchstabe wird zu einer Zahl: A=10, B=12, C=13 … wobei jedes Vielfache von 11 übersprungen wird.","Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).":"Jedes der ersten zehn Zeichen wird mit 2 hoch seiner Position multipliziert (1, 2, 4, 8 …).","The total is divided by 11; the remainder is the check digit (10 is written as 0).":"Die Summe wird durch 11 geteilt; der Rest ist die Prüfziffer (10 wird als 0 geschrieben).","This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call":"Das ist der Standard ISO 6346, der auf jedem Seecontainer weltweit verwendet wird. Das Team von Rockit kann eine Sendung jederzeit für Sie nachverfolgen: rufen Sie an unter","or email":"oder schreiben Sie an","A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.":"Eine Containernummer besteht aus vier Buchstaben und sieben Ziffern. Die letzte Ziffer ist eine Prüfziffer, die aus den anderen zehn Zeichen berechnet wird, sodass ein Tippfehler hier erkannt wird, bevor Sie sich auf die Suche machen. Die Sendungsmeilensteine liegen bei der Reederei; sobald die Nummer stimmt, leiten wir Sie direkt zur eigenen Tracking-Seite dieser Reederei weiter.","Track with the carrier":"Bei der Reederei verfolgen","If you already know the line, open its tracking page directly. Paste the number there.":"Wenn Sie die Reederei bereits kennen, öffnen Sie deren Tracking-Seite direkt. Fügen Sie die Nummer dort ein.","Enter a container, bill of lading or booking number.":"Geben Sie eine Container-, Konnossement- oder Buchungsnummer ein.","That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.":"Das ist keine Containernummer nach ISO 6346, also handelt es sich höchstwahrscheinlich um ein Konnossement oder eine Buchungsreferenz. Diese werden von der Reederei vergeben; öffnen Sie daher die Reederei, bei der Sie gebucht haben, und fügen Sie die Nummer dort ein.","Owner":"Eigentümer","Category":"Kategorie","Serial":"Seriennummer","Check digit":"Prüfziffer","The check digit does not match. For {owner} {serial} the correct check digit is {want}, not {given}. Check the number and try again.":"Die Prüfziffer stimmt nicht. Für {owner} {serial} lautet die korrekte Prüfziffer {want}, nicht {given}. Prüfen Sie die Nummer und versuchen Sie es erneut.","Valid container number. The check digit matches the ISO 6346 calculation.":"Gültige Containernummer. Die Prüfziffer entspricht der Berechnung nach ISO 6346.","Owner prefix {owner} belongs to this line, so its tracking page holds the milestones.":"Das Eigentümerkürzel {owner} gehört zu dieser Reederei, daher finden Sie die Meilensteine auf deren Tracking-Seite.","Track {number} with {carrier}":"{number} bei {carrier} verfolgen","{carrier} (leasing company)":"{carrier} (Leasinggesellschaft)","This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.":"Dieser Container ist geleast und gehört keiner Reederei, daher verrät das Kürzel nicht, wer ihn befördert. Wählen Sie die Reederei, bei der Sie gebucht haben.","Owner prefix {owner}":"Eigentümerkürzel {owner}","Not one of the prefixes we hold. Pick the line you booked with and paste the number.":"Keines der uns bekannten Kürzel. Wählen Sie die Reederei, bei der Sie gebucht haben, und fügen Sie die Nummer ein.","Vessel schedule":"Schiffsfahrplan","Cargo":"Ladung","Prefix {prefix} belongs to":"Präfix {prefix} gehört zu","weight":"Gewicht","This looks like a {carrier} bill of lading or booking number.":"Das sieht nach einer {carrier}-Konnossement- oder Buchungsnummer aus.","The first four letters are the line’s own code, so its tracking page holds the milestones.":"Die ersten vier Buchstaben sind der eigene Code der Reederei, daher enthält deren Tracking-Seite die Meilensteine.","Owner prefix {owner} belongs to {carrier}. Open that line’s own tracking page and paste the number.":"Das Eigentümerpräfix {owner} gehört zu {carrier}. Öffnen Sie die Tracking-Seite dieser Reederei und fügen Sie die Nummer dort ein.","Track {awb} now":"{awb} jetzt verfolgen","Number copied. If the page opens without it, paste it into the search box.":"Nummer kopiert. Falls die Seite ohne sie öffnet, fügen Sie sie in das Suchfeld ein."},"it":{"Duties & taxes":"Dazi e imposte","Container tracking":"Tracciamento container","Vessel schedules":"Orari delle navi","Load calculator":"Calcolatore di carico","Vessel tracking":"Tracciamento navi","Flight tracking":"Tracciamento voli","Chargeable weight":"Peso tassabile","Tools":"Strumenti","Check":"Verifica","To":"A","Container or bill of lading":"Container o polizza di carico","Container number, B/L or booking number":"Numero del container, B/L o numero di prenotazione","e.g. MSCU 397612 1":"es. MSCU 397612 1","How the check digit works":"Come funziona la cifra di controllo","Step":"Passaggio","What happens":"Cosa succede","Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.":"Ogni lettera diventa un numero: A=10, B=12, C=13 … saltando ogni multiplo di 11.","Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).":"Ciascuno dei primi dieci caratteri viene moltiplicato per 2 elevato alla sua posizione (1, 2, 4, 8 …).","The total is divided by 11; the remainder is the check digit (10 is written as 0).":"Il totale viene diviso per 11; il resto è la cifra di controllo (10 si scrive 0).","This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call":"Questo è lo standard ISO 6346 utilizzato su ogni container marittimo al mondo. Il team Rockit può rintracciare una spedizione per Lei in qualsiasi momento: chiami il","or email":"oppure scriva a","A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.":"Un numero di container è composto da quattro lettere e sette cifre. L'ultima cifra è una cifra di controllo calcolata a partire dagli altri dieci caratteri, quindi un numero digitato male viene individuato qui prima che Lei vada a cercarlo. Le tappe della spedizione sono gestite dalla compagnia di navigazione: una volta verificato il numero, La indirizziamo direttamente alla pagina di tracciamento di quel vettore.","Track with the carrier":"Traccia con il vettore","If you already know the line, open its tracking page directly. Paste the number there.":"Se conosce già la compagnia, apra direttamente la sua pagina di tracciamento e vi incolli il numero.","Enter a container, bill of lading or booking number.":"Inserisca un numero di container, di polizza di carico o di prenotazione.","That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.":"Non è un numero di container ISO 6346, quindi è molto probabilmente un riferimento di polizza di carico o di prenotazione. Questi vengono emessi dal vettore: apra la compagnia con cui ha prenotato e incolli lì il numero.","Owner":"Proprietario","Category":"Categoria","Serial":"Seriale","Check digit":"Cifra di controllo","The check digit does not match. For {owner} {serial} the correct check digit is {want}, not {given}. Check the number and try again.":"La cifra di controllo non corrisponde. Per {owner} {serial} la cifra di controllo corretta è {want}, non {given}. Verifichi il numero e riprovi.","Valid container number. The check digit matches the ISO 6346 calculation.":"Numero di container valido. La cifra di controllo corrisponde al calcolo ISO 6346.","Owner prefix {owner} belongs to this line, so its tracking page holds the milestones.":"Il prefisso proprietario {owner} appartiene a questa compagnia, quindi le tappe si trovano sulla sua pagina di tracciamento.","Track {number} with {carrier}":"Traccia {number} con {carrier}","{carrier} (leasing company)":"{carrier} (società di leasing)","This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.":"Questo container è in leasing e non di proprietà della compagnia, quindi il prefisso non indica chi lo sta trasportando. Selezioni la compagnia con cui ha prenotato.","Owner prefix {owner}":"Prefisso proprietario {owner}","Not one of the prefixes we hold. Pick the line you booked with and paste the number.":"Non è tra i prefissi in nostro possesso. Selezioni la compagnia con cui ha prenotato e incolli il numero.","Vessel schedule":"Orario nave","Cargo":"Carico","Prefix {prefix} belongs to":"Il prefisso {prefix} appartiene a","weight":"peso","This looks like a {carrier} bill of lading or booking number.":"Sembra un numero di polizza di carico o di prenotazione {carrier}.","The first four letters are the line’s own code, so its tracking page holds the milestones.":"Le prime quattro lettere sono il codice della compagnia, quindi la sua pagina di tracciamento contiene le tappe.","Owner prefix {owner} belongs to {carrier}. Open that line’s own tracking page and paste the number.":"Il prefisso del proprietario {owner} appartiene a {carrier}. Apra la pagina di tracciamento di quella compagnia e incolli il numero.","Track {awb} now":"Traccia {awb} ora","Number copied. If the page opens without it, paste it into the search box.":"Numero copiato. Se la pagina si apre senza, incollalo nel campo di ricerca."},"ar":{"Duties & taxes":"الرسوم والضرائب الجمركية","Container tracking":"تتبع الحاويات","Vessel schedules":"جداول السفن","Load calculator":"حاسبة التحميل","Vessel tracking":"تتبع السفن","Flight tracking":"تتبع الرحلات الجوية","Chargeable weight":"الوزن المحاسب عليه","Tools":"الأدوات","Check":"تحقق","To":"إلى","Container or bill of lading":"الحاوية أو بوليصة الشحن","Container number, B/L or booking number":"رقم الحاوية أو B/L أو رقم الحجز","e.g. MSCU 397612 1":"مثال: MSCU 397612 1","How the check digit works":"كيف يعمل رقم التحقق","Step":"الخطوة","What happens":"ما يحدث","Each letter becomes a number: A=10, B=12, C=13 … skipping every multiple of 11.":"يتحول كل حرف إلى رقم: A=10، B=12، C=13 … مع تخطي كل مضاعفات الرقم 11.","Each of the first ten characters is multiplied by 2 raised to its position (1, 2, 4, 8 …).":"يُضرب كل خانة من الخانات العشر الأولى في 2 مرفوعًا إلى أس موضعها (1، 2، 4، 8 …).","The total is divided by 11; the remainder is the check digit (10 is written as 0).":"يُقسم المجموع على 11؛ ويكون الباقي هو رقم التحقق (ويُكتب 10 على صورة 0).","This is the ISO 6346 standard used on every marine container in the world. Rockit's team can trace a shipment for you at any point: call":"هذا هو معيار ISO 6346 المستخدم على كل حاوية بحرية في العالم. ويمكن لفريق روكيت تتبع شحنتك في أي وقت: اتصل على","or email":"أو راسلنا على","A container number is four letters and seven digits. The last digit is a check digit calculated from the other ten characters, so a mistyped number is caught here before you go looking for it. Milestones are held by the shipping line, so once the number checks out we send you straight to that carrier's own tracking page.":"يتكون رقم الحاوية من أربعة أحرف وسبعة أرقام. والرقم الأخير هو رقم تحقق يُحسب من الخانات العشر الأخرى، ولذلك يُكتشف أي خطأ في الكتابة هنا قبل أن تبدأ البحث عن الشحنة. أما مراحل الشحنة فيحتفظ بها الخط الملاحي، لذا بمجرد التحقق من صحة الرقم نوجهك مباشرةً إلى صفحة التتبع الخاصة بذلك الناقل.","Track with the carrier":"التتبع لدى الناقل","If you already know the line, open its tracking page directly. Paste the number there.":"إذا كنت تعرف الخط الملاحي بالفعل، فافتح صفحة التتبع الخاصة به مباشرةً والصق الرقم هناك.","Enter a container, bill of lading or booking number.":"أدخل رقم الحاوية أو بوليصة الشحن أو رقم الحجز.","That is not an ISO 6346 container number, so it is most likely a bill of lading or booking reference. Those are issued by the carrier, so open the line you booked with and paste the number there.":"هذا ليس رقم حاوية وفق معيار ISO 6346، فعلى الأرجح هو رقم بوليصة شحن أو مرجع حجز. وهذه الأرقام يصدرها الناقل، لذا افتح الخط الملاحي الذي حجزت معه والصق الرقم هناك.","Owner":"المالك","Category":"الفئة","Serial":"الرقم التسلسلي","Check digit":"رقم التحقق","The check digit does not match. For {owner} {serial} the correct check digit is {want}, not {given}. Check the number and try again.":"رقم التحقق غير مطابق. بالنسبة إلى {owner} {serial} يكون رقم التحقق الصحيح هو {want} وليس {given}. راجع الرقم وحاول مرة أخرى.","Valid container number. The check digit matches the ISO 6346 calculation.":"رقم حاوية صحيح. رقم التحقق مطابق لحساب معيار ISO 6346.","Owner prefix {owner} belongs to this line, so its tracking page holds the milestones.":"بادئة المالك {owner} تخص هذا الخط الملاحي، وبالتالي فإن صفحة التتبع الخاصة به تحتوي على مراحل الشحنة.","Track {number} with {carrier}":"تتبع {number} لدى {carrier}","{carrier} (leasing company)":"{carrier} (شركة تأجير)","This box is leased rather than line-owned, so the prefix does not tell us who is carrying it. Pick the line you booked with.":"هذه الحاوية مؤجَّرة وليست مملوكة للخط الملاحي، لذا لا تدلنا البادئة على الجهة التي تنقلها. اختر الخط الملاحي الذي حجزت معه.","Owner prefix {owner}":"بادئة المالك {owner}","Not one of the prefixes we hold. Pick the line you booked with and paste the number.":"ليست من البادئات المسجلة لدينا. اختر الخط الملاحي الذي حجزت معه والصق الرقم.","Vessel schedule":"جدول السفن","Cargo":"البضاعة","Prefix {prefix} belongs to":"البادئة {prefix} تخص","weight":"الوزن","This looks like a {carrier} bill of lading or booking number.":"يبدو هذا رقم بوليصة شحن أو رقم حجز لدى {carrier}.","The first four letters are the line’s own code, so its tracking page holds the milestones.":"الأحرف الأربعة الأولى هي رمز الخط الملاحي نفسه، لذا تحتوي صفحة التتبع الخاصة به على مراحل الشحنة.","Owner prefix {owner} belongs to {carrier}. Open that line’s own tracking page and paste the number.":"بادئة المالك {owner} تخص {carrier}. افتح صفحة التتبع الخاصة بهذا الخط والصق الرقم هناك.","Track {awb} now":"تتبع {awb} الآن","Number copied. If the page opens without it, paste it into the search box.":"تم نسخ الرقم. إذا فُتحت الصفحة بدونه، الصقه في خانة البحث."}};
+var LANGS=['ar','fr','es','de','it'];var lang='en';var applied=false;var origin='https://www.rockit-transport.com';
+try{ if(document.referrer){ var u=new URL(document.referrer); if(/rockit-transport\.com$/.test(u.hostname)) origin=u.origin; var m=u.pathname.match(/^\/(ar|fr|es|de|it)(?=\/|$)/); if(m) lang=m[1]; } }catch(e){}
+try{ var hm=location.hash.match(/lang=(ar|fr|es|de|it|en)/); if(hm) lang=hm[1]; }catch(e){}
+var TPL=null;
+function compile(){ if(TPL) return; TPL=[]; var d=D[lang]||{}; Object.keys(d).forEach(function(k){ if(k.indexOf('{')<0) return; var parts=k.split(/\{[^}]+\}/); var names=(k.match(/\{([^}]+)\}/g)||[]).map(function(x){return x.slice(1,-1)}); var rx=new RegExp('^'+parts.map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('([\\s\\S]*?)')+'$'); TPL.push({k:k,rx:rx,names:names}); }); TPL.sort(function(a,b){return b.k.length-a.k.length;}); }
+function sub(v,depth){ var d=D[lang]; if(!v) return v; if(d[v]!==undefined) return d[v]; if((depth||0)<2){ var r=tr(v,(depth||0)+1); if(r!==null) return r; } var o=v; Object.keys(d).forEach(function(k){ if(/^[ ,]/.test(k)&&o.indexOf(k)>=0) o=o.split(k).join(d[k]); }); return o; }
+function tr(text,depth){ var d=D[lang]; if(!d) return null; var t=text.trim(); if(!t) return null; if(d[t]) return d[t]; var ar=t.match(/^(.*?)( *[→←])$/); if(ar&&d[ar[1]]) return d[ar[1]]+(lang==='ar'?' ←':ar[2]); compile(); for(var i=0;i<TPL.length;i++){ var m=TPL[i].rx.exec(t); if(m){ var out=d[TPL[i].k]; if(!out) return null; TPL[i].names.forEach(function(n,j){ out=out.split('{'+n+'}').join(sub(m[j+1],depth)); }); return out; } } return null; }
+function fixHref(a){ var h=a.getAttribute('href')||''; var mm=h.match(/rockit-route-map\/([a-z0-9-]*)$/)||h.match(/^https?:\/\/(?:www\.)?rockit-transport\.com\/(?:(?:ar|fr|es|de|it)\/)?([a-z0-9-]*)$/); if(mm){ a.setAttribute('href',origin+(lang==='en'?'':'/'+lang)+'/'+mm[1]); } }
+function walk(root){ var it=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null); var n; var todo=[]; while((n=it.nextNode())){ var p=n.parentNode; if(!p||/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName)) continue; if(!/[A-Za-z]/.test(n.nodeValue)) continue; todo.push(n);} todo.forEach(function(n){ var v=n.nodeValue; var t=tr(v); if(t!==null){ var lead=v.match(/^\s*/)[0], trail=v.match(/\s*$/)[0]; var nv=lead+t+trail; if(nv!==v) n.nodeValue=nv; } }); 
+  var els=root.querySelectorAll? root.querySelectorAll('[placeholder],[title],[aria-label],[alt]'):[]; for(var i=0;i<els.length;i++){ var el=els[i]; ['placeholder','title','aria-label','alt'].forEach(function(at){ var v=el.getAttribute(at); if(v){ var t=tr(v); if(t!==null&&t!==v) el.setAttribute(at,t); } }); }
+  var as=root.querySelectorAll? root.querySelectorAll('a[target="_top"][href]'):[]; for(var j=0;j<as.length;j++) fixHref(as[j]); }
+var busy=false; function apply(){ if(busy) return; busy=true; try{ if(lang!=='en'&&D[lang]) walk(document.body); else { var as=document.querySelectorAll('a[target="_top"][href]'); for(var j=0;j<as.length;j++) fixHref(as[j]); } }catch(e){} busy=false; }
+function rtl(){ if(lang!=='ar') return; var H=document.documentElement; H.setAttribute('lang','ar'); H.setAttribute('dir','rtl'); if(!document.getElementById('rm-arfont')){ var k=document.createElement('link'); k.id='rm-arfont'; k.rel='stylesheet'; k.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap'; document.head.appendChild(k); var s=document.createElement('style'); s.textContent="html[dir=rtl] body,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] button,html[dir=rtl] textarea,html[dir=rtl] .rm-shell{font-family:'Noto Naskh Arabic','Rockit Digits','Cormorant Garamond',serif!important;letter-spacing:0!important}html[dir=rtl] th,html[dir=rtl] td{text-align:right}html[dir=rtl] .rm-tabs a:first-child{padding-left:16px;padding-right:0}html[dir=rtl] input#cn,html[dir=rtl] input[type=number],html[dir=rtl] .mono,html[dir=rtl] .code,html[dir=rtl] td.mono{direction:ltr;text-align:left}html[dir=rtl] h3{letter-spacing:0!important}"; document.head.appendChild(s);} else { var H2=document.documentElement; H2.setAttribute('lang',lang); } }
+function setLang(l){ if(!l||l===lang) return; if(l!=='en'&&LANGS.indexOf(l)<0) return; if(applied&&lang!=='en'){ location.hash='lang='+l; location.reload(); return; } lang=l; rtl(); apply(); }
+window.addEventListener('message',function(e){ var d=e.data; if(d&&typeof d==='object'&&d.rmLang) setLang(String(d.rmLang)); });
+function boot(){ rtl(); apply(); applied=true; var mo=new MutationObserver(function(){ if(!busy) apply(); }); mo.observe(document.body,{childList:true,subtree:true,characterData:true}); try{ if(window.parent!==window) window.parent.postMessage({rmLangReq:1},'*'); }catch(e){} }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();</script></div></div><!--/rm-shell--><script id="rm-h">(function(){var last=0,t;function m(){var b=document.querySelector('.rm-body');if(!b)return;var br=b.getBoundingClientRect(),bot=0;for(var i=0;i<b.children.length;i++){var c=b.children[i],cs=getComputedStyle(c);if(cs.display==='none'||cs.position==='fixed')continue;var r=c.getBoundingClientRect();bot=Math.max(bot,r.bottom+(parseFloat(cs.marginBottom)||0));}var pb=parseFloat(getComputedStyle(b).paddingBottom)||0;var h=Math.ceil(br.top+window.scrollY+(bot-br.top)+b.scrollTop+pb+(document.documentElement.clientHeight-br.bottom));if(h>0&&Math.abs(h-last)>1){last=h;try{parent.postMessage({rmH:h},'*')}catch(e){}}}function q(){clearTimeout(t);t=setTimeout(m,40)}if(window.ResizeObserver){var ro=new ResizeObserver(q);ro.observe(document.documentElement);var b=document.querySelector('.rm-body');if(b){ro.observe(b);for(var i=0;i<b.children.length;i++)ro.observe(b.children[i]);}}new MutationObserver(q).observe(document.documentElement,{subtree:true,childList:true,attributes:true,characterData:true});addEventListener('load',q);addEventListener('message',function(e){if(e.data&&e.data.rmHReq){last=0;m()}});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);setTimeout(m,150);setTimeout(m,1000);setTimeout(m,3000);})();</script><style id="rm-arls">html[dir=rtl] body *,html[dir=rtl] body *::before,html[dir=rtl] body *::after{letter-spacing:0!important}</style>
+<!-- rm-portrait -->
+<style id="rm-portrait">
+/*
+ * rm-portrait: the tools on a phone held upright (owner, 19 Nov 2026: "they do not fit in the page in portrait mode").
+ * Appended after each tool's own styles by build.py, so on equal specificity these rules win.
+ *
+ * Each tool is an HTML embed in a frame the page sizes: 310px on a 390px phone, 240px on a 320px one. The tools were
+ * laid out for a desk and for one phone width; narrower than that their grids (four fields to a row, three or four
+ * tiles to a row) and their one-line buttons were wider than the frame, and the frame's body hides what overflows —
+ * so the right-hand side of the form, of the result and of every paragraph was simply cut off. Measured before this
+ * file: 43 of 56 states (7 tools × 240, 280, 310 and 350px × untouched and used) had something cut off, a field whose
+ * text was clipped, or the current tool's tab scrolled out of sight.
+ *
+ * The rule of this file: nothing in a tool has a minimum width the frame cannot give. Grids use tracks that may
+ * shrink, a row of fields becomes two to a row when there is no room for four, long words and long buttons wrap, and
+ * a table that still cannot fit scrolls inside its own box instead of being cut.
+ */
+
+/* ---- every width: nothing may be wider than the frame ---- */
+html,body{max-width:100%}
+.rm-body{overflow-wrap:break-word}
+.rm-body *,.rm-body *::before,.rm-body *::after{min-width:0}
+.rm-body img,.rm-body svg,.rm-body iframe,.rm-body table,.rm-body input,.rm-body select,.rm-body textarea,.rm-body button{max-width:100%}
+
+/* the strip of tools: it scrolls sideways; portrait.js brings the current tool into view and marks the cut ends */
+.rm-tabs{scroll-behavior:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rm-tabs a{flex:none}
+.rm-tabs.rm-more-end{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start.rm-more-end{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
+
+/* ---- a phone held upright: the frame is 240 to about 400px wide ---- */
+@media (max-width:480px){
+  /* room for a focus ring at the frame's edge, which the body would otherwise cut */
+  .rm-body{padding-left:2px;padding-right:2px}
+
+  /* a button, or a link drawn as one, says all of its words: two lines when one cannot hold them, never a cut-off
+     one; and it is a thumb's height (44px) */
+  .rm-body button.b,.rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{white-space:normal;height:auto;min-height:44px;line-height:1.25;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere}
+  .rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{display:inline-flex;align-items:center}
+  /* a tab of the strip is a taller target under a finger */
+  .rm-tabs a{padding-top:12px}
+
+  /* chargeable weight, load calculator: a package's four measures are two rows of two; its box gives the room back */
+  .rm-body .line{padding:12px 34px 12px 12px}
+  .rm-body .line .row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .line .row.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .cust{grid-template-columns:minmax(0,1fr)}
+  /* a label of two lines must not push its box out of line with the one beside it */
+  .rm-body .line .row,.rm-body .cust{align-items:end}
+  .rm-body .btns .b{flex:1 1 auto}
+  .rm-body .opts{flex-wrap:wrap;gap:8px 18px}
+
+  /* result tiles: as many to a row as fit at 7.5rem each (three at 310px and over, two under it), figures that wrap */
+  .rm-body .tot{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.2rem),1fr))}
+  .rm-body .tot div{padding:10px}
+  .rm-body .tot b{font-size:21px;line-height:1.15;overflow-wrap:anywhere}
+  .rm-body .big b{font-size:28px;overflow-wrap:anywhere}
+
+  /* tables: cells wrap between words; one that still cannot fit scrolls inside its own box (portrait.js wraps it) */
+  /* a heading keeps its whole word ("Step" is not "St / ep"); a cell of prose may break anywhere it must */
+  .rm-body th,.rm-body td{padding-left:6px;padding-right:6px}
+  .rm-body th{overflow-wrap:break-word;letter-spacing:.06em}
+  .rm-body td{overflow-wrap:anywhere}
+  /* …but the first column is a name (a port, a container type): it keeps its words whole */
+  .rm-body td:first-child{overflow-wrap:break-word}
+  .rm-body .rm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* vessel schedules: a line's name and what its link opens, on two lines when one cannot hold both */
+  .rm-body .lines a{flex-wrap:wrap;gap:2px 12px}
+  .rm-body .lines a span.sv{text-align:left}
+  .rm-body .cta{padding:14px}
+
+  /* container tracking: the four parts of a number are two rows of two; the carriers list is one column when narrow */
+  .rm-body .parts{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+  .rm-body .parts div{min-width:0}
+  .rm-body .list{grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr))}
+  .rm-body .carrier{padding:14px}
+  .rm-body .row>div{flex-basis:min(100%,220px)}
+
+  /* vessel and flight tracking: the map takes a little over half the screen's height, not one and a half screens */
+  .rm-body #map{height:min(60vh,420px);min-height:300px}
+  .rm-body .mapcap{right:10px;font-size:13px}
+  .rm-body .card{padding:12px}
+  .rm-body .card .hd{flex-wrap:wrap}
+}
+/* the narrowest phones (a 320px screen gives the frame 240px): a field beside its button has no room to show what is
+   typed in it, so the button goes under the field, as wide as it */
+@media (max-width:300px){
+  .rm-body .bar{grid-template-columns:minmax(0,1fr)}
+  .rm-body .bar .b{width:100%}
+}
+/* …and a table of four columns or more is a list there: a row is a block, its first cell the heading of the block,
+   every other cell one line with its column's name before it (portrait.js copies the names from the heading row,
+   which is taken out of sight, not out of the page). */
+@media (max-width:300px){
+  .rm-body table.rm-cols4,.rm-body table.rm-cols4 tbody{display:block;width:100%}
+  .rm-body table.rm-cols4 thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .rm-body table.rm-cols4 tr{display:block;padding:10px 8px;border-bottom:1px solid var(--line)}
+  .rm-body table.rm-cols4 td{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:0 10px;align-items:baseline;border:0;padding:3px 0;text-align:left;white-space:normal}
+  .rm-body table.rm-cols4 td::before{content:attr(data-label);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .rm-body table.rm-cols4 tr.best td::before{color:rgba(255,255,255,.72)}
+  .rm-body table.rm-cols4 td:first-child,.rm-body table.rm-cols4 td:not([data-label]){display:block;padding-bottom:6px}
+  .rm-body table.rm-cols4 td:first-child::before,.rm-body table.rm-cols4 td:not([data-label])::before{content:none}
+}
+/* from 330px the four parts of a container number fit one row again */
+@media (min-width:330px) and (max-width:480px){
+  .rm-body .parts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .rm-body .parts div{padding:8px 6px}
+  .rm-body .parts span{letter-spacing:.04em;font-size:11px}
+}
+
+/* A section title is gradient text (its fill is transparent, the gradient shows through), and the step number in
+   the disc before it inherited the transparent fill: three navy discs with nothing in them. The number is white. */
+h3 .n{-webkit-text-fill-color:#fff;background-clip:border-box;-webkit-background-clip:border-box;background-image:none}
+
+/*
+ * ---- gold ----
+ * brand/BRAND.md §1: gold is always the logo's own metallic gradient (brand/rockit-logo.svg, `gold-swoosh`), never a
+ * flat yellow; a solid is allowed only where a gradient cannot be drawn (#8a6514 on a light ground). The tools carried
+ * another gradient and a flat #D0AF50 for rules, borders, bars and focus rings.
+ */
+:root{
+  --gold-grad:linear-gradient(135deg,#A88329 0%,#B18B2D 8%,#C09934 17%,#CFAC49 25%,#DEC163 33%,#EDD77E 42%,#F7E590 50%,#ECD57B 58%,#DEC161 67%,#D0AD48 75%,#C29B36 83%,#B28C2D 92%,#A88228 100%);
+  --gold-grad-hi:var(--gold-grad);
+  /* what `var(--gold)` still paints is text behind a gradient clip, a focus ring or a hairline: the allowed solid */
+  --gold:#8a6514;
+}
+.b.gold,.cta a,.links a.gold{background-color:#C09934;background-image:var(--gold-grad)}
+.b.gold:hover,.cta a:hover,.links a.gold:hover{background-image:var(--gold-grad);filter:brightness(1.06)}
+.rm-tabs a.on{border-bottom-color:transparent;border-image:var(--gold-grad) 1;border-image-width:0 0 2px 0}
+.rm-tabs a:focus-visible{outline-color:#8a6514}
+.big{border-image:var(--gold-grad) 1}
+.bar i{background-color:#C09934;background-image:var(--gold-grad)}
+.pref,.modehint{border-image:var(--gold-grad) 1}
+</style>
+<script id="rm-portrait-js">
+/* rm-portrait: what the stylesheet cannot do. Appended after each tool's own scripts by build.py. */
+(function () {
+  var tabs = document.querySelector('.rm-tabs');
+  var body = document.querySelector('.rm-body');
+
+  /* The strip of tools scrolls sideways and its scrollbar is hidden: on a phone the current tool's tab was off the
+     edge with nothing to say the strip moves. Bring it into view (by the strip's own scroll position, never
+     scrollIntoView: inside a frame that also scrolls the page that holds it) and fade the end that has more. */
+  function ends() {
+    if (!tabs) return;
+    var max = tabs.scrollWidth - tabs.clientWidth;
+    var x = Math.abs(tabs.scrollLeft);
+    var rtl = getComputedStyle(tabs).direction === 'rtl';
+    var before = x > 2, after = x < max - 2;
+    tabs.classList.toggle('rm-more-start', max > 2 && (rtl ? after : before));
+    tabs.classList.toggle('rm-more-end', max > 2 && (rtl ? before : after));
+  }
+  function showCurrent() {
+    if (!tabs) return;
+    var on = tabs.querySelector('a.on');
+    if (on) {
+      var t = tabs.getBoundingClientRect(), a = on.getBoundingClientRect();
+      if (a.left < t.left + 1 || a.right > t.right - 1) tabs.scrollLeft += a.left - t.left - (t.width - a.width) / 2;
+    }
+    ends();
+  }
+  if (tabs) {
+    tabs.addEventListener('scroll', ends, { passive: true });
+    showCurrent();
+    addEventListener('load', showCurrent);
+    addEventListener('resize', showCurrent);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(showCurrent);
+  }
+
+  /* A table whose cells cannot wrap any further (a column of codes, a comparison) scrolls inside its own box rather
+     than being cut by the frame: every table gets that box once, tables a tool draws later included. */
+  /* A table of four columns or more cannot be read across the narrowest phones (a 240px frame): there each of its
+     rows is drawn as a block, one line per cell with the column's name before it (portrait.css, `rm-cols4`). The
+     names are copied from the table's own heading row. */
+  function label(table) {
+    if (table.getAttribute('data-rm-labelled')) return;
+    var heads = table.querySelectorAll('thead th');
+    if (heads.length < 4) return;
+    table.setAttribute('data-rm-labelled', '1');
+    table.classList.add('rm-cols4');
+    var rows = table.querySelectorAll('tbody tr');
+    for (var r = 0; r < rows.length; r++) {
+      var cells = rows[r].children;
+      for (var c = 1; c < cells.length && c < heads.length; c++) cells[c].setAttribute('data-label', heads[c].textContent.replace(/\s+/g, ' ').trim());
+    }
+  }
+  function boxTables(root) {
+    var list = (root || document).querySelectorAll ? (root || document).querySelectorAll('.rm-body table') : [];
+    for (var i = 0; i < list.length; i++) {
+      var table = list[i], p = table.parentElement;
+      label(table);
+      if (!p || p.classList.contains('rm-scroll') || (getComputedStyle(p).overflowX !== 'visible' && p !== body)) continue;
+      var box = document.createElement('div');
+      box.className = 'rm-scroll';
+      p.insertBefore(box, table);
+      box.appendChild(table);
+    }
+  }
+  boxTables(document);
+  if (body && window.MutationObserver) {
+    new MutationObserver(function (changes) {
+      for (var i = 0; i < changes.length; i++) if (changes[i].addedNodes.length) { boxTables(document); return; }
+    }).observe(body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<!-- /rm-portrait -->

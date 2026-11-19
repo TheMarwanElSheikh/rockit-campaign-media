@@ -1,0 +1,374 @@
+<!-- Rockit load calculator (self-contained, no third-party service) -->
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"><style id="rm-type">@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:400;src:local('Times New Roman'),local('TimesNewRomanPSMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE1poGnedXvwj1AW3Fu0C8V-txK.woff2) format('woff2');unicode-range:U+0030-0039}@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:700;src:local('Times New Roman Bold'),local('TimesNewRomanPS-BoldMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE4poGnedXvwjX7fmRD8iI_.woff2) format('woff2');unicode-range:U+0030-0039}:root{--rm-serif:'Rockit Digits','Cormorant Garamond',Georgia,'Times New Roman',serif;--rm-sans:var(--rm-serif);--rm-mono:var(--rm-serif);--rm-display:var(--rm-serif)}html,body,input,select,textarea,button,.rm-shell{font-family:var(--rm-serif)!important}body{font-weight:500}b,strong{font-weight:700}.b.gold:hover,.links a.gold:hover{background:var(--gold-grad-hi)}</style><style>
+  :root{--navy:#06103A;--gold:#D0AF50;--gold-grad:linear-gradient(135deg,#B38C2D 0%,#C7A340 14%,#DBBD5E 29%,#EBD379 43%,#EBD47A 57%,#DDC060 71%,#CAA642 86%,#B6902F 100%);--gold-grad-hi:linear-gradient(135deg,#C7A340 0%,#DBBD5E 14%,#EBD379 29%,#F3DC86 43%,#F4DE8A 57%,#EBD379 71%,#DBBD5E 86%,#CAA642 100%);--paper:#F6F6F3;--ink:#1B1F2A;--muted:#5B6172;--line:#D9D9D2;--ok:#1E7B4F;--warn:#B3541E}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--rm-serif);color:var(--ink);background:transparent}
+  .lc{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:4px 0}
+  @media (max-width:760px){.lc{grid-template-columns:1fr}}
+  h3{margin:0 0 12px;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+  .row.two{grid-template-columns:1fr 1fr}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;height:42px;border:1px solid var(--line);background:#fff;padding:0 10px;font-size:16.5px;color:var(--ink);border-radius:0}
+  input:focus,select:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  .line{border:1px solid var(--line);padding:14px 36px 14px 14px;margin-bottom:12px;background:#fff;position:relative}
+  .line .rm{position:absolute;right:10px;top:8px;background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  button.b{height:44px;padding:0 20px;border:0;cursor:pointer;font-size:15.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .b.gold{background:var(--gold-grad);color:var(--navy)}
+  .b.ghost{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+  .opts{display:flex;gap:18px;margin:6px 0 14px;font-size:15.5px;color:var(--ink)}
+  .opts label{display:flex;align-items:center;gap:6px;margin:0;font-size:15.5px;color:var(--ink)}
+  .opts input{width:auto;height:auto}
+  table{width:100%;border-collapse:collapse;font-size:15.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  th.num{text-align:right}
+  .best{background:var(--navy);color:#fff}
+  .best td{border-color:#1c2652}
+  .bar{height:6px;background:var(--line);margin-top:6px}
+  .bar i{display:block;height:6px;background:var(--gold)}
+  .best .bar{background:#2a3566}
+  .tot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:0 0 14px}
+  .tot div{border:1px solid var(--line);padding:10px 12px;background:#fff}
+  .tot b{display:block;font-size:24px;color:var(--navy)}
+  .tot span{font-size:13px;color:var(--muted)}
+  .note{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.5}
+  .tag{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.08em}
+  .err{color:var(--warn);font-size:14.5px;margin:6px 0}
+</style>
+<style id="rm-shell">
+  html,body{height:100%;}
+  body{margin:0;overflow:hidden;}
+  .rm-shell{display:flex;flex-direction:column;height:100%;min-height:0;font-family:var(--rm-serif);}
+  .rm-tabs{display:flex;gap:0;border-bottom:1px solid #D9D9D2;overflow-x:auto;scrollbar-width:none;flex:0 0 auto;}
+  .rm-tabs::-webkit-scrollbar{display:none}
+  .rm-tabs a{padding:0 16px 11px;font-size:14.5px;line-height:1;color:#5B6172;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
+  .rm-tabs a:first-child{padding-left:0}
+  .rm-tabs a:hover{color:#06103A}
+  .rm-tabs a.on{color:#06103A;font-weight:600;border-bottom-color:#D0AF50}
+  .rm-tabs a:focus-visible{outline:2px solid #D0AF50;outline-offset:2px}
+  .rm-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding-top:20px;}
+  .rm-body::-webkit-scrollbar{width:8px}
+  .rm-body::-webkit-scrollbar-thumb{background:#D9D9D2}
+  .rm-body::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:760px){.rm-tabs a{padding:0 12px 10px;font-size:13px}}
+h3,.tag{background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.cta a{background:var(--gold-grad)}.cta a:hover{background:var(--gold-grad-hi)}</style>
+<div class="rm-shell"><nav class="rm-tabs" aria-label="Tools"><a href="https://www.rockit-transport.com/container-tracking" target="_top">Container tracking</a><a href="https://www.rockit-transport.com/vessel-schedules" target="_top">Vessel schedules</a><a href="https://www.rockit-transport.com/load-calculator" target="_top" class="on" aria-current="page">Load calculator</a><a href="https://www.rockit-transport.com/vessel-tracking" target="_top">Vessel tracking</a><a href="https://www.rockit-transport.com/flight-tracking" target="_top">Flight tracking</a><a href="https://www.rockit-transport.com/chargeable-weight" target="_top">Chargeable weight</a><a href="https://www.rockit-transport.com/duties-taxes-calculator" target="_top">Duties &amp; taxes</a></nav><div class="rm-body"><div class="lc">
+  <div>
+    <h3>Cargo</h3>
+    <div id="lines"></div>
+    <div class="btns">
+      <button class="b ghost" type="button" onclick="addLine()">+ Add another package</button>
+      <button class="b gold" type="button" onclick="calc()">Calculate</button>
+    </div>
+    <div class="opts">
+      <label><input type="checkbox" id="stack" checked> Stackable</label>
+      <label><input type="checkbox" id="rotate"> Can be turned on its side</label>
+    </div>
+    <div class="err" id="err"></div>
+  </div>
+  <div>
+    <h3>Result</h3>
+    <div id="out"><p class="note">Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.</p></div>
+  </div>
+</div>
+<script>
+(function(){
+  var units=[
+    {k:'20GP',n:"20' standard (GP)",L:589,W:235,H:239,pay:28200},
+    {k:'40GP',n:"40' standard (GP)",L:1203,W:235,H:239,pay:26700},
+    {k:'40HC',n:"40' high cube (HC)",L:1203,W:235,H:269,pay:28600},
+    {k:'45HC',n:"45' high cube (HC)",L:1355,W:235,H:269,pay:27600},
+    {k:'TRK',n:"13.6 m road trailer",L:1360,W:245,H:265,pay:24000}
+  ];
+  var n=0;
+  window.addLine=function(v){
+    v=v||{};n++;
+    var d=document.createElement('div');d.className='line';d.id='ln'+n;
+    d.innerHTML='<button class="rm" type="button" title="Remove" onclick="this.parentNode.remove()">&times;</button>'+
+      '<div class="row"><div><label>Length cm</label><input type="number" min="1" step="0.1" data-f="l" value="'+(v.l||'')+'" placeholder="120"></div>'+
+      '<div><label>Width cm</label><input type="number" min="1" step="0.1" data-f="w" value="'+(v.w||'')+'" placeholder="80"></div>'+
+      '<div><label>Height cm</label><input type="number" min="1" step="0.1" data-f="h" value="'+(v.h||'')+'" placeholder="100"></div>'+
+      '<div><label>Weight kg, each</label><input type="number" min="0" step="0.1" data-f="kg" value="'+(v.kg||'')+'" placeholder="450"></div></div>'+
+      '<div class="row two"><div><label>Quantity</label><input type="number" min="1" step="1" data-f="q" value="'+(v.q||'')+'" placeholder="20"></div>'+
+      '<div><label>Description (optional)</label><input type="text" data-f="d" value="'+esc(v.d||'')+'" placeholder="Pallets, crates, drums&hellip;"></div></div>';
+    document.getElementById('lines').appendChild(d);
+  };
+  function esc(s){ return String(s).replace(/[<>&"]/g,function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]; }); }
+  function floor2(L,W,a,b){ var best=0; [[a,b],[b,a]].forEach(function(o){ var x=o[0],y=o[1];
+    var ky=Math.floor(W/y), kx=Math.floor(L/x);
+    for(var k=0;k<=ky;k++){ var c=k*Math.floor(L/x)+Math.floor((W-k*y)/x)*Math.floor(L/y); if(c>best) best=c; }
+    for(var k2=0;k2<=kx;k2++){ var c2=k2*Math.floor(W/y)+Math.floor((L-k2*x)/y)*Math.floor(W/x); if(c2>best) best=c2; } }); return best; }
+  function fit(u,p,stack,rot){ var opts=rot?[[p.l,p.w,p.h],[p.l,p.h,p.w],[p.w,p.h,p.l]]:[[p.l,p.w,p.h]]; var best=0;
+    opts.forEach(function(o){ var v=o[2]; if(v>u.H) return; var f=floor2(u.L,u.W,o[0],o[1]); var z=stack?Math.floor(u.H/v):1; if(f*z>best) best=f*z; }); return best; }
+  window.calc=function(){
+    var err=document.getElementById('err');err.textContent='';
+    var stack=document.getElementById('stack').checked,rot=document.getElementById('rotate').checked;
+    var ps=[];var els=document.querySelectorAll('.line');
+    for(var i=0;i<els.length;i++){var g=function(f){var e=els[i].querySelector('[data-f="'+f+'"]');return e?e.value:'';};
+      var p={l:+g('l'),w:+g('w'),h:+g('h'),kg:Math.max(0,+g('kg')||0),q:Math.floor(+g('q')),d:g('d')};
+      if(!(p.l>0&&p.w>0&&p.h>0&&p.q>0)){err.textContent='Give length, width, height and quantity for every package line.';return;}
+      ps.push(p);
+    }
+    if(!ps.length){err.textContent='Add at least one package.';return;}
+    var totVol=0,totKg=0,totQ=0;ps.forEach(function(p){totVol+=p.l*p.w*p.h/1e6*p.q;totKg+=p.kg*p.q;totQ+=p.q;});
+    var rows=[],bestIdx=-1,bestN=Infinity;
+    units.forEach(function(u,ui){
+      var frac=0,anyFit=true,perUnit=[];
+      ps.forEach(function(p){var c=fit(u,p,stack,rot);if(!c){anyFit=false;}perUnit.push(c);var cw=p.kg>0?Math.floor(u.pay/p.kg):Infinity;var cap=Math.min(c,cw);frac+=cap>0?p.q/cap:Infinity;});
+      var byVol=anyFit?Math.ceil(frac-1e-9):Infinity;
+      var byKg=Math.ceil(totKg/u.pay);
+      var need=anyFit?Math.max(byVol,byKg,1):Infinity;
+      var cap=u.L*u.W*u.H/1e6;
+      var volU=need<Infinity?Math.min(100,totVol/(cap*need)*100):0;
+      var kgU=need<Infinity?Math.min(100,totKg/(u.pay*need)*100):0;
+      rows.push({u:u,need:need,perUnit:perUnit,volU:volU,kgU:kgU,cap:cap,limit:need<Infinity?(byKg>byVol?'weight-limited':(byVol>byKg?'space-limited':'')):''});
+      if(need<bestN){bestN=need;bestIdx=ui;}
+    });
+    var h='<div class="tot"><div><b>'+totQ+'</b><span>packages</span></div><div><b>'+totVol.toFixed(1)+' m&sup3;</b><span>total volume</span></div><div><b>'+(totKg?Math.round(totKg).toLocaleString():'&ndash;')+(totKg?' kg':'')+'</b><span>total gross weight</span></div></div>';
+    h+='<table><thead><tr><th>Unit</th><th class="num">Fits per unit</th><th class="num">Units needed</th><th>Utilisation</th></tr></thead><tbody>';
+    rows.forEach(function(r,i){
+      var isBest=(i===bestIdx&&r.need<Infinity);
+      var per=r.perUnit.map(function(c,j){return (ps.length>1?(ps[j].d?esc(ps[j].d):('#'+(j+1)))+': ':'')+(c||'no fit');}).join('<br>');
+      h+='<tr'+(isBest?' class="best"':'')+'><td>'+r.u.n+(isBest?'<br><span class="tag">BEST FIT</span>':'')+'<br><span style="font-size:13px;opacity:.75">'+r.cap.toFixed(1)+' m&sup3; &middot; '+r.u.pay.toLocaleString()+' kg payload</span></td>'+
+        '<td class="num">'+per+'</td><td class="num">'+(r.need<Infinity?r.need+'<br><span style="font-size:13px;opacity:.75">'+r.limit+'</span>':'&mdash;')+'</td>'+
+        '<td>Volume '+Math.round(r.volU)+'%<div class="bar"><i style="width:'+Math.round(r.volU)+'%"></i></div>'+(totKg?'Weight '+Math.round(r.kgU)+'%<div class="bar"><i style="width:'+Math.round(r.kgU)+'%"></i></div>':'')+'</td></tr>';
+    });
+    h+='</tbody></table><p class="note">Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90\u00b0, with the packages upright'+(rot?' or turned on their side':'')+(stack?', stacked to the roof':', single layer')+'. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.</p>';
+    document.getElementById('out').innerHTML=h;
+  };
+  addLine({l:120,w:80,h:100,kg:450,q:20,d:'Pallets'});
+})();
+</script>
+<script id="rm-i18n">(function(){
+var D={"fr":{"Duties & taxes":"Droits et taxes","Container tracking":"Suivi de conteneur","Vessel schedules":"Horaires des navires","Load calculator":"Calculateur de chargement","Vessel tracking":"Suivi de navire","Flight tracking":"Suivi de vol","Chargeable weight":"Poids taxable","Tools":"Outils","Calculate":"Calculer","+ Add another package":"+ Ajouter un colis","Remove":"Supprimer","Length cm":"Longueur cm","Width cm":"Largeur cm","Height cm":"Hauteur cm","Quantity":"Quantité","Description (optional)":"Description (facultatif)","To":"À","Vessel schedule":"Horaire des navires","Cargo":"Cargaison","Stackable":"Gerbable","Can be turned on its side":"Peut être couché sur le côté","Result":"Résultat","Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.":"Saisissez les dimensions du colis en centimètres, le poids d’un colis en kilogrammes et la quantité, puis appuyez sur Calculer. Les conteneurs ISO standard et une remorque routière de 13,6 m sont comparés.","Weight kg, each":"Poids kg, unitaire","Pallets, crates, drums…":"Palettes, caisses, fûts…","Give length, width, height and quantity for every package line.":"Indiquez la longueur, la largeur, la hauteur et la quantité pour chaque ligne de colis.","Add at least one package.":"Ajoutez au moins un colis.","packages":"colis","total volume":"volume total","total gross weight":"poids brut total","Unit":"Unité","Fits per unit":"Colis par unité","Units needed":"Unités nécessaires","Utilisation":"Taux de remplissage","BEST FIT":"MEILLEUR CHOIX","{cap} m³ · {payload} kg payload":"{cap} m³ · {payload} kg de charge utile","no fit":"ne rentre pas","Volume {pct}%":"Volume {pct}%","Weight {pct}%":"Poids {pct}%","20' standard (GP)":"20' standard (GP)","40' standard (GP)":"40' standard (GP)","40' high cube (HC)":"40' high cube (HC)","45' high cube (HC)":"45' high cube (HC)","13.6 m road trailer":"Remorque routière de 13,6 m","Estimate only. Fits are calculated on a regular grid with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Estimation seulement. Les capacités sont calculées sur une grille régulière, avec les colis debout{rot}{stack}. Les dimensions intérieures sont des valeurs ISO typiques et varient selon le conteneur ; l’arrimage, le calage et le dégagement des portes réduisent l’espace utile. Pour les charges hors gabarit ou mixtes, envoyez-nous la liste de colisage et nous planifierons le chargement correctement."," or turned on their side":" ou couchés sur le côté",", stacked to the roof":", gerbés jusqu’au plafond",", single layer":", sur une seule couche","weight":"poids","space-limited":"limité par le volume","weight-limited":"limité par le poids","Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90°, with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Estimation seulement. Les capacités sont calculées sur un plan de chargement qui peut tourner des rangées de colis de 90°, avec les colis debout{rot}{stack}. Les dimensions intérieures sont des valeurs ISO typiques et varient selon le conteneur ; l’arrimage, le calage et le dégagement des portes réduisent l’espace utile. Pour les charges hors gabarit ou mixtes, envoyez-nous la liste de colisage et nous planifierons le chargement correctement."},"es":{"Duties & taxes":"Aranceles e impuestos","Container tracking":"Seguimiento de contenedores","Vessel schedules":"Itinerarios de buques","Load calculator":"Calculadora de carga","Vessel tracking":"Seguimiento de buques","Flight tracking":"Seguimiento de vuelos","Chargeable weight":"Peso facturable","Tools":"Herramientas","Calculate":"Calcular","+ Add another package":"+ Añadir otro bulto","Remove":"Quitar","Length cm":"Largo cm","Width cm":"Ancho cm","Height cm":"Alto cm","Quantity":"Cantidad","Description (optional)":"Descripción (opcional)","To":"Destino","Vessel schedule":"Itinerario de buques","Cargo":"Carga","Stackable":"Apilable","Can be turned on its side":"Se puede tumbar de lado","Result":"Resultado","Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.":"Introduzca las dimensiones del bulto en centímetros, el peso de un bulto en kilogramos y la cantidad, y pulse Calcular. Se comparan los contenedores ISO estándar y un remolque de carretera de 13.6 m.","Weight kg, each":"Peso kg, por unidad","Pallets, crates, drums…":"Palés, cajas, bidones…","Give length, width, height and quantity for every package line.":"Indique largo, ancho, alto y cantidad en cada línea de bultos.","Add at least one package.":"Añada al menos un bulto.","packages":"bultos","total volume":"volumen total","total gross weight":"peso bruto total","Unit":"Unidad","Fits per unit":"Caben por unidad","Units needed":"Unidades necesarias","Utilisation":"Aprovechamiento","BEST FIT":"MEJOR OPCIÓN","{cap} m³ · {payload} kg payload":"{cap} m³ · {payload} kg de carga útil","no fit":"no cabe","Volume {pct}%":"Volumen {pct}%","Weight {pct}%":"Peso {pct}%","20' standard (GP)":"20' estándar (GP)","40' standard (GP)":"40' estándar (GP)","40' high cube (HC)":"40' high cube (HC)","45' high cube (HC)":"45' high cube (HC)","13.6 m road trailer":"Remolque de carretera de 13.6 m","Estimate only. Fits are calculated on a regular grid with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Solo es una estimación. Las capacidades se calculan sobre una cuadrícula regular con los bultos en posición vertical{rot}{stack}. Las dimensiones interiores son valores ISO típicos y varían según el contenedor; el trincaje, el material de estiba y el hueco de las puertas reducen el espacio útil. Para cargas fuera de gálibo o mixtas, envíenos la lista de empaque y la planificaremos como es debido."," or turned on their side":" o tumbados de lado",", stacked to the roof":", apilados hasta el techo",", single layer":", en una sola capa","weight":"peso","space-limited":"limitado por espacio","weight-limited":"limitado por peso","Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90°, with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Solo es una estimación. Las capacidades se calculan sobre un plano de carga que puede girar filas de bultos 90°, con los bultos en posición vertical{rot}{stack}. Las dimensiones interiores son valores ISO típicos y varían según el contenedor; el trincaje, el material de estiba y el hueco de las puertas reducen el espacio útil. Para cargas fuera de gálibo o mixtas, envíenos la lista de empaque y la planificaremos como es debido."},"de":{"Duties & taxes":"Zölle & Steuern","Container tracking":"Containerverfolgung","Vessel schedules":"Schiffsfahrpläne","Load calculator":"Laderaumrechner","Vessel tracking":"Schiffsverfolgung","Flight tracking":"Flugverfolgung","Chargeable weight":"Frachtpflichtiges Gewicht","Tools":"Tools","Calculate":"Berechnen","+ Add another package":"+ Weiteres Packstück hinzufügen","Remove":"Entfernen","Length cm":"Länge cm","Width cm":"Breite cm","Height cm":"Höhe cm","Quantity":"Anzahl","Description (optional)":"Beschreibung (optional)","To":"Nach","Vessel schedule":"Schiffsfahrplan","Cargo":"Ladung","Stackable":"Stapelbar","Can be turned on its side":"Kann auf die Seite gelegt werden","Result":"Ergebnis","Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.":"Geben Sie die Packstückmaße in Zentimetern, das Gewicht eines Packstücks in Kilogramm und die Anzahl ein und klicken Sie auf Berechnen. Verglichen werden Standard-ISO-Container und ein 13,6-m-Straßenauflieger.","Weight kg, each":"Gewicht kg, je Stück","Pallets, crates, drums…":"Paletten, Kisten, Fässer…","Give length, width, height and quantity for every package line.":"Geben Sie für jede Packstückzeile Länge, Breite, Höhe und Anzahl an.","Add at least one package.":"Fügen Sie mindestens ein Packstück hinzu.","packages":"Packstücke","total volume":"Gesamtvolumen","total gross weight":"Gesamtbruttogewicht","Unit":"Einheit","Fits per unit":"Passt je Einheit","Units needed":"Benötigte Einheiten","Utilisation":"Auslastung","BEST FIT":"BESTE WAHL","{cap} m³ · {payload} kg payload":"{cap} m³ · {payload} kg Nutzlast","no fit":"passt nicht","Volume {pct}%":"Volumen {pct}%","Weight {pct}%":"Gewicht {pct}%","20' standard (GP)":"20' Standard (GP)","40' standard (GP)":"40' Standard (GP)","40' high cube (HC)":"40' High Cube (HC)","45' high cube (HC)":"45' High Cube (HC)","13.6 m road trailer":"13,6 m Straßenauflieger","Estimate only. Fits are calculated on a regular grid with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Nur eine Schätzung. Die Passungen werden auf einem regelmäßigen Raster berechnet, mit den Packstücken aufrecht{rot}{stack}. Die Innenmaße sind typische ISO-Werte und variieren je nach Container; Laschung, Stauholz und der Türbereich verringern den nutzbaren Raum. Bei Übermaß- oder Mischladungen senden Sie uns die Packliste, und wir planen es richtig."," or turned on their side":" oder auf die Seite gelegt",", stacked to the roof":", bis zum Dach gestapelt",", single layer":", in einer Lage","weight":"Gewicht","space-limited":"volumenbegrenzt","weight-limited":"gewichtsbegrenzt","Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90°, with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Nur eine Schätzung. Die Passungen werden auf einem Ladeplan berechnet, der Reihen von Packstücken um 90° drehen kann, mit den Packstücken aufrecht{rot}{stack}. Die Innenmaße sind typische ISO-Werte und variieren je nach Container; Laschung, Stauholz und der Türbereich verringern den nutzbaren Raum. Bei Übermaß- oder Mischladungen senden Sie uns die Packliste, und wir planen es richtig."},"it":{"Duties & taxes":"Dazi e imposte","Container tracking":"Tracciamento container","Vessel schedules":"Orari delle navi","Load calculator":"Calcolatore di carico","Vessel tracking":"Tracciamento navi","Flight tracking":"Tracciamento voli","Chargeable weight":"Peso tassabile","Tools":"Strumenti","Calculate":"Calcola","+ Add another package":"+ Aggiungi un altro collo","Remove":"Rimuovi","Length cm":"Lunghezza cm","Width cm":"Larghezza cm","Height cm":"Altezza cm","Quantity":"Quantità","Description (optional)":"Descrizione (facoltativa)","To":"A","Vessel schedule":"Orario nave","Cargo":"Carico","Stackable":"Impilabile","Can be turned on its side":"Può essere coricato su un lato","Result":"Risultato","Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.":"Inserisca le dimensioni del collo in centimetri, il peso di un singolo collo in chilogrammi e la quantità, poi prema Calcola. Vengono confrontati i container ISO standard e un semirimorchio stradale da 13.6 m.","Weight kg, each":"Peso kg, cadauno","Pallets, crates, drums…":"Pallet, casse, fusti…","Give length, width, height and quantity for every package line.":"Indichi lunghezza, larghezza, altezza e quantità per ogni riga di colli.","Add at least one package.":"Aggiunga almeno un collo.","packages":"colli","total volume":"volume totale","total gross weight":"peso lordo totale","Unit":"Unità","Fits per unit":"Colli per unità","Units needed":"Unità necessarie","Utilisation":"Utilizzo","BEST FIT":"SOLUZIONE MIGLIORE","{cap} m³ · {payload} kg payload":"{cap} m³ · {payload} kg di portata","no fit":"non entra","Volume {pct}%":"Volume {pct}%","Weight {pct}%":"Peso {pct}%","20' standard (GP)":"20' standard (GP)","40' standard (GP)":"40' standard (GP)","40' high cube (HC)":"40' high cube (HC)","45' high cube (HC)":"45' high cube (HC)","13.6 m road trailer":"Semirimorchio stradale 13.6 m","Estimate only. Fits are calculated on a regular grid with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Solo stima. Gli incastri sono calcolati su una griglia regolare con i colli in posizione verticale{rot}{stack}. Le dimensioni interne sono valori ISO tipici e variano da container a container; rizzaggio, materiale di stivaggio e luce delle porte riducono lo spazio utile. Per carichi fuori sagoma o misti, ci invii la packing list e lo pianificheremo come si deve."," or turned on their side":" o coricati su un lato",", stacked to the roof":", impilati fino al soffitto",", single layer":", su un unico strato","weight":"peso","space-limited":"limitato dal volume","weight-limited":"limitato dal peso","Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90°, with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"Solo stima. Gli incastri sono calcolati su un piano di carico che può ruotare file di colli di 90°, con i colli in posizione verticale{rot}{stack}. Le dimensioni interne sono valori ISO tipici e variano da container a container; rizzaggio, materiale di stivaggio e luce delle porte riducono lo spazio utile. Per carichi fuori sagoma o misti, ci invii la packing list e lo pianificheremo come si deve."},"ar":{"Duties & taxes":"الرسوم والضرائب الجمركية","Container tracking":"تتبع الحاويات","Vessel schedules":"جداول السفن","Load calculator":"حاسبة التحميل","Vessel tracking":"تتبع السفن","Flight tracking":"تتبع الرحلات الجوية","Chargeable weight":"الوزن المحاسب عليه","Tools":"الأدوات","Calculate":"احسب","+ Add another package":"+ إضافة طرد آخر","Remove":"حذف","Length cm":"الطول سم","Width cm":"العرض سم","Height cm":"الارتفاع سم","Quantity":"الكمية","Description (optional)":"الوصف (اختياري)","To":"إلى","Vessel schedule":"جدول السفن","Cargo":"البضاعة","Stackable":"قابل للتكديس","Can be turned on its side":"يمكن وضعه على جانبه","Result":"النتيجة","Enter the package dimensions in centimetres, the weight of one package in kilograms and the quantity, then press Calculate. Standard ISO containers and a 13.6 m road trailer are compared.":"أدخل أبعاد الطرد بالسنتيمتر ووزن الطرد الواحد بالكيلوجرام والكمية، ثم اضغط «احسب». تتم المقارنة بين حاويات ISO القياسية ومقطورة طريق بطول 13.6 م.","Weight kg, each":"الوزن كجم، للطرد","Pallets, crates, drums…":"بالتات، صناديق، براميل…","Give length, width, height and quantity for every package line.":"أدخل الطول والعرض والارتفاع والكمية لكل سطر من الطرود.","Add at least one package.":"أضف طردًا واحدًا على الأقل.","packages":"طرود","total volume":"إجمالي الحجم","total gross weight":"إجمالي الوزن القائم","Unit":"الوحدة","Fits per unit":"السعة لكل وحدة","Units needed":"الوحدات المطلوبة","Utilisation":"نسبة الاستغلال","BEST FIT":"الأنسب","{cap} m³ · {payload} kg payload":"{cap} م³ · حمولة {payload} كجم","no fit":"لا يتسع","Volume {pct}%":"الحجم {pct}%","Weight {pct}%":"الوزن {pct}%","20' standard (GP)":"20 قدم قياسية (GP)","40' standard (GP)":"40 قدم قياسية (GP)","40' high cube (HC)":"40 قدم عالية (HC)","45' high cube (HC)":"45 قدم عالية (HC)","13.6 m road trailer":"مقطورة طريق 13.6 م","Estimate only. Fits are calculated on a regular grid with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"تقدير فقط. تُحسب السعة على شبكة منتظمة مع وضع الطرود قائمةً{rot}{stack}. الأبعاد الداخلية هي قيم ISO النموذجية وتختلف من حاوية لأخرى؛ كما أن الربط والحشو وخلوص الباب تقلل المساحة القابلة للاستخدام. للأحمال خارج الأبعاد القياسية أو المختلطة، أرسل لنا قائمة التعبئة وسنخطط لها بشكل سليم."," or turned on their side":" أو على جانبها",", stacked to the roof":"، مكدسة حتى السقف",", single layer":"، في طبقة واحدة","weight":"الوزن","space-limited":"محدود بالحجم","weight-limited":"محدود بالوزن","Estimate only. Fits are calculated on a floor plan that can turn rows of packages 90°, with the packages upright{rot}{stack}. Internal dimensions are typical ISO values and vary by container; lashing, dunnage and door clearance reduce usable space. For out-of-gauge or mixed loads, send us the packing list and we will plan it properly.":"تقدير فقط. تُحسب السعة على مخطط تحميل يمكنه تدوير صفوف من الطرود بزاوية 90°، مع وضع الطرود قائمةً{rot}{stack}. الأبعاد الداخلية هي قيم ISO النموذجية وتختلف من حاوية لأخرى؛ كما أن الربط والحشو وخلوص الباب تقلل المساحة القابلة للاستخدام. للأحمال خارج الأبعاد القياسية أو المختلطة، أرسل لنا قائمة التعبئة وسنخطط لها بشكل سليم."}};
+var LANGS=['ar','fr','es','de','it'];var lang='en';var applied=false;var origin='https://www.rockit-transport.com';
+try{ if(document.referrer){ var u=new URL(document.referrer); if(/rockit-transport\.com$/.test(u.hostname)) origin=u.origin; var m=u.pathname.match(/^\/(ar|fr|es|de|it)(?=\/|$)/); if(m) lang=m[1]; } }catch(e){}
+try{ var hm=location.hash.match(/lang=(ar|fr|es|de|it|en)/); if(hm) lang=hm[1]; }catch(e){}
+var TPL=null;
+function compile(){ if(TPL) return; TPL=[]; var d=D[lang]||{}; Object.keys(d).forEach(function(k){ if(k.indexOf('{')<0) return; var parts=k.split(/\{[^}]+\}/); var names=(k.match(/\{([^}]+)\}/g)||[]).map(function(x){return x.slice(1,-1)}); var rx=new RegExp('^'+parts.map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('([\\s\\S]*?)')+'$'); TPL.push({k:k,rx:rx,names:names}); }); TPL.sort(function(a,b){return b.k.length-a.k.length;}); }
+function sub(v,depth){ var d=D[lang]; if(!v) return v; if(d[v]!==undefined) return d[v]; if((depth||0)<2){ var r=tr(v,(depth||0)+1); if(r!==null) return r; } var o=v; Object.keys(d).forEach(function(k){ if(/^[ ,]/.test(k)&&o.indexOf(k)>=0) o=o.split(k).join(d[k]); }); return o; }
+function tr(text,depth){ var d=D[lang]; if(!d) return null; var t=text.trim(); if(!t) return null; if(d[t]) return d[t]; var ar=t.match(/^(.*?)( *[→←])$/); if(ar&&d[ar[1]]) return d[ar[1]]+(lang==='ar'?' ←':ar[2]); compile(); for(var i=0;i<TPL.length;i++){ var m=TPL[i].rx.exec(t); if(m){ var out=d[TPL[i].k]; if(!out) return null; TPL[i].names.forEach(function(n,j){ out=out.split('{'+n+'}').join(sub(m[j+1],depth)); }); return out; } } return null; }
+function fixHref(a){ var h=a.getAttribute('href')||''; var mm=h.match(/rockit-route-map\/([a-z0-9-]*)$/)||h.match(/^https?:\/\/(?:www\.)?rockit-transport\.com\/(?:(?:ar|fr|es|de|it)\/)?([a-z0-9-]*)$/); if(mm){ a.setAttribute('href',origin+(lang==='en'?'':'/'+lang)+'/'+mm[1]); } }
+function walk(root){ var it=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null); var n; var todo=[]; while((n=it.nextNode())){ var p=n.parentNode; if(!p||/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName)) continue; if(!/[A-Za-z]/.test(n.nodeValue)) continue; todo.push(n);} todo.forEach(function(n){ var v=n.nodeValue; var t=tr(v); if(t!==null){ var lead=v.match(/^\s*/)[0], trail=v.match(/\s*$/)[0]; var nv=lead+t+trail; if(nv!==v) n.nodeValue=nv; } }); 
+  var els=root.querySelectorAll? root.querySelectorAll('[placeholder],[title],[aria-label],[alt]'):[]; for(var i=0;i<els.length;i++){ var el=els[i]; ['placeholder','title','aria-label','alt'].forEach(function(at){ var v=el.getAttribute(at); if(v){ var t=tr(v); if(t!==null&&t!==v) el.setAttribute(at,t); } }); }
+  var as=root.querySelectorAll? root.querySelectorAll('a[target="_top"][href]'):[]; for(var j=0;j<as.length;j++) fixHref(as[j]); }
+var busy=false; function apply(){ if(busy) return; busy=true; try{ if(lang!=='en'&&D[lang]) walk(document.body); else { var as=document.querySelectorAll('a[target="_top"][href]'); for(var j=0;j<as.length;j++) fixHref(as[j]); } }catch(e){} busy=false; }
+function rtl(){ if(lang!=='ar') return; var H=document.documentElement; H.setAttribute('lang','ar'); H.setAttribute('dir','rtl'); if(!document.getElementById('rm-arfont')){ var k=document.createElement('link'); k.id='rm-arfont'; k.rel='stylesheet'; k.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap'; document.head.appendChild(k); var s=document.createElement('style'); s.textContent="html[dir=rtl] body,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] button,html[dir=rtl] textarea,html[dir=rtl] .rm-shell{font-family:'Noto Naskh Arabic','Rockit Digits','Cormorant Garamond',serif!important;letter-spacing:0!important}html[dir=rtl] th,html[dir=rtl] td{text-align:right}html[dir=rtl] .rm-tabs a:first-child{padding-left:16px;padding-right:0}html[dir=rtl] input#cn,html[dir=rtl] input[type=number],html[dir=rtl] .mono,html[dir=rtl] .code,html[dir=rtl] td.mono{direction:ltr;text-align:left}html[dir=rtl] h3{letter-spacing:0!important}"; document.head.appendChild(s);} else { var H2=document.documentElement; H2.setAttribute('lang',lang); } }
+function setLang(l){ if(!l||l===lang) return; if(l!=='en'&&LANGS.indexOf(l)<0) return; if(applied&&lang!=='en'){ location.hash='lang='+l; location.reload(); return; } lang=l; rtl(); apply(); }
+window.addEventListener('message',function(e){ var d=e.data; if(d&&typeof d==='object'&&d.rmLang) setLang(String(d.rmLang)); });
+function boot(){ rtl(); apply(); applied=true; var mo=new MutationObserver(function(){ if(!busy) apply(); }); mo.observe(document.body,{childList:true,subtree:true,characterData:true}); try{ if(window.parent!==window) window.parent.postMessage({rmLangReq:1},'*'); }catch(e){} }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();</script></div></div><!--/rm-shell--><script id="rm-h">(function(){var last=0,t;function m(){var b=document.querySelector('.rm-body');if(!b)return;var br=b.getBoundingClientRect(),bot=0;for(var i=0;i<b.children.length;i++){var c=b.children[i],cs=getComputedStyle(c);if(cs.display==='none'||cs.position==='fixed')continue;var r=c.getBoundingClientRect();bot=Math.max(bot,r.bottom+(parseFloat(cs.marginBottom)||0));}var pb=parseFloat(getComputedStyle(b).paddingBottom)||0;var h=Math.ceil(br.top+window.scrollY+(bot-br.top)+b.scrollTop+pb+(document.documentElement.clientHeight-br.bottom));if(h>0&&Math.abs(h-last)>1){last=h;try{parent.postMessage({rmH:h},'*')}catch(e){}}}function q(){clearTimeout(t);t=setTimeout(m,40)}if(window.ResizeObserver){var ro=new ResizeObserver(q);ro.observe(document.documentElement);var b=document.querySelector('.rm-body');if(b){ro.observe(b);for(var i=0;i<b.children.length;i++)ro.observe(b.children[i]);}}new MutationObserver(q).observe(document.documentElement,{subtree:true,childList:true,attributes:true,characterData:true});addEventListener('load',q);addEventListener('message',function(e){if(e.data&&e.data.rmHReq){last=0;m()}});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);setTimeout(m,150);setTimeout(m,1000);setTimeout(m,3000);})();</script>
+<!-- rm-portrait -->
+<style id="rm-portrait">
+/*
+ * rm-portrait: the tools on a phone held upright (owner, 19 Nov 2026: "they do not fit in the page in portrait mode").
+ * Appended after each tool's own styles by build.py, so on equal specificity these rules win.
+ *
+ * Each tool is an HTML embed in a frame the page sizes: 310px on a 390px phone, 240px on a 320px one. The tools were
+ * laid out for a desk and for one phone width; narrower than that their grids (four fields to a row, three or four
+ * tiles to a row) and their one-line buttons were wider than the frame, and the frame's body hides what overflows —
+ * so the right-hand side of the form, of the result and of every paragraph was simply cut off. Measured before this
+ * file: 43 of 56 states (7 tools × 240, 280, 310 and 350px × untouched and used) had something cut off, a field whose
+ * text was clipped, or the current tool's tab scrolled out of sight.
+ *
+ * The rule of this file: nothing in a tool has a minimum width the frame cannot give. Grids use tracks that may
+ * shrink, a row of fields becomes two to a row when there is no room for four, long words and long buttons wrap, and
+ * a table that still cannot fit scrolls inside its own box instead of being cut.
+ */
+
+/* ---- every width: nothing may be wider than the frame ---- */
+html,body{max-width:100%}
+.rm-body{overflow-wrap:break-word}
+.rm-body *,.rm-body *::before,.rm-body *::after{min-width:0}
+.rm-body img,.rm-body svg,.rm-body iframe,.rm-body table,.rm-body input,.rm-body select,.rm-body textarea,.rm-body button{max-width:100%}
+
+/* the strip of tools: it scrolls sideways; portrait.js brings the current tool into view and marks the cut ends */
+.rm-tabs{scroll-behavior:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rm-tabs a{flex:none}
+.rm-tabs.rm-more-end{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start.rm-more-end{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
+
+/* ---- a phone held upright: the frame is 240 to about 400px wide ---- */
+@media (max-width:480px){
+  /* room for a focus ring at the frame's edge, which the body would otherwise cut */
+  .rm-body{padding-left:2px;padding-right:2px}
+
+  /* a button, or a link drawn as one, says all of its words: two lines when one cannot hold them, never a cut-off
+     one; and it is a thumb's height (44px) */
+  .rm-body button.b,.rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{white-space:normal;height:auto;min-height:44px;line-height:1.25;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere}
+  .rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{display:inline-flex;align-items:center}
+  /* a tab of the strip is a taller target under a finger */
+  .rm-tabs a{padding-top:12px}
+
+  /* chargeable weight, load calculator: a package's four measures are two rows of two; its box gives the room back */
+  .rm-body .line{padding:12px 34px 12px 12px}
+  .rm-body .line .row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .line .row.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .cust{grid-template-columns:minmax(0,1fr)}
+  /* a label of two lines must not push its box out of line with the one beside it */
+  .rm-body .line .row,.rm-body .cust{align-items:end}
+  .rm-body .btns .b{flex:1 1 auto}
+  .rm-body .opts{flex-wrap:wrap;gap:8px 18px}
+
+  /* result tiles: as many to a row as fit at 7.5rem each (three at 310px and over, two under it), figures that wrap */
+  .rm-body .tot{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.2rem),1fr))}
+  .rm-body .tot div{padding:10px}
+  .rm-body .tot b{font-size:21px;line-height:1.15;overflow-wrap:anywhere}
+  .rm-body .big b{font-size:28px;overflow-wrap:anywhere}
+
+  /* tables: cells wrap between words; one that still cannot fit scrolls inside its own box (portrait.js wraps it) */
+  /* a heading keeps its whole word ("Step" is not "St / ep"); a cell of prose may break anywhere it must */
+  .rm-body th,.rm-body td{padding-left:6px;padding-right:6px}
+  .rm-body th{overflow-wrap:break-word;letter-spacing:.06em}
+  .rm-body td{overflow-wrap:anywhere}
+  /* …but the first column is a name (a port, a container type): it keeps its words whole */
+  .rm-body td:first-child{overflow-wrap:break-word}
+  .rm-body .rm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* vessel schedules: a line's name and what its link opens, on two lines when one cannot hold both */
+  .rm-body .lines a{flex-wrap:wrap;gap:2px 12px}
+  .rm-body .lines a span.sv{text-align:left}
+  .rm-body .cta{padding:14px}
+
+  /* container tracking: the four parts of a number are two rows of two; the carriers list is one column when narrow */
+  .rm-body .parts{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+  .rm-body .parts div{min-width:0}
+  .rm-body .list{grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr))}
+  .rm-body .carrier{padding:14px}
+  .rm-body .row>div{flex-basis:min(100%,220px)}
+
+  /* vessel and flight tracking: the map takes a little over half the screen's height, not one and a half screens */
+  .rm-body #map{height:min(60vh,420px);min-height:300px}
+  .rm-body .mapcap{right:10px;font-size:13px}
+  .rm-body .card{padding:12px}
+  .rm-body .card .hd{flex-wrap:wrap}
+}
+/* the narrowest phones (a 320px screen gives the frame 240px): a field beside its button has no room to show what is
+   typed in it, so the button goes under the field, as wide as it */
+@media (max-width:300px){
+  .rm-body .bar{grid-template-columns:minmax(0,1fr)}
+  .rm-body .bar .b{width:100%}
+}
+/* …and a table of four columns or more is a list there: a row is a block, its first cell the heading of the block,
+   every other cell one line with its column's name before it (portrait.js copies the names from the heading row,
+   which is taken out of sight, not out of the page). */
+@media (max-width:300px){
+  .rm-body table.rm-cols4,.rm-body table.rm-cols4 tbody{display:block;width:100%}
+  .rm-body table.rm-cols4 thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .rm-body table.rm-cols4 tr{display:block;padding:10px 8px;border-bottom:1px solid var(--line)}
+  .rm-body table.rm-cols4 td{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:0 10px;align-items:baseline;border:0;padding:3px 0;text-align:left;white-space:normal}
+  .rm-body table.rm-cols4 td::before{content:attr(data-label);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .rm-body table.rm-cols4 tr.best td::before{color:rgba(255,255,255,.72)}
+  .rm-body table.rm-cols4 td:first-child,.rm-body table.rm-cols4 td:not([data-label]){display:block;padding-bottom:6px}
+  .rm-body table.rm-cols4 td:first-child::before,.rm-body table.rm-cols4 td:not([data-label])::before{content:none}
+}
+/* from 330px the four parts of a container number fit one row again */
+@media (min-width:330px) and (max-width:480px){
+  .rm-body .parts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .rm-body .parts div{padding:8px 6px}
+  .rm-body .parts span{letter-spacing:.04em;font-size:11px}
+}
+
+/* A section title is gradient text (its fill is transparent, the gradient shows through), and the step number in
+   the disc before it inherited the transparent fill: three navy discs with nothing in them. The number is white. */
+h3 .n{-webkit-text-fill-color:#fff;background-clip:border-box;-webkit-background-clip:border-box;background-image:none}
+
+/*
+ * ---- gold ----
+ * brand/BRAND.md §1: gold is always the logo's own metallic gradient (brand/rockit-logo.svg, `gold-swoosh`), never a
+ * flat yellow; a solid is allowed only where a gradient cannot be drawn (#8a6514 on a light ground). The tools carried
+ * another gradient and a flat #D0AF50 for rules, borders, bars and focus rings.
+ */
+:root{
+  --gold-grad:linear-gradient(135deg,#A88329 0%,#B18B2D 8%,#C09934 17%,#CFAC49 25%,#DEC163 33%,#EDD77E 42%,#F7E590 50%,#ECD57B 58%,#DEC161 67%,#D0AD48 75%,#C29B36 83%,#B28C2D 92%,#A88228 100%);
+  --gold-grad-hi:var(--gold-grad);
+  /* what `var(--gold)` still paints is text behind a gradient clip, a focus ring or a hairline: the allowed solid */
+  --gold:#8a6514;
+}
+.b.gold,.cta a,.links a.gold{background-color:#C09934;background-image:var(--gold-grad)}
+.b.gold:hover,.cta a:hover,.links a.gold:hover{background-image:var(--gold-grad);filter:brightness(1.06)}
+.rm-tabs a.on{border-bottom-color:transparent;border-image:var(--gold-grad) 1;border-image-width:0 0 2px 0}
+.rm-tabs a:focus-visible{outline-color:#8a6514}
+.big{border-image:var(--gold-grad) 1}
+.bar i{background-color:#C09934;background-image:var(--gold-grad)}
+.pref,.modehint{border-image:var(--gold-grad) 1}
+</style>
+<script id="rm-portrait-js">
+/* rm-portrait: what the stylesheet cannot do. Appended after each tool's own scripts by build.py. */
+(function () {
+  var tabs = document.querySelector('.rm-tabs');
+  var body = document.querySelector('.rm-body');
+
+  /* The strip of tools scrolls sideways and its scrollbar is hidden: on a phone the current tool's tab was off the
+     edge with nothing to say the strip moves. Bring it into view (by the strip's own scroll position, never
+     scrollIntoView: inside a frame that also scrolls the page that holds it) and fade the end that has more. */
+  function ends() {
+    if (!tabs) return;
+    var max = tabs.scrollWidth - tabs.clientWidth;
+    var x = Math.abs(tabs.scrollLeft);
+    var rtl = getComputedStyle(tabs).direction === 'rtl';
+    var before = x > 2, after = x < max - 2;
+    tabs.classList.toggle('rm-more-start', max > 2 && (rtl ? after : before));
+    tabs.classList.toggle('rm-more-end', max > 2 && (rtl ? before : after));
+  }
+  function showCurrent() {
+    if (!tabs) return;
+    var on = tabs.querySelector('a.on');
+    if (on) {
+      var t = tabs.getBoundingClientRect(), a = on.getBoundingClientRect();
+      if (a.left < t.left + 1 || a.right > t.right - 1) tabs.scrollLeft += a.left - t.left - (t.width - a.width) / 2;
+    }
+    ends();
+  }
+  if (tabs) {
+    tabs.addEventListener('scroll', ends, { passive: true });
+    showCurrent();
+    addEventListener('load', showCurrent);
+    addEventListener('resize', showCurrent);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(showCurrent);
+  }
+
+  /* A table whose cells cannot wrap any further (a column of codes, a comparison) scrolls inside its own box rather
+     than being cut by the frame: every table gets that box once, tables a tool draws later included. */
+  /* A table of four columns or more cannot be read across the narrowest phones (a 240px frame): there each of its
+     rows is drawn as a block, one line per cell with the column's name before it (portrait.css, `rm-cols4`). The
+     names are copied from the table's own heading row. */
+  function label(table) {
+    if (table.getAttribute('data-rm-labelled')) return;
+    var heads = table.querySelectorAll('thead th');
+    if (heads.length < 4) return;
+    table.setAttribute('data-rm-labelled', '1');
+    table.classList.add('rm-cols4');
+    var rows = table.querySelectorAll('tbody tr');
+    for (var r = 0; r < rows.length; r++) {
+      var cells = rows[r].children;
+      for (var c = 1; c < cells.length && c < heads.length; c++) cells[c].setAttribute('data-label', heads[c].textContent.replace(/\s+/g, ' ').trim());
+    }
+  }
+  function boxTables(root) {
+    var list = (root || document).querySelectorAll ? (root || document).querySelectorAll('.rm-body table') : [];
+    for (var i = 0; i < list.length; i++) {
+      var table = list[i], p = table.parentElement;
+      label(table);
+      if (!p || p.classList.contains('rm-scroll') || (getComputedStyle(p).overflowX !== 'visible' && p !== body)) continue;
+      var box = document.createElement('div');
+      box.className = 'rm-scroll';
+      p.insertBefore(box, table);
+      box.appendChild(table);
+    }
+  }
+  boxTables(document);
+  if (body && window.MutationObserver) {
+    new MutationObserver(function (changes) {
+      for (var i = 0; i < changes.length; i++) if (changes[i].addedNodes.length) { boxTables(document); return; }
+    }).observe(body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<!-- /rm-portrait -->

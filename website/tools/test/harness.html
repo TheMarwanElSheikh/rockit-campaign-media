@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<body style="margin:0;background:#fff"><script>
+const q = new URLSearchParams(location.search); const w = Number(q.get('w') || 310);
+const f = document.createElement('iframe'); f.id = 'tool'; f.src = q.get('src'); f.style.cssText = `display:block;border:0;width:${w}px;height:${q.get('h') || 600}px;margin:0 auto`;
+document.body.appendChild(f);
+// the page's side of the tools' own height handshake ({rmH: px})
+addEventListener('message', (e) => { if (e.data && typeof e.data.rmH === 'number') f.style.height = e.data.rmH + 'px'; });
+</script></body>

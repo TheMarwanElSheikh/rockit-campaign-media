@@ -1,0 +1,399 @@
+<!-- Rockit flight tracking: live ADS-B map by flight number, air waybill checker with carrier links, flight status links -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"><style id="rm-type">@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:400;src:local('Times New Roman'),local('TimesNewRomanPSMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE1poGnedXvwj1AW3Fu0C8V-txK.woff2) format('woff2');unicode-range:U+0030-0039}@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:700;src:local('Times New Roman Bold'),local('TimesNewRomanPS-BoldMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE4poGnedXvwjX7fmRD8iI_.woff2) format('woff2');unicode-range:U+0030-0039}:root{--rm-serif:'Rockit Digits','Cormorant Garamond',Georgia,'Times New Roman',serif;--rm-sans:var(--rm-serif);--rm-mono:var(--rm-serif);--rm-display:var(--rm-serif)}html,body,input,select,textarea,button,.rm-shell{font-family:var(--rm-serif)!important}body{font-weight:500}b,strong{font-weight:700}.b.gold:hover,.links a.gold:hover{background:var(--gold-grad-hi)}.rm-copied{margin:10px 0 0;font-size:13px;line-height:1.5;opacity:.85}
+</style><style>
+  :root{--navy:#06103A;--gold:#D0AF50;--gold-grad:linear-gradient(135deg,#B38C2D 0%,#C7A340 14%,#DBBD5E 29%,#EBD379 43%,#EBD47A 57%,#DDC060 71%,#CAA642 86%,#B6902F 100%);--gold-grad-hi:linear-gradient(135deg,#C7A340 0%,#DBBD5E 14%,#EBD379 29%,#F3DC86 43%,#F4DE8A 57%,#EBD379 71%,#DBBD5E 86%,#CAA642 100%);--paper:#F6F6F3;--ink:#1B1F2A;--muted:#5B6172;--line:#D9D9D2;--ok:#1E7B4F;--warn:#B3541E}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--rm-serif);color:var(--ink);background:transparent}
+  h3{margin:0 0 12px;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;height:42px;border:1px solid var(--line);background:#fff;padding:0 10px;font-size:16.5px;color:var(--ink);border-radius:0}
+  input:focus,select:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  button.b{height:44px;padding:0 20px;border:0;cursor:pointer;font-size:15.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .b.gold{background:var(--gold-grad);color:var(--navy)}
+  .b.ghost{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .note{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.5}
+  .err{color:var(--warn);font-size:14.5px;margin:6px 0;min-height:16px}
+  .ok{color:var(--ok);font-size:14.5px;margin:6px 0}
+  a{color:var(--navy)}
+  table{width:100%;border-collapse:collapse;font-size:15.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .best{background:var(--navy);color:#fff}
+  .tot{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 14px}
+  .tot div{border:1px solid var(--line);padding:10px 12px;background:#fff}
+  .tot b{display:block;font-size:24px;color:var(--navy)}
+  .tot span{font-size:13px;color:var(--muted)}
+  .tag{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.08em}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:4px 0}
+  @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .bar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-bottom:8px}
+  .card{border:1px solid var(--line);background:#fff;padding:14px;margin-top:10px}
+  .card h4{margin:0 0 6px;font-size:17.5px;color:var(--navy)}
+  .card p{margin:4px 0;font-size:15.5px}
+  .mapwrap{position:relative;margin-top:12px}
+  #map{width:100%;height:520px;border:1px solid var(--line);background:#E8ECF2;z-index:0}
+  @media (max-width:760px){#map{height:420px}}
+  .mapcap{position:absolute;left:10px;right:56px;bottom:26px;z-index:500;margin:0;background:rgba(6,16,58,.86);color:#fff;font-size:14px;line-height:1.4;padding:8px 12px;pointer-events:none}
+  .rm-ac{background:none;border:0}.rm-ac svg{display:block;filter:drop-shadow(0 1px 1.5px rgba(6,16,58,.45))}
+  .leaflet-tooltip.rm-apt{background:#06103A;color:#fff;border:0;font:600 12px/1 var(--rm-serif);padding:4px 6px;box-shadow:none}.leaflet-tooltip.rm-apt:before{border-top-color:#06103A}
+  .leaflet-container{font-family:var(--rm-serif)}.leaflet-control-attribution{font-size:10.5px}
+  .card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .pill{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--ok);padding:4px 8px;white-space:nowrap}.pill.off{background:var(--muted)}
+  .card.live .pill:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#7CF0B4;margin-right:6px;vertical-align:1px;animation:rmp 1.6s ease-in-out infinite}
+  @keyframes rmp{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.card.live .pill:before{animation:none}}
+  .route{font-size:16px;margin:6px 0 4px}.route b{color:var(--navy)}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px;margin:10px 0 4px}
+  @media (max-width:420px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .facts div{border-top:1px solid var(--line);padding-top:6px}.facts dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.facts dd{margin:2px 0 0;font-size:17px;color:var(--navy);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .upd,.muted{font-size:13.5px;color:var(--muted)}
+  .facts dd,.route{unicode-bidi:plaintext}
+  html[dir=rtl] .facts dd,html[dir=rtl] .route{text-align:right}
+  .links a{display:inline-block;margin:6px 8px 0 0;padding:9px 12px;border:1px solid var(--navy);text-decoration:none;font-size:14.5px;font-weight:600;color:var(--navy)}
+  .links a.gold{background:var(--gold-grad);border-color:var(--gold)}
+  .mono{font-family:var(--rm-serif)}
+</style>
+<style id="rm-shell">
+  html,body{height:100%;}
+  body{margin:0;overflow:hidden;}
+  .rm-shell{display:flex;flex-direction:column;height:100%;min-height:0;font-family:var(--rm-serif);}
+  .rm-tabs{display:flex;gap:0;border-bottom:1px solid #D9D9D2;overflow-x:auto;scrollbar-width:none;flex:0 0 auto;}
+  .rm-tabs::-webkit-scrollbar{display:none}
+  .rm-tabs a{padding:0 16px 11px;font-size:14.5px;line-height:1;color:#5B6172;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
+  .rm-tabs a:first-child{padding-left:0}
+  .rm-tabs a:hover{color:#06103A}
+  .rm-tabs a.on{color:#06103A;font-weight:600;border-bottom-color:#D0AF50}
+  .rm-tabs a:focus-visible{outline:2px solid #D0AF50;outline-offset:2px}
+  .rm-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding-top:20px;}
+  .rm-body::-webkit-scrollbar{width:8px}
+  .rm-body::-webkit-scrollbar-thumb{background:#D9D9D2}
+  .rm-body::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:760px){.rm-tabs a{padding:0 12px 10px;font-size:13px}}
+h3,.tag{background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.cta a{background:var(--gold-grad)}.cta a:hover{background:var(--gold-grad-hi)}</style>
+<div class="rm-shell"><nav class="rm-tabs" aria-label="Tools"><a href="https://www.rockit-transport.com/container-tracking" target="_top">Container tracking</a><a href="https://www.rockit-transport.com/vessel-schedules" target="_top">Vessel schedules</a><a href="https://www.rockit-transport.com/load-calculator" target="_top">Load calculator</a><a href="https://www.rockit-transport.com/vessel-tracking" target="_top">Vessel tracking</a><a href="https://www.rockit-transport.com/flight-tracking" target="_top" class="on" aria-current="page">Flight tracking</a><a href="https://www.rockit-transport.com/chargeable-weight" target="_top">Chargeable weight</a><a href="https://www.rockit-transport.com/duties-taxes-calculator" target="_top">Duties &amp; taxes</a></nav><div class="rm-body"><div class="grid">
+  <div>
+    <h3>Where is the flight now?</h3>
+    <div class="bar"><div><label>Flight number (airline code + number)</label><input id="fl" type="text" placeholder="e.g. MS777 or MSR777" onkeydown="if(event.key==='Enter')fly()" autocapitalize="characters"></div><button class="b gold" type="button" onclick="fly()">Locate</button></div>
+    <div class="err" id="ferr"></div>
+    <div id="fout"></div>
+    <div class="mapwrap"><div id="map" role="region" aria-label="Live ADS-B map" dir="ltr"></div><p id="mapcap" class="mapcap" hidden>Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.</p></div>
+    <p class="note">Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.</p>
+  </div>
+  <div>
+    <h3>Track an air waybill</h3>
+    <div class="bar"><div><label>Air waybill number (11 digits, e.g. 077-12345675)</label><input id="awb" type="text" inputmode="numeric" placeholder="077-12345675" onkeydown="if(event.key==='Enter')awb()"></div><button class="b gold" type="button" onclick="awb()">Check</button></div>
+    <div class="err" id="aerr"></div>
+    <div id="aout"></div>
+    <p class="note">The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var C=[["077", "MS", "MSR", "EgyptAir Cargo", "https://www.egyptair-cargo.com/Tracking.aspx"], ["020", "LH", "DLH", "Lufthansa Cargo", "https://www.lufthansa-cargo.com/en/eservices/etracking"], ["176", "EK", "UAE", "Emirates SkyCargo", "https://www.skycargo.com/"], ["157", "QR", "QTR", "Qatar Airways Cargo", "https://www.qrcargo.com/s/track-your-shipment"], ["235", "TK", "THY", "Turkish Cargo", "https://www.turkishcargo.com/en/cargo-tracking"], ["065", "SV", "SVA", "Saudia Cargo", "https://www.saudiacargo.com/en/digital-services?tab=trackShipment"], ["607", "EY", "ETD", "Etihad Cargo", "https://www.etihadcargo.com/"], ["172", "CV", "CLX", "Cargolux", "https://www.cargolux.com/"], ["057", "AF", "AFR", "Air France KLM Martinair Cargo", "https://www.afklcargo.com/"], ["074", "KL", "KLM", "Air France KLM Martinair Cargo", "https://www.afklcargo.com/"], ["129", "MP", "MPH", "Air France KLM Martinair Cargo", "https://www.afklcargo.com/"], ["125", "BA", "BAW", "IAG Cargo (British Airways)", "https://www.iagcargo.com/"], ["075", "IB", "IBE", "IAG Cargo (Iberia)", "https://www.iagcargo.com/"], ["724", "LX", "SWR", "Swiss WorldCargo", "https://www.swissworldcargo.com/"], ["257", "OS", "AUA", "Austrian Cargo", "https://www.lufthansa-cargo.com/en/eservices/etracking"], ["618", "SQ", "SIA", "Singapore Airlines Cargo", "https://www.siacargo.com/"], ["160", "CX", "CPA", "Cathay Cargo", "https://www.cathaycargo.com/en-us/track-and-trace.html"], ["071", "ET", "ETH", "Ethiopian Cargo", "https://cargo.ethiopianairlines.com/"], ["706", "KQ", "KQA", "Kenya Airways Cargo", "https://www.kqcargo.com/"], ["180", "KE", "KAL", "Korean Air Cargo", "https://cargo.koreanair.com/"], ["933", "KZ", "NCA", "Nippon Cargo Airlines", "https://www.nca.aero/e/"], ["205", "NH", "ANA", "ANA Cargo", "https://www.anacargo.jp/en/int/"], ["131", "JL", "JAL", "JAL Cargo", "https://www.jal.co.jp/jalcargo/inter/"], ["016", "UA", "UAL", "United Cargo", "https://www.unitedcargo.com/"], ["006", "DL", "DAL", "Delta Cargo", "https://www.deltacargo.com/"], ["001", "AA", "AAL", "American Airlines Cargo", "https://www.aacargo.com/"], ["014", "AC", "ACA", "Air Canada Cargo", "https://www.aircanada.com/cargo/"], ["081", "QF", "QFA", "Qantas Freight", "https://www.qantas.com/freight"], ["784", "CZ", "CSN", "China Southern Cargo", "https://tang.csair.com/EN/WebFace/Tang.WebFace.Cargo/AgentAwbBrower.aspx"], ["999", "CA", "CCA", "Air China Cargo", ""], ["781", "MU", "CES", "China Eastern Cargo", "https://www.ceair.com/"], ["555", "SU", "AFL", "Aeroflot Cargo", ""], ["080", "LO", "LOT", "LOT Cargo", "https://www.lot.com/us/en/cargo"], ["047", "TP", "TAP", "TAP Air Cargo", "https://www.tapcargo.com/"], ["105", "AY", "FIN", "Finnair Cargo", "https://cargo.finnair.com/en"], ["512", "RJ", "RJA", "Royal Jordanian Cargo", "https://rj-cargo.com/track-and-trace"], ["072", "GF", "GFA", "Gulf Air Cargo", "https://www.gulfair.com/cargo"], ["910", "WY", "OMA", "Oman Air Cargo", ""], ["229", "KU", "KAC", "Kuwait Airways Cargo", "https://www.kuwaitairways.com/en/cargo"], ["076", "ME", "MEA", "MEA Cargo", "https://www.mea.com.lb/"], ["141", "FZ", "FDB", "flydubai Cargo", ""], ["514", "G9", "ABY", "Air Arabia Cargo", "https://www.airarabia.com/"], ["624", "PC", "PGT", "Pegasus Cargo", "https://www.pgcargo.com/"], ["403", "PO", "PAC", "Polar Air Cargo", "https://www.polaraircargo.com/"], ["369", "5Y", "GTI", "Atlas Air", "https://www.atlasair.com/"], ["580", "RU", "ABW", "AirBridgeCargo", ""], ["695", "BR", "EVA", "EVA Air Cargo", "https://www.brcargo.com/"], ["297", "CI", "CAL", "China Airlines Cargo", "https://www.china-airlines.com/"], ["217", "TG", "THA", "Thai Cargo", "https://www.thaicargo.com/"], ["406", "5X", "UPS", "UPS Airlines", "https://www.ups.com/track"], ["023", "FX", "FDX", "FedEx Express", "https://www.fedex.com/en-us/tracking.html"], ["", "SM", "MSC", "Air Cairo", ""], ["", "NP", "NIA", "Nile Air", ""], ["", "XY", "KNE", "flynas", ""], ["", "W6", "WZZ", "Wizz Air", ""], ["", "U2", "EZY", "easyJet", ""], ["", "FR", "RYR", "Ryanair", ""], ["390", "A3", "AEE", "Aegean Airlines", ""], ["055", "AZ", "ITY", "ITA Airways", ""], ["117", "SK", "SAS", "SAS", ""], ["064", "OK", "CSA", "Czech Airlines", ""], ["149", "LG", "LGL", "Luxair", ""], ["082", "SN", "BEL", "Brussels Airlines", ""], ["098", "AI", "AIC", "Air India", ""], ["312", "6E", "IGO", "IndiGo", ""], ["775", "SG", "SEJ", "SpiceJet", ""], ["214", "PK", "PIA", "PIA", ""], ["053", "EI", "EIN", "Aer Lingus", ""], ["932", "VS", "VIR", "Virgin Atlantic Cargo", ""], ["881", "DE", "CFG", "Condor", ""], ["", "EW", "EWG", "Eurowings", ""], ["199", "TU", "TAR", "Tunisair", ""], ["147", "AT", "RAM", "Royal Air Maroc", ""], ["124", "AH", "DAH", "Air Algerie", ""]];
+  var byPrefix={},byIata={};
+  C.forEach(function(c){ if(c[0]) byPrefix[c[0]]=c; if(!byIata[c[1]]) byIata[c[1]]=c; });
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];}); }
+  var API='https://www.rockit-transport.com/_functions';
+  try{ var qa=new URLSearchParams(location.search).get('api'); if(qa&&/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) API=qa; }catch(e){}
+  var MAP=null, LAYER=null, AREA=null, POLL=null, AREAPOLL=null, polls=0, track=[], current=null;
+  var PLANE='M12 2c.8 0 1.4.7 1.4 1.6v5.6l7.6 4.6v2.1l-7.6-2.3v4.6l2.2 1.7v1.7L12 20.6l-3.6 1v-1.7l2.2-1.7v-4.6L3 15.9v-2.1l7.6-4.6V3.6C10.6 2.7 11.2 2 12 2z';
+  function icon(trk,big){ trk=Number(trk)||0; var s=big?34:18, c=big?'#B6902F':'#06103A', o=big?1:.55;
+    return L.divIcon({className:'rm-ac',iconSize:[s,s],iconAnchor:[s/2,s/2],html:'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" style="transform:rotate('+(trk||0)+'deg);opacity:'+o+'"><path d="'+PLANE+'" fill="'+c+'" stroke="#fff" stroke-width="'+(big?1.1:.8)+'"/></svg>'}); }
+  function initMap(){ if(MAP||!window.L) return; var el=document.getElementById('map'); el.innerHTML='';
+    MAP=L.map(el,{zoomControl:true,worldCopyJump:true,attributionControl:true}).setView([29.6,31.6],6);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(MAP);
+    LAYER=L.layerGroup().addTo(MAP); AREA=L.layerGroup().addTo(MAP); loadArea(); AREAPOLL=setInterval(function(){ if(!current&&!document.hidden) loadArea(); },30000); }
+  function loadArea(){ fetch(API+'/area?lat=30.12&lon=31.41&r=200').then(function(r){return r.json();}).then(function(j){ if(current) return; AREA.clearLayers(); (j.ac||[]).forEach(function(a){ if(!a.cs) return; if(typeof a.lat!=='number'||typeof a.lon!=='number') return; var mk=L.marker([a.lat,a.lon],{icon:icon(a.trk,false),title:a.cs,keyboard:false}).addTo(AREA); mk.on('click',function(){ document.getElementById('fl').value=a.cs; window.fly(); }); }); var cap=document.getElementById('mapcap'); if(cap) cap.hidden=false; }).catch(function(){}); }
+  function fmt(n){ n=Number(n); return isFinite(n)?Math.round(n).toLocaleString('en-US'):'&ndash;'; }
+  function row(k,v){ return '<div><dt>'+k+'</dt><dd>'+v+'</dd></div>'; }
+  function draw(a,route){ var ll=[Number(a.lat),Number(a.lon)]; if(!track.length||track[track.length-1][0]!==a.lat) track.push(ll);
+    LAYER.clearLayers();
+    if(route&&route.length>1){ var o=route[0], d=route[route.length-1];
+      L.polyline([[o.lat,o.lon],ll],{color:'#06103A',weight:2,opacity:.55,dashArray:'6 6'}).addTo(LAYER);
+      L.polyline([ll,[d.lat,d.lon]],{color:'#B6902F',weight:2,opacity:.8,dashArray:'2 7'}).addTo(LAYER);
+      [o,d].forEach(function(p){ L.circleMarker([p.lat,p.lon],{radius:5,color:'#06103A',weight:2,fillColor:'#fff',fillOpacity:1}).bindTooltip(esc(p.iata||p.icao||''),{permanent:true,direction:'top',className:'rm-apt'}).addTo(LAYER); }); }
+    if(track.length>1) L.polyline(track,{color:'#B6902F',weight:3}).addTo(LAYER);
+    L.marker(ll,{icon:icon(a.trk,true),zIndexOffset:1000}).addTo(LAYER); }
+  function fit(a,route){ var pts=[[a.lat,a.lon]]; if(route&&route.length>1){ pts.push([route[0].lat,route[0].lon]); pts.push([route[route.length-1].lat,route[route.length-1].lon]); } if(pts.length>1) MAP.fitBounds(pts,{padding:[40,40],maxZoom:7}); else MAP.setView(pts[0],7); }
+  function card(f,a,route){ var vr=a.vr||0, trend=vr>300?'Climbing':(vr<-300?'Descending':'Level');
+    var alt=a.alt==='ground'?'On ground':fmt(a.alt)+' ft';
+    var h='<div class="card live"><div class="hd"><h4>'+esc(f.title)+(f.airline?' &middot; '+esc(f.airline):'')+'</h4><span class="pill">Live</span></div>';
+    if(route&&route.length>1) h+='<p class="route"><b>'+esc(route[0].iata||route[0].icao)+'</b> '+esc(route[0].location||'')+' <span aria-hidden="true">&rarr;</span> <b>'+esc(route[route.length-1].iata||route[route.length-1].icao)+'</b> '+esc(route[route.length-1].location||'')+'</p>';
+    h+='<dl class="facts">'+row('Altitude',alt)+row('Ground speed',fmt(a.gs||0)+' kt')+row('Heading',fmt(a.trk||0)+'&deg;')+row('Vertical',trend)+row('Callsign','<span class="mono">'+esc(a.cs)+'</span>')+row('Aircraft',esc(a.type||'')+(a.reg?' &middot; '+esc(a.reg):''))+'</dl>';
+    h+='<p class="upd">Updated every 15 seconds.</p>'+links(f,a)+'</div>'; return h; }
+  function links(f,a){ var cs=(a&&a.cs)||f.cs[0];
+    return '<div class="links"><a class="gold" href="https://www.flightaware.com/live/flight/'+encodeURIComponent(cs)+'" target="_blank" rel="noopener">Schedule &amp; status on FlightAware</a>'+
+      (f.iata?'<a href="https://www.flightradar24.com/data/flights/'+encodeURIComponent((f.iata+f.num).toLowerCase())+'" target="_blank" rel="noopener">History on Flightradar24</a>':'')+
+      '<a href="https://adsb.lol/?'+(a&&a.hex?'icao='+encodeURIComponent(a.hex):'filterCallSign='+encodeURIComponent('^('+f.cs.join('|')+')$'))+'" target="_blank" rel="noopener">Open the live map full screen</a></div>'; }
+  function getRoute(cs){ return fetch('https://vrs-standing-data.adsb.lol/routes/'+cs.slice(0,2)+'/'+cs+'.json').then(function(r){ return r.ok?r.json():null; }).then(function(j){ return j&&j._airports&&j._airports.length>1?j._airports:null; }).catch(function(){ return null; }); }
+  function stop(){ if(POLL){ clearInterval(POLL); POLL=null; } }
+  function lookup(f,first){ var out=document.getElementById('fout');
+    return fetch(API+'/flight?cs='+encodeURIComponent(f.cs.join(','))).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+      if(f!==current) return;
+      if(!j.found){ stop(); if(first){ LAYER.clearLayers(); out.innerHTML='<div class="card"><div class="hd"><h4>'+esc(f.title)+(f.airline?' &middot; '+esc(f.airline):'')+'</h4><span class="pill off">Not airborne</span></div><p>'+esc(f.title)+' is not on the live feed right now.</p><p class="muted">It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.</p>'+links(f,null)+'</div>'; } else { var u=out.querySelector('.upd'); if(u) u.textContent='Signal lost. The last known position is shown.'; } return; }
+      var a=j.ac; var go=f.route===undefined?getRoute(a.cs).then(function(r){ f.route=r; }):Promise.resolve();
+      return go.then(function(){ if(f!==current) return; draw(a,f.route); if(first) fit(a,f.route); else MAP.panInside([a.lat,a.lon],{padding:[40,40]}); out.innerHTML=card(f,a,f.route); });
+    }).catch(function(){ if(f!==current) return; if(first){ out.innerHTML='<div class="card"><p>The live feed is not answering right now. Try again in a minute, or use the links below.</p>'+links(f,null)+'</div>'; } }); }
+  window.fly=function(){ var raw=(document.getElementById('fl').value||'').toUpperCase().replace(/[^A-Z0-9]/g,''); var err=document.getElementById('ferr'); err.textContent=''; var out=document.getElementById('fout');
+    var m3=raw.match(/^([A-Z]{3})(\d[A-Z0-9]{0,4})$/); var m=raw.match(/^([A-Z][A-Z0-9]|[0-9][A-Z])(\d{1,4})([A-Z]{0,2})$/);
+    var cs=[],airline=null,iata=null,icao=null,num=null,suf='';
+    if(m3){ icao=m3[1]; num=m3[2]; var f0=C.filter(function(c){return c[2]===icao;})[0]; if(f0){ airline=f0[3]; iata=f0[1]; } cs.push(icao+num); var dm=num.match(/^(\d+)([A-Z]?)$/); if(iata&&dm) cs.push(iata+num); else if(!dm) iata=null; }
+    else if(m){ iata=m[1]; num=m[2]; suf=m[3]; var c=byIata[iata]; if(c){ icao=c[2]; airline=c[3]; cs.push(icao+num+suf); } cs.push(iata+num+suf); if(!c){ err.textContent='Airline code '+iata+' is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).'; } num=num+suf; }
+    else { err.textContent='Enter an airline code followed by the flight number, for example MS777.'; out.innerHTML=''; return; }
+    var z=num.replace(/^0+(?=\d)/,''); if(z!==num){ cs.slice().forEach(function(x){ cs.push(x.replace(num,z)); }); }
+    cs=cs.filter(function(x,i){return cs.indexOf(x)===i;}).slice(0,4);
+    var f={cs:cs,iata:iata,num:num,airline:airline,title:m3?icao+num:iata+num}; current=f; track=[]; polls=0; stop();
+    initMap(); if(AREA) AREA.clearLayers(); var cap=document.getElementById('mapcap'); if(cap) cap.hidden=true;
+    out.innerHTML='<div class="card"><p class="muted">Looking for '+esc(f.title)+'&hellip;</p></div>';
+    if(!MAP){ out.innerHTML='<div class="card">'+links(f,null)+'</div>'; return; }
+    lookup(f,true).then(function(){ if(f!==current) return; POLL=setInterval(function(){ if(document.hidden) return; if(++polls>120){ stop(); var u=document.querySelector('#fout .upd'); if(u) u.textContent='Tracking paused. Press Locate to refresh.'; return; } lookup(f,false); },15000); });
+  };
+  if(window.L) initMap(); else { var lw=setInterval(function(){ if(window.L){ clearInterval(lw); initMap(); } },200); setTimeout(function(){ clearInterval(lw); },15000); }
+  window.awb=function(){ var raw=(document.getElementById('awb').value||'').replace(/[^0-9]/g,''); var err=document.getElementById('aerr'); err.textContent=''; var out=document.getElementById('aout'); out.innerHTML='';
+    if(raw.length!==11){ err.textContent='An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.'; return; }
+    var pre=raw.slice(0,3), ser=raw.slice(3,10), chk=parseInt(raw.slice(10),10); var ok=(parseInt(ser,10)%7)===chk; var c=byPrefix[pre]; var pretty=pre+'-'+raw.slice(3);
+    var h='<div class="card"><h4>'+pretty+'</h4>';
+    h+= ok ? '<p class="ok">Check digit is valid ('+parseInt(ser,10)+' &divide; 7 leaves '+chk+').</p>' : '<p style="color:var(--warn)">Check digit does not match: '+parseInt(ser,10)+' &divide; 7 leaves '+(parseInt(ser,10)%7)+', not '+chk+'. Re-check the number before tracking.</p>';
+    h+= c ? '<p>Prefix '+pre+' belongs to <b>'+esc(c[3])+'</b>'+(c[1]?' ('+esc(c[1])+' / '+esc(c[2])+')':'')+'.</p>' : '<p>Prefix '+pre+' is not in our carrier list; the tracker below routes the number to the issuing airline.</p>';
+    h+='<div class="links"><a class="gold" href="https://www.track-trace.com/aircargo?number='+encodeURIComponent(pretty)+'" target="_blank" rel="noopener">Track '+pretty+' now</a>'+(c&&c[4]?'<a href="'+esc(c[4])+'" target="_blank" rel="noopener" data-copy="'+esc(pretty)+'">'+esc(c[3])+' cargo website</a>':'')+'</div>';
+    h+='<p class="note">Copy the number: <span class="mono">'+pretty+'</span></p></div>'; out.innerHTML=h; };
+  var qs=new URLSearchParams(location.search); if(qs.get('flight')){ document.getElementById('fl').value=qs.get('flight'); fly(); } if(qs.get('awb')){ document.getElementById('awb').value=qs.get('awb'); awb(); }
+  window.addEventListener('message',function(e){ var d=e.data; if(!d||typeof d.rmQ!=='string'||window.__rmQ) return; window.__rmQ=1; var q=new URLSearchParams(d.rmQ); if(q.get('flight')&&!document.getElementById('fl').value){ document.getElementById('fl').value=q.get('flight'); window.fly(); } if(q.get('awb')&&!document.getElementById('awb').value){ document.getElementById('awb').value=q.get('awb'); window.awb(); } });
+
+ function rmCopy(t){ var ok=false; try{ var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none'; document.body.appendChild(ta); ta.select(); ok=document.execCommand('copy'); ta.remove(); }catch(e){} if(!ok&&navigator.clipboard&&navigator.clipboard.writeText){ try{ navigator.clipboard.writeText(t).then(function(){},function(){}); ok=true; }catch(e){} } return ok; }
+ document.addEventListener('click',function(e){ var a=e.target&&e.target.closest?e.target.closest('a[data-copy]'):null; if(!a) return; if(!rmCopy(a.getAttribute('data-copy'))) return; var t=document.getElementById('rmcopied'); if(!t){ t=document.createElement('p'); t.id='rmcopied'; t.className='rm-copied'; t.setAttribute('role','status'); } var host=a.closest('.carrier,.links,#carriers')||a.parentNode; host.insertAdjacentElement('afterend',t); t.textContent='Number copied. If the page opens without it, paste it into the search box.'; t.hidden=false; clearTimeout(window.__rmct); window.__rmct=setTimeout(function(){ t.hidden=true; },12000); });
+})();
+</script>
+<script id="rm-i18n">(function(){
+var D={"fr": {"Duties & taxes":"Droits et taxes","Container tracking": "Suivi de conteneur", "Vessel schedules": "Horaires des navires", "Load calculator": "Calculateur de chargement", "Vessel tracking": "Suivi de navire", "Flight tracking": "Suivi de vol", "Chargeable weight": "Poids taxable", "Tools": "Outils", "Check": "Vérifier", "To": "À", "Check digit": "Chiffre de contrôle", "Track {number} with {carrier}": "Suivre {number} chez {carrier}", "Vessel schedule": "Horaire des navires", "Cargo": "Cargaison", "Unit": "Unité", "Where is the flight now?": "Où est le vol en ce moment ?", "Flight number (airline code + number)": "Numéro de vol (code compagnie + numéro)", "e.g. MS777 or MSR777": "ex. MS777 ou MSR777", "Locate": "Localiser", "Track an air waybill": "Suivre une lettre de transport aérien (LTA)", "Air waybill number (11 digits, e.g. 077-12345675)": "Numéro de LTA (11 chiffres, ex. 077-12345675)", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the carrier, so the buttons take you straight to that carrier's official tracking page with the number ready to paste.": "Le chiffre de contrôle est vérifié selon la règle IATA (le numéro de série divisé par 7, le reste étant égal au dernier chiffre) : une LTA mal saisie est donc détectée avant que vous ne partiez à sa recherche. Les étapes telles qu’acceptée, partie, arrivée et livrée sont détenues par la compagnie ; les boutons vous amènent donc directement à la page de suivi officielle de cette compagnie, avec le numéro prêt à coller.", "Airline code {code} is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).": "Le code compagnie {code} ne figure pas dans la liste ; la carte est donc filtrée sur le code tel que saisi. Si la compagnie utilise un indicatif ICAO différent, saisissez-le à la place (trois lettres + numéro).", "Enter an airline code followed by the flight number, for example MS777.": "Saisissez un code compagnie suivi du numéro de vol, par exemple MS777.", "Live ADS-B map": "Carte ADS-B en direct", "Schedule & status on FlightAware": "Horaire et statut sur FlightAware", "History on Flightradar24": "Historique sur Flightradar24", "Open the live map full screen": "Ouvrir la carte en direct en plein écran", "An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.": "Un numéro de LTA comporte 11 chiffres : un préfixe compagnie de 3 chiffres et un numéro de série de 8 chiffres.", "Check digit is valid ({serial} ÷ 7 leaves {rem}).": "Chiffre de contrôle valide ({serial} ÷ 7 laisse un reste de {rem}).", "Check digit does not match: {serial} ÷ 7 leaves {rem}, not {given}. Re-check the number before tracking.": "Le chiffre de contrôle ne correspond pas : {serial} ÷ 7 laisse un reste de {rem}, et non {given}. Vérifiez le numéro avant de lancer le suivi.", "Prefix {prefix} belongs to": "Le préfixe {prefix} appartient à", "Copy the number:": "Copiez le numéro :", "Shipment": "Expédition", "weight": "poids", "Track {awb} now": "Suivre {awb} maintenant", "{carrier} cargo website": "Site cargo de {carrier}", "Prefix {prefix} is not in our carrier list; the tracker below routes the number to the issuing airline.": "Le préfixe {prefix} ne figure pas dans notre liste de compagnies ; le traceur ci-dessous achemine le numéro vers la compagnie émettrice.", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.": "Le chiffre de contrôle est vérifié selon la règle IATA (le numéro de série divisé par 7, le reste étant égal au dernier chiffre) : une LTA mal saisie est donc détectée avant que vous ne partiez à sa recherche. Les étapes telles qu’acceptée, partie, arrivée et livrée sont détenues par la compagnie aérienne ; le bouton de suivi transmet le numéro au suivi de la compagnie émettrice, et le site cargo de la compagnie est indiqué lorsque nous le connaissons.", "Number copied. If the page opens without it, paste it into the search box.": "Numéro copié. Si la page s’ouvre sans lui, collez-le dans le champ de recherche.", "Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.": "Avions autour du Caire en ce moment. Touchez-en un pour le suivre, ou saisissez un numéro de vol.", "Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.": "Les positions proviennent des réseaux de récepteurs adsb.lol et adsb.fi et sont actualisées toutes les 15 secondes. Un avion n’apparaît que lorsqu’il est en vol et émet dans la zone couverte : un vol pas encore parti, déjà posé ou au-dessus de l’océan n’affiche rien plutôt qu’une estimation.", "Looking for {flight}…": "Recherche de {flight}…", "Live": "En direct", "Not airborne": "Pas en vol", "Altitude": "Altitude", "Ground speed": "Vitesse sol", "Heading": "Cap", "Vertical": "Profil", "Callsign": "Indicatif", "Aircraft": "Appareil", "Climbing": "En montée", "Descending": "En descente", "Level": "En palier", "On ground": "Au sol", "Updated every 15 seconds.": "Actualisé toutes les 15 secondes.", "Signal lost. The last known position is shown.": "Signal perdu. La dernière position connue est affichée.", "Tracking paused. Press Locate to refresh.": "Suivi en pause. Appuyez sur Localiser pour actualiser.", "{flight} is not on the live feed right now.": "{flight} n’apparaît pas dans le flux en direct pour le moment.", "It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.": "Il n’est peut-être pas encore parti, s’est peut-être déjà posé, ou survole une zone sans couverture. Consultez l’horaire et le statut ci-dessous.", "The live feed is not answering right now. Try again in a minute, or use the links below.": "Le flux en direct ne répond pas pour le moment. Réessayez dans une minute ou utilisez les liens ci-dessous."}, "es": {"Duties & taxes":"Aranceles e impuestos","Container tracking": "Seguimiento de contenedores", "Vessel schedules": "Itinerarios de buques", "Load calculator": "Calculadora de carga", "Vessel tracking": "Seguimiento de buques", "Flight tracking": "Seguimiento de vuelos", "Chargeable weight": "Peso facturable", "Tools": "Herramientas", "Check": "Verificar", "To": "Destino", "Check digit": "Dígito de control", "Track {number} with {carrier}": "Rastrear {number} con {carrier}", "Vessel schedule": "Itinerario de buques", "Cargo": "Carga", "Unit": "Unidad", "Where is the flight now?": "¿Dónde está el vuelo ahora?", "Flight number (airline code + number)": "Número de vuelo (código de aerolínea + número)", "e.g. MS777 or MSR777": "p. ej. MS777 o MSR777", "Locate": "Localizar", "Track an air waybill": "Rastrear una guía aérea", "Air waybill number (11 digits, e.g. 077-12345675)": "Número de guía aérea (11 dígitos, p. ej. 077-12345675)", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the carrier, so the buttons take you straight to that carrier's official tracking page with the number ready to paste.": "El dígito de control se verifica con la regla IATA (el número de serie dividido entre 7; el resto debe ser igual al último dígito), de modo que una guía mal escrita se detecta antes de que salga a buscarla. Los hitos como aceptada, despachada, llegada y entregada los guarda la aerolínea, así que los botones le llevan directamente a la página oficial de seguimiento de esa aerolínea con el número listo para pegar.", "Airline code {code} is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).": "El código de aerolínea {code} no está en la lista, así que el mapa se filtra por el código tal como lo escribió. Si la aerolínea usa un indicativo ICAO distinto, introdúzcalo en su lugar (tres letras + número).", "Enter an airline code followed by the flight number, for example MS777.": "Introduzca un código de aerolínea seguido del número de vuelo, por ejemplo MS777.", "Live ADS-B map": "Mapa ADS-B en vivo", "Schedule & status on FlightAware": "Horario y estado en FlightAware", "History on Flightradar24": "Historial en Flightradar24", "Open the live map full screen": "Abrir el mapa en vivo a pantalla completa", "An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.": "Un número de guía aérea tiene 11 dígitos: un prefijo de aerolínea de 3 dígitos y un número de serie de 8 dígitos.", "Check digit is valid ({serial} ÷ 7 leaves {rem}).": "El dígito de control es válido ({serial} ÷ 7 deja resto {rem}).", "Check digit does not match: {serial} ÷ 7 leaves {rem}, not {given}. Re-check the number before tracking.": "El dígito de control no coincide: {serial} ÷ 7 deja resto {rem}, no {given}. Revise el número antes de rastrear.", "Prefix {prefix} belongs to": "El prefijo {prefix} pertenece a", "Copy the number:": "Copie el número:", "Shipment": "Envío", "weight": "peso", "Track {awb} now": "Rastrear {awb} ahora", "{carrier} cargo website": "Web de carga de {carrier}", "Prefix {prefix} is not in our carrier list; the tracker below routes the number to the issuing airline.": "El prefijo {prefix} no está en nuestra lista de aerolíneas; el rastreador de abajo dirige el número a la aerolínea emisora.", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.": "El dígito de control se verifica con la regla IATA (el número de serie dividido entre 7; el resto debe ser igual al último dígito), de modo que una guía mal escrita se detecta antes de que salga a buscarla. Los hitos como aceptada, despachada, llegada y entregada los guarda la aerolínea; el botón de seguimiento envía el número al seguimiento de la aerolínea emisora, y enlazamos la web de carga de la aerolínea cuando la tenemos.", "Number copied. If the page opens without it, paste it into the search box.": "Número copiado. Si la página se abre sin él, péguelo en el campo de búsqueda.", "Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.": "Aviones cerca de El Cairo ahora mismo. Toque uno para seguirlo o escriba un número de vuelo.", "Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.": "Las posiciones proceden de las redes de receptores adsb.lol y adsb.fi y se actualizan cada 15 segundos. Un avión solo aparece mientras está en vuelo y transmitiendo dentro de la cobertura, así que un vuelo que no ha despegado, ya ha aterrizado o sobrevuela el océano no muestra nada en lugar de una suposición.", "Looking for {flight}…": "Buscando {flight}…", "Live": "En vivo", "Not airborne": "No está en vuelo", "Altitude": "Altitud", "Ground speed": "Velocidad respecto al suelo", "Heading": "Rumbo", "Vertical": "Perfil", "Callsign": "Indicativo", "Aircraft": "Aeronave", "Climbing": "Ascendiendo", "Descending": "Descendiendo", "Level": "Nivelado", "On ground": "En tierra", "Updated every 15 seconds.": "Se actualiza cada 15 segundos.", "Signal lost. The last known position is shown.": "Señal perdida. Se muestra la última posición conocida.", "Tracking paused. Press Locate to refresh.": "Seguimiento en pausa. Pulse Localizar para actualizar.", "{flight} is not on the live feed right now.": "{flight} no aparece ahora mismo en la señal en vivo.", "It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.": "Puede que aún no haya despegado, que ya haya aterrizado o que sobrevuele una zona sin cobertura. Consulte el horario y el estado abajo.", "The live feed is not answering right now. Try again in a minute, or use the links below.": "La señal en vivo no responde ahora mismo. Inténtelo de nuevo en un minuto o use los enlaces de abajo."}, "de": {"Duties & taxes":"Zölle & Steuern","Container tracking": "Containerverfolgung", "Vessel schedules": "Schiffsfahrpläne", "Load calculator": "Laderaumrechner", "Vessel tracking": "Schiffsverfolgung", "Flight tracking": "Flugverfolgung", "Chargeable weight": "Frachtpflichtiges Gewicht", "Tools": "Tools", "Check": "Prüfen", "To": "Nach", "Check digit": "Prüfziffer", "Track {number} with {carrier}": "{number} bei {carrier} verfolgen", "Vessel schedule": "Schiffsfahrplan", "Cargo": "Ladung", "Unit": "Einheit", "Where is the flight now?": "Wo ist der Flug gerade?", "Flight number (airline code + number)": "Flugnummer (Airline-Code + Nummer)", "e.g. MS777 or MSR777": "z. B. MS777 oder MSR777", "Locate": "Orten", "Track an air waybill": "Luftfrachtbrief (AWB) verfolgen", "Air waybill number (11 digits, e.g. 077-12345675)": "Luftfrachtbrief-Nummer (11 Ziffern, z. B. 077-12345675)", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the carrier, so the buttons take you straight to that carrier's official tracking page with the number ready to paste.": "Die Prüfziffer wird nach der IATA-Regel geprüft (Seriennummer geteilt durch 7, der Rest entspricht der letzten Ziffer), sodass ein falsch eingegebener Luftfrachtbrief erkannt wird, bevor Sie sich auf die Suche machen. Meilensteine wie angenommen, abgeflogen, angekommen und zugestellt liegen bei der Fluggesellschaft; die Schaltflächen führen Sie daher direkt zur offiziellen Tracking-Seite dieser Fluggesellschaft, mit der Nummer zum Einfügen bereit.", "Airline code {code} is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).": "Der Airline-Code {code} ist nicht in der Liste, daher wird die Karte auf den Code wie eingegeben gefiltert. Verwendet die Fluggesellschaft ein anderes ICAO-Rufzeichen, geben Sie stattdessen dieses ein (drei Buchstaben + Nummer).", "Enter an airline code followed by the flight number, for example MS777.": "Geben Sie einen Airline-Code gefolgt von der Flugnummer ein, zum Beispiel MS777.", "Live ADS-B map": "Live-ADS-B-Karte", "Schedule & status on FlightAware": "Flugplan & Status auf FlightAware", "History on Flightradar24": "Verlauf auf Flightradar24", "Open the live map full screen": "Live-Karte im Vollbild öffnen", "An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.": "Eine Luftfrachtbrief-Nummer hat 11 Ziffern: ein 3-stelliges Airline-Präfix und eine 8-stellige Seriennummer.", "Check digit is valid ({serial} ÷ 7 leaves {rem}).": "Prüfziffer ist gültig ({serial} ÷ 7 ergibt Rest {rem}).", "Check digit does not match: {serial} ÷ 7 leaves {rem}, not {given}. Re-check the number before tracking.": "Prüfziffer stimmt nicht: {serial} ÷ 7 ergibt Rest {rem}, nicht {given}. Prüfen Sie die Nummer vor dem Tracking erneut.", "Prefix {prefix} belongs to": "Präfix {prefix} gehört zu", "Copy the number:": "Nummer kopieren:", "Shipment": "Sendung", "weight": "Gewicht", "Track {awb} now": "{awb} jetzt verfolgen", "{carrier} cargo website": "Cargo-Website von {carrier}", "Prefix {prefix} is not in our carrier list; the tracker below routes the number to the issuing airline.": "Präfix {prefix} ist nicht in unserer Airline-Liste; der Tracker unten leitet die Nummer an die ausstellende Fluggesellschaft weiter.", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.": "Die Prüfziffer wird nach der IATA-Regel geprüft (Seriennummer geteilt durch 7, der Rest entspricht der letzten Ziffer), sodass ein falsch eingegebener Luftfrachtbrief erkannt wird, bevor Sie sich auf die Suche machen. Meilensteine wie angenommen, abgeflogen, angekommen und zugestellt liegen bei der Fluggesellschaft; die Tracking-Schaltfläche übergibt die Nummer an das Tracking der ausstellenden Fluggesellschaft, und deren Cargo-Website ist verlinkt, sofern sie uns vorliegt.", "Number copied. If the page opens without it, paste it into the search box.": "Nummer kopiert. Falls die Seite ohne sie öffnet, fügen Sie sie in das Suchfeld ein.", "Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.": "Flugzeuge rund um Kairo in diesem Moment. Tippen Sie eines an, um ihm zu folgen, oder geben Sie eine Flugnummer ein.", "Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.": "Die Positionen stammen aus den Empfängernetzen von adsb.lol und adsb.fi und werden alle 15 Sekunden aktualisiert. Ein Flugzeug erscheint nur, solange es in der Luft ist und im Empfangsbereich sendet. Ein Flug, der noch nicht gestartet, schon gelandet oder über offenem Meer ist, zeigt daher nichts statt einer Schätzung.", "Looking for {flight}…": "Suche nach {flight}…", "Live": "Live", "Not airborne": "Nicht in der Luft", "Altitude": "Flughöhe", "Ground speed": "Geschwindigkeit über Grund", "Heading": "Kurs", "Vertical": "Steig-/Sinkflug", "Callsign": "Rufzeichen", "Aircraft": "Flugzeug", "Climbing": "Steigflug", "Descending": "Sinkflug", "Level": "Reiseflug", "On ground": "Am Boden", "Updated every 15 seconds.": "Wird alle 15 Sekunden aktualisiert.", "Signal lost. The last known position is shown.": "Signal verloren. Die letzte bekannte Position wird angezeigt.", "Tracking paused. Press Locate to refresh.": "Verfolgung angehalten. Drücken Sie Orten, um zu aktualisieren.", "{flight} is not on the live feed right now.": "{flight} ist gerade nicht im Live-Datenstrom.", "It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.": "Er ist vielleicht noch nicht gestartet, schon gelandet oder über einem Gebiet ohne Empfangsabdeckung. Prüfen Sie Flugplan und Status unten.", "The live feed is not answering right now. Try again in a minute, or use the links below.": "Der Live-Datenstrom antwortet gerade nicht. Versuchen Sie es in einer Minute erneut oder nutzen Sie die Links unten."}, "it": {"Duties & taxes":"Dazi e imposte","Container tracking": "Tracciamento container", "Vessel schedules": "Orari delle navi", "Load calculator": "Calcolatore di carico", "Vessel tracking": "Tracciamento navi", "Flight tracking": "Tracciamento voli", "Chargeable weight": "Peso tassabile", "Tools": "Strumenti", "Check": "Verifica", "To": "A", "Check digit": "Cifra di controllo", "Track {number} with {carrier}": "Traccia {number} con {carrier}", "Vessel schedule": "Orario nave", "Cargo": "Carico", "Unit": "Unità", "Where is the flight now?": "Dov'è il volo in questo momento?", "Flight number (airline code + number)": "Numero del volo (codice compagnia + numero)", "e.g. MS777 or MSR777": "es. MS777 o MSR777", "Locate": "Individua", "Track an air waybill": "Traccia una lettera di vettura aerea", "Air waybill number (11 digits, e.g. 077-12345675)": "Numero della lettera di vettura aerea (11 cifre, es. 077-12345675)", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the carrier, so the buttons take you straight to that carrier's official tracking page with the number ready to paste.": "La cifra di controllo viene verificata con la regola IATA (il numero seriale diviso per 7, il resto è uguale all'ultima cifra), quindi una lettera di vettura digitata male viene individuata prima che Lei vada a cercarla. Le tappe come accettato, partito, arrivato e consegnato sono gestite dal vettore, quindi i pulsanti La portano direttamente alla pagina di tracciamento ufficiale di quel vettore con il numero pronto da incollare.", "Airline code {code} is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).": "Il codice compagnia {code} non è in elenco, quindi la mappa è filtrata sul codice così come digitato. Se la compagnia utilizza un callsign ICAO diverso, inserisca quello (tre lettere + numero).", "Enter an airline code followed by the flight number, for example MS777.": "Inserisca il codice della compagnia seguito dal numero del volo, ad esempio MS777.", "Live ADS-B map": "Mappa ADS-B in tempo reale", "Schedule & status on FlightAware": "Orario e stato su FlightAware", "History on Flightradar24": "Storico su Flightradar24", "Open the live map full screen": "Apri la mappa in tempo reale a schermo intero", "An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.": "Un numero di lettera di vettura aerea ha 11 cifre: un prefisso compagnia di 3 cifre e un seriale di 8 cifre.", "Check digit is valid ({serial} ÷ 7 leaves {rem}).": "Cifra di controllo valida ({serial} ÷ 7 dà resto {rem}).", "Check digit does not match: {serial} ÷ 7 leaves {rem}, not {given}. Re-check the number before tracking.": "La cifra di controllo non corrisponde: {serial} ÷ 7 dà resto {rem}, non {given}. Ricontrolli il numero prima di tracciare.", "Prefix {prefix} belongs to": "Il prefisso {prefix} appartiene a", "Copy the number:": "Copi il numero:", "Shipment": "Spedizione", "weight": "peso", "Track {awb} now": "Traccia {awb} ora", "{carrier} cargo website": "Sito cargo di {carrier}", "Prefix {prefix} is not in our carrier list; the tracker below routes the number to the issuing airline.": "Il prefisso {prefix} non è nel nostro elenco di vettori; il tracker qui sotto indirizza il numero alla compagnia aerea emittente.", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.": "La cifra di controllo viene verificata con la regola IATA (il numero seriale diviso per 7, il resto è uguale all'ultima cifra), quindi una lettera di vettura digitata male viene individuata prima che Lei vada a cercarla. Le tappe come accettato, partito, arrivato e consegnato sono gestite dalla compagnia aerea; il pulsante di tracciamento passa il numero al tracciamento della compagnia emittente, e il sito cargo della compagnia è collegato quando lo abbiamo.", "Number copied. If the page opens without it, paste it into the search box.": "Numero copiato. Se la pagina si apre senza, incollalo nel campo di ricerca.", "Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.": "Aerei vicino al Cairo in questo momento. Toccane uno per seguirlo, oppure inserisci un numero di volo.", "Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.": "Le posizioni provengono dalle reti di ricevitori adsb.lol e adsb.fi e si aggiornano ogni 15 secondi. Un aereo compare solo mentre è in volo e trasmette all’interno della copertura, quindi un volo non ancora partito, già atterrato o sopra il mare aperto non mostra nulla invece di una stima.", "Looking for {flight}…": "Ricerca di {flight}…", "Live": "Live", "Not airborne": "Non in volo", "Altitude": "Quota", "Ground speed": "Velocità al suolo", "Heading": "Rotta", "Vertical": "Profilo", "Callsign": "Nominativo", "Aircraft": "Aeromobile", "Climbing": "In salita", "Descending": "In discesa", "Level": "In crociera", "On ground": "A terra", "Updated every 15 seconds.": "Aggiornato ogni 15 secondi.", "Signal lost. The last known position is shown.": "Segnale perso. È mostrata l’ultima posizione nota.", "Tracking paused. Press Locate to refresh.": "Tracciamento in pausa. Premi Individua per aggiornare.", "{flight} is not on the live feed right now.": "{flight} non è presente al momento nel flusso in diretta.", "It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.": "Potrebbe non essere ancora partito, essere già atterrato o trovarsi in una zona senza copertura. Controlla orario e stato qui sotto.", "The live feed is not answering right now. Try again in a minute, or use the links below.": "Il flusso in diretta non risponde al momento. Riprova tra un minuto o usa i link qui sotto."}, "ar": {"Duties & taxes":"الرسوم والضرائب الجمركية","Container tracking": "تتبع الحاويات", "Vessel schedules": "جداول السفن", "Load calculator": "حاسبة التحميل", "Vessel tracking": "تتبع السفن", "Flight tracking": "تتبع الرحلات الجوية", "Chargeable weight": "الوزن المحاسب عليه", "Tools": "الأدوات", "Check": "تحقق", "To": "إلى", "Check digit": "رقم التحقق", "Track {number} with {carrier}": "تتبع {number} لدى {carrier}", "Vessel schedule": "جدول السفن", "Cargo": "البضاعة", "Unit": "الوحدة", "Where is the flight now?": "أين الرحلة الآن؟", "Flight number (airline code + number)": "رقم الرحلة (رمز شركة الطيران + الرقم)", "e.g. MS777 or MSR777": "مثال: MS777 أو MSR777", "Locate": "حدد الموقع", "Track an air waybill": "تتبع بوليصة شحن جوي", "Air waybill number (11 digits, e.g. 077-12345675)": "رقم بوليصة الشحن الجوي (11 رقمًا، مثال: 077-12345675)", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the carrier, so the buttons take you straight to that carrier's official tracking page with the number ready to paste.": "يتم التحقق من رقم التحقق وفق قاعدة IATA (قسمة الرقم التسلسلي على 7، ويساوي الباقي الرقم الأخير)، ولذلك يُكتشف أي خطأ في كتابة رقم البوليصة قبل أن تبدأ البحث عن الشحنة. أما مراحل الشحنة مثل الاستلام والمغادرة والوصول والتسليم فيحتفظ بها الناقل، لذا تنقلك الأزرار مباشرةً إلى صفحة التتبع الرسمية لذلك الناقل مع الرقم جاهزًا للصق.", "Airline code {code} is not in the list, so the map is filtered to the code as typed. If the airline uses a different ICAO callsign, enter that instead (three letters + number).": "رمز شركة الطيران {code} غير موجود في القائمة، لذا تمت تصفية الخريطة بالرمز كما أُدخل. إذا كانت شركة الطيران تستخدم علامة نداء ICAO مختلفة، فأدخلها بدلًا منه (ثلاثة أحرف + الرقم).", "Enter an airline code followed by the flight number, for example MS777.": "أدخل رمز شركة الطيران متبوعًا برقم الرحلة، مثل MS777.", "Live ADS-B map": "خريطة ADS-B مباشرة", "Schedule & status on FlightAware": "الجدول والحالة على FlightAware", "History on Flightradar24": "السجل على Flightradar24", "Open the live map full screen": "فتح الخريطة المباشرة بملء الشاشة", "An air waybill number has 11 digits: a 3-digit airline prefix and an 8-digit serial.": "يتكون رقم بوليصة الشحن الجوي من 11 رقمًا: بادئة شركة الطيران من 3 أرقام ورقم تسلسلي من 8 أرقام.", "Check digit is valid ({serial} ÷ 7 leaves {rem}).": "رقم التحقق صحيح ({serial} ÷ 7 يترك باقيًا {rem}).", "Check digit does not match: {serial} ÷ 7 leaves {rem}, not {given}. Re-check the number before tracking.": "رقم التحقق غير مطابق: {serial} ÷ 7 يترك باقيًا {rem} وليس {given}. راجع الرقم قبل التتبع.", "Prefix {prefix} belongs to": "البادئة {prefix} تخص", "Copy the number:": "انسخ الرقم:", "Shipment": "الشحنة", "weight": "الوزن", "Track {awb} now": "تتبع {awb} الآن", "{carrier} cargo website": "موقع الشحن لدى {carrier}", "Prefix {prefix} is not in our carrier list; the tracker below routes the number to the issuing airline.": "البادئة {prefix} غير موجودة في قائمة الناقلين لدينا؛ أداة التتبع أدناه توجه الرقم إلى شركة الطيران المُصدِرة.", "The check digit is verified with the IATA rule (the serial number divided by 7, remainder equals the last digit), so a mistyped waybill is caught before you go looking for it. Milestones such as accepted, departed, arrived and delivered are held by the airline; the tracking button passes the number to the issuing airline's own tracking, and the airline's cargo website is linked where we hold it.": "يتم التحقق من رقم التحقق وفق قاعدة IATA (قسمة الرقم التسلسلي على 7، ويساوي الباقي الرقم الأخير)، ولذلك يُكتشف أي خطأ في كتابة رقم البوليصة قبل أن تبدأ البحث عن الشحنة. أما مراحل الشحنة مثل الاستلام والمغادرة والوصول والتسليم فتحتفظ بها شركة الطيران؛ وزر التتبع يمرّر الرقم إلى نظام التتبع لدى شركة الطيران المُصدِرة، ونضع رابط موقع الشحن الخاص بها متى توفر لدينا.", "Number copied. If the page opens without it, paste it into the search box.": "تم نسخ الرقم. إذا فُتحت الصفحة بدونه، الصقه في خانة البحث.", "Aircraft near Cairo right now. Tap one to follow it, or enter a flight number.": "الطائرات القريبة من القاهرة الآن. اضغط على أي طائرة لمتابعتها، أو أدخل رقم الرحلة.", "Positions come from the adsb.lol and adsb.fi receiver networks and refresh every 15 seconds. An aircraft appears only while it is airborne and transmitting within receiver coverage, so a flight that has not departed, has landed, or is over open ocean shows nothing rather than a guess.": "تأتي المواقع من شبكتي مستقبلات adsb.lol وadsb.fi وتُحدَّث كل 15 ثانية. لا تظهر الطائرة إلا أثناء طيرانها وبثها داخل نطاق التغطية، لذلك لا تظهر الرحلة التي لم تقلع بعد أو هبطت أو تحلّق فوق المحيط بدلًا من عرض موقع تقديري.", "Looking for {flight}…": "جارٍ البحث عن {flight}…", "Live": "مباشر", "Not airborne": "ليست في الجو", "Altitude": "الارتفاع", "Ground speed": "السرعة الأرضية", "Heading": "الاتجاه", "Vertical": "الوضع الرأسي", "Callsign": "رمز النداء", "Aircraft": "الطائرة", "Climbing": "في صعود", "Descending": "في هبوط", "Level": "مستوى ثابت", "On ground": "على الأرض", "Updated every 15 seconds.": "يُحدَّث كل 15 ثانية.", "Signal lost. The last known position is shown.": "انقطعت الإشارة. يظهر آخر موقع معروف.", "Tracking paused. Press Locate to refresh.": "تم إيقاف التتبع مؤقتًا. اضغط «حدد الموقع» للتحديث.", "{flight} is not on the live feed right now.": "الرحلة {flight} غير موجودة في البث المباشر الآن.", "It may not have departed yet, may have landed, or may be over an area without receiver coverage. Check the schedule and status below.": "ربما لم تقلع بعد، أو هبطت، أو تحلّق فوق منطقة خارج نطاق التغطية. راجع الجدول والحالة أدناه.", "The live feed is not answering right now. Try again in a minute, or use the links below.": "البث المباشر لا يستجيب الآن. حاول مرة أخرى بعد دقيقة، أو استخدم الروابط أدناه."}};
+var LANGS=['ar','fr','es','de','it'];var lang='en';var applied=false;var origin='https://www.rockit-transport.com';
+try{ if(document.referrer){ var u=new URL(document.referrer); if(/rockit-transport\.com$/.test(u.hostname)) origin=u.origin; var m=u.pathname.match(/^\/(ar|fr|es|de|it)(?=\/|$)/); if(m) lang=m[1]; } }catch(e){}
+try{ var hm=location.hash.match(/lang=(ar|fr|es|de|it|en)/); if(hm) lang=hm[1]; }catch(e){}
+var TPL=null;
+function compile(){ if(TPL) return; TPL=[]; var d=D[lang]||{}; Object.keys(d).forEach(function(k){ if(k.indexOf('{')<0) return; var parts=k.split(/\{[^}]+\}/); var names=(k.match(/\{([^}]+)\}/g)||[]).map(function(x){return x.slice(1,-1)}); var rx=new RegExp('^'+parts.map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('([\\s\\S]*?)')+'$'); TPL.push({k:k,rx:rx,names:names}); }); TPL.sort(function(a,b){return b.k.length-a.k.length;}); }
+function sub(v,depth){ var d=D[lang]; if(!v) return v; if(d[v]!==undefined) return d[v]; if((depth||0)<2){ var r=tr(v,(depth||0)+1); if(r!==null) return r; } var o=v; Object.keys(d).forEach(function(k){ if(/^[ ,]/.test(k)&&o.indexOf(k)>=0) o=o.split(k).join(d[k]); }); return o; }
+function tr(text,depth){ var d=D[lang]; if(!d) return null; var t=text.trim(); if(!t) return null; if(d[t]) return d[t]; var ar=t.match(/^(.*?)( *[→←])$/); if(ar&&d[ar[1]]) return d[ar[1]]+(lang==='ar'?' ←':ar[2]); compile(); for(var i=0;i<TPL.length;i++){ var m=TPL[i].rx.exec(t); if(m){ var out=d[TPL[i].k]; if(!out) return null; TPL[i].names.forEach(function(n,j){ out=out.split('{'+n+'}').join(sub(m[j+1],depth)); }); return out; } } return null; }
+function fixHref(a){ var h=a.getAttribute('href')||''; var mm=h.match(/rockit-route-map\/([a-z0-9-]*)$/)||h.match(/^https?:\/\/(?:www\.)?rockit-transport\.com\/(?:(?:ar|fr|es|de|it)\/)?([a-z0-9-]*)$/); if(mm){ a.setAttribute('href',origin+(lang==='en'?'':'/'+lang)+'/'+mm[1]); } }
+function walk(root){ var it=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null); var n; var todo=[]; while((n=it.nextNode())){ var p=n.parentNode; if(!p||/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName)||(p.closest&&p.closest('#map'))) continue; if(!/[A-Za-z]/.test(n.nodeValue)) continue; todo.push(n);} todo.forEach(function(n){ var v=n.nodeValue; var t=tr(v); if(t!==null){ var lead=v.match(/^\s*/)[0], trail=v.match(/\s*$/)[0]; var nv=lead+t+trail; if(nv!==v) n.nodeValue=nv; } }); 
+  var els=root.querySelectorAll? root.querySelectorAll('[placeholder],[title],[aria-label],[alt]'):[]; for(var i=0;i<els.length;i++){ var el=els[i]; ['placeholder','title','aria-label','alt'].forEach(function(at){ var v=el.getAttribute(at); if(v){ var t=tr(v); if(t!==null&&t!==v) el.setAttribute(at,t); } }); }
+  var as=root.querySelectorAll? root.querySelectorAll('a[target="_top"][href]'):[]; for(var j=0;j<as.length;j++) fixHref(as[j]); }
+var busy=false; function apply(){ if(busy) return; busy=true; try{ if(lang!=='en'&&D[lang]) walk(document.body); else { var as=document.querySelectorAll('a[target="_top"][href]'); for(var j=0;j<as.length;j++) fixHref(as[j]); } }catch(e){} busy=false; }
+function rtl(){ if(lang!=='ar') return; var H=document.documentElement; H.setAttribute('lang','ar'); H.setAttribute('dir','rtl'); if(!document.getElementById('rm-arfont')){ var k=document.createElement('link'); k.id='rm-arfont'; k.rel='stylesheet'; k.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap'; document.head.appendChild(k); var s=document.createElement('style'); s.textContent="html[dir=rtl] body,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] button,html[dir=rtl] textarea,html[dir=rtl] .rm-shell{font-family:'Noto Naskh Arabic','Rockit Digits','Cormorant Garamond',serif!important;letter-spacing:0!important}html[dir=rtl] th,html[dir=rtl] td{text-align:right}html[dir=rtl] .rm-tabs a:first-child{padding-left:16px;padding-right:0}html[dir=rtl] input#cn,html[dir=rtl] input[type=number],html[dir=rtl] .mono,html[dir=rtl] .code,html[dir=rtl] td.mono{direction:ltr;text-align:left}html[dir=rtl] h3{letter-spacing:0!important}"; document.head.appendChild(s);} else { var H2=document.documentElement; H2.setAttribute('lang',lang); } }
+function setLang(l){ if(!l||l===lang) return; if(l!=='en'&&LANGS.indexOf(l)<0) return; if(applied&&lang!=='en'){ location.hash='lang='+l; location.reload(); return; } lang=l; rtl(); apply(); }
+window.addEventListener('message',function(e){ var d=e.data; if(d&&typeof d==='object'&&d.rmLang) setLang(String(d.rmLang)); });
+function boot(){ rtl(); apply(); applied=true; var mo=new MutationObserver(function(ms){ if(busy) return; for(var i=0;i<ms.length;i++){ var t=ms[i].target; var e=t.nodeType===1?t:t.parentNode; if(!(e&&e.closest&&e.closest('#map'))){ apply(); return; } } }); mo.observe(document.body,{childList:true,subtree:true,characterData:true}); try{ if(window.parent!==window) window.parent.postMessage({rmLangReq:1},'*'); }catch(e){} }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();</script></div></div><!--/rm-shell--><script id="rm-h">(function(){var last=0,t;function m(){var b=document.querySelector('.rm-body');if(!b)return;var br=b.getBoundingClientRect(),bot=0;for(var i=0;i<b.children.length;i++){var c=b.children[i],cs=getComputedStyle(c);if(cs.display==='none'||cs.position==='fixed')continue;var r=c.getBoundingClientRect();bot=Math.max(bot,r.bottom+(parseFloat(cs.marginBottom)||0));}var pb=parseFloat(getComputedStyle(b).paddingBottom)||0;var h=Math.ceil(br.top+window.scrollY+(bot-br.top)+b.scrollTop+pb+(document.documentElement.clientHeight-br.bottom));if(h>0&&Math.abs(h-last)>1){last=h;try{parent.postMessage({rmH:h},'*')}catch(e){}}}function q(){clearTimeout(t);t=setTimeout(m,40)}if(window.ResizeObserver){var ro=new ResizeObserver(q);ro.observe(document.documentElement);var b=document.querySelector('.rm-body');if(b){ro.observe(b);for(var i=0;i<b.children.length;i++)ro.observe(b.children[i]);}}new MutationObserver(q).observe(document.documentElement,{subtree:true,childList:true,attributes:true,characterData:true});addEventListener('load',q);addEventListener('message',function(e){if(e.data&&e.data.rmHReq){last=0;m()}});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);setTimeout(m,150);setTimeout(m,1000);setTimeout(m,3000);})();</script>
+<!-- rm-portrait -->
+<style id="rm-portrait">
+/*
+ * rm-portrait: the tools on a phone held upright (owner, 19 Nov 2026: "they do not fit in the page in portrait mode").
+ * Appended after each tool's own styles by build.py, so on equal specificity these rules win.
+ *
+ * Each tool is an HTML embed in a frame the page sizes: 310px on a 390px phone, 240px on a 320px one. The tools were
+ * laid out for a desk and for one phone width; narrower than that their grids (four fields to a row, three or four
+ * tiles to a row) and their one-line buttons were wider than the frame, and the frame's body hides what overflows —
+ * so the right-hand side of the form, of the result and of every paragraph was simply cut off. Measured before this
+ * file: 43 of 56 states (7 tools × 240, 280, 310 and 350px × untouched and used) had something cut off, a field whose
+ * text was clipped, or the current tool's tab scrolled out of sight.
+ *
+ * The rule of this file: nothing in a tool has a minimum width the frame cannot give. Grids use tracks that may
+ * shrink, a row of fields becomes two to a row when there is no room for four, long words and long buttons wrap, and
+ * a table that still cannot fit scrolls inside its own box instead of being cut.
+ */
+
+/* ---- every width: nothing may be wider than the frame ---- */
+html,body{max-width:100%}
+.rm-body{overflow-wrap:break-word}
+.rm-body *,.rm-body *::before,.rm-body *::after{min-width:0}
+.rm-body img,.rm-body svg,.rm-body iframe,.rm-body table,.rm-body input,.rm-body select,.rm-body textarea,.rm-body button{max-width:100%}
+
+/* the strip of tools: it scrolls sideways; portrait.js brings the current tool into view and marks the cut ends */
+.rm-tabs{scroll-behavior:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rm-tabs a{flex:none}
+.rm-tabs.rm-more-end{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start.rm-more-end{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
+
+/* ---- a phone held upright: the frame is 240 to about 400px wide ---- */
+@media (max-width:480px){
+  /* room for a focus ring at the frame's edge, which the body would otherwise cut */
+  .rm-body{padding-left:2px;padding-right:2px}
+
+  /* a button, or a link drawn as one, says all of its words: two lines when one cannot hold them, never a cut-off
+     one; and it is a thumb's height (44px) */
+  .rm-body button.b,.rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{white-space:normal;height:auto;min-height:44px;line-height:1.25;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere}
+  .rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{display:inline-flex;align-items:center}
+  /* a tab of the strip is a taller target under a finger */
+  .rm-tabs a{padding-top:12px}
+
+  /* chargeable weight, load calculator: a package's four measures are two rows of two; its box gives the room back */
+  .rm-body .line{padding:12px 34px 12px 12px}
+  .rm-body .line .row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .line .row.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .cust{grid-template-columns:minmax(0,1fr)}
+  /* a label of two lines must not push its box out of line with the one beside it */
+  .rm-body .line .row,.rm-body .cust{align-items:end}
+  .rm-body .btns .b{flex:1 1 auto}
+  .rm-body .opts{flex-wrap:wrap;gap:8px 18px}
+
+  /* result tiles: as many to a row as fit at 7.5rem each (three at 310px and over, two under it), figures that wrap */
+  .rm-body .tot{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.2rem),1fr))}
+  .rm-body .tot div{padding:10px}
+  .rm-body .tot b{font-size:21px;line-height:1.15;overflow-wrap:anywhere}
+  .rm-body .big b{font-size:28px;overflow-wrap:anywhere}
+
+  /* tables: cells wrap between words; one that still cannot fit scrolls inside its own box (portrait.js wraps it) */
+  /* a heading keeps its whole word ("Step" is not "St / ep"); a cell of prose may break anywhere it must */
+  .rm-body th,.rm-body td{padding-left:6px;padding-right:6px}
+  .rm-body th{overflow-wrap:break-word;letter-spacing:.06em}
+  .rm-body td{overflow-wrap:anywhere}
+  /* …but the first column is a name (a port, a container type): it keeps its words whole */
+  .rm-body td:first-child{overflow-wrap:break-word}
+  .rm-body .rm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* vessel schedules: a line's name and what its link opens, on two lines when one cannot hold both */
+  .rm-body .lines a{flex-wrap:wrap;gap:2px 12px}
+  .rm-body .lines a span.sv{text-align:left}
+  .rm-body .cta{padding:14px}
+
+  /* container tracking: the four parts of a number are two rows of two; the carriers list is one column when narrow */
+  .rm-body .parts{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+  .rm-body .parts div{min-width:0}
+  .rm-body .list{grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr))}
+  .rm-body .carrier{padding:14px}
+  .rm-body .row>div{flex-basis:min(100%,220px)}
+
+  /* vessel and flight tracking: the map takes a little over half the screen's height, not one and a half screens */
+  .rm-body #map{height:min(60vh,420px);min-height:300px}
+  .rm-body .mapcap{right:10px;font-size:13px}
+  .rm-body .card{padding:12px}
+  .rm-body .card .hd{flex-wrap:wrap}
+}
+/* the narrowest phones (a 320px screen gives the frame 240px): a field beside its button has no room to show what is
+   typed in it, so the button goes under the field, as wide as it */
+@media (max-width:300px){
+  .rm-body .bar{grid-template-columns:minmax(0,1fr)}
+  .rm-body .bar .b{width:100%}
+}
+/* …and a table of four columns or more is a list there: a row is a block, its first cell the heading of the block,
+   every other cell one line with its column's name before it (portrait.js copies the names from the heading row,
+   which is taken out of sight, not out of the page). */
+@media (max-width:300px){
+  .rm-body table.rm-cols4,.rm-body table.rm-cols4 tbody{display:block;width:100%}
+  .rm-body table.rm-cols4 thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .rm-body table.rm-cols4 tr{display:block;padding:10px 8px;border-bottom:1px solid var(--line)}
+  .rm-body table.rm-cols4 td{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:0 10px;align-items:baseline;border:0;padding:3px 0;text-align:left;white-space:normal}
+  .rm-body table.rm-cols4 td::before{content:attr(data-label);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .rm-body table.rm-cols4 tr.best td::before{color:rgba(255,255,255,.72)}
+  .rm-body table.rm-cols4 td:first-child,.rm-body table.rm-cols4 td:not([data-label]){display:block;padding-bottom:6px}
+  .rm-body table.rm-cols4 td:first-child::before,.rm-body table.rm-cols4 td:not([data-label])::before{content:none}
+}
+/* from 330px the four parts of a container number fit one row again */
+@media (min-width:330px) and (max-width:480px){
+  .rm-body .parts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .rm-body .parts div{padding:8px 6px}
+  .rm-body .parts span{letter-spacing:.04em;font-size:11px}
+}
+
+/* A section title is gradient text (its fill is transparent, the gradient shows through), and the step number in
+   the disc before it inherited the transparent fill: three navy discs with nothing in them. The number is white. */
+h3 .n{-webkit-text-fill-color:#fff;background-clip:border-box;-webkit-background-clip:border-box;background-image:none}
+
+/*
+ * ---- gold ----
+ * brand/BRAND.md §1: gold is always the logo's own metallic gradient (brand/rockit-logo.svg, `gold-swoosh`), never a
+ * flat yellow; a solid is allowed only where a gradient cannot be drawn (#8a6514 on a light ground). The tools carried
+ * another gradient and a flat #D0AF50 for rules, borders, bars and focus rings.
+ */
+:root{
+  --gold-grad:linear-gradient(135deg,#A88329 0%,#B18B2D 8%,#C09934 17%,#CFAC49 25%,#DEC163 33%,#EDD77E 42%,#F7E590 50%,#ECD57B 58%,#DEC161 67%,#D0AD48 75%,#C29B36 83%,#B28C2D 92%,#A88228 100%);
+  --gold-grad-hi:var(--gold-grad);
+  /* what `var(--gold)` still paints is text behind a gradient clip, a focus ring or a hairline: the allowed solid */
+  --gold:#8a6514;
+}
+.b.gold,.cta a,.links a.gold{background-color:#C09934;background-image:var(--gold-grad)}
+.b.gold:hover,.cta a:hover,.links a.gold:hover{background-image:var(--gold-grad);filter:brightness(1.06)}
+.rm-tabs a.on{border-bottom-color:transparent;border-image:var(--gold-grad) 1;border-image-width:0 0 2px 0}
+.rm-tabs a:focus-visible{outline-color:#8a6514}
+.big{border-image:var(--gold-grad) 1}
+.bar i{background-color:#C09934;background-image:var(--gold-grad)}
+.pref,.modehint{border-image:var(--gold-grad) 1}
+</style>
+<script id="rm-portrait-js">
+/* rm-portrait: what the stylesheet cannot do. Appended after each tool's own scripts by build.py. */
+(function () {
+  var tabs = document.querySelector('.rm-tabs');
+  var body = document.querySelector('.rm-body');
+
+  /* The strip of tools scrolls sideways and its scrollbar is hidden: on a phone the current tool's tab was off the
+     edge with nothing to say the strip moves. Bring it into view (by the strip's own scroll position, never
+     scrollIntoView: inside a frame that also scrolls the page that holds it) and fade the end that has more. */
+  function ends() {
+    if (!tabs) return;
+    var max = tabs.scrollWidth - tabs.clientWidth;
+    var x = Math.abs(tabs.scrollLeft);
+    var rtl = getComputedStyle(tabs).direction === 'rtl';
+    var before = x > 2, after = x < max - 2;
+    tabs.classList.toggle('rm-more-start', max > 2 && (rtl ? after : before));
+    tabs.classList.toggle('rm-more-end', max > 2 && (rtl ? before : after));
+  }
+  function showCurrent() {
+    if (!tabs) return;
+    var on = tabs.querySelector('a.on');
+    if (on) {
+      var t = tabs.getBoundingClientRect(), a = on.getBoundingClientRect();
+      if (a.left < t.left + 1 || a.right > t.right - 1) tabs.scrollLeft += a.left - t.left - (t.width - a.width) / 2;
+    }
+    ends();
+  }
+  if (tabs) {
+    tabs.addEventListener('scroll', ends, { passive: true });
+    showCurrent();
+    addEventListener('load', showCurrent);
+    addEventListener('resize', showCurrent);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(showCurrent);
+  }
+
+  /* A table whose cells cannot wrap any further (a column of codes, a comparison) scrolls inside its own box rather
+     than being cut by the frame: every table gets that box once, tables a tool draws later included. */
+  /* A table of four columns or more cannot be read across the narrowest phones (a 240px frame): there each of its
+     rows is drawn as a block, one line per cell with the column's name before it (portrait.css, `rm-cols4`). The
+     names are copied from the table's own heading row. */
+  function label(table) {
+    if (table.getAttribute('data-rm-labelled')) return;
+    var heads = table.querySelectorAll('thead th');
+    if (heads.length < 4) return;
+    table.setAttribute('data-rm-labelled', '1');
+    table.classList.add('rm-cols4');
+    var rows = table.querySelectorAll('tbody tr');
+    for (var r = 0; r < rows.length; r++) {
+      var cells = rows[r].children;
+      for (var c = 1; c < cells.length && c < heads.length; c++) cells[c].setAttribute('data-label', heads[c].textContent.replace(/\s+/g, ' ').trim());
+    }
+  }
+  function boxTables(root) {
+    var list = (root || document).querySelectorAll ? (root || document).querySelectorAll('.rm-body table') : [];
+    for (var i = 0; i < list.length; i++) {
+      var table = list[i], p = table.parentElement;
+      label(table);
+      if (!p || p.classList.contains('rm-scroll') || (getComputedStyle(p).overflowX !== 'visible' && p !== body)) continue;
+      var box = document.createElement('div');
+      box.className = 'rm-scroll';
+      p.insertBefore(box, table);
+      box.appendChild(table);
+    }
+  }
+  boxTables(document);
+  if (body && window.MutationObserver) {
+    new MutationObserver(function (changes) {
+      for (var i = 0; i < changes.length; i++) if (changes[i].addedNodes.length) { boxTables(document); return; }
+    }).observe(body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<!-- /rm-portrait -->

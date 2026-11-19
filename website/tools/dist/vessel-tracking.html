@@ -1,0 +1,307 @@
+<!-- Rockit vessel tracking: live AIS map by IMO or MMSI (VesselFinder embed map) -->
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"><style id="rm-type">@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:400;src:local('Times New Roman'),local('TimesNewRomanPSMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE1poGnedXvwj1AW3Fu0C8V-txK.woff2) format('woff2');unicode-range:U+0030-0039}@font-face{font-family:'Rockit Digits';font-style:normal;font-weight:700;src:local('Times New Roman Bold'),local('TimesNewRomanPS-BoldMT'),url(https://fonts.gstatic.com/s/tinos/v26/buE4poGnedXvwjX7fmRD8iI_.woff2) format('woff2');unicode-range:U+0030-0039}:root{--rm-serif:'Rockit Digits','Cormorant Garamond',Georgia,'Times New Roman',serif;--rm-sans:var(--rm-serif);--rm-mono:var(--rm-serif);--rm-display:var(--rm-serif)}html,body,input,select,textarea,button,.rm-shell{font-family:var(--rm-serif)!important}body{font-weight:500}b,strong{font-weight:700}.b.gold:hover,.links a.gold:hover{background:var(--gold-grad-hi)}</style><style>
+  :root{--navy:#06103A;--gold:#D0AF50;--gold-grad:linear-gradient(135deg,#B38C2D 0%,#C7A340 14%,#DBBD5E 29%,#EBD379 43%,#EBD47A 57%,#DDC060 71%,#CAA642 86%,#B6902F 100%);--gold-grad-hi:linear-gradient(135deg,#C7A340 0%,#DBBD5E 14%,#EBD379 29%,#F3DC86 43%,#F4DE8A 57%,#EBD379 71%,#DBBD5E 86%,#CAA642 100%);--paper:#F6F6F3;--ink:#1B1F2A;--muted:#5B6172;--line:#D9D9D2;--ok:#1E7B4F;--warn:#B3541E}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--rm-serif);color:var(--ink);background:transparent}
+  h3{margin:0 0 12px;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+  input,select{width:100%;height:42px;border:1px solid var(--line);background:#fff;padding:0 10px;font-size:16.5px;color:var(--ink);border-radius:0}
+  input:focus,select:focus{outline:2px solid var(--gold);outline-offset:-1px}
+  button.b{height:44px;padding:0 20px;border:0;cursor:pointer;font-size:15.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .b.gold{background:var(--gold-grad);color:var(--navy)}
+  .b.ghost{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .note{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.5}
+  .err{color:var(--warn);font-size:14.5px;margin:6px 0;min-height:16px}
+  .ok{color:var(--ok);font-size:14.5px;margin:6px 0}
+  a{color:var(--navy)}
+  table{width:100%;border-collapse:collapse;font-size:15.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .best{background:var(--navy);color:#fff}
+  .tot{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 14px}
+  .tot div{border:1px solid var(--line);padding:10px 12px;background:#fff}
+  .tot b{display:block;font-size:24px;color:var(--navy)}
+  .tot span{font-size:13px;color:var(--muted)}
+  .tag{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.08em}
+
+  .bar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;align-items:end;margin-bottom:10px}
+  @media (max-width:700px){.bar{grid-template-columns:1fr}}
+  .bar .b{width:100%}
+  #map{width:100%;height:600px;border:1px solid var(--line);background:#fff}
+  #map iframe{width:100%;height:100%;border:0;display:block}
+  .meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:8px 0 0;font-size:14.5px;color:var(--muted)}
+</style>
+<style id="rm-shell">
+  html,body{height:100%;}
+  body{margin:0;overflow:hidden;}
+  .rm-shell{display:flex;flex-direction:column;height:100%;min-height:0;font-family:var(--rm-serif);}
+  .rm-tabs{display:flex;gap:0;border-bottom:1px solid #D9D9D2;overflow-x:auto;scrollbar-width:none;flex:0 0 auto;}
+  .rm-tabs::-webkit-scrollbar{display:none}
+  .rm-tabs a{padding:0 16px 11px;font-size:14.5px;line-height:1;color:#5B6172;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
+  .rm-tabs a:first-child{padding-left:0}
+  .rm-tabs a:hover{color:#06103A}
+  .rm-tabs a.on{color:#06103A;font-weight:600;border-bottom-color:#D0AF50}
+  .rm-tabs a:focus-visible{outline:2px solid #D0AF50;outline-offset:2px}
+  .rm-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding-top:20px;}
+  .rm-body::-webkit-scrollbar{width:8px}
+  .rm-body::-webkit-scrollbar-thumb{background:#D9D9D2}
+  .rm-body::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:760px){.rm-tabs a{padding:0 12px 10px;font-size:13px}}
+h3,.tag{background-image:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.cta a{background:var(--gold-grad)}.cta a:hover{background:var(--gold-grad-hi)}</style>
+<div class="rm-shell"><nav class="rm-tabs" aria-label="Tools"><a href="https://www.rockit-transport.com/container-tracking" target="_top">Container tracking</a><a href="https://www.rockit-transport.com/vessel-schedules" target="_top">Vessel schedules</a><a href="https://www.rockit-transport.com/load-calculator" target="_top">Load calculator</a><a href="https://www.rockit-transport.com/vessel-tracking" target="_top" class="on" aria-current="page">Vessel tracking</a><a href="https://www.rockit-transport.com/flight-tracking" target="_top">Flight tracking</a><a href="https://www.rockit-transport.com/chargeable-weight" target="_top">Chargeable weight</a><a href="https://www.rockit-transport.com/duties-taxes-calculator" target="_top">Duties &amp; taxes</a></nav><div class="rm-body"><div class="bar">
+  <div><label>IMO number (7 digits) or MMSI (9 digits)</label><input id="q" type="text" inputmode="numeric" placeholder="e.g. 9811000" onkeydown="if(event.key==='Enter')track()"></div>
+  <button class="b gold" type="button" onclick="track()">Track vessel</button>
+  <button class="b ghost" type="button" onclick="reset()">Show Egypt waters</button>
+</div>
+<div class="err" id="err"></div>
+<div id="map"></div>
+<div class="meta"><span id="status">Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.</span><span>Only know the ship's name? <a id="byname" href="https://www.vesselfinder.com/vessels" target="_blank" rel="noopener">Look up its IMO on VesselFinder</a>, then paste the number here.</span></div>
+<p class="note">Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.</p>
+<script>
+(function(){
+  var ra=encodeURIComponent(location.href);
+  function url(p){ var base='https://www.vesselfinder.com/aismap?'; var q={zoom:p.zoom===undefined?'undefined':p.zoom, lat:p.lat===undefined?'undefined':p.lat, lon:p.lon===undefined?'undefined':p.lon, width:'100%', height:'600', names:'true'}; var s=Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k]);}).join('&'); if(p.mmsi) s+='&mmsi='+p.mmsi; if(p.imo) s+='&imo='+p.imo; s+='&track='+(p.track?'true':'false')+'&fleet=false&fleet_name=false&fleet_hide_old_positions=false&clicktoact=false&store_pos=false&ra='+ra; return base+s; }
+  function show(p){ var m=document.getElementById('map'); m.innerHTML=''; var f=document.createElement('iframe'); f.setAttribute('name','vesselfinder'); f.setAttribute('title','Live AIS map'); f.src=url(p); m.appendChild(f); }
+  function imoValid(s){ if(!/^\d{7}$/.test(s)) return false; var sum=0; for(var i=0;i<6;i++){ sum+=parseInt(s.charAt(i),10)*(7-i); } return (sum%10)===parseInt(s.charAt(6),10); }
+  window.track=function(){ var v=(document.getElementById('q').value||'').replace(/[^0-9]/g,''); var err=document.getElementById('err'); err.textContent=''; var st=document.getElementById('status');
+    if(/^\d{7}$/.test(v)){ if(!imoValid(v)){ err.textContent='That IMO number fails its check digit. Please re-check it.'; return; } show({imo:v,track:true,zoom:8}); st.textContent='Tracking IMO '+v+' with its recent track. Click the ship for details.'; }
+    else if(/^\d{9}$/.test(v)){ if(!/^[2-7]/.test(v)){ err.textContent='A ship MMSI starts with a digit from 2 to 7. Please re-check it.'; return; } show({mmsi:v,track:true,zoom:8}); st.textContent='Tracking MMSI '+v+' with its recent track. Click the ship for details.'; }
+    else { err.textContent='Enter a 7-digit IMO number or a 9-digit MMSI.'; }
+  };
+  window.reset=function(){ document.getElementById('err').textContent=''; document.getElementById('status').textContent='Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.'; show({lat:30.2,lon:32.4,zoom:6,track:false}); };
+  var qs=new URLSearchParams(location.search); var pre=qs.get('imo')||qs.get('mmsi'); if(pre){ document.getElementById('q').value=pre; track(); } else { reset(); }
+  window.addEventListener('message',function(e){ var d=e.data; if(!d||typeof d.rmQ!=='string'||window.__rmQ) return; window.__rmQ=1; var q=new URLSearchParams(d.rmQ); var p=q.get('imo')||q.get('mmsi'); if(p&&!document.getElementById('q').value){ document.getElementById('q').value=p; window.track(); } });
+})();
+</script>
+<script id="rm-i18n">(function(){
+var D={"fr":{"Duties & taxes":"Droits et taxes","Container tracking":"Suivi de conteneur","Vessel schedules":"Horaires des navires","Load calculator":"Calculateur de chargement","Vessel tracking":"Suivi de navire","Flight tracking":"Suivi de vol","Chargeable weight":"Poids taxable","Tools":"Outils","To":"À","Track {number} with {carrier}":"Suivre {number} chez {carrier}","Vessel schedule":"Horaire des navires","IMO number (7 digits) or MMSI (9 digits)":"Numéro IMO (7 chiffres) ou MMSI (9 chiffres)","Track vessel":"Suivre le navire","Show Egypt waters":"Afficher les eaux égyptiennes","Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.":"Carte AIS en direct centrée sur le canal de Suez et les approches de la Méditerranée et de la mer Rouge.","Only know the ship's name?":"Vous ne connaissez que le nom du navire ?","Look up its IMO on VesselFinder":"Recherchez son numéro IMO sur VesselFinder",", then paste the number here.":", puis collez le numéro ici.","Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.":"Les positions proviennent du réseau AIS (récepteurs terrestres et satellitaires) via VesselFinder et s’actualisent automatiquement. Un navire hors de portée des récepteurs affiche sa dernière position reçue et l’heure de réception ; c’est ainsi que l’AIS fonctionne partout, et la carte n’invente jamais une position. Cliquez sur un navire sur la carte pour voir son nom, son type, sa vitesse, son cap et sa destination.","Live AIS map":"Carte AIS en direct","That IMO number fails its check digit. Please re-check it.":"Le chiffre de contrôle de ce numéro IMO est incorrect. Veuillez le vérifier.","Tracking IMO {n} with its recent track. Click the ship for details.":"Suivi de l’IMO {n} avec sa trajectoire récente. Cliquez sur le navire pour les détails.","Tracking MMSI {n} with its recent track. Click the ship for details.":"Suivi du MMSI {n} avec sa trajectoire récente. Cliquez sur le navire pour les détails.","Enter a 7-digit IMO number or a 9-digit MMSI.":"Saisissez un numéro IMO à 7 chiffres ou un MMSI à 9 chiffres.","weight":"poids","e.g. 9811000":"ex. 9811000","Track {awb} now":"Suivre {awb} maintenant","A ship MMSI starts with a digit from 2 to 7. Please re-check it.":"Le MMSI d’un navire commence par un chiffre de 2 à 7. Veuillez le vérifier."},"es":{"Duties & taxes":"Aranceles e impuestos","Container tracking":"Seguimiento de contenedores","Vessel schedules":"Itinerarios de buques","Load calculator":"Calculadora de carga","Vessel tracking":"Seguimiento de buques","Flight tracking":"Seguimiento de vuelos","Chargeable weight":"Peso facturable","Tools":"Herramientas","To":"Destino","Track {number} with {carrier}":"Rastrear {number} con {carrier}","Vessel schedule":"Itinerario de buques","IMO number (7 digits) or MMSI (9 digits)":"Número IMO (7 dígitos) o MMSI (9 dígitos)","Track vessel":"Rastrear buque","Show Egypt waters":"Ver aguas de Egipto","Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.":"Mapa AIS en vivo centrado en el canal de Suez y los accesos del Mediterráneo y del mar Rojo.","Only know the ship's name?":"¿Solo conoce el nombre del buque?","Look up its IMO on VesselFinder":"Busque su IMO en VesselFinder",", then paste the number here.":" y luego pegue el número aquí.","Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.":"Las posiciones proceden de la red AIS (receptores terrestres y satelitales) a través de VesselFinder y se actualizan automáticamente. Un buque fuera del alcance de los receptores muestra su última posición recibida y la hora en que se recibió, que es como funciona el AIS en todo el mundo; el mapa nunca inventa una posición. Haga clic en un buque del mapa para ver nombre, tipo, velocidad, rumbo y destino.","Live AIS map":"Mapa AIS en vivo","That IMO number fails its check digit. Please re-check it.":"Ese número IMO no supera la verificación del dígito de control. Revíselo, por favor.","Tracking IMO {n} with its recent track. Click the ship for details.":"Siguiendo el IMO {n} con su trayectoria reciente. Haga clic en el buque para ver los detalles.","Tracking MMSI {n} with its recent track. Click the ship for details.":"Siguiendo el MMSI {n} con su trayectoria reciente. Haga clic en el buque para ver los detalles.","Enter a 7-digit IMO number or a 9-digit MMSI.":"Introduzca un número IMO de 7 dígitos o un MMSI de 9 dígitos.","weight":"peso","e.g. 9811000":"p. ej. 9811000","Track {awb} now":"Rastrear {awb} ahora","A ship MMSI starts with a digit from 2 to 7. Please re-check it.":"El MMSI de un buque empieza por un dígito del 2 al 7. Vuelva a comprobarlo."},"de":{"Duties & taxes":"Zölle & Steuern","Container tracking":"Containerverfolgung","Vessel schedules":"Schiffsfahrpläne","Load calculator":"Laderaumrechner","Vessel tracking":"Schiffsverfolgung","Flight tracking":"Flugverfolgung","Chargeable weight":"Frachtpflichtiges Gewicht","Tools":"Tools","To":"Nach","Track {number} with {carrier}":"{number} bei {carrier} verfolgen","Vessel schedule":"Schiffsfahrplan","IMO number (7 digits) or MMSI (9 digits)":"IMO-Nummer (7 Ziffern) oder MMSI (9 Ziffern)","Track vessel":"Schiff verfolgen","Show Egypt waters":"Ägyptische Gewässer anzeigen","Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.":"Live-AIS-Karte, zentriert auf den Suezkanal, das Mittelmeer und die Zufahrten zum Roten Meer.","Only know the ship's name?":"Kennen Sie nur den Schiffsnamen?","Look up its IMO on VesselFinder":"IMO-Nummer auf VesselFinder nachschlagen",", then paste the number here.":", dann die Nummer hier einfügen.","Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.":"Die Positionen stammen aus dem AIS-Netz (terrestrische und Satellitenempfänger) über VesselFinder und werden automatisch aktualisiert. Ein Schiff außerhalb der Empfängerreichweite zeigt seine zuletzt empfangene Position und den Empfangszeitpunkt – so funktioniert AIS überall; die Karte erfindet nie eine Position. Klicken Sie auf ein Schiff auf der Karte für Name, Typ, Geschwindigkeit, Kurs und Ziel.","Live AIS map":"Live-AIS-Karte","That IMO number fails its check digit. Please re-check it.":"Diese IMO-Nummer besteht die Prüfziffernkontrolle nicht. Bitte prüfen Sie sie erneut.","Tracking IMO {n} with its recent track. Click the ship for details.":"IMO {n} wird mit ihrer jüngsten Fahrtspur verfolgt. Klicken Sie auf das Schiff für Details.","Tracking MMSI {n} with its recent track. Click the ship for details.":"MMSI {n} wird mit ihrer jüngsten Fahrtspur verfolgt. Klicken Sie auf das Schiff für Details.","Enter a 7-digit IMO number or a 9-digit MMSI.":"Geben Sie eine 7-stellige IMO-Nummer oder eine 9-stellige MMSI ein.","weight":"Gewicht","e.g. 9811000":"z. B. 9811000","Track {awb} now":"{awb} jetzt verfolgen","A ship MMSI starts with a digit from 2 to 7. Please re-check it.":"Eine Schiffs-MMSI beginnt mit einer Ziffer von 2 bis 7. Bitte prüfen Sie sie erneut."},"it":{"Duties & taxes":"Dazi e imposte","Container tracking":"Tracciamento container","Vessel schedules":"Orari delle navi","Load calculator":"Calcolatore di carico","Vessel tracking":"Tracciamento navi","Flight tracking":"Tracciamento voli","Chargeable weight":"Peso tassabile","Tools":"Strumenti","To":"A","Track {number} with {carrier}":"Traccia {number} con {carrier}","Vessel schedule":"Orario nave","IMO number (7 digits) or MMSI (9 digits)":"Numero IMO (7 cifre) o MMSI (9 cifre)","Track vessel":"Traccia la nave","Show Egypt waters":"Mostra le acque egiziane","Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.":"Mappa AIS in tempo reale centrata sul Canale di Suez, sul Mediterraneo e sugli accessi al Mar Rosso.","Only know the ship's name?":"Conosce solo il nome della nave?","Look up its IMO on VesselFinder":"Cerchi il suo IMO su VesselFinder",", then paste the number here.":", poi incolli qui il numero.","Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.":"Le posizioni provengono dalla rete AIS (ricevitori terrestri e satellitari) tramite VesselFinder e si aggiornano automaticamente. Una nave fuori dalla portata dei ricevitori mostra l'ultima posizione ricevuta e l'ora in cui è stata ricevuta, come avviene ovunque con l'AIS; la mappa non inventa mai una posizione. Clicchi su una nave sulla mappa per nome, tipo, velocità, rotta e destinazione.","Live AIS map":"Mappa AIS in tempo reale","That IMO number fails its check digit. Please re-check it.":"Quel numero IMO non supera la verifica della cifra di controllo. La preghiamo di ricontrollarlo.","Tracking IMO {n} with its recent track. Click the ship for details.":"Tracciamento IMO {n} con la sua rotta recente. Clicchi sulla nave per i dettagli.","Tracking MMSI {n} with its recent track. Click the ship for details.":"Tracciamento MMSI {n} con la sua rotta recente. Clicchi sulla nave per i dettagli.","Enter a 7-digit IMO number or a 9-digit MMSI.":"Inserisca un numero IMO di 7 cifre o un MMSI di 9 cifre.","weight":"peso","e.g. 9811000":"es. 9811000","Track {awb} now":"Traccia {awb} ora","A ship MMSI starts with a digit from 2 to 7. Please re-check it.":"L'MMSI di una nave inizia con una cifra da 2 a 7. La ricontrolli."},"ar":{"Duties & taxes":"الرسوم والضرائب الجمركية","Container tracking":"تتبع الحاويات","Vessel schedules":"جداول السفن","Load calculator":"حاسبة التحميل","Vessel tracking":"تتبع السفن","Flight tracking":"تتبع الرحلات الجوية","Chargeable weight":"الوزن المحاسب عليه","Tools":"الأدوات","To":"إلى","Track {number} with {carrier}":"تتبع {number} لدى {carrier}","Vessel schedule":"جدول السفن","IMO number (7 digits) or MMSI (9 digits)":"رقم IMO (7 أرقام) أو MMSI (9 أرقام)","Track vessel":"تتبع السفينة","Show Egypt waters":"عرض المياه المصرية","Live AIS map centred on the Suez Canal, Mediterranean and Red Sea approaches.":"خريطة AIS مباشرة متمركزة على قناة السويس ومداخل البحر المتوسط والبحر الأحمر.","Only know the ship's name?":"لا تعرف سوى اسم السفينة؟","Look up its IMO on VesselFinder":"ابحث عن رقم IMO الخاص بها على VesselFinder",", then paste the number here.":"، ثم الصق الرقم هنا.","Positions come from the AIS network (terrestrial and satellite receivers) through VesselFinder and refresh automatically. A ship outside receiver range shows its last received position and the time it was received, which is how AIS works everywhere; the map never invents a position. Click a vessel on the map for name, type, speed, course and destination.":"تأتي المواقع من شبكة AIS (أجهزة استقبال أرضية وعبر الأقمار الصناعية) من خلال VesselFinder وتتحدث تلقائيًا. والسفينة الخارجة عن نطاق الاستقبال تظهر بآخر موقع تم استقباله ووقت استقباله، وهذه هي طريقة عمل AIS في كل مكان؛ فالخريطة لا تختلق موقعًا أبدًا. انقر على أي سفينة في الخريطة لمعرفة الاسم والنوع والسرعة والاتجاه والوجهة.","Live AIS map":"خريطة AIS مباشرة","That IMO number fails its check digit. Please re-check it.":"رقم IMO هذا لا يجتاز رقم التحقق. يرجى مراجعته.","Tracking IMO {n} with its recent track. Click the ship for details.":"جارٍ تتبع IMO {n} مع مساره الأخير. انقر على السفينة للتفاصيل.","Tracking MMSI {n} with its recent track. Click the ship for details.":"جارٍ تتبع MMSI {n} مع مساره الأخير. انقر على السفينة للتفاصيل.","Enter a 7-digit IMO number or a 9-digit MMSI.":"أدخل رقم IMO من 7 أرقام أو MMSI من 9 أرقام.","weight":"الوزن","e.g. 9811000":"مثال: 9811000","Track {awb} now":"تتبع {awb} الآن","A ship MMSI starts with a digit from 2 to 7. Please re-check it.":"يبدأ رقم MMSI للسفينة برقم من 2 إلى 7. يرجى التحقق منه."}};
+var LANGS=['ar','fr','es','de','it'];var lang='en';var applied=false;var origin='https://www.rockit-transport.com';
+try{ if(document.referrer){ var u=new URL(document.referrer); if(/rockit-transport\.com$/.test(u.hostname)) origin=u.origin; var m=u.pathname.match(/^\/(ar|fr|es|de|it)(?=\/|$)/); if(m) lang=m[1]; } }catch(e){}
+try{ var hm=location.hash.match(/lang=(ar|fr|es|de|it|en)/); if(hm) lang=hm[1]; }catch(e){}
+var TPL=null;
+function compile(){ if(TPL) return; TPL=[]; var d=D[lang]||{}; Object.keys(d).forEach(function(k){ if(k.indexOf('{')<0) return; var parts=k.split(/\{[^}]+\}/); var names=(k.match(/\{([^}]+)\}/g)||[]).map(function(x){return x.slice(1,-1)}); var rx=new RegExp('^'+parts.map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('([\\s\\S]*?)')+'$'); TPL.push({k:k,rx:rx,names:names}); }); TPL.sort(function(a,b){return b.k.length-a.k.length;}); }
+function sub(v,depth){ var d=D[lang]; if(!v) return v; if(d[v]!==undefined) return d[v]; if((depth||0)<2){ var r=tr(v,(depth||0)+1); if(r!==null) return r; } var o=v; Object.keys(d).forEach(function(k){ if(/^[ ,]/.test(k)&&o.indexOf(k)>=0) o=o.split(k).join(d[k]); }); return o; }
+function tr(text,depth){ var d=D[lang]; if(!d) return null; var t=text.trim(); if(!t) return null; if(d[t]) return d[t]; var ar=t.match(/^(.*?)( *[→←])$/); if(ar&&d[ar[1]]) return d[ar[1]]+(lang==='ar'?' ←':ar[2]); compile(); for(var i=0;i<TPL.length;i++){ var m=TPL[i].rx.exec(t); if(m){ var out=d[TPL[i].k]; if(!out) return null; TPL[i].names.forEach(function(n,j){ out=out.split('{'+n+'}').join(sub(m[j+1],depth)); }); return out; } } return null; }
+function fixHref(a){ var h=a.getAttribute('href')||''; var mm=h.match(/rockit-route-map\/([a-z0-9-]*)$/)||h.match(/^https?:\/\/(?:www\.)?rockit-transport\.com\/(?:(?:ar|fr|es|de|it)\/)?([a-z0-9-]*)$/); if(mm){ a.setAttribute('href',origin+(lang==='en'?'':'/'+lang)+'/'+mm[1]); } }
+function walk(root){ var it=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null); var n; var todo=[]; while((n=it.nextNode())){ var p=n.parentNode; if(!p||/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName)) continue; if(!/[A-Za-z]/.test(n.nodeValue)) continue; todo.push(n);} todo.forEach(function(n){ var v=n.nodeValue; var t=tr(v); if(t!==null){ var lead=v.match(/^\s*/)[0], trail=v.match(/\s*$/)[0]; var nv=lead+t+trail; if(nv!==v) n.nodeValue=nv; } }); 
+  var els=root.querySelectorAll? root.querySelectorAll('[placeholder],[title],[aria-label],[alt]'):[]; for(var i=0;i<els.length;i++){ var el=els[i]; ['placeholder','title','aria-label','alt'].forEach(function(at){ var v=el.getAttribute(at); if(v){ var t=tr(v); if(t!==null&&t!==v) el.setAttribute(at,t); } }); }
+  var as=root.querySelectorAll? root.querySelectorAll('a[target="_top"][href]'):[]; for(var j=0;j<as.length;j++) fixHref(as[j]); }
+var busy=false; function apply(){ if(busy) return; busy=true; try{ if(lang!=='en'&&D[lang]) walk(document.body); else { var as=document.querySelectorAll('a[target="_top"][href]'); for(var j=0;j<as.length;j++) fixHref(as[j]); } }catch(e){} busy=false; }
+function rtl(){ if(lang!=='ar') return; var H=document.documentElement; H.setAttribute('lang','ar'); H.setAttribute('dir','rtl'); if(!document.getElementById('rm-arfont')){ var k=document.createElement('link'); k.id='rm-arfont'; k.rel='stylesheet'; k.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap'; document.head.appendChild(k); var s=document.createElement('style'); s.textContent="html[dir=rtl] body,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] button,html[dir=rtl] textarea,html[dir=rtl] .rm-shell{font-family:'Noto Naskh Arabic','Rockit Digits','Cormorant Garamond',serif!important;letter-spacing:0!important}html[dir=rtl] th,html[dir=rtl] td{text-align:right}html[dir=rtl] .rm-tabs a:first-child{padding-left:16px;padding-right:0}html[dir=rtl] input#cn,html[dir=rtl] input[type=number],html[dir=rtl] .mono,html[dir=rtl] .code,html[dir=rtl] td.mono{direction:ltr;text-align:left}html[dir=rtl] h3{letter-spacing:0!important}"; document.head.appendChild(s);} else { var H2=document.documentElement; H2.setAttribute('lang',lang); } }
+function setLang(l){ if(!l||l===lang) return; if(l!=='en'&&LANGS.indexOf(l)<0) return; if(applied&&lang!=='en'){ location.hash='lang='+l; location.reload(); return; } lang=l; rtl(); apply(); }
+window.addEventListener('message',function(e){ var d=e.data; if(d&&typeof d==='object'&&d.rmLang) setLang(String(d.rmLang)); });
+function boot(){ rtl(); apply(); applied=true; var mo=new MutationObserver(function(){ if(!busy) apply(); }); mo.observe(document.body,{childList:true,subtree:true,characterData:true}); try{ if(window.parent!==window) window.parent.postMessage({rmLangReq:1},'*'); }catch(e){} }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();</script></div></div><!--/rm-shell--><script id="rm-h">(function(){var last=0,t;function m(){var b=document.querySelector('.rm-body');if(!b)return;var br=b.getBoundingClientRect(),bot=0;for(var i=0;i<b.children.length;i++){var c=b.children[i],cs=getComputedStyle(c);if(cs.display==='none'||cs.position==='fixed')continue;var r=c.getBoundingClientRect();bot=Math.max(bot,r.bottom+(parseFloat(cs.marginBottom)||0));}var pb=parseFloat(getComputedStyle(b).paddingBottom)||0;var h=Math.ceil(br.top+window.scrollY+(bot-br.top)+b.scrollTop+pb+(document.documentElement.clientHeight-br.bottom));if(h>0&&Math.abs(h-last)>1){last=h;try{parent.postMessage({rmH:h},'*')}catch(e){}}}function q(){clearTimeout(t);t=setTimeout(m,40)}if(window.ResizeObserver){var ro=new ResizeObserver(q);ro.observe(document.documentElement);var b=document.querySelector('.rm-body');if(b){ro.observe(b);for(var i=0;i<b.children.length;i++)ro.observe(b.children[i]);}}new MutationObserver(q).observe(document.documentElement,{subtree:true,childList:true,attributes:true,characterData:true});addEventListener('load',q);addEventListener('message',function(e){if(e.data&&e.data.rmHReq){last=0;m()}});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);setTimeout(m,150);setTimeout(m,1000);setTimeout(m,3000);})();</script>
+<!-- rm-portrait -->
+<style id="rm-portrait">
+/*
+ * rm-portrait: the tools on a phone held upright (owner, 19 Nov 2026: "they do not fit in the page in portrait mode").
+ * Appended after each tool's own styles by build.py, so on equal specificity these rules win.
+ *
+ * Each tool is an HTML embed in a frame the page sizes: 310px on a 390px phone, 240px on a 320px one. The tools were
+ * laid out for a desk and for one phone width; narrower than that their grids (four fields to a row, three or four
+ * tiles to a row) and their one-line buttons were wider than the frame, and the frame's body hides what overflows —
+ * so the right-hand side of the form, of the result and of every paragraph was simply cut off. Measured before this
+ * file: 43 of 56 states (7 tools × 240, 280, 310 and 350px × untouched and used) had something cut off, a field whose
+ * text was clipped, or the current tool's tab scrolled out of sight.
+ *
+ * The rule of this file: nothing in a tool has a minimum width the frame cannot give. Grids use tracks that may
+ * shrink, a row of fields becomes two to a row when there is no room for four, long words and long buttons wrap, and
+ * a table that still cannot fit scrolls inside its own box instead of being cut.
+ */
+
+/* ---- every width: nothing may be wider than the frame ---- */
+html,body{max-width:100%}
+.rm-body{overflow-wrap:break-word}
+.rm-body *,.rm-body *::before,.rm-body *::after{min-width:0}
+.rm-body img,.rm-body svg,.rm-body iframe,.rm-body table,.rm-body input,.rm-body select,.rm-body textarea,.rm-body button{max-width:100%}
+
+/* the strip of tools: it scrolls sideways; portrait.js brings the current tool into view and marks the cut ends */
+.rm-tabs{scroll-behavior:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rm-tabs a{flex:none}
+.rm-tabs.rm-more-end{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 28px),transparent)}
+.rm-tabs.rm-more-start.rm-more-end{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
+
+/* ---- a phone held upright: the frame is 240 to about 400px wide ---- */
+@media (max-width:480px){
+  /* room for a focus ring at the frame's edge, which the body would otherwise cut */
+  .rm-body{padding-left:2px;padding-right:2px}
+
+  /* a button, or a link drawn as one, says all of its words: two lines when one cannot hold them, never a cut-off
+     one; and it is a thumb's height (44px) */
+  .rm-body button.b,.rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{white-space:normal;height:auto;min-height:44px;line-height:1.25;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere}
+  .rm-body .cta a,.rm-body .carrier a.go,.rm-body .links a{display:inline-flex;align-items:center}
+  /* a tab of the strip is a taller target under a finger */
+  .rm-tabs a{padding-top:12px}
+
+  /* chargeable weight, load calculator: a package's four measures are two rows of two; its box gives the room back */
+  .rm-body .line{padding:12px 34px 12px 12px}
+  .rm-body .line .row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .line .row.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rm-body .cust{grid-template-columns:minmax(0,1fr)}
+  /* a label of two lines must not push its box out of line with the one beside it */
+  .rm-body .line .row,.rm-body .cust{align-items:end}
+  .rm-body .btns .b{flex:1 1 auto}
+  .rm-body .opts{flex-wrap:wrap;gap:8px 18px}
+
+  /* result tiles: as many to a row as fit at 7.5rem each (three at 310px and over, two under it), figures that wrap */
+  .rm-body .tot{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.2rem),1fr))}
+  .rm-body .tot div{padding:10px}
+  .rm-body .tot b{font-size:21px;line-height:1.15;overflow-wrap:anywhere}
+  .rm-body .big b{font-size:28px;overflow-wrap:anywhere}
+
+  /* tables: cells wrap between words; one that still cannot fit scrolls inside its own box (portrait.js wraps it) */
+  /* a heading keeps its whole word ("Step" is not "St / ep"); a cell of prose may break anywhere it must */
+  .rm-body th,.rm-body td{padding-left:6px;padding-right:6px}
+  .rm-body th{overflow-wrap:break-word;letter-spacing:.06em}
+  .rm-body td{overflow-wrap:anywhere}
+  /* …but the first column is a name (a port, a container type): it keeps its words whole */
+  .rm-body td:first-child{overflow-wrap:break-word}
+  .rm-body .rm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* vessel schedules: a line's name and what its link opens, on two lines when one cannot hold both */
+  .rm-body .lines a{flex-wrap:wrap;gap:2px 12px}
+  .rm-body .lines a span.sv{text-align:left}
+  .rm-body .cta{padding:14px}
+
+  /* container tracking: the four parts of a number are two rows of two; the carriers list is one column when narrow */
+  .rm-body .parts{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+  .rm-body .parts div{min-width:0}
+  .rm-body .list{grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr))}
+  .rm-body .carrier{padding:14px}
+  .rm-body .row>div{flex-basis:min(100%,220px)}
+
+  /* vessel and flight tracking: the map takes a little over half the screen's height, not one and a half screens */
+  .rm-body #map{height:min(60vh,420px);min-height:300px}
+  .rm-body .mapcap{right:10px;font-size:13px}
+  .rm-body .card{padding:12px}
+  .rm-body .card .hd{flex-wrap:wrap}
+}
+/* the narrowest phones (a 320px screen gives the frame 240px): a field beside its button has no room to show what is
+   typed in it, so the button goes under the field, as wide as it */
+@media (max-width:300px){
+  .rm-body .bar{grid-template-columns:minmax(0,1fr)}
+  .rm-body .bar .b{width:100%}
+}
+/* …and a table of four columns or more is a list there: a row is a block, its first cell the heading of the block,
+   every other cell one line with its column's name before it (portrait.js copies the names from the heading row,
+   which is taken out of sight, not out of the page). */
+@media (max-width:300px){
+  .rm-body table.rm-cols4,.rm-body table.rm-cols4 tbody{display:block;width:100%}
+  .rm-body table.rm-cols4 thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .rm-body table.rm-cols4 tr{display:block;padding:10px 8px;border-bottom:1px solid var(--line)}
+  .rm-body table.rm-cols4 td{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:0 10px;align-items:baseline;border:0;padding:3px 0;text-align:left;white-space:normal}
+  .rm-body table.rm-cols4 td::before{content:attr(data-label);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .rm-body table.rm-cols4 tr.best td::before{color:rgba(255,255,255,.72)}
+  .rm-body table.rm-cols4 td:first-child,.rm-body table.rm-cols4 td:not([data-label]){display:block;padding-bottom:6px}
+  .rm-body table.rm-cols4 td:first-child::before,.rm-body table.rm-cols4 td:not([data-label])::before{content:none}
+}
+/* from 330px the four parts of a container number fit one row again */
+@media (min-width:330px) and (max-width:480px){
+  .rm-body .parts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .rm-body .parts div{padding:8px 6px}
+  .rm-body .parts span{letter-spacing:.04em;font-size:11px}
+}
+
+/* A section title is gradient text (its fill is transparent, the gradient shows through), and the step number in
+   the disc before it inherited the transparent fill: three navy discs with nothing in them. The number is white. */
+h3 .n{-webkit-text-fill-color:#fff;background-clip:border-box;-webkit-background-clip:border-box;background-image:none}
+
+/*
+ * ---- gold ----
+ * brand/BRAND.md §1: gold is always the logo's own metallic gradient (brand/rockit-logo.svg, `gold-swoosh`), never a
+ * flat yellow; a solid is allowed only where a gradient cannot be drawn (#8a6514 on a light ground). The tools carried
+ * another gradient and a flat #D0AF50 for rules, borders, bars and focus rings.
+ */
+:root{
+  --gold-grad:linear-gradient(135deg,#A88329 0%,#B18B2D 8%,#C09934 17%,#CFAC49 25%,#DEC163 33%,#EDD77E 42%,#F7E590 50%,#ECD57B 58%,#DEC161 67%,#D0AD48 75%,#C29B36 83%,#B28C2D 92%,#A88228 100%);
+  --gold-grad-hi:var(--gold-grad);
+  /* what `var(--gold)` still paints is text behind a gradient clip, a focus ring or a hairline: the allowed solid */
+  --gold:#8a6514;
+}
+.b.gold,.cta a,.links a.gold{background-color:#C09934;background-image:var(--gold-grad)}
+.b.gold:hover,.cta a:hover,.links a.gold:hover{background-image:var(--gold-grad);filter:brightness(1.06)}
+.rm-tabs a.on{border-bottom-color:transparent;border-image:var(--gold-grad) 1;border-image-width:0 0 2px 0}
+.rm-tabs a:focus-visible{outline-color:#8a6514}
+.big{border-image:var(--gold-grad) 1}
+.bar i{background-color:#C09934;background-image:var(--gold-grad)}
+.pref,.modehint{border-image:var(--gold-grad) 1}
+</style>
+<script id="rm-portrait-js">
+/* rm-portrait: what the stylesheet cannot do. Appended after each tool's own scripts by build.py. */
+(function () {
+  var tabs = document.querySelector('.rm-tabs');
+  var body = document.querySelector('.rm-body');
+
+  /* The strip of tools scrolls sideways and its scrollbar is hidden: on a phone the current tool's tab was off the
+     edge with nothing to say the strip moves. Bring it into view (by the strip's own scroll position, never
+     scrollIntoView: inside a frame that also scrolls the page that holds it) and fade the end that has more. */
+  function ends() {
+    if (!tabs) return;
+    var max = tabs.scrollWidth - tabs.clientWidth;
+    var x = Math.abs(tabs.scrollLeft);
+    var rtl = getComputedStyle(tabs).direction === 'rtl';
+    var before = x > 2, after = x < max - 2;
+    tabs.classList.toggle('rm-more-start', max > 2 && (rtl ? after : before));
+    tabs.classList.toggle('rm-more-end', max > 2 && (rtl ? before : after));
+  }
+  function showCurrent() {
+    if (!tabs) return;
+    var on = tabs.querySelector('a.on');
+    if (on) {
+      var t = tabs.getBoundingClientRect(), a = on.getBoundingClientRect();
+      if (a.left < t.left + 1 || a.right > t.right - 1) tabs.scrollLeft += a.left - t.left - (t.width - a.width) / 2;
+    }
+    ends();
+  }
+  if (tabs) {
+    tabs.addEventListener('scroll', ends, { passive: true });
+    showCurrent();
+    addEventListener('load', showCurrent);
+    addEventListener('resize', showCurrent);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(showCurrent);
+  }
+
+  /* A table whose cells cannot wrap any further (a column of codes, a comparison) scrolls inside its own box rather
+     than being cut by the frame: every table gets that box once, tables a tool draws later included. */
+  /* A table of four columns or more cannot be read across the narrowest phones (a 240px frame): there each of its
+     rows is drawn as a block, one line per cell with the column's name before it (portrait.css, `rm-cols4`). The
+     names are copied from the table's own heading row. */
+  function label(table) {
+    if (table.getAttribute('data-rm-labelled')) return;
+    var heads = table.querySelectorAll('thead th');
+    if (heads.length < 4) return;
+    table.setAttribute('data-rm-labelled', '1');
+    table.classList.add('rm-cols4');
+    var rows = table.querySelectorAll('tbody tr');
+    for (var r = 0; r < rows.length; r++) {
+      var cells = rows[r].children;
+      for (var c = 1; c < cells.length && c < heads.length; c++) cells[c].setAttribute('data-label', heads[c].textContent.replace(/\s+/g, ' ').trim());
+    }
+  }
+  function boxTables(root) {
+    var list = (root || document).querySelectorAll ? (root || document).querySelectorAll('.rm-body table') : [];
+    for (var i = 0; i < list.length; i++) {
+      var table = list[i], p = table.parentElement;
+      label(table);
+      if (!p || p.classList.contains('rm-scroll') || (getComputedStyle(p).overflowX !== 'visible' && p !== body)) continue;
+      var box = document.createElement('div');
+      box.className = 'rm-scroll';
+      p.insertBefore(box, table);
+      box.appendChild(table);
+    }
+  }
+  boxTables(document);
+  if (body && window.MutationObserver) {
+    new MutationObserver(function (changes) {
+      for (var i = 0; i < changes.length; i++) if (changes[i].addedNodes.length) { boxTables(document); return; }
+    }).observe(body, { childList: true, subtree: true });
+  }
+})();
+</script>
+<!-- /rm-portrait -->
