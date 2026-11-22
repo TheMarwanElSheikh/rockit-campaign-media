@@ -167,7 +167,7 @@ class Web:
         ed, c = self.ed, self.ed["cover"]
         n = self.nodes
         n.append(P_(T_(f'Voyage {ed["meta"]["voyage"]} · {ed["meta"]["date_long"]} · {ed["meta"]["pages_label"]} · {len(ed["sources"])} sources, each read and checked', italic=True)))
-        n.append(P_(T_("Download the full 16-page edition (PDF) ▸", bold=True, link=pdf_url)))
+        n.append(P_(T_(f'Download the full {ed["meta"].get("pages", 16)}-page edition (PDF) ▸', bold=True, link=pdf_url)))
         n.append(H_(plain(c["headline"]), 2))
         n.append(P_(T_(plain(c["deck"]), italic=True)))
         n.append(P_(*rich(c["standfirst"])))
@@ -182,11 +182,11 @@ class Web:
             for b in pg["blocks"]:
                 self.block(b)
         n.append(H_("Read the full edition", 2))
-        n.append(P_(T_("The 16-page PDF has every chart, the full calendar and glossary, and the numbered list of all sources. "),
+        n.append(P_(T_(f'The {ed["meta"].get("pages", 16)}-page PDF has every chart, the full calendar and glossary, and the numbered list of all sources. '),
                     T_("Download it here ▸", bold=True, link=pdf_url)))
         n.append(P_(T_("Send us a lane: ", bold=True), T_("inquiry@rockit.com.eg", link="mailto:inquiry@rockit.com.eg"), T_(" · +20 2 2690 7601 · Rockit. Means what it says.", italic=True)))
         n.append(H_("Sources", 2))
-        n.append(P_(T_("Numbers in brackets point to this list, the same numbering as the PDF. We read every page between 9 and 16 November 2026.", italic=True)))
+        n.append(P_(T_(f'Numbers in brackets point to this list, the same numbering as the PDF. We read every page between {ed["meta"].get("read_window", "the dates shown")}.', italic=True)))
         n.append({"type": "ORDERED_LIST", "nodes": [{"type": "LIST_ITEM", "nodes": [P_(T_(f'{self.src[i]["name"]}, ', bold=False), T_(self.src[i]["title"], link=self.src[i]["url"]), T_(f', {self.src[i]["date"]}'))]} for i in self.order], "orderedListData": {"indentation": 0}})
         n.append(P_(T_(plain(ed["disclaimer"]), italic=True)))
         return {"nodes": n}
