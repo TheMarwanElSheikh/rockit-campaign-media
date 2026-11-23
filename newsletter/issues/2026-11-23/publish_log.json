@@ -1,0 +1,49 @@
+{
+ "issue": "002",
+ "released": "2026-11-23 ~14:20 Cairo (late: staged and released on Monday after the user said 'Go')",
+ "checks": {
+  "logo_gate": "passed: covers, slides, page footers and email header/footer use the owner's rockit-logo file on white/paper; no dark panel behind the logo",
+  "hold": "none received; user said 'Go'"
+ },
+ "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_24f37061f38b41a994f1a8d857d4f669.pdf",
+ "results": [
+  {
+   "channel": "website",
+   "status": "published",
+   "post_id": "9f5ffdeb-db19-4899-969e-96c629032d0d",
+   "firstPublishedDate": "2026-11-23T12:19:26Z",
+   "url": "https://www.rockit-transport.com/post/rockit-manifest-002-red-sea-risk",
+   "category": "The Rockit Manifest",
+   "nodes": 222,
+   "images": 7,
+   "http_check": "200, title present, PDF linked"
+  },
+  {
+   "channel": "linkedin",
+   "status": "published",
+   "post_urn": "urn:li:share:7530606768503181313",
+   "url": "https://www.linkedin.com/feed/update/urn:li:share:7530606768503181313/"
+  },
+  {
+   "channel": "facebook",
+   "status": "published",
+   "post_id": "102089469414840_1130172209939228",
+   "url": "https://www.facebook.com/102089469414840_1130172209939228"
+  },
+  {
+   "channel": "instagram",
+   "status": "published (8-slide carousel)",
+   "media_id": "18197439451396831"
+  },
+  {
+   "channel": "google_business",
+   "status": "submitted (PROCESSING)",
+   "post_name": "accounts/114923165479306105082/locations/16077331135089168616/localPosts/6066589514555321398"
+  },
+  {
+   "channel": "email",
+   "status": "draft, not sent (owner sends manually)",
+   "wix_campaign_id": "c37c0b90-16d1-43cf-bc00-2fb9ee5ccb6c"
+  }
+ ]
+}
