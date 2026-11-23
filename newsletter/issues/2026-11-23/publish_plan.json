@@ -1,0 +1,82 @@
+{
+ "issue": "002",
+ "revision": 1,
+ "publish_at": "2026-11-23T10:00:00[Africa/Cairo]",
+ "note": "Staged late on Monday 23 Nov; the user said 'Go' at ~14:10 Cairo, so the website post was published directly at 12:19Z instead of natively at 08:00Z.",
+ "wix_site_id": "0e184a47-8d16-405a-9018-42d1181fadd1",
+ "pdf": "https://0e184a47-8d16-405a-9018-42d1181fadd1.usrfiles.com/ugd/949f2c_24f37061f38b41a994f1a8d857d4f669.pdf",
+ "steps": [
+  {
+   "n": 1,
+   "channel": "website",
+   "action": "published",
+   "post_id": "9f5ffdeb-db19-4899-969e-96c629032d0d",
+   "url": "https://www.rockit-transport.com/post/rockit-manifest-002-red-sea-risk",
+   "firstPublishedDate": "2026-11-23T12:19:26Z"
+  },
+  {
+   "n": 2,
+   "channel": "linkedin",
+   "connector": "linkedin_organic",
+   "account": "18956661",
+   "action": "create_image_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_01.jpg",
+    "commentary": "The ships come back. So does the risk.\n\nThe Rockit Manifest, Voyage 002. The full 16-page edition is out:\n\n01 / Suez: Drewry counted 57 container ships through the canal in the week to 15 November, up 73% on a year earlier. Gemini (Maersk and Hapag-Lloyd) moves three more Asia–Europe loops to Suez from 4 December.\n\n02 / Red Sea: the Houthis now hold Yemen's Red Sea coast and told ships to leave Saudi ports on 20 November. Bab el-Mandeb transits fell 28% from their October peak.\n\n03 / Rates: Asia–Med was the only main lane to rise. Xeneta Far East–Med spot +6.8% to $4,989/40ft. December FAKs to the East Med are filed at $6,500–6,800, and Maersk's $1,500 Med peak surcharge applies from today.\n\n04 / Air: global rates $3.45/kg, +31% year on year; Middle East–Europe +66%.\n\n05 / Egypt: an IMF staff-level deal puts about $2.3bn on the table, pending the Board; the dollar was back above EGP 54 on 22 November.\n\nOur read: book December Asia cargo early, and get the peak, fuel, piracy and Suez surcharges named in writing.\n\nRead it online, every figure sourced:\nhttps://www.rockit-transport.com/post/rockit-manifest-002-red-sea-risk\n\n#RockitManifest #FreightForwarding #Egypt #SuezCanal #RedSea #Shipping #SupplyChain"
+   }
+  },
+  {
+   "n": 3,
+   "channel": "facebook",
+   "connector": "facebook_organic",
+   "account": "102089469414840",
+   "action": "create_photo_post",
+   "params": {
+    "image_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_01.jpg",
+    "caption": "The Rockit Manifest · Voyage 002 · Full edition\n\nThe ships come back. So does the risk.\n\n✓ Suez: 57 container ships in a week (+73% y/y); Gemini returns three more loops from 4 Dec\n✓ Red Sea: the Houthis told ships to leave Saudi ports on 20 Nov\n✓ Asia–Med was the only main lane to rise: $4,989/40ft (+6.8%, Xeneta)\n✓ December East Med FAKs filed at $6,500–6,800; Maersk's $1,500 Med surcharge from today\n✓ Egypt: IMF staff-level deal, about $2.3bn, pending the Board\n\n16 pages, every figure sourced. Read it online or download the PDF:\nhttps://www.rockit-transport.com/post/rockit-manifest-002-red-sea-risk"
+   }
+  },
+  {
+   "n": 4,
+   "channel": "instagram",
+   "connector": "instagram",
+   "account": "17841456872839570",
+   "action": "create_carousel_post",
+   "params": {
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_01.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_02.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_03.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_04.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_05.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_06.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_07.jpg",
+     "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/slide_08.jpg"
+    ],
+    "caption": "The Rockit Manifest · Voyage 002 · Full edition\nSwipe for the edition →\n\n1 · The ships come back. So does the risk.\n2 · The briefing: the week in 60 seconds\n3 · Ocean freight: the Med premium and December tariffs\n4 · Suez, Red Sea & Hormuz\n5 · Air cargo: Middle East lanes lead\n6 · Geopolitics & trade policy\n7 · The Egypt desk: IMF deal, trade, the pound\n8 · The toolkit: six questions before you book Red Sea cargo this December\n\n16 pages, every figure sourced. The full edition is on rockit-transport.com (link in bio).\n\nMeans what it says.\n\n#RockitManifest #FreightForwarding #Logistics #Egypt #SuezCanal #RedSea #Shipping #Cairo #Alexandria"
+   }
+  },
+  {
+   "n": 5,
+   "channel": "google_business",
+   "connector": "google_my_business",
+   "account": "locations/16077331135089168616",
+   "action": "create_local_post",
+   "params": {
+    "summary": "The Rockit Manifest, Voyage 002: ships are returning to Suez while Red Sea risk rises, and Asia–Med is the only main lane still getting dearer. 16 pages on ocean and air freight, trade policy and the Egypt desk, every figure sourced.",
+    "photo_url": "https://cdn.jsdelivr.net/gh/TheMarwanElSheikh/rockit-campaign-media@e0add7cd65030241dcb26dfe9496d34b001031cd/newsletter/issues/2026-11-23/edition/web/cover_full_4x3.jpg",
+    "cta_type": "LEARN_MORE",
+    "cta_url": "https://www.rockit-transport.com/post/rockit-manifest-002-red-sea-risk"
+   }
+  }
+ ],
+ "email": {
+  "wix_campaign_id": "c37c0b90-16d1-43cf-bc00-2fb9ee5ccb6c",
+  "status": "DRAFT — not sent (user sends manually)"
+ },
+ "rules": [
+  "Step 1 must be live before 2-5.",
+  "A 4xx on any step: do not retry with altered content; report it.",
+  "Do not send the email campaign."
+ ]
+}
