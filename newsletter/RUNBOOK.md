@@ -140,3 +140,22 @@ Brand: the builder uses only the owner's logo files (`rockit-logo`, always on a 
 - Instagram gets a five-slide 4:5 carousel (`slide_1..5.jpg`).
 - LinkedIn and Facebook get `slide_1.jpg`.
 - Google Business gets `cover_4x3.jpg`.
+
+## LinkedIn newsletter edition (every issue)
+
+The Manifest is also published as an edition of the LinkedIn newsletter "The Rockit Manifest"
+(https://www.linkedin.com/newsletters/the-rockit-manifest-7528155028130504705/, company page 18956661).
+LinkedIn has no API for newsletter editions and Windsor `linkedin_organic` can only make ordinary posts, so an
+image post is NOT a substitute. The edition is published through a logged-in LinkedIn browser on the owner's Mac:
+
+1. After the website post is live, check that EVERY imported Wix media file reads `operationStatus: READY`
+   and returns HTTP 200 (charts 2 and 6 of Voyage 002 failed silently). Re-import any that failed.
+2. Build `issues/<date>/linkedin/article_body.html` (clean HTML of the web edition) and push it.
+3. `send_message` to the session "Marketing — LinkedIn campaign (fork)" (session_01Nsrmiaf3NnkWS7TafJe8K2) with:
+   title, PDF URL on rockit-transport.com/_files/ugd/…, website post URL, article_body.html URL, cover and chart
+   media ids on static.wixstatic.com, and the intro text. Its method is in `newsletter/README.md` on the owner's SSD.
+4. That session runs only while it is open in the Claude app on the Mac: tell the owner to open it, and to type
+   a go-ahead there if it does not start by itself. Record the linkedin.com/pulse URL in publish_log.json.
+
+Newsletter logo on LinkedIn: `brand/linkedin/newsletter_logo.png` (owner approved 23 Nov 2026). Never a plain
+white square behind the logo; the owner rejected it as unprofessional.

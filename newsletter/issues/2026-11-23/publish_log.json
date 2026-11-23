@@ -44,6 +44,20 @@
    "channel": "email",
    "status": "draft, not sent (owner sends manually)",
    "wix_campaign_id": "c37c0b90-16d1-43cf-bc00-2fb9ee5ccb6c"
+  },
+  {
+   "channel": "linkedin_newsletter",
+   "status": "published as edition 2 of The Rockit Manifest newsletter (by the 'Marketing — LinkedIn campaign' session on the owner's Mac, via its logged-in browser)",
+   "url": "https://www.linkedin.com/pulse/ships-come-back-so-does-risk-rockit-transport-services-3htse/",
+   "newsletter": "https://www.linkedin.com/newsletters/the-rockit-manifest-7528155028130504705/",
+   "newsletter_logo": "replaced with brand/linkedin/newsletter_logo.png (owner approved)",
+   "note": "charts 2 and 6 on LinkedIn were cut from the PDF because their Wix imports had failed"
+  }
+ ],
+ "fixes": [
+  {
+   "at": "2026-11-23T14:12:35Z",
+   "what": "chart_02 and chart_06 Wix media imports had FAILED (403 on the live post); re-imported as 949f2c_5fddc507a4f044f0a8ca08885390a97b~mv2.png and 949f2c_16a8368ee827437eb72527285a114a3b~mv2.png and republished the post"
   }
  ]
 }
