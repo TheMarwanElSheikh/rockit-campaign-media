@@ -159,3 +159,14 @@ image post is NOT a substitute. The edition is published through a logged-in Lin
 
 Newsletter logo on LinkedIn: `brand/linkedin/newsletter_logo.png` (owner approved 23 Nov 2026). Never a plain
 white square behind the logo; the owner rejected it as unprofessional.
+
+## Website check after publishing (every issue)
+
+Do not report the website as updated from the API alone. After the post is live:
+1. Every Wix media file used by the post (cover, charts, timeline, PDF) reads `operationStatus: READY` and returns
+   HTTP 200. Re-import any that failed and republish.
+2. Render https://www.rockit-transport.com/insights/categories/newsletter (the "Newsletter" menu page) and the post
+   in Chromium. The page must show this week's voyage number, date and headline in the "New this week" card,
+   in "This week's issue" and first in the archive, with no broken images. Check one other language and mobile.
+3. If the owner reports the page still shows the old issue, ask which page and device, and compare with a fresh
+   render before changing anything.
