@@ -373,6 +373,8 @@ def sources_items(S, data_sources):
     for n, sid in enumerate(S.order, 1):
         s = data_sources[sid]
         short = re.sub(r"^https?://(www\.)?", "", s["url"])
+        if len(short) > 110:  # very long (e.g. percent-encoded Arabic) addresses: keep host and the article id, the link itself stays full
+            short = short.split("/")[0] + "/…/" + short.rstrip("/").split("/")[-1][-40:]
         items.append(f'<div><b>{n}</b>{e(s["name"])}, “{e(s["title"])}”, {e(s["date"])}. <span style="color:{MUTED}">{e(short)}</span></div>')
     return items
 
