@@ -1,0 +1,10 @@
+{
+ "_about": "Ledger of Lost in Forwarding posts actually published. The runner checks this file AND the live channel before posting a slot, and adds a row after posting. A slot already listed here is never posted again.",
+ "posted": [
+  {"drop": 2, "channel": "linkedin", "slot_trigger": "trig_01QSathu15iXauqa9pXQJDu7", "posted_at": "2026-11-24T07:33Z", "id": "urn:li:share:7530896315862536192", "note": "posted by hand from the Weekly Newsletter session after the scheduled task failed (access denied)"}
+ ],
+ "missed": [
+  {"drop": 1, "channel": "linkedin", "slot_trigger": "trig_01Bwf6n9kbbxLKQM2pjyvEax", "due": "2026-11-22T07:30Z", "status": "never posted (task did not reach a running session)"},
+  {"drop": 1, "channel": "instagram+facebook", "slot_trigger": "trig_01Mi7WEwKERsLwLidWgxAdBH", "due": "2026-11-22T17:00Z", "status": "never posted; the reschedule to 23 Nov failed (access denied)"}
+ ]
+}
