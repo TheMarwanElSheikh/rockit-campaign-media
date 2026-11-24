@@ -170,3 +170,21 @@ Do not report the website as updated from the API alone. After the post is live:
    in "This week's issue" and first in the archive, with no broken images. Check one other language and mobile.
 3. If the owner reports the page still shows the old issue, ask which page and device, and compare with a fresh
    render before changing anything.
+
+
+## Scheduled tasks (from 24 Nov 2026)
+
+Scheduled tasks no longer fire into the original "Weekly Newsletter" session: on 23 Nov it was limited to the owner's
+trusted devices, and every task aimed at it since then failed with ACCESS_DENIED. All tasks now run in the runner session
+**"Rockit Manifest – weekly runner"** (session_01Nsrmia94ZmyDMV8xYCYUzo). The runner must never call
+`confirm_repository_trust` or `send_message`, or it would be locked the same way.
+
+| Task | When (Cairo) | Where | What |
+|---|---|---|---|
+| Rockit Manifest – Sunday staging (runner) | Sun 13:47 | runner | research, 16-page edition, Wix draft scheduled for Mon 10:00, email draft, publish_plan.json, `linkedin/REQUEST.md` + `article_body.html` |
+| Rockit Manifest – Monday 10:00 publish (runner) | Mon 10:05 | runner | website check, Facebook, Instagram carousel, Google Business. **No LinkedIn image post.** |
+| Rockit Manifest – LinkedIn newsletter edition (Mac) | Mon 11:00 | owner's Mac session "Marketing — LinkedIn campaign (fork)" | reads `issues/<date>/linkedin/REQUEST.md` from GitHub and publishes the edition; asks the owner to confirm. Runs only while that session is open on the Mac. |
+| LiF dispatcher 09:30 / 19:00 | daily | runner | Lost in Forwarding slots, with the no-duplicates check (`campaign_tools/posted.json` + live channel) |
+
+On LinkedIn the Manifest goes out only as the newsletter edition (owner, 23 Nov 2026). The ordinary image post is no
+longer made.
