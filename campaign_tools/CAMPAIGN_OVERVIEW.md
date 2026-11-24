@@ -54,3 +54,9 @@ Open checks:
 
 Next issues: Voyage 003 Mon 30 Nov, 004 Mon 7 Dec, 005 Mon 14 Dec, 006 Mon 21 Dec, 007 Mon 28 Dec.
 On Mondays nothing from LiF is scheduled, so the two never collide.
+
+## Automatic checks (cloud runner, read-only)
+- Every Tue and Thu at 10:20 Cairo: confirms today's Lost in Forwarding post went out once on Facebook, Instagram and
+  LinkedIn; logs to campaign_tools/post_checks.md and tells the owner only if something is missing or doubled.
+- 31 Dec, 10:00 Cairo: confirms the January Meta posts are scheduled.
+- Every Monday: the newsletter publish task checks the live website before posting anywhere.
