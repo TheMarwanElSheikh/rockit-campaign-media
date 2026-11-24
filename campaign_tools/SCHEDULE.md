@@ -33,3 +33,17 @@ from another session, and that session was disconnected.
 | 18 | Thu 31 Dec | trig_01EiD49QX9U3XjBen8xnLQTD / trig_0119RFR5JPvYdBKFa664QF39 | trig_0145DNHa56Dy43WqEkWJtFun / trig_01CA8PoVK14fZC2rgMyoorSX |
 | 19 | Sun 03 Jan | trig_013EP4ygftJufTgyoht5qXxU / trig_015A6uQ5iLVsHcBkDRuFWjcy | trig_01D9jPPM1XmbxDK1cQrhn6o9 / trig_01Snyb5iVBC7Pxv84QCRqq8e |
 | 20 | Tue 05 Jan | trig_01TdosJU3XU249v2kU9pfG6z / trig_011ZWhN87NeiNq54hrm98o4d | trig_01S2efqkZmwpGDBMzcxa3Nc8 / trig_01KeUW7BEWvQAhTfJA14Dj7N |
+
+## 24 Nov 2026: moved to the weekly runner session
+
+From 23 Nov 17:00Z every task that fired into session_01NsrmicW7uCat7km8mQvPv4 failed with ACCESS_DENIED
+(that session was limited to the owner's trusted devices on 23 Nov, so scheduled tasks can no longer start it).
+Drop 2 LinkedIn was posted by hand on 24 Nov (urn:li:share:7530896315862536192). Drop 1 never posted on any channel.
+
+All per-slot tasks in the table above are now DISABLED. Two daily tasks in the runner session
+session_01Nsrmia94ZmyDMV8xYCYUzo ("Rockit Manifest – weekly runner") post the campaign instead:
+- "LiF dispatcher 09:30 Cairo" posts the LinkedIn slot due that day;
+- "LiF dispatcher 19:00 Cairo" posts the Instagram + Facebook slot due that day.
+Each reads the slot's exact actions and captions from the disabled task in the table (get_trigger), checks
+campaign_tools/posted.json and the live channel first, posts only if the slot is not already there, then records it in
+posted.json. A slot is never posted twice. Drop 1 stays unposted unless the owner asks for it.
