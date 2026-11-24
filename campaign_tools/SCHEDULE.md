@@ -47,3 +47,7 @@ session_01Nsrmia94ZmyDMV8xYCYUzo ("Rockit Manifest – weekly runner") post the 
 Each reads the slot's exact actions and captions from the disabled task in the table (get_trigger), checks
 campaign_tools/posted.json and the live channel first, posts only if the slot is not already there, then records it in
 posted.json. A slot is never posted twice. Drop 1 stays unposted unless the owner asks for it.
+
+## 24 Nov 2026 (later): this set is RETIRED
+
+The owner chose to keep the Lost in Forwarding campaign that the Mac session scheduled natively in Meta Business Suite and on LinkedIn. Both runner dispatchers and every per-slot task above are disabled and must not be re-enabled. See CAMPAIGN_OVERVIEW.md.
