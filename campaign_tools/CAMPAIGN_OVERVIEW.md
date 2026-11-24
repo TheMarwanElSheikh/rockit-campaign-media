@@ -41,7 +41,7 @@ Owner, 24 Nov 2026: "don't remove anything but organize yourself properly going 
 
 Open checks:
 - Facebook reports 7 scheduled posts; the Mac plan expects 8 (26 Nov to 22 Dec). One may be missing; check Business Suite › Content › Scheduled.
-- The January Meta posts depend on the Mac session being open on 30 Dec (its own job). Reminder set for 28 Dec.
+- The January Meta posts depend on the Mac session being open on 30 Dec (its own job). A read-only check runs in the cloud runner on 31 Dec, 10:00 Cairo, and tells the owner if they are missing.
 
 ## The Rockit Manifest (weekly, every Monday)
 | When (Cairo) | Who | What |
