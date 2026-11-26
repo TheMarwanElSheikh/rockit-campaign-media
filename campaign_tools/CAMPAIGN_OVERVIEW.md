@@ -31,7 +31,7 @@ Owner, 24 Nov 2026: "don't remove anything but organize yourself properly going 
 | Tue 15 Dec | Minor delay | scheduled | scheduled |
 | Thu 17 Dec | Rockit (Vol. I close) | scheduled | scheduled |
 | Tue 22 Dec | Out of office (first look at Vol. II) | scheduled | scheduled |
-| Tue 5 Jan | The vessel was rolled | to be scheduled ~30 Dec by the Mac session | scheduled |
+| Tue 5 Jan | The vessel was rolled | Mac session may schedule ~30 Dec; otherwise the cloud runner posts at 10:05 | scheduled |
 | Tue 12 Jan | It's with customs | to be scheduled | scheduled |
 | Thu 14 Jan | We're on it | to be scheduled | scheduled |
 | Tue 19 Jan | Kindly resend the documents | to be scheduled | scheduled |
@@ -41,7 +41,7 @@ Owner, 24 Nov 2026: "don't remove anything but organize yourself properly going 
 
 Open checks:
 - Facebook reports 7 scheduled posts; the Mac plan expects 8 (26 Nov to 22 Dec). One may be missing; check Business Suite › Content › Scheduled.
-- The January Meta posts depend on the Mac session being open on 30 Dec (its own job). A read-only check runs in the cloud runner on 31 Dec, 10:00 Cairo, and tells the owner if they are missing.
+- January Meta posts: artwork and captions handed over by the Mac session on 26 Nov (campaign_tools/lif_light/). The cloud task "LiF January Meta posts" runs Tue/Thu 10:05 Cairo in January: it posts on Facebook and Instagram only if the post is not already live (so the Mac session's own 30 Dec job, if it runs, cannot cause doubles). 28 Jan: Instagram 9-page carousel; Facebook 9-page video (the Facebook API takes one photo per post).
 
 ## The Rockit Manifest (weekly, every Monday)
 | When (Cairo) | Who | What |
